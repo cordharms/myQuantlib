@@ -1,9 +1,11 @@
 
 Getting Startet
+===============
 
 1) Clone your local repository
+   git clone git@moco.d-fine.de:quantlib.git quantlib
 
-2) Open Solution QuantLibXL_full_vc11.sln
+2) Open Solution ..\quantlib\QuantLibXL\QuantLibXL_full_vc11.sln
 
 2) Include Boost into VS 2012
    - Go to Property Manager
@@ -15,11 +17,13 @@ Getting Startet
    - Edit Library Directories (e.g. add C:\Program Files\boost\boost_1_54_0\stage\lib)
    - Close Property Page
    - IMPORTANT: Right click on Microsoft.Cpp.Win32.user, select 'Save Microsoft.Cpp.Win32.user'
+   Repeat exercise for Microsoft.Cpp.x64.user (e.g. in Debug | x64)
    This should make Boost available globally for your solutions
    
 3) Build Solution and create Excel Addin (e.g. ...\quantlib\QuantLibXL\xll\QuantLibXL-vc90-mt-gd-1_1_0.xll)
 
 Develop a feature
+=================
 
 1) Create a branch and check it out, e.g. git checkout -b myfeature
 
