@@ -28,6 +28,9 @@
     <Filter Include="stubs">
       <UniqueIdentifier>{0c5757d6-a742-49d0-87ff-18fb87277cef}</UniqueIdentifier>
     </Filter>
+    <Filter Include="functions\experimental">
+      <UniqueIdentifier>{8c3eafe1-774c-424e-96a8-c05e0d5a91e3}</UniqueIdentifier>
+    </Filter>
   </ItemGroup>
   <ItemGroup>
     <None Include="metadata\addins\c.xml">
@@ -310,5 +313,10 @@
       <Filter>stubs</Filter>
     </None>
     <None Include="Makefile.vc" />
+  </ItemGroup>
+  <ItemGroup>
+    <Xml Include="metadata\functions\sabrswaptioncube.xml">
+      <Filter>functions\experimental</Filter>
+    </Xml>
   </ItemGroup>
 </Project>

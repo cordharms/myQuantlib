@@ -246,6 +246,8 @@
     <DataType defaultSuperType='underlyingClass'>QuantLib::BrownianGeneratorFactory</DataType>
     <DataType defaultSuperType='underlyingClass'>QuantLib::Leg</DataType>
 
+    <DataType defaultSuperType='objectClass'>QuantLibAddin::SabrSwaptionCube</DataType>
+
   </DataTypes>
 
 </root>

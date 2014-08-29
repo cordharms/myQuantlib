@@ -1,0 +1,78 @@
+<Category name='sabrswaptioncube'>
+  <description>objects and methods for Swaption SABR model based on parameter interpolation.</description>
+  <displayName>SABR Swaption Cube</displayName>
+  <xlFunctionWizardCategory>QuantLib - Financial</xlFunctionWizardCategory>
+  <serializationIncludes>
+    <include>qlo/handleimpl.hpp</include>
+    <include>qlo/conversions/coercetermstructure.hpp</include>
+    <include>qlo/sabrswaptioncube.hpp</include>
+  </serializationIncludes>
+  <addinIncludes>
+    <include>qlo/handleimpl.hpp</include>
+    <include>qlo/conversions/coercetermstructure.hpp</include>
+    <include>qlo/sabrswaptioncube.hpp</include>
+  </addinIncludes>
+  <copyright>
+    Copyright (C) 2014, Sebastian Schlenkrich
+  </copyright>
+  <Functions>
+    
+    <Constructor name='qlSabrSwaptionCube'>
+      <libraryFunction>SabrSwaptionCube</libraryFunction>
+      <SupportedPlatforms>
+        <SupportedPlatform name='Excel'/>
+        <SupportedPlatform name='Cpp'/>
+      </SupportedPlatforms>
+      <ParameterList>
+        <Parameters>
+          <Parameter name='OptionTimes'>
+            <type>QuantLib::Time</type>
+            <tensorRank>vector</tensorRank>
+            <description>vector of option expiry times</description>
+          </Parameter>
+          <Parameter name='SwapTimes'>
+            <type>QuantLib::Time</type>
+            <tensorRank>vector</tensorRank>
+            <description>vector of swap maturity times</description>
+          </Parameter>
+          <Parameter name='Alpha'>
+            <type>double</type>
+            <tensorRank>matrix</tensorRank>
+            <description>matrix of alpha parameters</description>
+          </Parameter>
+          <Parameter name='Beta'>
+            <type>double</type>
+            <tensorRank>matrix</tensorRank>
+            <description>matrix of beta parameters</description>
+          </Parameter>
+          <Parameter name='Rho'>
+            <type>double</type>
+            <tensorRank>matrix</tensorRank>
+            <description>matrix of rho parameters</description>
+          </Parameter>
+          <Parameter name='Nu'>
+            <type>double</type>
+            <tensorRank>matrix</tensorRank>
+            <description>matrix of nu parameters</description>
+          </Parameter>
+          <Parameter name='Fwd'>
+            <type>double</type>
+            <tensorRank>matrix</tensorRank>
+            <description>matrix of forward swap rates</description>
+          </Parameter>
+          <Parameter name='BDC' exampleValue ='"Modified Following"' default='"Modified Following"'>
+            <type>QuantLib::BusinessDayConvention</type>
+            <tensorRank>scalar</tensorRank>
+            <description>SwaptionVT business day convention.</description>
+          </Parameter>
+          <Parameter name='DayCount' exampleValue ='"Actual/365 (Fixed)"' default='"Actual/365 (Fixed)"'>
+            <type>QuantLib::DayCounter</type>
+            <tensorRank>scalar</tensorRank>
+            <description>SwaptionVT day count convention.</description>
+          </Parameter>
+        </Parameters>
+      </ParameterList>
+    </Constructor>
+
+  </Functions>
+</Category>

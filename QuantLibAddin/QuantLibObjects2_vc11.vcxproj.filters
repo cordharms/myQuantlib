@@ -73,6 +73,12 @@
     <Filter Include="credit">
       <UniqueIdentifier>{ccd99a6d-175e-4f4f-b645-0842651abc04}</UniqueIdentifier>
     </Filter>
+    <Filter Include="Experimental">
+      <UniqueIdentifier>{33bab352-bbc9-43c6-91ac-98e02b3dd3fd}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Experimental\SabrSwaptionCube">
+      <UniqueIdentifier>{1997d06e-5dc1-4553-bbd3-1013e89f3214}</UniqueIdentifier>
+    </Filter>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="qlo\enumerations\register\register_all.cpp">
@@ -795,6 +801,18 @@
     <ClCompile Include="qlo\settings.cpp" />
     <ClCompile Include="qlo\timeseries.cpp" />
     <ClCompile Include="qlo\utilities.cpp" />
+    <ClCompile Include="qlo\valueobjects\vo_sabrswaptioncube.cpp">
+      <Filter>valueobjects</Filter>
+    </ClCompile>
+    <ClCompile Include="qlo\serialization\create\create_sabrswaptioncube.cpp">
+      <Filter>serialization\create</Filter>
+    </ClCompile>
+    <ClCompile Include="qlo\serialization\register\serialization_sabrswaptioncube.cpp">
+      <Filter>serialization\register</Filter>
+    </ClCompile>
+    <ClCompile Include="qlo\sabrswaptioncube.cpp">
+      <Filter>Experimental\SabrSwaptionCube</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="qlo\enumerations\register\register_all.hpp">
@@ -1639,5 +1657,17 @@
     <ClInclude Include="qlo\timeseries.hpp" />
     <ClInclude Include="qlo\utilities.hpp" />
     <ClInclude Include="qlo\vcconfig.hpp" />
+    <ClInclude Include="qlo\valueobjects\vo_sabrswaptioncube.hpp">
+      <Filter>valueobjects</Filter>
+    </ClInclude>
+    <ClInclude Include="qlo\serialization\create\create_sabrswaptioncube.hpp">
+      <Filter>serialization\create</Filter>
+    </ClInclude>
+    <ClInclude Include="qlo\serialization\register\serialization_sabrswaptioncube.hpp">
+      <Filter>serialization\register</Filter>
+    </ClInclude>
+    <ClInclude Include="qlo\sabrswaptioncube.hpp">
+      <Filter>Experimental\SabrSwaptionCube</Filter>
+    </ClInclude>
   </ItemGroup>
 </Project>

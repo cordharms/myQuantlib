@@ -62,6 +62,7 @@
     <categoryName>volatility</categoryName>
     <categoryName>quotes</categoryName>
     <categoryName>credit</categoryName> <!--RL ADD 2010-07-22-->
+    <categoryName>sabrswaptioncube</categoryName>
   </addinCategoryNames>
   
 </root>

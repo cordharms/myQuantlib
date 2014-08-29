@@ -435,6 +435,9 @@
     <ClCompile Include="qlo\enumerations\constructors\enumeratedclasses.cpp" />
     <ClCompile Include="qlo\enumerations\constructors\enumeratedpairs.cpp" />
     <ClCompile Include="qlo\enumerations\factories\calendarfactory.cpp" />
+    <ClCompile Include="qlo\sabrswaptioncube.cpp" />
+    <ClCompile Include="qlo\serialization\create\create_sabrswaptioncube.cpp" />
+    <ClCompile Include="qlo\serialization\register\serialization_sabrswaptioncube.cpp" />
     <ClCompile Include="qlo\valueobjects\vo_abcd.cpp" />
     <ClCompile Include="qlo\valueobjects\vo_accountingengines.cpp" />
     <ClCompile Include="qlo\valueobjects\vo_alphaform.cpp" />
@@ -474,6 +477,7 @@
     <ClCompile Include="qlo\valueobjects\vo_randomsequencegenerator.cpp" />
     <ClCompile Include="qlo\valueobjects\vo_rangeaccrual.cpp" />
     <ClCompile Include="qlo\valueobjects\vo_ratehelpers.cpp" />
+    <ClCompile Include="qlo\valueobjects\vo_sabrswaptioncube.cpp" />
     <ClCompile Include="qlo\valueobjects\vo_schedule.cpp" />
     <ClCompile Include="qlo\valueobjects\vo_sequencestatistics.cpp" />
     <ClCompile Include="qlo\valueobjects\vo_shortratemodels.cpp" />
@@ -687,6 +691,9 @@
     <ClInclude Include="qlo\enumerations\factories\payoffsfactory.hpp" />
     <ClInclude Include="qlo\enumerations\factories\pricingenginesfactory.hpp" />
     <ClInclude Include="qlo\enumerations\factories\termstructuresfactory.hpp" />
+    <ClInclude Include="qlo\sabrswaptioncube.hpp" />
+    <ClInclude Include="qlo\serialization\create\create_sabrswaptioncube.hpp" />
+    <ClInclude Include="qlo\serialization\register\serialization_sabrswaptioncube.hpp" />
     <ClInclude Include="qlo\valueobjects\vo_abcd.hpp" />
     <ClInclude Include="qlo\valueobjects\vo_accountingengines.hpp" />
     <ClInclude Include="qlo\valueobjects\vo_all.hpp" />
@@ -729,6 +736,7 @@
     <ClInclude Include="qlo\valueobjects\vo_range.hpp" />
     <ClInclude Include="qlo\valueobjects\vo_rangeaccrual.hpp" />
     <ClInclude Include="qlo\valueobjects\vo_ratehelpers.hpp" />
+    <ClInclude Include="qlo\valueobjects\vo_sabrswaptioncube.hpp" />
     <ClInclude Include="qlo\valueobjects\vo_schedule.hpp" />
     <ClInclude Include="qlo\valueobjects\vo_sequencestatistics.hpp" />
     <ClInclude Include="qlo\valueobjects\vo_shortratemodels.hpp" />

@@ -568,6 +568,7 @@
     </Bscmake>
   </ItemDefinitionGroup>
   <ItemGroup>
+    <ClCompile Include="functions\sabrswaptioncube.cpp" />
     <ClCompile Include="register\addin.cpp" />
     <ClCompile Include="register\register_abcd.cpp" />
     <ClCompile Include="register\register_accountingengines.cpp" />
@@ -615,6 +616,7 @@
     <ClCompile Include="register\register_randomsequencegenerator.cpp" />
     <ClCompile Include="register\register_rangeaccrual.cpp" />
     <ClCompile Include="register\register_ratehelpers.cpp" />
+    <ClCompile Include="register\register_sabrswaptioncube.cpp" />
     <ClCompile Include="register\register_schedule.cpp" />
     <ClCompile Include="register\register_sequencestatistics.cpp" />
     <ClCompile Include="register\register_settings.cpp" />
