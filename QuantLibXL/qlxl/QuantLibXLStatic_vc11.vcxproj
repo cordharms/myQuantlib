@@ -568,6 +568,7 @@
     </Bscmake>
   </ItemDefinitionGroup>
   <ItemGroup>
+    <ClCompile Include="functions\basisswap.cpp" />
     <ClCompile Include="functions\sabrswaptioncube.cpp" />
     <ClCompile Include="register\addin.cpp" />
     <ClCompile Include="register\register_abcd.cpp" />
@@ -575,6 +576,7 @@
     <ClCompile Include="register\register_all.cpp" />
     <ClCompile Include="register\register_alphaform.cpp" />
     <ClCompile Include="register\register_assetswap.cpp" />
+    <ClCompile Include="register\register_basisswap.cpp" />
     <ClCompile Include="register\register_bonds.cpp" />
     <ClCompile Include="register\register_browniangenerators.cpp" />
     <ClCompile Include="register\register_btp.cpp" />

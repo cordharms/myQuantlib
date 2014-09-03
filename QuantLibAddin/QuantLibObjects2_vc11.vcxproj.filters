@@ -79,6 +79,9 @@
     <Filter Include="Experimental\SabrSwaptionCube">
       <UniqueIdentifier>{1997d06e-5dc1-4553-bbd3-1013e89f3214}</UniqueIdentifier>
     </Filter>
+    <Filter Include="Experimental\BasisSwap">
+      <UniqueIdentifier>{3697884d-2b7a-402d-9ebd-c7837432c668}</UniqueIdentifier>
+    </Filter>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="qlo\enumerations\register\register_all.cpp">
@@ -812,6 +815,18 @@
     </ClCompile>
     <ClCompile Include="qlo\sabrswaptioncube.cpp">
       <Filter>Experimental\SabrSwaptionCube</Filter>
+    </ClCompile>
+    <ClCompile Include="qlo\basisswap.cpp">
+      <Filter>Experimental\BasisSwap</Filter>
+    </ClCompile>
+    <ClCompile Include="qlo\valueobjects\vo_basisswap.cpp">
+      <Filter>valueobjects</Filter>
+    </ClCompile>
+    <ClCompile Include="qlo\serialization\create\create_basisswap.cpp">
+      <Filter>serialization\create</Filter>
+    </ClCompile>
+    <ClCompile Include="qlo\serialization\register\serialization_basisswap.cpp">
+      <Filter>serialization\register</Filter>
     </ClCompile>
   </ItemGroup>
   <ItemGroup>
@@ -1668,6 +1683,18 @@
     </ClInclude>
     <ClInclude Include="qlo\sabrswaptioncube.hpp">
       <Filter>Experimental\SabrSwaptionCube</Filter>
+    </ClInclude>
+    <ClInclude Include="qlo\basisswap.hpp">
+      <Filter>Experimental\BasisSwap</Filter>
+    </ClInclude>
+    <ClInclude Include="qlo\valueobjects\vo_basisswap.hpp">
+      <Filter>valueobjects</Filter>
+    </ClInclude>
+    <ClInclude Include="qlo\serialization\create\create_basisswap.hpp">
+      <Filter>serialization\create</Filter>
+    </ClInclude>
+    <ClInclude Include="qlo\serialization\register\serialization_basisswap.hpp">
+      <Filter>serialization\register</Filter>
     </ClInclude>
   </ItemGroup>
 </Project>

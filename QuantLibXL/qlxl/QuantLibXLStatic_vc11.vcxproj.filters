@@ -398,6 +398,12 @@
     <ClCompile Include="register\register_sabrswaptioncube.cpp">
       <Filter>register</Filter>
     </ClCompile>
+    <ClCompile Include="functions\basisswap.cpp">
+      <Filter>functions</Filter>
+    </ClCompile>
+    <ClCompile Include="register\register_basisswap.cpp">
+      <Filter>register</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="register\register_all.hpp">

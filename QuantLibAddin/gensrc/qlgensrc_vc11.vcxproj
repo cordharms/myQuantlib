@@ -157,6 +157,7 @@
     <None Include="Makefile.vc" />
   </ItemGroup>
   <ItemGroup>
+    <Xml Include="metadata\functions\basisswap.xml" />
     <Xml Include="metadata\functions\sabrswaptioncube.xml" />
   </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />

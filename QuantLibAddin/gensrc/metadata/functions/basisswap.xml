@@ -1,0 +1,316 @@
+<Category name='basisswap'>
+  <description>functions and methods for basis swap valuation.</description>
+  <displayName>Basis Swap Functions</displayName>
+  <xlFunctionWizardCategory>QuantLib - Financial</xlFunctionWizardCategory>
+  <serializationIncludes>
+    <include>qlo/conversions/coercetermstructure.hpp</include>
+    <include>qlo/baseinstruments.hpp</include>
+    <include>qlo/termstructures.hpp</include>
+    <include>qlo/pricingengines.hpp</include>
+    <include>qlo/leg.hpp</include>
+    <include>qlo/indexes/iborindex.hpp</include>
+    <include>qlo/basisswap.hpp</include>
+    <include>ql/time/period.hpp</include>
+    <include>ql/experimental/basisswap/basisswap.hpp</include>
+    <include>ql/experimental/basisswap/basisswapengine.hpp</include>
+    <include>ql/experimental/basisswap/spreadyieldtermstructure.hpp</include>
+  </serializationIncludes>
+  <addinIncludes>
+    <include>qlo/handleimpl.hpp</include>
+    <include>qlo/conversions/coercetermstructure.hpp</include>
+    <include>qlo/baseinstruments.hpp</include>
+    <include>qlo/termstructures.hpp</include>
+    <include>qlo/pricingengines.hpp</include>
+    <include>qlo/leg.hpp</include>
+    <include>qlo/indexes/iborindex.hpp</include>
+    <include>qlo/basisswap.hpp</include>
+    <include>ql/time/period.hpp</include>
+    <include>ql/experimental/basisswap/basisswap.hpp</include>
+    <include>ql/experimental/basisswap/basisswapengine.hpp</include>
+    <include>ql/experimental/basisswap/spreadyieldtermstructure.hpp</include>
+  </addinIncludes>
+  <copyright>
+    Copyright (C) 2014, Sebastian Schlenkrich
+  </copyright>
+  <Functions>
+  
+    <Constructor name='qlBasisSwap'>
+      <libraryFunction>BasisSwap</libraryFunction>
+      <SupportedPlatforms>
+        <SupportedPlatform name='Excel'/>
+        <SupportedPlatform name='Cpp'/>
+      </SupportedPlatforms>
+      <ParameterList>
+        <Parameters>
+          <Parameter name='LegIDs'>
+            <type>QuantLibAddin::Leg</type>
+            <tensorRank>vector</tensorRank>
+            <description>leg object IDs.</description>
+          </Parameter>
+          <Parameter name='Payer'>
+            <type>bool</type>
+            <tensorRank>vector</tensorRank>
+            <description>TRUE for payed leg.</description>
+          </Parameter>
+          <Parameter name='ParLegIndex' exampleValue='0' default='0'>
+            <type>long</type>
+            <tensorRank>scalar</tensorRank>
+            <description>ID of leg for par rate/spread calculation.</description>
+          </Parameter>
+          <Parameter name='CalcParSpread' exampleValue='0' default='0'>
+            <type>bool</type>
+            <tensorRank>scalar</tensorRank>
+            <description>TRUE for par spread calculation, FALSE for par rate calculation.</description>
+          </Parameter>
+        </Parameters>
+      </ParameterList>
+    </Constructor>
+
+    <Constructor name='qlBasisSwapFromRateHelper'>
+      <libraryFunction>BasisSwap</libraryFunction>
+      <SupportedPlatforms>
+        <SupportedPlatform name='Excel'/>
+        <SupportedPlatform name='Cpp'/>
+      </SupportedPlatforms>
+      <ParameterList>
+        <Parameters>
+          <Parameter name='BasisSwapRateHelper' >
+            <type>QuantLib::BasisSwapRateHelper</type>
+            <tensorRank>scalar</tensorRank>
+            <description>Reference to TenorSwapRateHelper object.</description>
+          </Parameter>
+        </Parameters>
+      </ParameterList>
+    </Constructor>
+
+    <Member name='qlBasisSwapFairRate' type='QuantLib::BasisSwap'>
+      <description>returns the fair rate for BasisSwap intrument.</description>
+      <libraryFunction>fairRate</libraryFunction>
+      <SupportedPlatforms>
+        <!--SupportedPlatform name='Excel' calcInWizard='false'/-->
+        <SupportedPlatform name='Excel'/>
+        <!--SupportedPlatform name='Cpp'/-->
+      </SupportedPlatforms>
+      <ParameterList>
+        <Parameters>
+        </Parameters>
+      </ParameterList>
+      <ReturnValue>
+        <type>double</type>
+        <tensorRank>scalar</tensorRank>
+      </ReturnValue>
+    </Member>
+
+    <Constructor name='qlBasisSwapEngine'>
+      <libraryFunction>BasisSwapEngine</libraryFunction>
+      <SupportedPlatforms>
+        <SupportedPlatform name='Excel'/>
+        <SupportedPlatform name='Cpp'/>
+      </SupportedPlatforms>
+      <ParameterList>
+        <Parameters>
+          <Parameter name='YieldCurves'>
+            <type>QuantLib::YieldTermStructure</type>
+            <superType>libraryClass</superType>
+            <tensorRank>vector</tensorRank>
+            <description>discounting yield term structure object IDs for each leg.</description>
+          </Parameter>
+          <Parameter name='FxForDom'>
+            <type>QuantLib::Real</type>
+            <tensorRank>vector</tensorRank>
+            <description>Today's FX rates for each leg</description>
+          </Parameter>
+          <Parameter name='IncludeSettlDate' const='False' default='true'>
+            <type>bool</type>
+            <tensorRank>scalar</tensorRank>
+            <description>TRUE if cashflows paid at the settlement date must be taken into account.</description>
+          </Parameter>
+          <Parameter name='SettlementDate' const='False' default='QuantLib::Date()'>
+            <type>QuantLib::Date</type>
+            <tensorRank>scalar</tensorRank>
+            <description>cashflows before this date are not taken into account. If missing it is assumed equal to the discounting yield term structure's reference date.</description>
+          </Parameter>
+          <Parameter name='NpvDate' const='False' default='QuantLib::Date()'>
+            <type>QuantLib::Date</type>
+            <tensorRank>scalar</tensorRank>
+            <description>all cashflows are discounted to this date. If missing it is assumed equal to the discounting yield term structure's reference date.</description>
+          </Parameter>
+        </Parameters>
+      </ParameterList>
+    </Constructor>
+
+    <Constructor name='qlTenorSwapRateHelper'>
+      <libraryFunction>TenorSwapRateHelper</libraryFunction>
+      <SupportedPlatforms>
+        <SupportedPlatform name='Excel'/>
+        <SupportedPlatform name='Cpp'/>
+      </SupportedPlatforms>
+      <ParameterList>
+        <Parameters>
+          <Parameter name='Rate'>
+            <type>QuantLib::Real</type>
+            <tensorRank>scalar</tensorRank>
+            <description>Basis spread (quoted as decimals).</description>
+          </Parameter>
+          <Parameter name='Tenor' exampleValue='"10Y"'>
+            <type>QuantLib::Period</type>
+            <tensorRank>scalar</tensorRank>
+            <description>swap tenor period.</description>
+          </Parameter>
+          <Parameter name='FwdStart' exampleValue='"0D"' >
+            <type>QuantLib::Period</type>
+            <tensorRank>scalar</tensorRank>
+            <description>Forward start period, 0D for spot starting swap.</description>
+          </Parameter>
+          <Parameter name='PaymentCalendar' default='"NullCalendar"'>
+            <type>QuantLib::Calendar</type>
+            <tensorRank>scalar</tensorRank>
+            <description>holiday calendar for payments - not used :(.</description>
+          </Parameter>
+          <Parameter name='PaymentConvention' exampleValue='"Following"' default='"Following"'>
+            <type>QuantLib::BusinessDayConvention</type>
+            <tensorRank>scalar</tensorRank>
+            <description>accrual dates business day convention.</description>
+          </Parameter>
+          <Parameter name='SpreadOnRecLeg' exampleValue='true' default='true'>
+            <type>bool</type>
+            <tensorRank>scalar</tensorRank>
+            <description>Apply spred to receive (true) or pay (false) leg.</description>
+          </Parameter>
+          <Parameter name='PayIndex' exampleValue='Euribor6M'>
+            <type>QuantLib::IborIndex</type>
+            <tensorRank>scalar</tensorRank>
+            <description>pay leg floating IborIndex object ID.</description>
+          </Parameter>
+          <Parameter name='RecIndex' exampleValue='Euribor3M'>
+            <type>QuantLib::IborIndex</type>
+            <tensorRank>scalar</tensorRank>
+            <description>receiving leg floating IborIndex object ID.</description>
+          </Parameter>
+          <Parameter name='DiscountCurve' exampleValue='Eonia' default='""'>
+            <type>QuantLib::YieldTermStructure</type>
+            <superType>libToHandle</superType>
+            <tensorRank>scalar</tensorRank>
+            <description>discounting yield term structure object ID.</description>
+          </Parameter>
+        </Parameters>
+      </ParameterList>
+    </Constructor>
+
+    <Constructor name='qlXCCYSwapRateHelper'>
+      <libraryFunction>XCCYSwapRateHelper</libraryFunction>
+      <SupportedPlatforms>
+        <SupportedPlatform name='Excel'/>
+        <SupportedPlatform name='Cpp'/>
+      </SupportedPlatforms>
+      <ParameterList>
+        <Parameters>
+          <Parameter name='Rate'>
+            <type>QuantLib::Real</type>
+            <tensorRank>scalar</tensorRank>
+            <description>Basis spread (quoted as decimals).</description>
+          </Parameter>
+          <Parameter name='Tenor' exampleValue='"10Y"'>
+            <type>QuantLib::Period</type>
+            <tensorRank>scalar</tensorRank>
+            <description>swap tenor period.</description>
+          </Parameter>
+          <Parameter name='FwdStart' exampleValue='"0D"' >
+            <type>QuantLib::Period</type>
+            <tensorRank>scalar</tensorRank>
+            <description>Forward start period, 0D for spot starting swap.</description>
+          </Parameter>
+          <Parameter name='SpotStartCalendar' default='"NullCalendar"'>
+            <type>QuantLib::Calendar</type>
+            <tensorRank>scalar</tensorRank>
+            <description>holiday calendar for payments - not used :(.</description>
+          </Parameter>
+          <Parameter name='PayBDC' exampleValue='"Following"' default='"Following"'>
+            <type>QuantLib::BusinessDayConvention</type>
+            <tensorRank>scalar</tensorRank>
+            <description>accrual dates business day convention.</description>
+          </Parameter>
+          <Parameter name='RecBDC' exampleValue='"Following"' default='"Following"'>
+            <type>QuantLib::BusinessDayConvention</type>
+            <tensorRank>scalar</tensorRank>
+            <description>accrual dates business day convention.</description>
+          </Parameter>
+          <Parameter name='SpreadOnRecLeg' exampleValue='true' default='true'>
+            <type>bool</type>
+            <tensorRank>scalar</tensorRank>
+            <description>Apply spred to receive (true) or pay (false) leg.</description>
+          </Parameter>
+          <Parameter name='PayIndex' exampleValue='Libor3M'>
+            <type>QuantLib::IborIndex</type>
+            <tensorRank>scalar</tensorRank>
+            <description>pay leg floating IborIndex object ID.</description>
+          </Parameter>
+          <Parameter name='RecIndex' exampleValue='Euribor3M'>
+            <type>QuantLib::IborIndex</type>
+            <tensorRank>scalar</tensorRank>
+            <description>receiving leg floating IborIndex object ID.</description>
+          </Parameter>
+          <Parameter name='PayDiscountCurve' exampleValue='Eonia' default='""'>
+            <type>QuantLib::YieldTermStructure</type>
+            <superType>libToHandle</superType>
+            <tensorRank>scalar</tensorRank>
+            <description>discounting yield term structure object ID.</description>
+          </Parameter>
+          <Parameter name='RecDiscountCurve' exampleValue='Eonia' default='""'>
+            <type>QuantLib::YieldTermStructure</type>
+            <superType>libToHandle</superType>
+            <tensorRank>scalar</tensorRank>
+            <description>discounting yield term structure object ID.</description>
+          </Parameter>
+          <Parameter name='PayFxForDom'>
+            <type>QuantLib::Real</type>
+            <tensorRank>scalar</tensorRank>
+            <description>Today's FX rate for pay leg.</description>
+          </Parameter>
+          <Parameter name='RecFxForDom'>
+            <type>QuantLib::Real</type>
+            <tensorRank>scalar</tensorRank>
+            <description>Today's FX rate for receive leg.</description>
+          </Parameter>
+          <Parameter name='FxResetable' exampleValue='false' default='false'>
+            <type>bool</type>
+            <tensorRank>scalar</tensorRank>
+            <description>FX resetable on non-spreaded leg.</description>
+          </Parameter>
+        </Parameters>
+      </ParameterList>
+    </Constructor>
+
+    <Constructor name='qlSpreadYTS'>
+      <libraryFunction>SpreadYTS</libraryFunction>
+      <description>Create compounded YTS evaluating discount factors e^-(z1+aplha*z2)t.</description>
+      <SupportedPlatforms>
+        <SupportedPlatform name='Excel'/>
+        <SupportedPlatform name='Cpp'/>
+      </SupportedPlatforms>
+      <ParameterList>
+        <Parameters>
+          <Parameter name='BaseCurve'>
+            <type>QuantLib::YieldTermStructure</type>
+            <superType>libToHandle</superType>
+            <tensorRank>scalar</tensorRank>
+            <description>YieldTermStructure for z1.</description>
+          </Parameter>
+          <Parameter name='SprdCurve'>
+            <type>QuantLib::YieldTermStructure</type>
+            <superType>libToHandle</superType>
+            <tensorRank>scalar</tensorRank>
+            <description>YieldTermStructure for z2.</description>
+          </Parameter>
+          <Parameter name='Alpha' default='1.0' const='False'>
+            <type>QuantLib::Real</type>
+            <tensorRank>scalar</tensorRank>
+            <description>Factor to evaluate z1 + aplha z2.</description>
+          </Parameter>
+        </Parameters>
+      </ParameterList>
+    </Constructor>
+
+
+  </Functions>
+</Category>

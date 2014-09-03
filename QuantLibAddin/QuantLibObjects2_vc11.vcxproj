@@ -428,6 +428,7 @@
     </Bscmake>
   </ItemDefinitionGroup>
   <ItemGroup>
+    <ClCompile Include="qlo\basisswap.cpp" />
     <ClCompile Include="qlo\enumerations\register\register_all.cpp" />
     <ClCompile Include="qlo\enumerations\register\register_classes.cpp" />
     <ClCompile Include="qlo\enumerations\register\register_pairs.cpp" />
@@ -436,12 +437,15 @@
     <ClCompile Include="qlo\enumerations\constructors\enumeratedpairs.cpp" />
     <ClCompile Include="qlo\enumerations\factories\calendarfactory.cpp" />
     <ClCompile Include="qlo\sabrswaptioncube.cpp" />
+    <ClCompile Include="qlo\serialization\create\create_basisswap.cpp" />
     <ClCompile Include="qlo\serialization\create\create_sabrswaptioncube.cpp" />
+    <ClCompile Include="qlo\serialization\register\serialization_basisswap.cpp" />
     <ClCompile Include="qlo\serialization\register\serialization_sabrswaptioncube.cpp" />
     <ClCompile Include="qlo\valueobjects\vo_abcd.cpp" />
     <ClCompile Include="qlo\valueobjects\vo_accountingengines.cpp" />
     <ClCompile Include="qlo\valueobjects\vo_alphaform.cpp" />
     <ClCompile Include="qlo\valueobjects\vo_assetswap.cpp" />
+    <ClCompile Include="qlo\valueobjects\vo_basisswap.cpp" />
     <ClCompile Include="qlo\valueobjects\vo_bonds.cpp" />
     <ClCompile Include="qlo\valueobjects\vo_browniangenerators.cpp" />
     <ClCompile Include="qlo\valueobjects\vo_btp.cpp" />
@@ -680,6 +684,7 @@
     <ClCompile Include="qlo\utilities.cpp" />
   </ItemGroup>
   <ItemGroup>
+    <ClInclude Include="qlo\basisswap.hpp" />
     <ClInclude Include="qlo\enumerations\register\register_all.hpp" />
     <ClInclude Include="qlo\enumerations\constructors\enumeratedclasses.hpp" />
     <ClInclude Include="qlo\enumerations\constructors\enumeratedpairs.hpp" />
@@ -692,13 +697,16 @@
     <ClInclude Include="qlo\enumerations\factories\pricingenginesfactory.hpp" />
     <ClInclude Include="qlo\enumerations\factories\termstructuresfactory.hpp" />
     <ClInclude Include="qlo\sabrswaptioncube.hpp" />
+    <ClInclude Include="qlo\serialization\create\create_basisswap.hpp" />
     <ClInclude Include="qlo\serialization\create\create_sabrswaptioncube.hpp" />
+    <ClInclude Include="qlo\serialization\register\serialization_basisswap.hpp" />
     <ClInclude Include="qlo\serialization\register\serialization_sabrswaptioncube.hpp" />
     <ClInclude Include="qlo\valueobjects\vo_abcd.hpp" />
     <ClInclude Include="qlo\valueobjects\vo_accountingengines.hpp" />
     <ClInclude Include="qlo\valueobjects\vo_all.hpp" />
     <ClInclude Include="qlo\valueobjects\vo_alphaform.hpp" />
     <ClInclude Include="qlo\valueobjects\vo_assetswap.hpp" />
+    <ClInclude Include="qlo\valueobjects\vo_basisswap.hpp" />
     <ClInclude Include="qlo\valueobjects\vo_bonds.hpp" />
     <ClInclude Include="qlo\valueobjects\vo_browniangenerators.hpp" />
     <ClInclude Include="qlo\valueobjects\vo_btp.hpp" />

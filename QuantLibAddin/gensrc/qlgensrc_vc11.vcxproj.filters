@@ -318,5 +318,8 @@
     <Xml Include="metadata\functions\sabrswaptioncube.xml">
       <Filter>functions\experimental</Filter>
     </Xml>
+    <Xml Include="metadata\functions\basisswap.xml">
+      <Filter>functions\experimental</Filter>
+    </Xml>
   </ItemGroup>
 </Project>
