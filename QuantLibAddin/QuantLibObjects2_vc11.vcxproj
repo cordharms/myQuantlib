@@ -439,8 +439,11 @@
     <ClCompile Include="qlo\sabrswaptioncube.cpp" />
     <ClCompile Include="qlo\serialization\create\create_basisswap.cpp" />
     <ClCompile Include="qlo\serialization\create\create_sabrswaptioncube.cpp" />
+    <ClCompile Include="qlo\serialization\create\create_templatehullwhite.cpp" />
     <ClCompile Include="qlo\serialization\register\serialization_basisswap.cpp" />
     <ClCompile Include="qlo\serialization\register\serialization_sabrswaptioncube.cpp" />
+    <ClCompile Include="qlo\serialization\register\serialization_templatehullwhite.cpp" />
+    <ClCompile Include="qlo\templatehullwhite.cpp" />
     <ClCompile Include="qlo\valueobjects\vo_abcd.cpp" />
     <ClCompile Include="qlo\valueobjects\vo_accountingengines.cpp" />
     <ClCompile Include="qlo\valueobjects\vo_alphaform.cpp" />
@@ -490,6 +493,7 @@
     <ClCompile Include="qlo\valueobjects\vo_swap.cpp" />
     <ClCompile Include="qlo\valueobjects\vo_swaption.cpp" />
     <ClCompile Include="qlo\valueobjects\vo_swaptionvolstructure.cpp" />
+    <ClCompile Include="qlo\valueobjects\vo_templatehullwhite.cpp" />
     <ClCompile Include="qlo\valueobjects\vo_termstructures.cpp" />
     <ClCompile Include="qlo\valueobjects\vo_timeseries.cpp" />
     <ClCompile Include="qlo\valueobjects\vo_vanillaswap.cpp" />
@@ -699,8 +703,11 @@
     <ClInclude Include="qlo\sabrswaptioncube.hpp" />
     <ClInclude Include="qlo\serialization\create\create_basisswap.hpp" />
     <ClInclude Include="qlo\serialization\create\create_sabrswaptioncube.hpp" />
+    <ClInclude Include="qlo\serialization\create\create_templatehullwhite.hpp" />
     <ClInclude Include="qlo\serialization\register\serialization_basisswap.hpp" />
     <ClInclude Include="qlo\serialization\register\serialization_sabrswaptioncube.hpp" />
+    <ClInclude Include="qlo\serialization\register\serialization_templatehullwhite.hpp" />
+    <ClInclude Include="qlo\templatehullwhite.hpp" />
     <ClInclude Include="qlo\valueobjects\vo_abcd.hpp" />
     <ClInclude Include="qlo\valueobjects\vo_accountingengines.hpp" />
     <ClInclude Include="qlo\valueobjects\vo_all.hpp" />
@@ -753,6 +760,7 @@
     <ClInclude Include="qlo\valueobjects\vo_swap.hpp" />
     <ClInclude Include="qlo\valueobjects\vo_swaption.hpp" />
     <ClInclude Include="qlo\valueobjects\vo_swaptionvolstructure.hpp" />
+    <ClInclude Include="qlo\valueobjects\vo_templatehullwhite.hpp" />
     <ClInclude Include="qlo\valueobjects\vo_termstructures.hpp" />
     <ClInclude Include="qlo\valueobjects\vo_timeseries.hpp" />
     <ClInclude Include="qlo\valueobjects\vo_vanillaswap.hpp" />

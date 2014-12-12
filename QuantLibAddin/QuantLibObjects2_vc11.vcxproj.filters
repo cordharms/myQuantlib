@@ -82,6 +82,12 @@
     <Filter Include="Experimental\BasisSwap">
       <UniqueIdentifier>{3697884d-2b7a-402d-9ebd-c7837432c668}</UniqueIdentifier>
     </Filter>
+    <Filter Include="Experimental\Template">
+      <UniqueIdentifier>{4ec32958-3b39-49c8-a8e5-25630c8486b7}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Experimental\Template\HullWhite">
+      <UniqueIdentifier>{e8042733-b244-400c-8523-1f8ddea77a4c}</UniqueIdentifier>
+    </Filter>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="qlo\enumerations\register\register_all.cpp">
@@ -827,6 +833,18 @@
     </ClCompile>
     <ClCompile Include="qlo\serialization\register\serialization_basisswap.cpp">
       <Filter>serialization\register</Filter>
+    </ClCompile>
+    <ClCompile Include="qlo\templatehullwhite.cpp">
+      <Filter>Experimental\Template\HullWhite</Filter>
+    </ClCompile>
+    <ClCompile Include="qlo\serialization\create\create_templatehullwhite.cpp">
+      <Filter>serialization\create</Filter>
+    </ClCompile>
+    <ClCompile Include="qlo\serialization\register\serialization_templatehullwhite.cpp">
+      <Filter>serialization\register</Filter>
+    </ClCompile>
+    <ClCompile Include="qlo\valueobjects\vo_templatehullwhite.cpp">
+      <Filter>valueobjects</Filter>
     </ClCompile>
   </ItemGroup>
   <ItemGroup>
@@ -1695,6 +1713,18 @@
     </ClInclude>
     <ClInclude Include="qlo\serialization\register\serialization_basisswap.hpp">
       <Filter>serialization\register</Filter>
+    </ClInclude>
+    <ClInclude Include="qlo\templatehullwhite.hpp">
+      <Filter>Experimental\Template\HullWhite</Filter>
+    </ClInclude>
+    <ClInclude Include="qlo\serialization\create\create_templatehullwhite.hpp">
+      <Filter>serialization\create</Filter>
+    </ClInclude>
+    <ClInclude Include="qlo\serialization\register\serialization_templatehullwhite.hpp">
+      <Filter>serialization\register</Filter>
+    </ClInclude>
+    <ClInclude Include="qlo\valueobjects\vo_templatehullwhite.hpp">
+      <Filter>valueobjects</Filter>
     </ClInclude>
   </ItemGroup>
 </Project>

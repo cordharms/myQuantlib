@@ -404,6 +404,12 @@
     <ClCompile Include="register\register_basisswap.cpp">
       <Filter>register</Filter>
     </ClCompile>
+    <ClCompile Include="functions\templatehullwhite.cpp">
+      <Filter>functions</Filter>
+    </ClCompile>
+    <ClCompile Include="register\register_templatehullwhite.cpp">
+      <Filter>register</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="register\register_all.hpp">

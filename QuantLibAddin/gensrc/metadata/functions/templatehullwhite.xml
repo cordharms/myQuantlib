@@ -1,0 +1,672 @@
+<Category name='templatehullwhite'>
+  <description>functions and methods for template based Hull White model.</description>
+  <displayName>Template (Hull White) Model</displayName>
+  <xlFunctionWizardCategory>QuantLib - Financial</xlFunctionWizardCategory>
+  <serializationIncludes>
+    <include>qlo/conversions/coercetermstructure.hpp</include>
+    <include>qlo/baseinstruments.hpp</include>
+    <include>qlo/termstructures.hpp</include>
+    <include>qlo/pricingengines.hpp</include>
+    <include>qlo/bonds.hpp</include>
+    <include>qlo/schedule.hpp</include>    
+    <include>qlo/templatehullwhite.hpp</include>
+    <include>ql/experimental/template/hullwhite/hullwhitemodels.hpp</include>
+  </serializationIncludes>
+  <addinIncludes>
+    <include>qlo/handleimpl.hpp</include>
+    <include>qlo/conversions/coercetermstructure.hpp</include>
+    <include>qlo/baseinstruments.hpp</include>
+    <include>qlo/termstructures.hpp</include>
+    <include>qlo/pricingengines.hpp</include>
+    <include>qlo/bonds.hpp</include>
+    <include>qlo/schedule.hpp</include>
+    <include>qlo/templatehullwhite.hpp</include>
+    <include>ql/experimental/template/hullwhite/hullwhitemodels.hpp</include>
+  </addinIncludes>
+  <copyright>
+    Copyright (C) 2014, Sebastian Schlenkrich
+  </copyright>
+  <Functions>
+  
+    <Constructor name='qlRealHullWhiteModel'>
+      <libraryFunction>RealHullWhiteModel</libraryFunction>
+      <SupportedPlatforms>
+        <SupportedPlatform name='Excel'/>
+        <SupportedPlatform name='Cpp'/>
+      </SupportedPlatforms>
+      <ParameterList>
+        <Parameters>
+          <Parameter name='DiscountCurve'>
+            <type>QuantLib::YieldTermStructure</type>
+            <superType>libToHandle</superType>
+            <tensorRank>scalar</tensorRank>
+            <description>YieldTermStructure for discounting.</description>
+          </Parameter>
+          <Parameter name='MeanReversion' default='0.05' const='False'>
+            <type>QuantLib::Real</type>
+            <tensorRank>scalar</tensorRank>
+            <description>Annualized mean reversion speed.</description>
+          </Parameter>
+          <Parameter name='VolaTimes' exampleValue='5, 10, ...'>
+            <type>QuantLib::Time</type>
+            <tensorRank>vector</tensorRank>
+            <description>vector of short rate volatility grid in year fractions</description>
+          </Parameter>
+          <Parameter name='VolaValues' exampleValue='0.02, 0.01, ...'>
+            <type>QuantLib::Real</type>
+            <tensorRank>vector</tensorRank>
+            <description>vector of short rate volatility values</description>
+          </Parameter>
+        </Parameters>
+      </ParameterList>
+    </Constructor>
+
+    <!-- TemplateHullWhiteModel interface -->
+    <Member name='qlRealHullWhiteModelZeroBond' type='QuantLib::RealHullWhiteModel' >
+      <description>Returns a future zero coupon bond price in the Hull White model.</description>
+      <libraryFunction>ZeroBond</libraryFunction>
+      <SupportedPlatforms>
+        <!--SupportedPlatform name='Excel' calcInWizard='false'/-->
+        <SupportedPlatform name='Excel'/>
+        <!--SupportedPlatform name='Calc'/-->
+        <!--SupportedPlatform name='Cpp'/-->
+      </SupportedPlatforms>
+      <ParameterList>
+        <Parameters>
+          <Parameter name='SettlementTime' exampleValue ='2.0' default='0.0'>
+            <type>QuantLib::Time</type>
+            <tensorRank>scalar</tensorRank>
+            <description>zero bond settlement time.</description>
+          </Parameter>
+          <Parameter name='MaturityTime' exampleValue ='5.0' default='0.0'>
+            <type>QuantLib::Time</type>
+            <tensorRank>scalar</tensorRank>
+            <description>zero bond maturity time.</description>
+          </Parameter>
+          <Parameter name='ShortRateValue' exampleValue ='0.03' default='0.0'>
+            <type>QuantLib::Real</type>
+            <tensorRank>scalar</tensorRank>
+            <description>model short rate at SettlementTime.</description>
+          </Parameter>
+        </Parameters>
+      </ParameterList>
+      <ReturnValue>
+        <type>QuantLib::Real</type>
+        <tensorRank>scalar</tensorRank>
+      </ReturnValue>
+    </Member>
+
+    <Member name='qlRealHullWhiteModelCouponBond' type='QuantLib::RealHullWhiteModel' >
+      <description>Returns a future coupon bond price in the Hull White model.</description>
+      <libraryFunction>CouponBond</libraryFunction>
+      <SupportedPlatforms>
+        <!--SupportedPlatform name='Excel' calcInWizard='false'/-->
+        <SupportedPlatform name='Excel'/>
+        <!--SupportedPlatform name='Calc'/-->
+        <!--SupportedPlatform name='Cpp'/-->
+      </SupportedPlatforms>
+      <ParameterList>
+        <Parameters>
+          <Parameter name='SettlementTime' exampleValue ='2.0' default='0.0'>
+            <type>QuantLib::Time</type>
+            <tensorRank>scalar</tensorRank>
+            <description>zero bond settlement time.</description>
+          </Parameter>
+          <Parameter name='PayTimes' exampleValue ='1.0, 2.0, ...' default='0.0'>
+            <type>QuantLib::Time</type>
+            <tensorRank>vector</tensorRank>
+            <description>coupon bond pay times.</description>
+          </Parameter>
+          <Parameter name='CashFlows' exampleValue ='100, 100, ...' default='0.0'>
+            <type>QuantLib::Real</type>
+            <tensorRank>vector</tensorRank>
+            <description>cash flows of coupon bond.</description>
+          </Parameter>
+          <Parameter name='ShortRateValue' exampleValue ='0.03' default='0.0'>
+            <type>QuantLib::Real</type>
+            <tensorRank>scalar</tensorRank>
+            <description>model short rate at SettlementTime.</description>
+          </Parameter>
+        </Parameters>
+      </ParameterList>
+      <ReturnValue>
+        <type>QuantLib::Real</type>
+        <tensorRank>scalar</tensorRank>
+      </ReturnValue>
+    </Member>
+
+    <Member name='qlRealHullWhiteModelZeroBondOption' type='QuantLib::RealHullWhiteModel' >
+      <description>Returns the price of a zero coupon bond option in the Hull White model.</description>
+      <libraryFunction>ZeroBondOption</libraryFunction>
+      <SupportedPlatforms>
+        <!--SupportedPlatform name='Excel' calcInWizard='false'/-->
+        <SupportedPlatform name='Excel'/>
+        <!--SupportedPlatform name='Calc'/-->
+        <!--SupportedPlatform name='Cpp'/-->
+      </SupportedPlatforms>
+      <ParameterList>
+        <Parameters>
+          <Parameter name='ExerciseTime' exampleValue ='2.0' default='0.0'>
+            <type>QuantLib::Time</type>
+            <tensorRank>scalar</tensorRank>
+            <description>option exercise time.</description>
+          </Parameter>
+          <Parameter name='StrikeValue' exampleValue ='0.85' default='0.0'>
+            <type>QuantLib::Real</type>
+            <tensorRank>scalar</tensorRank>
+            <description>option strike price.</description>
+          </Parameter>
+          <Parameter name='MaturityTime' exampleValue ='5.0' default='0.0'>
+            <type>QuantLib::Time</type>
+            <tensorRank>scalar</tensorRank>
+            <description>zero bond maturity time.</description>
+          </Parameter>
+          <Parameter name='CallOrPut' exampleValue ='Call' >
+            <type>QuantLib::Option::Type</type>
+            <tensorRank>scalar</tensorRank>
+            <description>call or put option.</description>
+          </Parameter>
+        </Parameters>
+      </ParameterList>
+      <ReturnValue>
+        <type>QuantLib::Real</type>
+        <tensorRank>scalar</tensorRank>
+      </ReturnValue>
+    </Member>
+
+    <Member name='qlRealHullWhiteModelCouponBondOption' type='QuantLib::RealHullWhiteModel' >
+      <description>Returns the price of a coupon bond option in the Hull White model.</description>
+      <libraryFunction>CouponBondOption</libraryFunction>
+      <SupportedPlatforms>
+        <!--SupportedPlatform name='Excel' calcInWizard='false'/-->
+        <SupportedPlatform name='Excel'/>
+        <!--SupportedPlatform name='Calc'/-->
+        <!--SupportedPlatform name='Cpp'/-->
+      </SupportedPlatforms>
+      <ParameterList>
+        <Parameters>
+          <Parameter name='ExerciseTime' exampleValue ='2.0' default='0.0'>
+            <type>QuantLib::Time</type>
+            <tensorRank>scalar</tensorRank>
+            <description>option exercise time.</description>
+          </Parameter>
+          <Parameter name='StrikeValue' exampleValue ='0.85' default='0.0'>
+            <type>QuantLib::Real</type>
+            <tensorRank>scalar</tensorRank>
+            <description>option strike price.</description>
+          </Parameter>
+          <Parameter name='StartTimes' exampleValue ='1.0, 2.0, ...' default='0.0'>
+            <type>QuantLib::Time</type>
+            <tensorRank>vector</tensorRank>
+            <description>coupon accrual start times.</description>
+          </Parameter>
+          <Parameter name='PayTimes' exampleValue ='1.0, 2.0, ...' default='0.0'>
+            <type>QuantLib::Time</type>
+            <tensorRank>vector</tensorRank>
+            <description>coupon bond pay times.</description>
+          </Parameter>
+          <Parameter name='CashFlows' exampleValue ='100, 100, ...' default='0.0'>
+            <type>QuantLib::Real</type>
+            <tensorRank>vector</tensorRank>
+            <description>cash flows of coupon bond.</description>
+          </Parameter>
+          <Parameter name='CallOrPut' exampleValue ='Call' >
+            <type>QuantLib::Option::Type</type>
+            <tensorRank>scalar</tensorRank>
+            <description>call or put option.</description>
+          </Parameter>
+        </Parameters>
+      </ParameterList>
+      <ReturnValue>
+        <type>QuantLib::Real</type>
+        <tensorRank>scalar</tensorRank>
+      </ReturnValue>
+    </Member>
+
+    <Member name='qlRealHullWhiteModelBermudanCalibration' type='QuantLib::RealHullWhiteModel' >
+      <description>Returns the calibrated short rate volatilty values.</description>
+      <libraryFunction>BermudanCalibration</libraryFunction>
+      <SupportedPlatforms>
+        <!--SupportedPlatform name='Excel' calcInWizard='false'/-->
+        <SupportedPlatform name='Excel'/>
+        <!--SupportedPlatform name='Calc'/-->
+        <!--SupportedPlatform name='Cpp'/-->
+      </SupportedPlatforms>
+      <ParameterList>
+        <Parameters>
+          <Parameter name='ExerciseTimes' exampleValue ='1.0, 2.0, ...' default='0.0'>
+            <type>QuantLib::Time</type>
+            <tensorRank>vector</tensorRank>
+            <description>option exercise times.</description>
+          </Parameter>
+          <Parameter name='StrikeValues' exampleValue ='0.85, 0.90, ...' default='0.0'>
+            <type>QuantLib::Real</type>
+            <tensorRank>vector</tensorRank>
+            <description>option strike prices.</description>
+          </Parameter>
+          <Parameter name='Black76Prices' exampleValue ='0.35, 0.40, ...' default='0.0'>
+            <type>QuantLib::Real</type>
+            <tensorRank>vector</tensorRank>
+            <description>Black76 reference prices.</description>
+          </Parameter>
+          <Parameter name='StartTimes' exampleValue ='1.0, 2.0, ...' default='0.0'>
+            <type>QuantLib::Time</type>
+            <tensorRank>vector</tensorRank>
+            <description>coupon accrual start times.</description>
+          </Parameter>
+          <Parameter name='PayTimes' exampleValue ='2.0, 3.0, ...' default='0.0'>
+            <type>QuantLib::Time</type>
+            <tensorRank>vector</tensorRank>
+            <description>coupon bond pay times.</description>
+          </Parameter>
+          <Parameter name='CashFlows' exampleValue ='0.05, 0.05, ...' default='0.0'>
+            <type>QuantLib::Real</type>
+            <tensorRank>vector</tensorRank>
+            <description>cash flows of coupon bond.</description>
+          </Parameter>
+          <Parameter name='CallOrPut' exampleValue ='Call' >
+            <type>QuantLib::Option::Type</type>
+            <tensorRank>scalar</tensorRank>
+            <description>call or put option.</description>
+          </Parameter>
+          <Parameter name='Tolerance' exampleValue ='1.0e-4' default='1.0e-4' >
+            <type>QuantLib::Real</type>
+            <tensorRank>scalar</tensorRank>
+            <description>absolute tolerance for short rate values in calibration.</description>
+          </Parameter>
+        </Parameters>
+      </ParameterList>
+      <ReturnValue>
+        <type>QuantLib::Real</type>
+        <tensorRank>vector</tensorRank>
+      </ReturnValue>
+    </Member>
+
+    <Member name='qlRealHullWhiteModelBermudanBondOption' type='QuantLib::RealHullWhiteModel' >
+      <description>Returns the price of a Bermudan bond option in the Hull White model.</description>
+      <libraryFunction>BermudanBondOption</libraryFunction>
+      <SupportedPlatforms>
+        <!--SupportedPlatform name='Excel' calcInWizard='false'/-->
+        <SupportedPlatform name='Excel'/>
+        <!--SupportedPlatform name='Calc'/-->
+        <!--SupportedPlatform name='Cpp'/-->
+      </SupportedPlatforms>
+      <ParameterList>
+        <Parameters>
+          <Parameter name='ExerciseTimes' exampleValue ='1.0, 2.0, ...' default='0.0'>
+            <type>QuantLib::Time</type>
+            <tensorRank>vector</tensorRank>
+            <description>option exercise times.</description>
+          </Parameter>
+          <Parameter name='StrikeValues' exampleValue ='0.85, 0.90, ...' default='0.0'>
+            <type>QuantLib::Real</type>
+            <tensorRank>vector</tensorRank>
+            <description>option strike prices.</description>
+          </Parameter>
+          <Parameter name='StartTimes' exampleValue ='1.0, 2.0, ...' default='0.0'>
+            <type>QuantLib::Time</type>
+            <tensorRank>vector</tensorRank>
+            <description>coupon accrual start times.</description>
+          </Parameter>
+          <Parameter name='PayTimes' exampleValue ='2.0, 3.0, ...' default='0.0'>
+            <type>QuantLib::Time</type>
+            <tensorRank>vector</tensorRank>
+            <description>coupon bond pay times.</description>
+          </Parameter>
+          <Parameter name='CashFlows' exampleValue ='0.05, 0.05, ...' default='0.0'>
+            <type>QuantLib::Real</type>
+            <tensorRank>vector</tensorRank>
+            <description>cash flows of coupon bond.</description>
+          </Parameter>
+          <Parameter name='CallOrPut' exampleValue ='Call' >
+            <type>QuantLib::Option::Type</type>
+            <tensorRank>scalar</tensorRank>
+            <description>call or put option.</description>
+          </Parameter>
+          <Parameter name='Dimension' exampleValue ='11' default='11'>
+            <type>QuantLib::Size</type>
+            <tensorRank>scalar</tensorRank>
+            <description>number of spatial discretisation points.</description>
+          </Parameter>
+          <Parameter name='GridRadius' exampleValue ='0.3' default='0.3'>
+            <type>QuantLib::Real</type>
+            <tensorRank>scalar</tensorRank>
+            <description>radius of short rate grid [r0-s, r0+2].</description>
+          </Parameter>
+          <Parameter name='Tolerance' exampleValue ='0.001' default='0.001' >
+            <type>QuantLib::Real</type>
+            <tensorRank>scalar</tensorRank>
+            <description>Tolerance for numerical integration.</description>
+          </Parameter>
+        </Parameters>
+      </ParameterList>
+      <ReturnValue>
+        <type>QuantLib::Real</type>
+        <tensorRank>scalar</tensorRank>
+      </ReturnValue>
+    </Member>
+
+    <!-- TemplateHullWhiteModel inspectors -->
+
+    <Member name='qlRealHullWhiteModelMean' type='QuantLib::RealHullWhiteModel' >
+      <description>Returns the mean reversion parameter.</description>
+      <libraryFunction>mean</libraryFunction>
+      <SupportedPlatforms>
+        <!--SupportedPlatform name='Excel' calcInWizard='false'/-->
+        <SupportedPlatform name='Excel'/>
+        <!--SupportedPlatform name='Calc'/-->
+        <!--SupportedPlatform name='Cpp'/-->
+      </SupportedPlatforms>
+      <ParameterList>
+        <Parameters/>
+      </ParameterList>
+      <ReturnValue>
+        <type>QuantLib::Real</type>
+        <tensorRank>scalar</tensorRank>
+      </ReturnValue>
+    </Member>
+
+    <Member name='qlRealHullWhiteModelVolaDates' type='QuantLib::RealHullWhiteModel' >
+      <description>Returns the short rate volatility grid times.</description>
+      <libraryFunction>volaDates</libraryFunction>
+      <SupportedPlatforms>
+        <!--SupportedPlatform name='Excel' calcInWizard='false'/-->
+        <SupportedPlatform name='Excel'/>
+        <!--SupportedPlatform name='Calc'/-->
+        <!--SupportedPlatform name='Cpp'/-->
+      </SupportedPlatforms>
+      <ParameterList>
+        <Parameters/>
+      </ParameterList>
+      <ReturnValue>
+        <type>QuantLib::Real</type>
+        <tensorRank>vector</tensorRank>
+      </ReturnValue>
+    </Member>
+
+    <Member name='qlRealHullWhiteModelVolaValues' type='QuantLib::RealHullWhiteModel' >
+      <description>Returns the short rate volatility grid values.</description>
+      <libraryFunction>volaValues</libraryFunction>
+      <SupportedPlatforms>
+        <!--SupportedPlatform name='Excel' calcInWizard='false'/-->
+        <SupportedPlatform name='Excel'/>
+        <!--SupportedPlatform name='Calc'/-->
+        <!--SupportedPlatform name='Cpp'/-->
+      </SupportedPlatforms>
+      <ParameterList>
+        <Parameters/>
+      </ParameterList>
+      <ReturnValue>
+        <type>QuantLib::Real</type>
+        <tensorRank>vector</tensorRank>
+      </ReturnValue>
+    </Member>
+
+    <Member name='qlRealHullWhiteModelBermudanB76Prices' type='QuantLib::RealHullWhiteModel' >
+      <description>Returns the reference Black76 prices used for calibration.</description>
+      <libraryFunction>bermudanB76Prices</libraryFunction>
+      <SupportedPlatforms>
+        <!--SupportedPlatform name='Excel' calcInWizard='false'/-->
+        <SupportedPlatform name='Excel'/>
+        <!--SupportedPlatform name='Calc'/-->
+        <!--SupportedPlatform name='Cpp'/-->
+      </SupportedPlatforms>
+      <ParameterList>
+        <Parameters/>
+      </ParameterList>
+      <ReturnValue>
+        <type>QuantLib::Real</type>
+        <tensorRank>vector</tensorRank>
+      </ReturnValue>
+    </Member>
+
+    <Member name='qlRealHullWhiteModelCalibIters' type='QuantLib::RealHullWhiteModel' >
+      <description>Returns the number of iterations required for calibration.</description>
+      <libraryFunction>calibIters</libraryFunction>
+      <SupportedPlatforms>
+        <!--SupportedPlatform name='Excel' calcInWizard='false'/-->
+        <SupportedPlatform name='Excel'/>
+        <!--SupportedPlatform name='Calc'/-->
+        <!--SupportedPlatform name='Cpp'/-->
+      </SupportedPlatforms>
+      <ParameterList>
+        <Parameters/>
+      </ParameterList>
+      <ReturnValue>
+        <type>QuantLib::Real</type>
+        <tensorRank>vector</tensorRank>
+      </ReturnValue>
+    </Member>
+
+    <Member name='qlRealHullWhiteModelEuropeansAnalytical' type='QuantLib::RealHullWhiteModel' >
+      <description>Returns the analytical European reference prices.</description>
+      <libraryFunction>europeansAnalytical</libraryFunction>
+      <SupportedPlatforms>
+        <!--SupportedPlatform name='Excel' calcInWizard='false'/-->
+        <SupportedPlatform name='Excel'/>
+        <!--SupportedPlatform name='Calc'/-->
+        <!--SupportedPlatform name='Cpp'/-->
+      </SupportedPlatforms>
+      <ParameterList>
+        <Parameters/>
+      </ParameterList>
+      <ReturnValue>
+        <type>QuantLib::Real</type>
+        <tensorRank>vector</tensorRank>
+      </ReturnValue>
+    </Member>
+
+    <Member name='qlRealHullWhiteModelEuropeansNumerical' type='QuantLib::RealHullWhiteModel' >
+      <description>Returns the numerical European reference prices.</description>
+      <libraryFunction>europeansNumerical</libraryFunction>
+      <SupportedPlatforms>
+        <!--SupportedPlatform name='Excel' calcInWizard='false'/-->
+        <SupportedPlatform name='Excel'/>
+        <!--SupportedPlatform name='Calc'/-->
+        <!--SupportedPlatform name='Cpp'/-->
+      </SupportedPlatforms>
+      <ParameterList>
+        <Parameters/>
+      </ParameterList>
+      <ReturnValue>
+        <type>QuantLib::Real</type>
+        <tensorRank>vector</tensorRank>
+      </ReturnValue>
+    </Member>
+
+    <Member name='qlRealHullWhiteModelEstimateAccuracy' type='QuantLib::RealHullWhiteModel' >
+      <description>Returns true if full Bermudan valuation chosen.</description>
+      <libraryFunction>estimateAccuracy</libraryFunction>
+      <SupportedPlatforms>
+        <!--SupportedPlatform name='Excel' calcInWizard='false'/-->
+        <SupportedPlatform name='Excel'/>
+        <!--SupportedPlatform name='Calc'/-->
+        <!--SupportedPlatform name='Cpp'/-->
+      </SupportedPlatforms>
+      <ParameterList>
+        <Parameters/>
+      </ParameterList>
+      <ReturnValue>
+        <type>bool</type>
+        <tensorRank>scalar</tensorRank>
+      </ReturnValue>
+    </Member>
+
+    <Member name='qlRealHullWhiteModelSetEstimateAccuracy' type='QuantLib::RealHullWhiteModel' >
+      <description>Set true for full Bermudan valuation.</description>
+      <libraryFunction>setEstimateAccuracy</libraryFunction>
+      <SupportedPlatforms>
+        <!--SupportedPlatform name='Excel' calcInWizard='false'/-->
+        <SupportedPlatform name='Excel'/>
+        <!--SupportedPlatform name='Calc'/-->
+        <!--SupportedPlatform name='Cpp'/-->
+      </SupportedPlatforms>
+      <ParameterList>
+        <Parameters>
+          <Parameter name='EstimateAccuracy' exampleValue ='true' default='true'>
+            <type>bool</type>
+            <tensorRank>scalar</tensorRank>
+            <description>true or false.</description>
+          </Parameter>
+         </Parameters>
+      </ParameterList>
+      <ReturnValue>
+        <type>void</type>
+        <tensorRank>scalar</tensorRank>
+      </ReturnValue>
+    </Member>
+
+    <Member name='qlRealHullWhiteModelCalibrateMean' type='QuantLib::RealHullWhiteModel' >
+      <description>Returns true if mean reversion and volatility is calibrated.</description>
+      <libraryFunction>calibrateMean</libraryFunction>
+      <SupportedPlatforms>
+        <!--SupportedPlatform name='Excel' calcInWizard='false'/-->
+        <SupportedPlatform name='Excel'/>
+        <!--SupportedPlatform name='Calc'/-->
+        <!--SupportedPlatform name='Cpp'/-->
+      </SupportedPlatforms>
+      <ParameterList>
+        <Parameters/>
+      </ParameterList>
+      <ReturnValue>
+        <type>bool</type>
+        <tensorRank>scalar</tensorRank>
+      </ReturnValue>
+    </Member>
+
+    <Member name='qlRealHullWhiteModelSetCalibrateMean' type='QuantLib::RealHullWhiteModel' >
+      <description>Set true for mean reversion calibration.</description>
+      <libraryFunction>setCalibrateMean</libraryFunction>
+      <SupportedPlatforms>
+        <!--SupportedPlatform name='Excel' calcInWizard='false'/-->
+        <SupportedPlatform name='Excel'/>
+        <!--SupportedPlatform name='Calc'/-->
+        <!--SupportedPlatform name='Cpp'/-->
+      </SupportedPlatforms>
+      <ParameterList>
+        <Parameters>
+          <Parameter name='CalibrateMean' exampleValue ='true' default='false'>
+            <type>bool</type>
+            <tensorRank>scalar</tensorRank>
+            <description>true or false.</description>
+          </Parameter>
+        </Parameters>
+      </ParameterList>
+      <ReturnValue>
+        <type>void</type>
+        <tensorRank>scalar</tensorRank>
+      </ReturnValue>
+    </Member>
+    
+
+    <Constructor name='qlMinimADHullWhiteModel'>
+      <libraryFunction>MinimADHullWhiteModel</libraryFunction>
+      <SupportedPlatforms>
+        <SupportedPlatform name='Excel'/>
+        <SupportedPlatform name='Cpp'/>
+      </SupportedPlatforms>
+      <ParameterList>
+        <Parameters>
+          <Parameter name='DiscountCurve'>
+            <type>QuantLib::YieldTermStructure</type>
+            <superType>libToHandle</superType>
+            <tensorRank>scalar</tensorRank>
+            <description>YieldTermStructure for discounting.</description>
+          </Parameter>
+          <Parameter name='MeanReversion' default='0.05' const='False'>
+            <type>QuantLib::Real</type>
+            <tensorRank>scalar</tensorRank>
+            <description>Annualized mean reversion speed.</description>
+          </Parameter>
+          <Parameter name='VolaTimes' exampleValue='5, 10, ...'>
+            <type>QuantLib::Time</type>
+            <tensorRank>vector</tensorRank>
+            <description>vector of short rate volatility grid in year fractions</description>
+          </Parameter>
+          <Parameter name='VolaValues' exampleValue='0.02, 0.01, ...'>
+            <type>QuantLib::Real</type>
+            <tensorRank>vector</tensorRank>
+            <description>vector of short rate volatility values</description>
+          </Parameter>
+        </Parameters>
+      </ParameterList>
+    </Constructor>
+
+    
+    
+    <!-- MinimADHullWhiteModel inspectors -->
+
+    <Member name='qlMinimADHullWhiteModelAnalyticalVega' type='QuantLib::MinimADHullWhiteModel' >
+      <description>Returns the short rate vegas of the analytical European prices.</description>
+      <libraryFunction>europeansAnalyticalVega</libraryFunction>
+      <SupportedPlatforms>
+        <!--SupportedPlatform name='Excel' calcInWizard='false'/-->
+        <SupportedPlatform name='Excel'/>
+        <!--SupportedPlatform name='Calc'/-->
+        <!--SupportedPlatform name='Cpp'/-->
+      </SupportedPlatforms>
+      <ParameterList>
+        <Parameters/>
+      </ParameterList>
+      <ReturnValue>
+        <type>QuantLib::Real</type>
+        <tensorRank>matrix</tensorRank>
+      </ReturnValue>
+    </Member>
+
+    <Member name='qlMinimADHullWhiteModelNumericalVega' type='QuantLib::MinimADHullWhiteModel' >
+      <description>Returns the short rate vegas of the numerical European prices.</description>
+      <libraryFunction>europeansNumericalVega</libraryFunction>
+      <SupportedPlatforms>
+        <!--SupportedPlatform name='Excel' calcInWizard='false'/-->
+        <SupportedPlatform name='Excel'/>
+        <!--SupportedPlatform name='Calc'/-->
+        <!--SupportedPlatform name='Cpp'/-->
+      </SupportedPlatforms>
+      <ParameterList>
+        <Parameters/>
+      </ParameterList>
+      <ReturnValue>
+        <type>QuantLib::Real</type>
+        <tensorRank>matrix</tensorRank>
+      </ReturnValue>
+    </Member>
+
+    <Member name='qlMinimADHullWhiteModelBermudanVega' type='QuantLib::MinimADHullWhiteModel' >
+      <description>Returns the short rate vegas of the numerical Bermudan price.</description>
+      <libraryFunction>bermudanVega</libraryFunction>
+      <SupportedPlatforms>
+        <!--SupportedPlatform name='Excel' calcInWizard='false'/-->
+        <SupportedPlatform name='Excel'/>
+        <!--SupportedPlatform name='Calc'/-->
+        <!--SupportedPlatform name='Cpp'/-->
+      </SupportedPlatforms>
+      <ParameterList>
+        <Parameters/>
+      </ParameterList>
+      <ReturnValue>
+        <type>QuantLib::Real</type>
+        <tensorRank>vector</tensorRank>
+      </ReturnValue>
+    </Member>
+
+    <Member name='qlMinimADHullWhiteModelCalibrationJacobian' type='QuantLib::MinimADHullWhiteModel' >
+      <description>Returns the short rate vegas of the calibration European prices.</description>
+      <libraryFunction>calibrationJacobian</libraryFunction>
+      <SupportedPlatforms>
+        <!--SupportedPlatform name='Excel' calcInWizard='false'/-->
+        <SupportedPlatform name='Excel'/>
+        <!--SupportedPlatform name='Calc'/-->
+        <!--SupportedPlatform name='Cpp'/-->
+      </SupportedPlatforms>
+      <ParameterList>
+        <Parameters/>
+      </ParameterList>
+      <ReturnValue>
+        <type>QuantLib::Real</type>
+        <tensorRank>matrix</tensorRank>
+      </ReturnValue>
+    </Member>
+
+  </Functions>
+</Category>

@@ -255,7 +255,12 @@
     <DataType defaultSuperType='libraryClass'>QuantLib::XCCYSwapRateHelper</DataType>
     <DataType defaultSuperType='libraryClass'>QuantLib::SpreadYTS</DataType>
 
-
+    <DataType defaultSuperType='libraryClass'>QuantLib::RealHullWhiteModel</DataType>
+    <DataType defaultSuperType='libraryClass'>QuantLib::MinimADHullWhiteModel</DataType>
+	<!--
+    <DataType defaultSuperType='libraryClass'>QuantLib::SwaptionPropertiesType</DataType>
+    <DataType defaultSuperType='libraryClass'>QuantLib::FixedRateBondOption</DataType>
+	-->
   </DataTypes>
 
 </root>

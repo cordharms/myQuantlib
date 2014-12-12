@@ -159,6 +159,7 @@
   <ItemGroup>
     <Xml Include="metadata\functions\basisswap.xml" />
     <Xml Include="metadata\functions\sabrswaptioncube.xml" />
+    <Xml Include="metadata\functions\templatehullwhite.xml" />
   </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
   <ImportGroup Label="ExtensionTargets">

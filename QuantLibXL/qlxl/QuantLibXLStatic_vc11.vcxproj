@@ -570,6 +570,7 @@
   <ItemGroup>
     <ClCompile Include="functions\basisswap.cpp" />
     <ClCompile Include="functions\sabrswaptioncube.cpp" />
+    <ClCompile Include="functions\templatehullwhite.cpp" />
     <ClCompile Include="register\addin.cpp" />
     <ClCompile Include="register\register_abcd.cpp" />
     <ClCompile Include="register\register_accountingengines.cpp" />
@@ -628,6 +629,7 @@
     <ClCompile Include="register\register_swap.cpp" />
     <ClCompile Include="register\register_swaption.cpp" />
     <ClCompile Include="register\register_swaptionvolstructure.cpp" />
+    <ClCompile Include="register\register_templatehullwhite.cpp" />
     <ClCompile Include="register\register_termstructures.cpp" />
     <ClCompile Include="register\register_timeseries.cpp" />
     <ClCompile Include="register\register_utilities.cpp" />
