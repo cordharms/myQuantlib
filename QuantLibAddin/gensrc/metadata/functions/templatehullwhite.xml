@@ -251,22 +251,22 @@
           </Parameter>
           <Parameter name='StartTimes' exampleValue ='1.0, 2.0, ...' default='0.0'>
             <type>QuantLib::Time</type>
-            <tensorRank>vector</tensorRank>
+            <tensorRank>matrix</tensorRank>
             <description>coupon accrual start times.</description>
           </Parameter>
           <Parameter name='PayTimes' exampleValue ='2.0, 3.0, ...' default='0.0'>
             <type>QuantLib::Time</type>
-            <tensorRank>vector</tensorRank>
+            <tensorRank>matrix</tensorRank>
             <description>coupon bond pay times.</description>
           </Parameter>
           <Parameter name='CashFlows' exampleValue ='0.05, 0.05, ...' default='0.0'>
-            <type>QuantLib::Real</type>
-            <tensorRank>vector</tensorRank>
+            <type>QuantLib::Time</type>
+            <tensorRank>matrix</tensorRank>
             <description>cash flows of coupon bond.</description>
           </Parameter>
           <Parameter name='CallOrPut' exampleValue ='Call' >
             <type>QuantLib::Option::Type</type>
-            <tensorRank>scalar</tensorRank>
+            <tensorRank>vector</tensorRank>
             <description>call or put option.</description>
           </Parameter>
           <Parameter name='Tolerance' exampleValue ='1.0e-4' default='1.0e-4' >
