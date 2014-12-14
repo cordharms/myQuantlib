@@ -8,6 +8,7 @@
     <include>qlo/termstructures.hpp</include>
     <include>qlo/pricingengines.hpp</include>
     <include>qlo/bonds.hpp</include>
+    <include>qlo/swaption.hpp</include>
     <include>qlo/schedule.hpp</include>    
     <include>qlo/templatehullwhite.hpp</include>
     <include>ql/experimental/template/hullwhite/hullwhitemodels.hpp</include>
@@ -19,6 +20,7 @@
     <include>qlo/termstructures.hpp</include>
     <include>qlo/pricingengines.hpp</include>
     <include>qlo/bonds.hpp</include>
+    <include>qlo/swaption.hpp</include>
     <include>qlo/schedule.hpp</include>
     <include>qlo/templatehullwhite.hpp</include>
     <include>ql/experimental/template/hullwhite/hullwhitemodels.hpp</include>
@@ -667,6 +669,196 @@
         <tensorRank>matrix</tensorRank>
       </ReturnValue>
     </Member>
+
+    <!-- FixedRateBondOption Constructor -->
+    <Constructor name='qlFixedRateBondOption'>
+      <description>Construct a Bermudan bond option.</description>
+      <libraryFunction>FixedRateBondOption</libraryFunction>
+      <SupportedPlatforms>
+        <SupportedPlatform name='Excel'/>
+        <SupportedPlatform name='Cpp'/>
+      </SupportedPlatforms>
+      <ParameterList>
+        <Parameters>
+          <Parameter name='UnderlyingBond' >
+            <type>QuantLib::FixedRateBond</type>
+            <tensorRank>scalar</tensorRank>
+            <description>reference to underlying bond.</description>
+          </Parameter>
+          <Parameter name='ExerciseDates' >
+            <type>QuantLib::Date</type>
+            <tensorRank>vector</tensorRank>
+            <description>vector of exercise dates</description>
+          </Parameter>
+          <Parameter name='DirtyStrikeValues' >
+            <type>QuantLib::Real</type>
+            <tensorRank>vector</tensorRank>
+            <description>vector of dirty strikes payed at exercise date</description>
+          </Parameter>
+          <Parameter name='CallOrPut' exampleValue ='Call' >
+            <type>QuantLib::Option::Type</type>
+            <tensorRank>scalar</tensorRank>
+            <description>call or put option.</description>
+          </Parameter>
+        </Parameters>
+      </ParameterList>
+    </Constructor>
+
+    <!-- FixedRateBondOption Constructor based on Swaption-->
+    <Constructor name='qlFixedRateBondOptionFromSwaption'>
+      <description>Construct a (Bermudan) bond option based on Swaption.</description>
+      <libraryFunction>FixedRateBondOption</libraryFunction>
+      <SupportedPlatforms>
+        <SupportedPlatform name='Excel'/>
+        <SupportedPlatform name='Cpp'/>
+      </SupportedPlatforms>
+      <ParameterList>
+        <Parameters>
+          <Parameter name='Swaption' >
+            <type>QuantLib::Swaption</type>
+            <tensorRank>scalar</tensorRank>
+            <description>reference to swaption instrument.</description>
+          </Parameter>
+          <Parameter name='DiscountCurve'>
+            <type>QuantLib::YieldTermStructure</type>
+            <superType>libToHandle</superType>
+            <tensorRank>scalar</tensorRank>
+            <description>YieldTermStructure for discounting.</description>
+          </Parameter>
+          <Parameter name='ContTenorSpread' exampleValue ='true' default='true'>
+            <type>bool</type>
+            <tensorRank>scalar</tensorRank>
+            <description>Assume deterministic continuous (true) or simple (false) compounded tenor basis.</description>
+          </Parameter>
+        </Parameters>
+      </ParameterList>
+    </Constructor>
+
+    <Member name='qlFixedRateBondOptionExerciseDates' type='QuantLib::FixedRateBondOption' >
+      <description>Returns the option exercise dates.</description>
+      <libraryFunction>exerciseDates</libraryFunction>
+      <SupportedPlatforms>
+        <!--SupportedPlatform name='Excel' calcInWizard='false'/-->
+        <SupportedPlatform name='Excel'/>
+        <!--SupportedPlatform name='Calc'/-->
+        <!--SupportedPlatform name='Cpp'/-->
+      </SupportedPlatforms>
+      <ParameterList>
+        <Parameters/>
+      </ParameterList>
+      <ReturnValue>
+        <type>QuantLib::Date</type>
+        <tensorRank>vector</tensorRank>
+      </ReturnValue>
+    </Member>
+
+    <Member name='qlFixedRateBondOptionStartDates' type='QuantLib::FixedRateBondOption' >
+      <description>Returns the cash flow start dates.</description>
+      <libraryFunction>startDates</libraryFunction>
+      <SupportedPlatforms>
+        <!--SupportedPlatform name='Excel' calcInWizard='false'/-->
+        <SupportedPlatform name='Excel'/>
+        <!--SupportedPlatform name='Calc'/-->
+        <!--SupportedPlatform name='Cpp'/-->
+      </SupportedPlatforms>
+      <ParameterList>
+        <Parameters/>
+      </ParameterList>
+      <ReturnValue>
+        <type>QuantLib::Date</type>
+        <tensorRank>vector</tensorRank>
+      </ReturnValue>
+    </Member>
+
+    <Member name='qlFixedRateBondOptionPayDates' type='QuantLib::FixedRateBondOption' >
+      <description>Returns the cash flow start dates.</description>
+      <libraryFunction>payDates</libraryFunction>
+      <SupportedPlatforms>
+        <!--SupportedPlatform name='Excel' calcInWizard='false'/-->
+        <SupportedPlatform name='Excel'/>
+        <!--SupportedPlatform name='Calc'/-->
+        <!--SupportedPlatform name='Cpp'/-->
+      </SupportedPlatforms>
+      <ParameterList>
+        <Parameters/>
+      </ParameterList>
+      <ReturnValue>
+        <type>QuantLib::Date</type>
+        <tensorRank>vector</tensorRank>
+      </ReturnValue>
+    </Member>
+
+    <Member name='qlFixedRateBondOptionDirtyStrikes' type='QuantLib::FixedRateBondOption' >
+      <description>Returns the dirty strike values.</description>
+      <libraryFunction>dirtyStrikeValues</libraryFunction>
+      <SupportedPlatforms>
+        <!--SupportedPlatform name='Excel' calcInWizard='false'/-->
+        <SupportedPlatform name='Excel'/>
+        <!--SupportedPlatform name='Calc'/-->
+        <!--SupportedPlatform name='Cpp'/-->
+      </SupportedPlatforms>
+      <ParameterList>
+        <Parameters/>
+      </ParameterList>
+      <ReturnValue>
+        <type>QuantLib::Real</type>
+        <tensorRank>vector</tensorRank>
+      </ReturnValue>
+    </Member>
+
+    <Member name='qlFixedRateBondOptionCashflowValues' type='QuantLib::FixedRateBondOption' >
+      <description>Returns the dirty strike values.</description>
+      <libraryFunction>cashflowValues</libraryFunction>
+      <SupportedPlatforms>
+        <!--SupportedPlatform name='Excel' calcInWizard='false'/-->
+        <SupportedPlatform name='Excel'/>
+        <!--SupportedPlatform name='Calc'/-->
+        <!--SupportedPlatform name='Cpp'/-->
+      </SupportedPlatforms>
+      <ParameterList>
+        <Parameters/>
+      </ParameterList>
+      <ReturnValue>
+        <type>QuantLib::Real</type>
+        <tensorRank>vector</tensorRank>
+      </ReturnValue>
+    </Member>
+
+
+    <!-- BondOptionEngine Constructor - no calibration (FixedRateBondOption + RealHullWhiteModel) -->
+    <Constructor name='qlBondOptionEngine'>
+      <description>Construct a bond option engine whithout calibration.</description>
+      <libraryFunction>BondOptionEngine</libraryFunction>
+      <SupportedPlatforms>
+        <SupportedPlatform name='Excel'/>
+        <SupportedPlatform name='Cpp'/>
+      </SupportedPlatforms>
+      <ParameterList>
+        <Parameters>
+          <Parameter name='HullWhiteModel' >
+            <type>QuantLib::RealHullWhiteModel</type>
+            <tensorRank>scalar</tensorRank>
+            <description>reference to Hull White model.</description>
+          </Parameter>
+          <Parameter name='Dimension' exampleValue ='11' default='11'>
+            <type>QuantLib::Size</type>
+            <tensorRank>scalar</tensorRank>
+            <description>spatial discretisation points for numerical solution.</description>
+          </Parameter>
+          <Parameter name='GridRadius' exampleValue ='0.3' default='0.3'>
+            <type>QuantLib::Real</type>
+            <tensorRank>scalar</tensorRank>
+            <description>radius of short rate grid [r0-s, r0+2].</description>
+          </Parameter>
+          <Parameter name='BermudanTolerance' exampleValue ='0.001' default='0.001'>
+            <type>QuantLib::Real</type>
+            <tensorRank>scalar</tensorRank>
+            <description>relative tolerance for numerical integration.</description>
+          </Parameter>
+        </Parameters>
+      </ParameterList>
+    </Constructor>
+
 
   </Functions>
 </Category>
