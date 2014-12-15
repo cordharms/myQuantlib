@@ -859,6 +859,40 @@
       </ParameterList>
     </Constructor>
 
+    <Member name='qlBondOptionEngineCalibrateModel' type='QuantLib::BondOptionEngine' >
+      <description>Calibrate Hull White model to European swaptions.</description>
+      <libraryFunction>calibrateModel</libraryFunction>
+      <SupportedPlatforms>
+        <!--SupportedPlatform name='Excel' calcInWizard='false'/-->
+        <SupportedPlatform name='Excel'/>
+        <!--SupportedPlatform name='Calc'/-->
+        <!--SupportedPlatform name='Cpp'/-->
+      </SupportedPlatforms>
+      <ParameterList>
+        <Parameters>
+          <Parameter name='Swaption' >
+            <type>QuantLib::Swaption</type>
+            <tensorRank>vector</tensorRank>
+            <description>reference to swaption instrument.</description>
+          </Parameter>
+          <Parameter name='ContTenorSpread' exampleValue ='true' default='true'>
+            <type>bool</type>
+            <tensorRank>scalar</tensorRank>
+            <description>Assume deterministic continuous (true) or simple (false) compounded tenor basis.</description>
+          </Parameter>
+          <Parameter name='Tolerance' exampleValue ='1.0e-4' default='1.0e-4' >
+            <type>QuantLib::Real</type>
+            <tensorRank>scalar</tensorRank>
+            <description>absolute tolerance for short rate values in calibration.</description>
+          </Parameter>
+        </Parameters>
+      </ParameterList>
+      <ReturnValue>
+        <type>void</type>
+        <tensorRank>scalar</tensorRank>
+      </ReturnValue>
+    </Member>
 
+    
   </Functions>
 </Category>

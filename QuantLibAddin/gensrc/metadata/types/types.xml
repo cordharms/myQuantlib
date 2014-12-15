@@ -258,7 +258,8 @@
     <DataType defaultSuperType='libraryClass'>QuantLib::RealHullWhiteModel</DataType>
     <DataType defaultSuperType='libraryClass'>QuantLib::MinimADHullWhiteModel</DataType>
     <DataType defaultSuperType='libraryClass'>QuantLib::FixedRateBondOption</DataType>
-    
+    <DataType defaultSuperType='libraryClass'>QuantLib::BondOptionEngine</DataType>
+
   </DataTypes>
 
 </root>
