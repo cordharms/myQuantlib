@@ -47,7 +47,7 @@
             <description>underlying (vanilla) swap object ID.</description>
           </Parameter>
           <Parameter name='Exercise'>
-            <type>QuantLib::EuropeanExercise</type>
+            <type>QuantLib::Exercise</type>
             <tensorRank>scalar</tensorRank>
             <description>Exercise object ID.</description>
           </Parameter>
