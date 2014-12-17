@@ -368,9 +368,9 @@
       </ReturnValue>
     </Member>
 
-    <Member name='qlRealHullWhiteModelVolaDates' type='QuantLib::RealHullWhiteModel' >
+    <Member name='qlRealHullWhiteModelVolaTimes' type='QuantLib::RealHullWhiteModel' >
       <description>Returns the short rate volatility grid times.</description>
-      <libraryFunction>volaDates</libraryFunction>
+      <libraryFunction>volaTimes</libraryFunction>
       <SupportedPlatforms>
         <!--SupportedPlatform name='Excel' calcInWizard='false'/-->
         <SupportedPlatform name='Excel'/>
