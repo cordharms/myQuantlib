@@ -1,0 +1,111 @@
+<Category name='templateauxilliaries'>
+  <description>Math auxilliary functions.</description>
+  <displayName>TemplateAuxilliaries</displayName>
+  <xlFunctionWizardCategory>QuantLib - Math</xlFunctionWizardCategory>
+  <serializationIncludes>
+    <include>ql/types.hpp</include>
+    <include>ql/experimental/template/auxilliaries/templateauxilliaries.hpp</include>
+  </serializationIncludes>
+  <addinIncludes>
+    <include>ql/types.hpp</include>
+    <include>ql/experimental/template/auxilliaries/templateauxilliaries.hpp</include>
+  </addinIncludes>
+  <copyright>
+    Copyright (C) 2014 Sebastian Schlenkrich
+  </copyright>
+
+  <Functions>
+
+    <Procedure name='qlNormalExpectation' >
+      <description>returns integral[ v(x).q(x).dx ] for normal density q(.).</description>
+      <alias>TemplateAuxilliaries::normalExpectation</alias>
+      <SupportedPlatforms>
+        <!--SupportedPlatform name='Excel' calcInWizard='false'/-->
+        <SupportedPlatform name='Excel'/>
+        <!--SupportedPlatform name='Cpp'/-->
+      </SupportedPlatforms>
+      <ParameterList>
+        <Parameters>
+          <Parameter name='X' >
+            <type>double</type>
+            <tensorRank>vector</tensorRank>
+            <description>vector of x-values.</description>
+          </Parameter>
+          <Parameter name='V' >
+            <type>double</type>
+            <tensorRank>vector</tensorRank>
+            <description>vector of function values v(x).</description>
+          </Parameter>
+          <Parameter name='G' >
+            <type>double</type>
+            <tensorRank>vector</tensorRank>
+            <description>vector of derivative values v'(x).</description>
+          </Parameter>
+          <Parameter name='Mu' >
+            <type>double</type>
+            <tensorRank>scalar</tensorRank>
+            <description>Expectation E[X] of normal distribution.</description>
+          </Parameter>
+          <Parameter name='Var' >
+            <type>double</type>
+            <tensorRank>scalar</tensorRank>
+            <description>Variance Var[X] (sigma^2) of normal distribution.</description>
+          </Parameter>
+          <Parameter name='Tol' >
+            <type>double</type>
+            <tensorRank>scalar</tensorRank>
+            <description>Numerical tolerance for integration.</description>
+          </Parameter>
+		 </Parameters>
+      </ParameterList>
+      <ReturnValue>
+        <type>double</type>
+        <tensorRank>scalar</tensorRank>
+      </ReturnValue>
+    </Procedure>
+
+    <Procedure name='qlBachelier' >
+      <description>Returns Bachelier Formula.</description>
+      <alias>TemplateAuxilliaries::Bachelier</alias>
+      <SupportedPlatforms>
+        <SupportedPlatform name='Excel'/>
+      </SupportedPlatforms>
+      <ParameterList>
+        <Parameters>
+          <Parameter name='F' >
+            <type>double</type>
+            <tensorRank>scalar</tensorRank>
+            <description>Forward (expected value).</description>
+          </Parameter>
+          <Parameter name='K' >
+            <type>double</type>
+            <tensorRank>scalar</tensorRank>
+            <description>Strike.</description>
+          </Parameter>
+          <Parameter name='Sigma' >
+            <type>double</type>
+            <tensorRank>scalar</tensorRank>
+            <description>Normal volatility.</description>
+          </Parameter>
+          <Parameter name='T' >
+            <type>double</type>
+            <tensorRank>scalar</tensorRank>
+            <description>Time to expiry (stdev = sigma.sqrt(T)).</description>
+          </Parameter>
+          <Parameter name='CallOrPut' >
+            <type>long</type>
+            <tensorRank>scalar</tensorRank>
+            <description>Call or Put option.</description>
+          </Parameter>
+		    </Parameters>
+      </ParameterList>
+      <ReturnValue>
+        <type>double</type>
+        <tensorRank>scalar</tensorRank>
+      </ReturnValue>
+    </Procedure>
+
+    
+  </Functions>
+
+</Category>

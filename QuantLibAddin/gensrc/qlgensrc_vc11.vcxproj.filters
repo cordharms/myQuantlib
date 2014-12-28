@@ -324,5 +324,8 @@
     <Xml Include="metadata\functions\templatehullwhite.xml">
       <Filter>functions\experimental</Filter>
     </Xml>
+    <Xml Include="metadata\functions\templateauxilliaries.xml">
+      <Filter>functions\experimental</Filter>
+    </Xml>
   </ItemGroup>
 </Project>

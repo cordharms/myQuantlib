@@ -144,7 +144,9 @@
     <None Include="metadata\types\supertypes.xml" />
     <None Include="metadata\types\types.xml" />
     <None Include="code\codedict.py" />
-    <None Include="config\categories.xml" />
+    <None Include="config\categories.xml">
+      <SubType>Designer</SubType>
+    </None>
     <None Include="config\config.xml" />
     <None Include="stubs\stub.copyright" />
     <None Include="stubs\stub.cpp.body" />
@@ -159,7 +161,12 @@
   <ItemGroup>
     <Xml Include="metadata\functions\basisswap.xml" />
     <Xml Include="metadata\functions\sabrswaptioncube.xml" />
-    <Xml Include="metadata\functions\templatehullwhite.xml" />
+    <Xml Include="metadata\functions\templateauxilliaries.xml">
+      <SubType>Designer</SubType>
+    </Xml>
+    <Xml Include="metadata\functions\templatehullwhite.xml">
+      <SubType>Designer</SubType>
+    </Xml>
   </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
   <ImportGroup Label="ExtensionTargets">
