@@ -88,6 +88,9 @@
     <Filter Include="Experimental\Template\HullWhite">
       <UniqueIdentifier>{e8042733-b244-400c-8523-1f8ddea77a4c}</UniqueIdentifier>
     </Filter>
+    <Filter Include="Experimental\Template\QGaussian">
+      <UniqueIdentifier>{9aad8700-705e-45e5-884b-aa4dadffca73}</UniqueIdentifier>
+    </Filter>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="qlo\enumerations\register\register_all.cpp">
@@ -844,6 +847,18 @@
       <Filter>serialization\register</Filter>
     </ClCompile>
     <ClCompile Include="qlo\valueobjects\vo_templatehullwhite.cpp">
+      <Filter>valueobjects</Filter>
+    </ClCompile>
+    <ClCompile Include="qlo\templatequasigaussian.cpp">
+      <Filter>Experimental\Template\QGaussian</Filter>
+    </ClCompile>
+    <ClCompile Include="qlo\serialization\create\create_templatequasigaussian.cpp">
+      <Filter>serialization\create</Filter>
+    </ClCompile>
+    <ClCompile Include="qlo\serialization\register\serialization_templatequasigaussian.cpp">
+      <Filter>serialization\register</Filter>
+    </ClCompile>
+    <ClCompile Include="qlo\valueobjects\vo_templatequasigaussian.cpp">
       <Filter>valueobjects</Filter>
     </ClCompile>
   </ItemGroup>
@@ -1724,6 +1739,18 @@
       <Filter>serialization\register</Filter>
     </ClInclude>
     <ClInclude Include="qlo\valueobjects\vo_templatehullwhite.hpp">
+      <Filter>valueobjects</Filter>
+    </ClInclude>
+    <ClInclude Include="qlo\templatequasigaussian.hpp">
+      <Filter>Experimental\Template\QGaussian</Filter>
+    </ClInclude>
+    <ClInclude Include="qlo\serialization\create\create_templatequasigaussian.hpp">
+      <Filter>serialization\create</Filter>
+    </ClInclude>
+    <ClInclude Include="qlo\serialization\register\serialization_templatequasigaussian.hpp">
+      <Filter>serialization\register</Filter>
+    </ClInclude>
+    <ClInclude Include="qlo\valueobjects\vo_templatequasigaussian.hpp">
       <Filter>valueobjects</Filter>
     </ClInclude>
   </ItemGroup>

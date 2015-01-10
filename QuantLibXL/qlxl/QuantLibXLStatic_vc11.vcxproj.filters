@@ -416,6 +416,12 @@
     <ClCompile Include="register\register_templateauxilliaries.cpp">
       <Filter>register</Filter>
     </ClCompile>
+    <ClCompile Include="functions\templatequasigaussian.cpp">
+      <Filter>functions</Filter>
+    </ClCompile>
+    <ClCompile Include="register\register_templatequasigaussian.cpp">
+      <Filter>register</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="register\register_all.hpp">

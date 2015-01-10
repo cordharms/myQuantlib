@@ -65,7 +65,8 @@
     <categoryName>sabrswaptioncube</categoryName>
     <categoryName>basisswap</categoryName>
     <categoryName>templatehullwhite</categoryName>
-    <categoryName>templateauxilliaries</categoryName> 
+    <categoryName>templateauxilliaries</categoryName>
+    <categoryName>templatequasigaussian</categoryName>
   </addinCategoryNames>
   
 </root>

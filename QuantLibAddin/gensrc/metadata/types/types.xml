@@ -260,6 +260,8 @@
     <DataType defaultSuperType='libraryClass'>QuantLib::FixedRateBondOption</DataType>
     <DataType defaultSuperType='libraryClass'>QuantLib::BondOptionEngine</DataType>
 
+    <DataType defaultSuperType='libraryClass'>QuantLib::RealQuasiGaussianModel</DataType>
+
   </DataTypes>
 
 </root>
