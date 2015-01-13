@@ -261,6 +261,7 @@
     <DataType defaultSuperType='libraryClass'>QuantLib::BondOptionEngine</DataType>
 
     <DataType defaultSuperType='libraryClass'>QuantLib::RealQuasiGaussianModel</DataType>
+    <DataType defaultSuperType='libraryClass'>QuantLib::RealQGMCSimulation</DataType>
 
   </DataTypes>
 

@@ -35,5 +35,20 @@ namespace QuantLibAddin {
 			new QuantLib::RealQuasiGaussianModel( hYTS, d, times, lambda, alpha, b, eta, delta, chi, Gamma, theta ));
     }
 
+	RealQGMCSimulation::RealQGMCSimulation(
+		                      const boost::shared_ptr<ObjectHandler::ValueObject>& properties,
+                              const boost::shared_ptr<QuantLib::RealQuasiGaussianModel> process,
+			                  const std::vector<QuantLib::Real>&              simTimes,
+							  const std::vector<QuantLib::Real>&              obsTimes,
+							  size_t                                          nPaths,
+							  QuantLib::BigNatural                            seed,
+							  bool                                            richardsonExtrapolation,
+							  bool                                            timeInterpolation,
+							  bool                                            storeBrownians,
+							  bool permanent) : TemplateSimulation(properties,permanent) {
+        libraryObject_ = boost::shared_ptr<QuantLib::RealQGMCSimulation>(
+			new QuantLib::RealQGMCSimulation( process, simTimes, obsTimes, nPaths, seed, richardsonExtrapolation, timeInterpolation, storeBrownians ));
+	}
+
 
 }

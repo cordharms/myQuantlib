@@ -29,7 +29,9 @@
     Copyright (C) 2015, Sebastian Schlenkrich
   </copyright>
   <Functions>
- 
+
+    <!-- Constructor(s) for RealQuasiGaussianModel -->
+    
     <Constructor name='qlRealQuasiGaussianModel'>
       <libraryFunction>RealQuasiGaussianModel</libraryFunction>
       <SupportedPlatforms>
@@ -247,6 +249,184 @@
       </ReturnValue>
     </Member>
 
+    <!-- Constructor(s) for RealQGMCSimulation -->
+
+    <Constructor name='qlRealQGMCSimulation'>
+      <libraryFunction>RealQGMCSimulation</libraryFunction>
+      <SupportedPlatforms>
+        <SupportedPlatform name='Excel'/>
+        <SupportedPlatform name='Cpp'/>
+      </SupportedPlatforms>
+      <ParameterList>
+        <Parameters>
+          <Parameter name='ProcessOrModel' >
+            <type>QuantLib::RealQuasiGaussianModel</type>
+            <tensorRank>scalar</tensorRank>
+            <description>reference to process or model.</description>
+          </Parameter>
+          <Parameter name='SimTimes' exampleValue='5, 10, ...'>
+            <type>QuantLib::Time</type>
+            <tensorRank>vector</tensorRank>
+            <description>vector of time-grid for SDE integration (in year fractions)</description>
+          </Parameter>
+          <Parameter name='ObsTimes' exampleValue='5, 10, ...'>
+            <type>QuantLib::Time</type>
+            <tensorRank>vector</tensorRank>
+            <description>vector of time-grid for process observation (in year fractions)</description>
+          </Parameter>
+          <Parameter name='NPaths' exampleValue ='1024' default='1024' >
+            <type>QuantLib::Size</type>
+            <tensorRank>scalar</tensorRank>
+            <description>number of MC paths.</description>
+          </Parameter>
+          <Parameter name='Seed' exampleValue ='1234' default='1234' >
+            <type>QuantLib::Size</type>
+            <tensorRank>scalar</tensorRank>
+            <description>MC seed.</description>
+          </Parameter>
+          <Parameter name='RichardsonExtrapolation' exampleValue ='true' default='true'>
+            <type>bool</type>
+            <tensorRank>scalar</tensorRank>
+            <description>use Richardson extrapolation (true or false).</description>
+          </Parameter>
+          <Parameter name='TimeInterpolation' exampleValue ='true' default='true'>
+            <type>bool</type>
+             <tensorRank>scalar</tensorRank>
+            <description>allow time-interpolation for payoff evaluation on simulated paths (true or false).</description>
+          </Parameter>
+          <Parameter name='StoreBrownians' exampleValue ='false' default='false'>
+            <type>bool</type>
+            <tensorRank>scalar</tensorRank>
+            <description>store Brownian motion increments (true or false).</description>
+          </Parameter>
+        </Parameters>
+      </ParameterList>
+    </Constructor>
+
+    <!-- Run simulation with RealQGMCSimulation -->
+
+    <Member name='qlRealQGMCSimulationSimulate' type='QuantLib::RealQGMCSimulation' >
+      <description>Simulate MC paths.</description>
+      <libraryFunction>simulate</libraryFunction>
+      <SupportedPlatforms>
+        <!--SupportedPlatform name='Excel' calcInWizard='false'/-->
+        <SupportedPlatform name='Excel'/>
+        <!--SupportedPlatform name='Calc'/-->
+        <!--SupportedPlatform name='Cpp'/-->
+      </SupportedPlatforms>
+      <ParameterList>
+        <Parameters/>
+      </ParameterList>
+      <ReturnValue>
+        <type>void</type>
+        <tensorRank>scalar</tensorRank>
+      </ReturnValue>
+    </Member>
+
+    <!-- Inspectors for RealQGMCSimulation -->
+
+    <Member name='qlRealQGMCSimulationSimTimes' type='QuantLib::RealQGMCSimulation' >
+      <description>Returns simulation times.</description>
+      <libraryFunction>simTimes</libraryFunction>
+      <SupportedPlatforms>
+        <!--SupportedPlatform name='Excel' calcInWizard='false'/-->
+        <SupportedPlatform name='Excel'/>
+        <!--SupportedPlatform name='Calc'/-->
+        <!--SupportedPlatform name='Cpp'/-->
+      </SupportedPlatforms>
+      <ParameterList>
+        <Parameters/>
+      </ParameterList>
+      <ReturnValue>
+        <type>QuantLib::Time</type>
+        <tensorRank>vector</tensorRank>
+      </ReturnValue>
+    </Member>
+
+    <Member name='qlRealQGMCSimulationObsTimes' type='QuantLib::RealQGMCSimulation' >
+      <description>Returns observation times.</description>
+      <libraryFunction>obsTimes</libraryFunction>
+      <SupportedPlatforms>
+        <!--SupportedPlatform name='Excel' calcInWizard='false'/-->
+        <SupportedPlatform name='Excel'/>
+        <!--SupportedPlatform name='Calc'/-->
+        <!--SupportedPlatform name='Cpp'/-->
+      </SupportedPlatforms>
+      <ParameterList>
+        <Parameters/>
+      </ParameterList>
+      <ReturnValue>
+        <type>QuantLib::Time</type>
+        <tensorRank>vector</tensorRank>
+      </ReturnValue>
+    </Member>
+
+    <Member name='qlRealQGMCSimulationNPaths' type='QuantLib::RealQGMCSimulation' >
+      <description>Returns number of MC paths.</description>
+      <libraryFunction>nPaths</libraryFunction>
+      <SupportedPlatforms>
+        <!--SupportedPlatform name='Excel' calcInWizard='false'/-->
+        <SupportedPlatform name='Excel'/>
+        <!--SupportedPlatform name='Calc'/-->
+        <!--SupportedPlatform name='Cpp'/-->
+      </SupportedPlatforms>
+      <ParameterList>
+        <Parameters/>
+      </ParameterList>
+      <ReturnValue>
+        <type>QuantLib::Size</type>
+        <tensorRank>scalar</tensorRank>
+      </ReturnValue>
+    </Member>
+
+    <Member name='qlRealQGMCSimulationBrownian' type='QuantLib::RealQGMCSimulation' >
+      <description>Returns the n-th Brownian increments.</description>
+      <libraryFunction>brownian</libraryFunction>
+      <SupportedPlatforms>
+        <!--SupportedPlatform name='Excel' calcInWizard='false'/-->
+        <SupportedPlatform name='Excel'/>
+        <!--SupportedPlatform name='Calc'/-->
+        <!--SupportedPlatform name='Cpp'/-->
+      </SupportedPlatforms>
+      <ParameterList>
+        <Parameters>
+          <Parameter name='N' exampleValue ='0' default='0' >
+            <type>QuantLib::Size</type>
+            <tensorRank>scalar</tensorRank>
+            <description>index of MC path (0 .. nPaths).</description>
+          </Parameter>
+        </Parameters>
+      </ParameterList>
+      <ReturnValue>
+        <type>QuantLib::Time</type>
+        <tensorRank>matrix</tensorRank>
+      </ReturnValue>
+    </Member>
+
+
+    <Member name='qlRealQGMCSimulationPath' type='QuantLib::RealQGMCSimulation' >
+      <description>Returns the n-th MC path.</description>
+      <libraryFunction>path</libraryFunction>
+      <SupportedPlatforms>
+        <!--SupportedPlatform name='Excel' calcInWizard='false'/-->
+        <SupportedPlatform name='Excel'/>
+        <!--SupportedPlatform name='Calc'/-->
+        <!--SupportedPlatform name='Cpp'/-->
+      </SupportedPlatforms>
+      <ParameterList>
+        <Parameters>
+          <Parameter name='N' exampleValue ='0' default='0' >
+            <type>QuantLib::Size</type>
+            <tensorRank>scalar</tensorRank>
+            <description>index of MC path (0 .. nPaths).</description>
+          </Parameter>
+        </Parameters>      
+      </ParameterList>
+      <ReturnValue>
+        <type>QuantLib::Time</type>
+        <tensorRank>matrix</tensorRank>
+      </ReturnValue>
+    </Member>
 
 
   </Functions>

@@ -51,6 +51,22 @@ namespace QuantLibAddin {
 							     bool permanent);
     };
 
+	OH_LIB_CLASS(TemplateSimulation, QuantLib::TemplateSimulation);
+
+	class RealQGMCSimulation : public TemplateSimulation {
+	public:
+		RealQGMCSimulation( const boost::shared_ptr<ObjectHandler::ValueObject>& properties,
+                              const boost::shared_ptr<QuantLib::RealQuasiGaussianModel> process,
+			                  const std::vector<QuantLib::Real>&              simTimes,
+							  const std::vector<QuantLib::Real>&              obsTimes,
+							  size_t                                          nPaths,
+							  QuantLib::BigNatural                            seed,
+							  bool                                            richardsonExtrapolation,
+							  bool                                            timeInterpolation,
+							  bool                                            storeBrownians,
+							  bool permanent);
+	};
+
 
 }  // namespace QuantLibAddin
 
