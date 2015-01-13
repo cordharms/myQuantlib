@@ -262,6 +262,8 @@
 
     <DataType defaultSuperType='libraryClass'>QuantLib::RealQuasiGaussianModel</DataType>
     <DataType defaultSuperType='libraryClass'>QuantLib::RealQGMCSimulation</DataType>
+    <DataType defaultSuperType='libraryClass'>QuantLib::RealQGMCPayoff</DataType>
+    <DataType defaultSuperType='libraryClass'>QuantLib::RealQGMCPayoffPricer</DataType>
 
   </DataTypes>
 

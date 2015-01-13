@@ -403,10 +403,9 @@
       </ReturnValue>
     </Member>
 
-
     <Member name='qlRealQGMCSimulationPath' type='QuantLib::RealQGMCSimulation' >
       <description>Returns the n-th MC path.</description>
-      <libraryFunction>path</libraryFunction>
+      <libraryFunction>observedPath</libraryFunction>
       <SupportedPlatforms>
         <!--SupportedPlatform name='Excel' calcInWizard='false'/-->
         <SupportedPlatform name='Excel'/>
@@ -427,6 +426,71 @@
         <tensorRank>matrix</tensorRank>
       </ReturnValue>
     </Member>
+
+    <!-- Payoffs and Pricer -->
+
+    <Constructor name='qlRealQGMCPayoffPricer'>
+      <libraryFunction>RealQGMCPayoffPricer</libraryFunction>
+      <SupportedPlatforms>
+        <SupportedPlatform name='Excel'/>
+        <SupportedPlatform name='Cpp'/>
+      </SupportedPlatforms>
+      <ParameterList>
+        <Parameters>
+          <Parameter name='Payoffs' >
+            <type>QuantLib::RealQGMCPayoff</type>
+            <tensorRank>vector</tensorRank>
+            <description>reference to payoffs.</description>
+          </Parameter>
+          <Parameter name='Simulation' >
+            <type>QuantLib::RealQGMCSimulation</type>
+            <tensorRank>scalar</tensorRank>
+            <description>reference to RealQGMCSimulation object.</description>
+          </Parameter>
+        </Parameters>
+      </ParameterList>
+    </Constructor>
+
+    <Member name='qlRealQGMCPayoffPricerNPV' type='QuantLib::RealQGMCPayoffPricer' >
+      <description>Returns NPV of simulated payoff and.</description>
+      <libraryFunction>NPV</libraryFunction>
+      <SupportedPlatforms>
+        <!--SupportedPlatform name='Excel' calcInWizard='false'/-->
+        <SupportedPlatform name='Excel'/>
+        <!--SupportedPlatform name='Calc'/-->
+        <!--SupportedPlatform name='Cpp'/-->
+      </SupportedPlatforms>
+      <ParameterList>
+        <Parameters/>
+      </ParameterList>
+      <ReturnValue>
+        <type>QuantLib::Real</type>
+        <tensorRank>scalar</tensorRank>
+      </ReturnValue>
+    </Member>
+
+    <Constructor name='qlRealQGMCCash'>
+      <libraryFunction>RealQGMCCash</libraryFunction>
+      <SupportedPlatforms>
+        <SupportedPlatform name='Excel'/>
+        <SupportedPlatform name='Cpp'/>
+      </SupportedPlatforms>
+      <ParameterList>
+        <Parameters>
+          <Parameter name='ObservationTime' exampleValue ='1' default='1' >
+            <type>QuantLib::Time</type>
+            <tensorRank>scalar</tensorRank>
+            <description>observation time (t).</description>
+          </Parameter>
+          <Parameter name='PayTime' exampleValue ='2' default='2' >
+            <type>QuantLib::Time</type>
+            <tensorRank>scalar</tensorRank>
+            <description>payment time (T).</description>
+          </Parameter>
+        </Parameters>
+      </ParameterList>
+    </Constructor>
+
 
 
   </Functions>

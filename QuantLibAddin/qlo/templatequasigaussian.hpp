@@ -67,6 +67,27 @@ namespace QuantLibAddin {
 							  bool permanent);
 	};
 
+	OH_LIB_CLASS(RealQGMCPayoffPricerBase, QuantLib::RealQGMCPayoffPricer);
+
+	class RealQGMCPayoffPricer : public RealQGMCPayoffPricerBase {
+	public:
+		RealQGMCPayoffPricer( const boost::shared_ptr<ObjectHandler::ValueObject>&              properties,
+			                  const std::vector< boost::shared_ptr<QuantLib::RealQGMCPayoff> >& payoffs,
+							  const boost::shared_ptr<QuantLib::RealQGMCSimulation>&            simulation,
+			                  bool permanent);
+	};
+
+	OH_LIB_CLASS(RealQGMCPayoff, QuantLib::RealQGMCPayoff);
+
+	class RealQGMCCash : public RealQGMCPayoff {
+	public:
+		RealQGMCCash( const boost::shared_ptr<ObjectHandler::ValueObject>& properties,
+			          const QuantLib::Time  t,
+					  const QuantLib::Time  T,
+			          bool permanent);
+	};
+
+
 
 }  // namespace QuantLibAddin
 
