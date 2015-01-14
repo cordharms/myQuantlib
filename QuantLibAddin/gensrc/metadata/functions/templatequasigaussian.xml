@@ -429,6 +429,33 @@
 
     <!-- Payoffs and Pricer -->
 
+    <Procedure name='qlRealQGMCPayoffsNPV' >
+      <description>Returns NPV of simulated payoff.</description>
+      <alias>QuantLib::RealQGMCPayoffPricer::NPV</alias>
+      <SupportedPlatforms>
+        <SupportedPlatform name='Excel'/>
+      </SupportedPlatforms>
+      <ParameterList>
+        <Parameters>
+          <Parameter name='Payoffs' >
+            <type>QuantLib::RealQGMCPayoff</type>
+            <tensorRank>vector</tensorRank>
+            <description>reference to payoffs.</description>
+          </Parameter>
+          <Parameter name='Simulation' >
+            <type>QuantLib::RealQGMCSimulation</type>
+            <tensorRank>scalar</tensorRank>
+            <description>reference to RealQGMCSimulation object.</description>
+          </Parameter>
+        </Parameters>
+      </ParameterList>
+      <ReturnValue>
+        <type>QuantLib::Real</type>
+        <tensorRank>scalar</tensorRank>
+      </ReturnValue>
+    </Procedure>
+
+
     <Constructor name='qlRealQGMCPayoffPricer'>
       <libraryFunction>RealQGMCPayoffPricer</libraryFunction>
       <SupportedPlatforms>
@@ -452,7 +479,7 @@
     </Constructor>
 
     <Member name='qlRealQGMCPayoffPricerNPV' type='QuantLib::RealQGMCPayoffPricer' >
-      <description>Returns NPV of simulated payoff and.</description>
+      <description>Returns NPV of simulated payoff.</description>
       <libraryFunction>NPV</libraryFunction>
       <SupportedPlatforms>
         <!--SupportedPlatform name='Excel' calcInWizard='false'/-->
@@ -486,6 +513,70 @@
             <type>QuantLib::Time</type>
             <tensorRank>scalar</tensorRank>
             <description>payment time (T).</description>
+          </Parameter>
+        </Parameters>
+      </ParameterList>
+    </Constructor>
+
+    <Constructor name='qlRealQGMCAnnuity'>
+      <libraryFunction>RealQGMCAnnuity</libraryFunction>
+      <SupportedPlatforms>
+        <SupportedPlatform name='Excel'/>
+        <SupportedPlatform name='Cpp'/>
+      </SupportedPlatforms>
+      <ParameterList>
+        <Parameters>
+          <Parameter name='ObservationTime' exampleValue ='1' default='1' >
+            <type>QuantLib::Time</type>
+            <tensorRank>scalar</tensorRank>
+            <description>observation time (t).</description>
+          </Parameter>
+          <Parameter name='PayTimes' >
+            <type>QuantLib::Time</type>
+            <tensorRank>vector</tensorRank>
+            <description>vector of payment times.</description>
+          </Parameter>
+          <Parameter name='PayWeights' >
+            <type>QuantLib::Real</type>
+            <tensorRank>vector</tensorRank>
+            <description>vector of payment weights (usually year fractions).</description>
+          </Parameter>
+        </Parameters>
+      </ParameterList>
+    </Constructor>
+
+    <Constructor name='qlRealQGMCModelSwaption'>
+      <libraryFunction>RealQGMCModelSwaption</libraryFunction>
+      <SupportedPlatforms>
+        <SupportedPlatform name='Excel'/>
+        <SupportedPlatform name='Cpp'/>
+      </SupportedPlatforms>
+      <ParameterList>
+        <Parameters>
+          <Parameter name='ObservationTime' exampleValue ='1' default='1' >
+            <type>QuantLib::Time</type>
+            <tensorRank>scalar</tensorRank>
+            <description>observation time (t).</description>
+          </Parameter>
+          <Parameter name='Times' >
+            <type>QuantLib::Time</type>
+            <tensorRank>vector</tensorRank>
+            <description>vector of start and payment times.</description>
+          </Parameter>
+          <Parameter name='PayWeights' >
+            <type>QuantLib::Real</type>
+            <tensorRank>vector</tensorRank>
+            <description>vector of payment weights (usually year fractions).</description>
+          </Parameter>
+          <Parameter name='StrikeRate' >
+            <type>QuantLib::Real</type>
+            <tensorRank>scalar</tensorRank>
+            <description>strike (or swap fixed) rate.</description>
+          </Parameter>
+          <Parameter name='PayOrReceive' >
+            <type>QuantLib::Real</type>
+            <tensorRank>scalar</tensorRank>
+            <description>pay (+1) or receive (-1) fixed rate.</description>
           </Parameter>
         </Parameters>
       </ParameterList>

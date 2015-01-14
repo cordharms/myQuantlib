@@ -87,6 +87,25 @@ namespace QuantLibAddin {
 			          bool permanent);
 	};
 
+	class RealQGMCAnnuity : public RealQGMCPayoff {
+	public:
+		RealQGMCAnnuity( const boost::shared_ptr<ObjectHandler::ValueObject>& properties,
+			             const QuantLib::Time                                 t,
+						 const std::vector<QuantLib::Time>&                   payTimes,
+						 const std::vector<QuantLib::Real>&                   payWeights,
+			             bool permanent);
+	};
+
+	class RealQGMCModelSwaption : public RealQGMCPayoff {
+	public:
+		RealQGMCModelSwaption( const boost::shared_ptr<ObjectHandler::ValueObject>& properties,
+			                   const QuantLib::Time                                 t,
+						       const std::vector<QuantLib::Time>&                   times,
+						       const std::vector<QuantLib::Real>&                   payWeights,
+							   QuantLib::Real                                       strike,
+							   QuantLib::Real                                       payOrRec,
+			                   bool permanent);
+	};
 
 
 }  // namespace QuantLibAddin
