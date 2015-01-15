@@ -164,6 +164,7 @@
     <Xml Include="metadata\functions\templateauxilliaries.xml">
       <SubType>Designer</SubType>
     </Xml>
+    <Xml Include="metadata\functions\templatehestonmodel.xml" />
     <Xml Include="metadata\functions\templatehullwhite.xml">
       <SubType>Designer</SubType>
     </Xml>

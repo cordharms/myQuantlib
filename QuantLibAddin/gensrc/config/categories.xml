@@ -67,6 +67,7 @@
     <categoryName>templatehullwhite</categoryName>
     <categoryName>templateauxilliaries</categoryName>
     <categoryName>templatequasigaussian</categoryName>
+    <categoryName>templatehestonmodel</categoryName>
   </addinCategoryNames>
   
 </root>

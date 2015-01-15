@@ -91,6 +91,9 @@
     <Filter Include="Experimental\Template\QGaussian">
       <UniqueIdentifier>{9aad8700-705e-45e5-884b-aa4dadffca73}</UniqueIdentifier>
     </Filter>
+    <Filter Include="Experimental\Template\StochVol">
+      <UniqueIdentifier>{1043bab4-6f7b-4ba5-bd49-0a3b2fc31396}</UniqueIdentifier>
+    </Filter>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="qlo\enumerations\register\register_all.cpp">
@@ -859,6 +862,18 @@
       <Filter>serialization\register</Filter>
     </ClCompile>
     <ClCompile Include="qlo\valueobjects\vo_templatequasigaussian.cpp">
+      <Filter>valueobjects</Filter>
+    </ClCompile>
+    <ClCompile Include="qlo\templatehestonmodel.cpp">
+      <Filter>Experimental\Template\StochVol</Filter>
+    </ClCompile>
+    <ClCompile Include="qlo\serialization\create\create_templatehestonmodel.cpp">
+      <Filter>serialization\create</Filter>
+    </ClCompile>
+    <ClCompile Include="qlo\serialization\register\serialization_templatehestonmodel.cpp">
+      <Filter>serialization\register</Filter>
+    </ClCompile>
+    <ClCompile Include="qlo\valueobjects\vo_templatehestonmodel.cpp">
       <Filter>valueobjects</Filter>
     </ClCompile>
   </ItemGroup>
@@ -1751,6 +1766,18 @@
       <Filter>serialization\register</Filter>
     </ClInclude>
     <ClInclude Include="qlo\valueobjects\vo_templatequasigaussian.hpp">
+      <Filter>valueobjects</Filter>
+    </ClInclude>
+    <ClInclude Include="qlo\templatehestonmodel.hpp">
+      <Filter>Experimental\Template\StochVol</Filter>
+    </ClInclude>
+    <ClInclude Include="qlo\serialization\create\create_templatehestonmodel.hpp">
+      <Filter>serialization\create</Filter>
+    </ClInclude>
+    <ClInclude Include="qlo\serialization\register\serialization_templatehestonmodel.hpp">
+      <Filter>serialization\register</Filter>
+    </ClInclude>
+    <ClInclude Include="qlo\valueobjects\vo_templatehestonmodel.hpp">
       <Filter>valueobjects</Filter>
     </ClInclude>
   </ItemGroup>

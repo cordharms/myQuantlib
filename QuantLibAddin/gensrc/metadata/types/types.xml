@@ -265,6 +265,13 @@
     <DataType defaultSuperType='libraryClass'>QuantLib::RealQGMCPayoff</DataType>
     <DataType defaultSuperType='libraryClass'>QuantLib::RealQGMCPayoffPricer</DataType>
 
+    <DataType defaultSuperType='libraryClass'>QuantLib::HestonProcess</DataType>
+    <DataType defaultSuperType='libraryClass'>QuantLib::HestonModel</DataType>
+    <DataType defaultSuperType='libraryClass'>QuantLib::RealHestonModel</DataType>
+    <DataType defaultSuperType='libraryClass'>QuantLib::ActiveHestonModel</DataType>
+
+
+
   </DataTypes>
 
 </root>

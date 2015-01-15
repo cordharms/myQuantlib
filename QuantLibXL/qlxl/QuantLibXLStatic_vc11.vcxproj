@@ -571,6 +571,7 @@
     <ClCompile Include="functions\basisswap.cpp" />
     <ClCompile Include="functions\sabrswaptioncube.cpp" />
     <ClCompile Include="functions\templateauxilliaries.cpp" />
+    <ClCompile Include="functions\templatehestonmodel.cpp" />
     <ClCompile Include="functions\templatehullwhite.cpp" />
     <ClCompile Include="functions\templatequasigaussian.cpp" />
     <ClCompile Include="register\addin.cpp" />
@@ -632,6 +633,7 @@
     <ClCompile Include="register\register_swaption.cpp" />
     <ClCompile Include="register\register_swaptionvolstructure.cpp" />
     <ClCompile Include="register\register_templateauxilliaries.cpp" />
+    <ClCompile Include="register\register_templatehestonmodel.cpp" />
     <ClCompile Include="register\register_templatehullwhite.cpp" />
     <ClCompile Include="register\register_templatequasigaussian.cpp" />
     <ClCompile Include="register\register_termstructures.cpp" />
