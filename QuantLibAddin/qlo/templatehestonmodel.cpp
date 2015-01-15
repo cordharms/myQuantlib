@@ -69,6 +69,23 @@ namespace QuantLibAddin {
 			new QuantLib::ActiveHestonModel( kappa, theta, sigma, rho, v0 ));            
     }
 
+	RealStochVolModel::RealStochVolModel(
+                const boost::shared_ptr<ObjectHandler::ValueObject>& properties,
+                QuantLib::Real  lambda,                             
+                QuantLib::Real  b,
+                QuantLib::Real  L,
+                QuantLib::Real  theta,
+                QuantLib::Real  m,
+                QuantLib::Real  eta,
+                QuantLib::Real  z0,
+                QuantLib::Real  rho,
+                bool            permanent)
+        : ObjectHandler::LibraryObject<QuantLib::RealStochVolModel>(properties, permanent) {
+        libraryObject_ = boost::shared_ptr<QuantLib::RealStochVolModel>(
+			new QuantLib::RealStochVolModel( lambda, b, L, theta, m, eta, z0, rho ));
+    }
+
+
 }
 
 

@@ -94,6 +94,21 @@ namespace QuantLibAddin {
                 bool            permanent);
     };
 
+	class RealStochVolModel : public ObjectHandler::LibraryObject<QuantLib::RealStochVolModel> {
+    public:
+        RealStochVolModel(
+                const boost::shared_ptr<ObjectHandler::ValueObject>& properties,
+                QuantLib::Real  lambda,                             
+                QuantLib::Real  b,
+                QuantLib::Real  L,
+                QuantLib::Real  theta,
+                QuantLib::Real  m,
+                QuantLib::Real  eta,
+                QuantLib::Real  z0,
+                QuantLib::Real  rho,
+                bool            permanent);
+    };
+
 
 }
 

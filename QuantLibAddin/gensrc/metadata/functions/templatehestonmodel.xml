@@ -298,6 +298,107 @@
     </Member>
 
 
+    <Constructor name='qlRealStochVolModel'>
+      <libraryFunction>RealStochVolModel</libraryFunction>
+      <SupportedPlatforms>
+        <SupportedPlatform name='Excel'/>
+        <SupportedPlatform name='Cpp'/>
+      </SupportedPlatforms>
+      <ParameterList>
+        <Parameters>
+          <Parameter name='Lambda' exampleValue ='0.10' default='0.10' >
+            <type>QuantLib::Real</type>
+            <tensorRank>scalar</tensorRank>
+            <description>(log-) volatility.</description>
+          </Parameter>
+          <Parameter name='B' exampleValue ='0.50' default='0.50' >
+            <type>QuantLib::Real</type>
+            <tensorRank>scalar</tensorRank>
+            <description>skew, 0...1 (normal ... log-normal).</description>
+          </Parameter>
+          <Parameter name='L' exampleValue ='1.0' default='1.0' >
+            <type>QuantLib::Real</type>
+            <tensorRank>scalar</tensorRank>
+            <description>level, L = S0.</description>
+          </Parameter>
+            <Parameter name='Theta' exampleValue ='0.1' default='0.1' >
+              <type>QuantLib::Real</type>
+              <tensorRank>scalar</tensorRank>
+              <description>mean reversion speed.</description>
+            </Parameter>
+            <Parameter name='M' exampleValue ='1.0' default='1.0' >
+              <type>QuantLib::Real</type>
+              <tensorRank>scalar</tensorRank>
+              <description>mean reversion level (equal initial stoch vol).</description>
+            </Parameter>
+            <Parameter name='Eta' exampleValue ='1.0' default='1.0' >
+              <type>QuantLib::Real</type>
+              <tensorRank>scalar</tensorRank>
+              <description>vol-of-vol.</description>
+            </Parameter>
+            <Parameter name='Z0' exampleValue ='1.0' default='1.0' >
+              <type>QuantLib::Real</type>
+              <tensorRank>scalar</tensorRank>
+              <description>initial stoch vol.</description>
+            </Parameter>
+            <Parameter name='Rho' exampleValue ='0.0' default='0.0' >
+              <type>QuantLib::Real</type>
+              <tensorRank>scalar</tensorRank>
+              <description>correlation.</description>
+            </Parameter>
+          </Parameters>
+      </ParameterList>
+    </Constructor>
+
+    <Member name='qlRealStochVolModelVanillaOption' type='QuantLib::RealStochVolModel' >
+      <description>Returns a future zero coupon bond price in the Hull White model.</description>
+      <libraryFunction>vanillaOption</libraryFunction>
+      <SupportedPlatforms>
+        <!--SupportedPlatform name='Excel' calcInWizard='false'/-->
+        <SupportedPlatform name='Excel'/>
+        <!--SupportedPlatform name='Calc'/-->
+        <!--SupportedPlatform name='Cpp'/-->
+      </SupportedPlatforms>
+      <ParameterList>
+        <Parameters>
+          <Parameter name='ForwardPrice' exampleValue ='1.0' default='1.0'>
+            <type>QuantLib::Real</type>
+            <tensorRank>scalar</tensorRank>
+            <description>Forward price of underlying asset.</description>
+          </Parameter>
+          <Parameter name='StrikePrice' exampleValue ='1.0' default='1.0'>
+            <type>QuantLib::Real</type>
+            <tensorRank>scalar</tensorRank>
+            <description>Strike price of option.</description>
+          </Parameter>
+          <Parameter name='Term' exampleValue ='1.0' default='1.0'>
+            <type>QuantLib::Time</type>
+            <tensorRank>scalar</tensorRank>
+            <description>Time to exercise (in year fraction).</description>
+          </Parameter>
+          <Parameter name='CallOrPut' exampleValue ='1' default='1'>
+            <type>long</type>
+            <tensorRank>scalar</tensorRank>
+            <description>Call (+1) or Put (-1) option.</description>
+          </Parameter>
+          <Parameter name='Accuracy' exampleValue ='1.0e-4' default='1.0e-4'>
+            <type>QuantLib::Real</type>
+            <tensorRank>scalar</tensorRank>
+            <description>Accuracy for integration.</description>
+          </Parameter>
+          <Parameter name='MaxEvaluations' exampleValue ='1000' default='1000'>
+            <type>long</type>
+            <tensorRank>scalar</tensorRank>
+            <description>Maximum number of integrand function evaluations in integration.</description>
+          </Parameter>
+        </Parameters>
+      </ParameterList>
+      <ReturnValue>
+        <type>QuantLib::Real</type>
+        <tensorRank>scalar</tensorRank>
+      </ReturnValue>
+    </Member>
+
 
   </Functions>
 </Category>
