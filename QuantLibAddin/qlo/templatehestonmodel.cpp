@@ -101,8 +101,7 @@ namespace QuantLibAddin {
 			    const size_t                                         maxEvaluations,
 				const QuantLib::Time                                 dt,
   				bool                                                 permanent)
-	: //ObjectHandler::LibraryObject<QuantLib::RealPWCNumericalStochVolModel>(properties, permanent) {
-	  RealTDStochVolModel(properties, permanent) {
+	: RealTDStochVolModel(properties, permanent) {
         libraryObject_ = boost::shared_ptr<QuantLib::RealPWCNumericalStochVolModel>(
 			new QuantLib::RealPWCNumericalStochVolModel( times, lambda, b, eta, L, theta, m, z0, rho, absAccuracy, relAccuracy, maxEvaluations, dt ) );
 	}

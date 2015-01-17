@@ -269,8 +269,10 @@
     <DataType defaultSuperType='libraryClass'>QuantLib::HestonModel</DataType>
     <DataType defaultSuperType='libraryClass'>QuantLib::RealHestonModel</DataType>
     <DataType defaultSuperType='libraryClass'>QuantLib::ActiveHestonModel</DataType>
+    
     <DataType defaultSuperType='libraryClass'>QuantLib::RealStochVolModel</DataType>
-
+    <DataType defaultSuperType='libraryClass'>QuantLib::RealTDStochVolModel</DataType>
+    <DataType defaultSuperType='libraryClass'>QuantLib::RealPWCNumericalStochVolModel</DataType>
 
 
   </DataTypes>

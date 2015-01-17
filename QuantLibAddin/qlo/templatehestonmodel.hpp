@@ -111,7 +111,6 @@ namespace QuantLibAddin {
 
 	OH_LIB_CLASS(RealTDStochVolModel, QuantLib::RealTDStochVolModel);
 
-	//class RealPWCNumericalStochVolModel : public ObjectHandler::LibraryObject<QuantLib::RealPWCNumericalStochVolModel> {
 	class RealPWCNumericalStochVolModel : public RealTDStochVolModel {
 	public:
 		RealPWCNumericalStochVolModel(
