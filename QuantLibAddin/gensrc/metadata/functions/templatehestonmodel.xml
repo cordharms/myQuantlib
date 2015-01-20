@@ -478,6 +478,64 @@
       </ParameterList>
     </Constructor>
 
+    <Constructor name='qlRealPWCStochVolModel'>
+      <libraryFunction>RealPWCStochVolModel</libraryFunction>
+      <SupportedPlatforms>
+        <SupportedPlatform name='Excel'/>
+        <SupportedPlatform name='Cpp'/>
+      </SupportedPlatforms>
+      <ParameterList>
+        <Parameters>
+          <Parameter name='Times' >
+            <type>QuantLib::Time</type>
+            <tensorRank>vector</tensorRank>
+            <description>time grid for model parameters (in year fractions).</description>
+          </Parameter>
+          <Parameter name='Lambda' >
+            <type>QuantLib::Real</type>
+            <tensorRank>vector</tensorRank>
+            <description>vector of (log-) volatilities.</description>
+          </Parameter>
+          <Parameter name='B' >
+            <type>QuantLib::Real</type>
+            <tensorRank>vector</tensorRank>
+            <description>skew vector, 0...1 (normal ... log-normal).</description>
+          </Parameter>
+          <Parameter name='Eta' exampleValue ='1.0' default='1.0' >
+            <type>QuantLib::Real</type>
+            <tensorRank>vector</tensorRank>
+            <description>vector of vol-of-vol.</description>
+          </Parameter>
+          <Parameter name='L' exampleValue ='1.0' default='1.0' >
+            <type>QuantLib::Real</type>
+            <tensorRank>scalar</tensorRank>
+            <description>level, L = S0.</description>
+          </Parameter>
+          <Parameter name='Theta' exampleValue ='0.1' default='0.1' >
+            <type>QuantLib::Real</type>
+            <tensorRank>scalar</tensorRank>
+            <description>mean reversion speed.</description>
+          </Parameter>
+          <Parameter name='M' exampleValue ='1.0' default='1.0' >
+            <type>QuantLib::Real</type>
+            <tensorRank>scalar</tensorRank>
+            <description>mean reversion level (equal initial stoch vol).</description>
+          </Parameter>
+          <Parameter name='Z0' exampleValue ='1.0' default='1.0' >
+            <type>QuantLib::Real</type>
+            <tensorRank>scalar</tensorRank>
+            <description>initial stoch vol.</description>
+          </Parameter>
+          <Parameter name='Rho' exampleValue ='0.0' default='0.0' >
+            <type>QuantLib::Real</type>
+            <tensorRank>scalar</tensorRank>
+            <description>correlation.</description>
+          </Parameter>
+        </Parameters>
+      </ParameterList>
+    </Constructor>
+
+
     <Member name='qlRealTDStochVolModelAverageLambda' type='QuantLib::RealTDStochVolModel' >
       <description>Returns average volatility.</description>
       <libraryFunction>averageLambda</libraryFunction>

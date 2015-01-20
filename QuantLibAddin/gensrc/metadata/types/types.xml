@@ -273,6 +273,7 @@
     <DataType defaultSuperType='libraryClass'>QuantLib::RealStochVolModel</DataType>
     <DataType defaultSuperType='libraryClass'>QuantLib::RealTDStochVolModel</DataType>
     <DataType defaultSuperType='libraryClass'>QuantLib::RealPWCNumericalStochVolModel</DataType>
+    <DataType defaultSuperType='libraryClass'>QuantLib::RealPWCStochVolModel</DataType>
 
 
   </DataTypes>

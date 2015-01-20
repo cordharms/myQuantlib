@@ -106,6 +106,23 @@ namespace QuantLibAddin {
 			new QuantLib::RealPWCNumericalStochVolModel( times, lambda, b, eta, L, theta, m, z0, rho, absAccuracy, relAccuracy, maxEvaluations, dt ) );
 	}
 
+	RealPWCStochVolModel::RealPWCStochVolModel(
+                const boost::shared_ptr<ObjectHandler::ValueObject>& properties,
+                const std::vector<QuantLib::Time>&                   times,
+				const std::vector<QuantLib::Real>&                   lambda,
+				const std::vector<QuantLib::Real>&                   b,
+				const std::vector<QuantLib::Real>&                   eta,
+				const QuantLib::Real                                 L,
+				const QuantLib::Real                                 theta,
+				const QuantLib::Real                                 m,
+				const QuantLib::Real                                 z0,
+				const QuantLib::Real                                 rho,
+  				bool                                                 permanent)
+	: RealTDStochVolModel(properties, permanent) {
+        libraryObject_ = boost::shared_ptr<QuantLib::RealPWCStochVolModel>(
+			new QuantLib::RealPWCStochVolModel( times, lambda, b, eta, L, theta, m, z0, rho ) );
+	}
+
 
 }
 
