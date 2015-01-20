@@ -454,6 +454,11 @@
             <tensorRank>scalar</tensorRank>
             <description>correlation.</description>
           </Parameter>
+          <Parameter name='S0' exampleValue ='1.0' default='1.0' >
+            <type>QuantLib::Real</type>
+            <tensorRank>scalar</tensorRank>
+            <description>initial asset value.</description>
+          </Parameter>
           <Parameter name='AbsAccuracy' exampleValue ='0.001' default='0.001' >
             <type>QuantLib::Real</type>
             <tensorRank>scalar</tensorRank>
@@ -530,6 +535,11 @@
             <type>QuantLib::Real</type>
             <tensorRank>scalar</tensorRank>
             <description>correlation.</description>
+          </Parameter>
+          <Parameter name='S0' exampleValue ='1.0' default='1.0' >
+            <type>QuantLib::Real</type>
+            <tensorRank>scalar</tensorRank>
+            <description>initial asset value.</description>
           </Parameter>
         </Parameters>
       </ParameterList>
@@ -609,6 +619,54 @@
       </ReturnValue>
     </Member>
 
+    <Member name='qlRealTDStochVolModelVanillaOption' type='QuantLib::RealTDStochVolModel' >
+      <description>Returns a future zero coupon bond price in the Hull White model.</description>
+      <libraryFunction>vanillaOption</libraryFunction>
+      <SupportedPlatforms>
+        <!--SupportedPlatform name='Excel' calcInWizard='false'/-->
+        <SupportedPlatform name='Excel'/>
+        <!--SupportedPlatform name='Calc'/-->
+        <!--SupportedPlatform name='Cpp'/-->
+      </SupportedPlatforms>
+      <ParameterList>
+        <Parameters>
+          <Parameter name='ForwardPrice' exampleValue ='1.0' default='1.0'>
+            <type>QuantLib::Real</type>
+            <tensorRank>scalar</tensorRank>
+            <description>Forward price of underlying asset.</description>
+          </Parameter>
+          <Parameter name='StrikePrice' exampleValue ='1.0' default='1.0'>
+            <type>QuantLib::Real</type>
+            <tensorRank>scalar</tensorRank>
+            <description>Strike price of option.</description>
+          </Parameter>
+          <Parameter name='Term' exampleValue ='1.0' default='1.0'>
+            <type>QuantLib::Time</type>
+            <tensorRank>scalar</tensorRank>
+            <description>Time to exercise (in year fraction).</description>
+          </Parameter>
+          <Parameter name='CallOrPut' exampleValue ='1' default='1'>
+            <type>long</type>
+            <tensorRank>scalar</tensorRank>
+            <description>Call (+1) or Put (-1) option.</description>
+          </Parameter>
+          <Parameter name='Accuracy' exampleValue ='1.0e-4' default='1.0e-4'>
+            <type>QuantLib::Real</type>
+            <tensorRank>scalar</tensorRank>
+            <description>Accuracy for integration.</description>
+          </Parameter>
+          <Parameter name='MaxEvaluations' exampleValue ='1000' default='1000'>
+            <type>long</type>
+            <tensorRank>scalar</tensorRank>
+            <description>Maximum number of integrand function evaluations in integration.</description>
+          </Parameter>
+        </Parameters>
+      </ParameterList>
+      <ReturnValue>
+        <type>QuantLib::Real</type>
+        <tensorRank>scalar</tensorRank>
+      </ReturnValue>
+    </Member>
 
 
   </Functions>

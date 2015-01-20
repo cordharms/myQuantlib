@@ -518,6 +518,38 @@
       </ParameterList>
     </Constructor>
 
+    <Constructor name='qlRealMCVanillaOption'>
+      <libraryFunction>RealMCVanillaOption</libraryFunction>
+      <SupportedPlatforms>
+        <SupportedPlatform name='Excel'/>
+        <SupportedPlatform name='Cpp'/>
+      </SupportedPlatforms>
+      <ParameterList>
+        <Parameters>
+          <Parameter name='ObservationTime' exampleValue ='1' default='1' >
+            <type>QuantLib::Time</type>
+            <tensorRank>scalar</tensorRank>
+            <description>observation time (t).</description>
+          </Parameter>
+          <Parameter name='PayTime' exampleValue ='2' default='2' >
+            <type>QuantLib::Time</type>
+            <tensorRank>scalar</tensorRank>
+            <description>payment time (T).</description>
+          </Parameter>
+          <Parameter name='Strike' exampleValue ='2' default='2' >
+            <type>QuantLib::Real</type>
+            <tensorRank>scalar</tensorRank>
+            <description>option strike.</description>
+          </Parameter>
+          <Parameter name='CallOrPut' exampleValue ='2' default='2' >
+            <type>QuantLib::Real</type>
+            <tensorRank>scalar</tensorRank>
+            <description>call (+1) or Put (-1) option.</description>
+          </Parameter>
+        </Parameters>
+      </ParameterList>
+    </Constructor>
+
     <Constructor name='qlRealMCAnnuity'>
       <libraryFunction>RealMCAnnuity</libraryFunction>
       <SupportedPlatforms>
