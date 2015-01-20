@@ -48,6 +48,7 @@ namespace QuantLibAddin {
 		                         const std::vector< std::vector<QuantLib::Real> >&  Gamma,   // (benchmark rate) correlation matrix
 		                         // stochastic volatility process parameters
 		                         QuantLib::Real                                     theta,   // mean reversion speed
+				                 const QuantLib::RealStochasticProcess::VolEvolv    volEvolv,
 							     bool permanent);
     };
 

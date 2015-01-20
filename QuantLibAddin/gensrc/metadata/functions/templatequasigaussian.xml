@@ -96,6 +96,11 @@
             <tensorRank>scalar</tensorRank>
             <description>stoch vol mean reversion speads.</description>
           </Parameter>
+          <Parameter name='VolEvolvType' >
+            <type>QuantLib::RealStochasticProcess::VolEvolv</type>
+            <tensorRank>scalar</tensorRank>
+            <description>FullTruncation or LogNormalApproximation.</description>
+          </Parameter>
         </Parameters>
       </ParameterList>
     </Constructor>

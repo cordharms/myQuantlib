@@ -85,27 +85,6 @@ namespace QuantLibAddin {
 			new QuantLib::RealStochVolModel( lambda, b, L, theta, m, eta, z0, rho ));
     }
 
-	RealPWCNumericalStochVolModel::RealPWCNumericalStochVolModel(
-                const boost::shared_ptr<ObjectHandler::ValueObject>& properties,
-                const std::vector<QuantLib::Time>&                   times,
-				const std::vector<QuantLib::Real>&                   lambda,
-				const std::vector<QuantLib::Real>&                   b,
-				const std::vector<QuantLib::Real>&                   eta,
-				const QuantLib::Real                                 L,
-				const QuantLib::Real                                 theta,
-				const QuantLib::Real                                 m,
-				const QuantLib::Real                                 z0,
-				const QuantLib::Real                                 rho,
-				const QuantLib::Real                                 S0,
-                const QuantLib::Real                                 absAccuracy,
-			    const QuantLib::Real                                 relAccuracy,
-			    const size_t                                         maxEvaluations,
-				const QuantLib::Time                                 dt,
-  				bool                                                 permanent)
-	: RealTDStochVolModel(properties, permanent) {
-        libraryObject_ = boost::shared_ptr<QuantLib::RealPWCNumericalStochVolModel>(
-			new QuantLib::RealPWCNumericalStochVolModel( times, lambda, b, eta, L, theta, m, z0, rho, S0, absAccuracy, relAccuracy, maxEvaluations, dt ) );
-	}
 
 	RealPWCStochVolModel::RealPWCStochVolModel(
                 const boost::shared_ptr<ObjectHandler::ValueObject>& properties,
@@ -119,10 +98,11 @@ namespace QuantLibAddin {
 				const QuantLib::Real                                 z0,
 				const QuantLib::Real                                 rho,
 				const QuantLib::Real                                 S0,
+				const QuantLib::RealStochasticProcess::VolEvolv      volEvolv,
   				bool                                                 permanent)
 	: RealTDStochVolModel(properties, permanent) {
         libraryObject_ = boost::shared_ptr<QuantLib::RealPWCStochVolModel>(
-			new QuantLib::RealPWCStochVolModel( times, lambda, b, eta, L, theta, m, z0, rho, S0 ) );
+			new QuantLib::RealPWCStochVolModel( times, lambda, b, eta, L, theta, m, z0, rho, S0, volEvolv ) );
 	}
 
 

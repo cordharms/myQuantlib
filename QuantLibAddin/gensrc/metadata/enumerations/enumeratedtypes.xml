@@ -1831,6 +1831,23 @@
       </EnumeratedTypes>
     </EnumeratedTypeGroup>
 
+
+    <EnumeratedTypeGroup type='QuantLib::RealStochasticProcess::VolEvolv'>
+      <includeFile>oh/enumerations/typefactory.hpp</includeFile>
+      <constructor>false</constructor>
+      <EnumeratedTypes>
+        <EnumeratedType>
+          <string>FullTruncation</string>
+          <value>QuantLib::RealStochasticProcess::VolEvolv(QuantLib::RealStochasticProcess::FullTruncation)</value>
+        </EnumeratedType>
+        <EnumeratedType>
+          <string>LogNormalApproximation</string>
+          <value>QuantLib::RealStochasticProcess::VolEvolv(QuantLib::RealStochasticProcess::LogNormalApproximation)</value>
+        </EnumeratedType>
+      </EnumeratedTypes>
+    </EnumeratedTypeGroup>
+
+
   </EnumeratedTypeGroups>
 
 </root>

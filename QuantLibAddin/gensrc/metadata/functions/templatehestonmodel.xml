@@ -399,89 +399,6 @@
       </ReturnValue>
     </Member>
 
-    <!-- Stochastic Vol Model with piecewise constant parameters and numerical integrion -->
-    
-    <Constructor name='qlRealPWCNumericalStochVolModel'>
-      <libraryFunction>RealPWCNumericalStochVolModel</libraryFunction>
-      <SupportedPlatforms>
-        <SupportedPlatform name='Excel'/>
-        <SupportedPlatform name='Cpp'/>
-      </SupportedPlatforms>
-      <ParameterList>
-        <Parameters>
-          <Parameter name='Times' >
-            <type>QuantLib::Time</type>
-            <tensorRank>vector</tensorRank>
-            <description>time grid for model parameters (in year fractions).</description>
-          </Parameter>
-          <Parameter name='Lambda' >
-            <type>QuantLib::Real</type>
-            <tensorRank>vector</tensorRank>
-            <description>vector of (log-) volatilities.</description>
-          </Parameter>
-          <Parameter name='B' >
-            <type>QuantLib::Real</type>
-            <tensorRank>vector</tensorRank>
-            <description>skew vector, 0...1 (normal ... log-normal).</description>
-          </Parameter>
-          <Parameter name='Eta' exampleValue ='1.0' default='1.0' >
-            <type>QuantLib::Real</type>
-            <tensorRank>vector</tensorRank>
-            <description>vector of vol-of-vol.</description>
-          </Parameter>
-          <Parameter name='L' exampleValue ='1.0' default='1.0' >
-            <type>QuantLib::Real</type>
-            <tensorRank>scalar</tensorRank>
-            <description>level, L = S0.</description>
-          </Parameter>
-          <Parameter name='Theta' exampleValue ='0.1' default='0.1' >
-            <type>QuantLib::Real</type>
-            <tensorRank>scalar</tensorRank>
-            <description>mean reversion speed.</description>
-          </Parameter>
-          <Parameter name='M' exampleValue ='1.0' default='1.0' >
-            <type>QuantLib::Real</type>
-            <tensorRank>scalar</tensorRank>
-            <description>mean reversion level (equal initial stoch vol).</description>
-          </Parameter>
-          <Parameter name='Z0' exampleValue ='1.0' default='1.0' >
-            <type>QuantLib::Real</type>
-            <tensorRank>scalar</tensorRank>
-            <description>initial stoch vol.</description>
-          </Parameter>
-          <Parameter name='Rho' exampleValue ='0.0' default='0.0' >
-            <type>QuantLib::Real</type>
-            <tensorRank>scalar</tensorRank>
-            <description>correlation.</description>
-          </Parameter>
-          <Parameter name='S0' exampleValue ='1.0' default='1.0' >
-            <type>QuantLib::Real</type>
-            <tensorRank>scalar</tensorRank>
-            <description>initial asset value.</description>
-          </Parameter>
-          <Parameter name='AbsAccuracy' exampleValue ='0.001' default='0.001' >
-            <type>QuantLib::Real</type>
-            <tensorRank>scalar</tensorRank>
-            <description>absolute accuracy for numerical integration.</description>
-          </Parameter>
-          <Parameter name='RelAccuracy' exampleValue ='0.001' default='0.001' >
-            <type>QuantLib::Real</type>
-            <tensorRank>scalar</tensorRank>
-            <description>relative accuracy for numerical integration.</description>
-          </Parameter>
-          <Parameter name='MaxEvaluations' exampleValue ='1000' default='1000' >
-            <type>QuantLib::Size</type>
-            <tensorRank>scalar</tensorRank>
-            <description>maximum number of function evaluations for integration.</description>
-          </Parameter>
-          <Parameter name='RungeKuttaStepSize' exampleValue ='1' default='1' >
-            <type>QuantLib::Real</type>
-            <tensorRank>scalar</tensorRank>
-            <description>step size (in year fractions) for Runge Kutta ODE method.</description>
-          </Parameter>
-        </Parameters>
-      </ParameterList>
-    </Constructor>
 
     <Constructor name='qlRealPWCStochVolModel'>
       <libraryFunction>RealPWCStochVolModel</libraryFunction>
@@ -540,6 +457,11 @@
             <type>QuantLib::Real</type>
             <tensorRank>scalar</tensorRank>
             <description>initial asset value.</description>
+          </Parameter>
+          <Parameter name='VolEvolvType' >
+            <type>QuantLib::RealStochasticProcess::VolEvolv</type>
+            <tensorRank>scalar</tensorRank>
+            <description>FullTruncation or LogNormalApproximation.</description>
           </Parameter>
         </Parameters>
       </ParameterList>
