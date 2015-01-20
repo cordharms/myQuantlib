@@ -260,10 +260,12 @@
     <DataType defaultSuperType='libraryClass'>QuantLib::FixedRateBondOption</DataType>
     <DataType defaultSuperType='libraryClass'>QuantLib::BondOptionEngine</DataType>
 
+
+    <DataType defaultSuperType='libraryClass'>QuantLib::RealStochasticProcess</DataType>
     <DataType defaultSuperType='libraryClass'>QuantLib::RealQuasiGaussianModel</DataType>
-    <DataType defaultSuperType='libraryClass'>QuantLib::RealQGMCSimulation</DataType>
-    <DataType defaultSuperType='libraryClass'>QuantLib::RealQGMCPayoff</DataType>
-    <DataType defaultSuperType='libraryClass'>QuantLib::RealQGMCPayoffPricer</DataType>
+    <DataType defaultSuperType='libraryClass'>QuantLib::RealMCSimulation</DataType>
+    <DataType defaultSuperType='libraryClass'>QuantLib::RealMCPayoff</DataType>
+    <DataType defaultSuperType='libraryClass'>QuantLib::RealMCPayoffPricer</DataType>
 
     <DataType defaultSuperType='libraryClass'>QuantLib::HestonProcess</DataType>
     <DataType defaultSuperType='libraryClass'>QuantLib::HestonModel</DataType>

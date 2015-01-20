@@ -26,11 +26,11 @@ namespace QuantLib {
 
 namespace QuantLibAddin {
 
-    OH_LIB_CLASS(TemplateModel, QuantLib::TemplateModel);
+    OH_LIB_CLASS(RealStochasticProcess, QuantLib::RealStochasticProcess);
 
-    class RealQuasiGaussianModel : public TemplateModel {
+    class RealQuasiGaussianModel : public RealStochasticProcess {
       public:
-		  RealQuasiGaussianModel(const boost::shared_ptr<ObjectHandler::ValueObject>& properties, bool permanent) : TemplateModel(properties,permanent) {}
+		  RealQuasiGaussianModel(const boost::shared_ptr<ObjectHandler::ValueObject>& properties, bool permanent) : RealStochasticProcess(properties,permanent) {}
           RealQuasiGaussianModel(const boost::shared_ptr<ObjectHandler::ValueObject>& properties,
 							     const QuantLib::Handle<QuantLib::YieldTermStructure>& hYTS,
 		                         // number of yield curve factors (excluding stoch. vol)
@@ -53,52 +53,52 @@ namespace QuantLibAddin {
 
 	OH_LIB_CLASS(TemplateSimulation, QuantLib::TemplateSimulation);
 
-	class RealQGMCSimulation : public TemplateSimulation {
+	class RealMCSimulation : public TemplateSimulation {
 	public:
-		RealQGMCSimulation( const boost::shared_ptr<ObjectHandler::ValueObject>& properties,
-                              const boost::shared_ptr<QuantLib::RealQuasiGaussianModel> process,
-			                  const std::vector<QuantLib::Real>&              simTimes,
-							  const std::vector<QuantLib::Real>&              obsTimes,
-							  size_t                                          nPaths,
-							  QuantLib::BigNatural                            seed,
-							  bool                                            richardsonExtrapolation,
-							  bool                                            timeInterpolation,
-							  bool                                            storeBrownians,
-							  bool permanent);
+		RealMCSimulation( const boost::shared_ptr<ObjectHandler::ValueObject>& properties,
+                          const boost::shared_ptr<QuantLib::RealStochasticProcess> process,
+			              const std::vector<QuantLib::Real>&              simTimes,
+						  const std::vector<QuantLib::Real>&              obsTimes,
+						  size_t                                          nPaths,
+						  QuantLib::BigNatural                            seed,
+						  bool                                            richardsonExtrapolation,
+						  bool                                            timeInterpolation,
+						  bool                                            storeBrownians,
+						  bool permanent);
 	};
 
-	OH_LIB_CLASS(RealQGMCPayoffPricerBase, QuantLib::RealQGMCPayoffPricer);
+	OH_LIB_CLASS(RealMCPayoffPricerBase, QuantLib::RealMCPayoffPricer);
 
-	class RealQGMCPayoffPricer : public RealQGMCPayoffPricerBase {
+	class RealMCPayoffPricer : public RealMCPayoffPricerBase {
 	public:
-		RealQGMCPayoffPricer( const boost::shared_ptr<ObjectHandler::ValueObject>&              properties,
-			                  const std::vector< boost::shared_ptr<QuantLib::RealQGMCPayoff> >& payoffs,
-							  const boost::shared_ptr<QuantLib::RealQGMCSimulation>&            simulation,
+		RealMCPayoffPricer(   const boost::shared_ptr<ObjectHandler::ValueObject>&              properties,
+			                  const std::vector< boost::shared_ptr<QuantLib::RealMCPayoff> >&   payoffs,
+							  const boost::shared_ptr<QuantLib::RealMCSimulation>&            simulation,
 			                  bool permanent);
 	};
 
-	OH_LIB_CLASS(RealQGMCPayoff, QuantLib::RealQGMCPayoff);
+	OH_LIB_CLASS(RealMCPayoff, QuantLib::RealMCPayoff);
 
-	class RealQGMCCash : public RealQGMCPayoff {
+	class RealMCCash : public RealMCPayoff {
 	public:
-		RealQGMCCash( const boost::shared_ptr<ObjectHandler::ValueObject>& properties,
+		RealMCCash( const boost::shared_ptr<ObjectHandler::ValueObject>& properties,
 			          const QuantLib::Time  t,
 					  const QuantLib::Time  T,
 			          bool permanent);
 	};
 
-	class RealQGMCAnnuity : public RealQGMCPayoff {
+	class RealMCAnnuity : public RealMCPayoff {
 	public:
-		RealQGMCAnnuity( const boost::shared_ptr<ObjectHandler::ValueObject>& properties,
+		RealMCAnnuity( const boost::shared_ptr<ObjectHandler::ValueObject>& properties,
 			             const QuantLib::Time                                 t,
 						 const std::vector<QuantLib::Time>&                   payTimes,
 						 const std::vector<QuantLib::Real>&                   payWeights,
 			             bool permanent);
 	};
 
-	class RealQGMCModelSwaption : public RealQGMCPayoff {
+	class RealMCModelSwaption : public RealMCPayoff {
 	public:
-		RealQGMCModelSwaption( const boost::shared_ptr<ObjectHandler::ValueObject>& properties,
+		RealMCModelSwaption( const boost::shared_ptr<ObjectHandler::ValueObject>& properties,
 			                   const QuantLib::Time                                 t,
 						       const std::vector<QuantLib::Time>&                   times,
 						       const std::vector<QuantLib::Real>&                   payWeights,

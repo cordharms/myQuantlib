@@ -249,10 +249,10 @@
       </ReturnValue>
     </Member>
 
-    <!-- Constructor(s) for RealQGMCSimulation -->
+    <!-- Constructor(s) for RealMCSimulation -->
 
-    <Constructor name='qlRealQGMCSimulation'>
-      <libraryFunction>RealQGMCSimulation</libraryFunction>
+    <Constructor name='qlRealMCSimulation'>
+      <libraryFunction>RealMCSimulation</libraryFunction>
       <SupportedPlatforms>
         <SupportedPlatform name='Excel'/>
         <SupportedPlatform name='Cpp'/>
@@ -260,7 +260,7 @@
       <ParameterList>
         <Parameters>
           <Parameter name='ProcessOrModel' >
-            <type>QuantLib::RealQuasiGaussianModel</type>
+            <type>QuantLib::RealStochasticProcess</type>
             <tensorRank>scalar</tensorRank>
             <description>reference to process or model.</description>
           </Parameter>
@@ -303,9 +303,9 @@
       </ParameterList>
     </Constructor>
 
-    <!-- Run simulation with RealQGMCSimulation -->
+    <!-- Run simulation with RealMCSimulation -->
 
-    <Member name='qlRealQGMCSimulationSimulate' type='QuantLib::RealQGMCSimulation' >
+    <Member name='qlRealMCSimulationSimulate' type='QuantLib::RealMCSimulation' >
       <description>Simulate MC paths.</description>
       <libraryFunction>simulate</libraryFunction>
       <SupportedPlatforms>
@@ -323,9 +323,9 @@
       </ReturnValue>
     </Member>
 
-    <!-- Inspectors for RealQGMCSimulation -->
+    <!-- Inspectors for RealMCSimulation -->
 
-    <Member name='qlRealQGMCSimulationSimTimes' type='QuantLib::RealQGMCSimulation' >
+    <Member name='qlRealMCSimulationSimTimes' type='QuantLib::RealMCSimulation' >
       <description>Returns simulation times.</description>
       <libraryFunction>simTimes</libraryFunction>
       <SupportedPlatforms>
@@ -343,7 +343,7 @@
       </ReturnValue>
     </Member>
 
-    <Member name='qlRealQGMCSimulationObsTimes' type='QuantLib::RealQGMCSimulation' >
+    <Member name='qlRealMCSimulationObsTimes' type='QuantLib::RealMCSimulation' >
       <description>Returns observation times.</description>
       <libraryFunction>obsTimes</libraryFunction>
       <SupportedPlatforms>
@@ -361,7 +361,7 @@
       </ReturnValue>
     </Member>
 
-    <Member name='qlRealQGMCSimulationNPaths' type='QuantLib::RealQGMCSimulation' >
+    <Member name='qlRealMCSimulationNPaths' type='QuantLib::RealMCSimulation' >
       <description>Returns number of MC paths.</description>
       <libraryFunction>nPaths</libraryFunction>
       <SupportedPlatforms>
@@ -379,7 +379,7 @@
       </ReturnValue>
     </Member>
 
-    <Member name='qlRealQGMCSimulationBrownian' type='QuantLib::RealQGMCSimulation' >
+    <Member name='qlRealMCSimulationBrownian' type='QuantLib::RealMCSimulation' >
       <description>Returns the n-th Brownian increments.</description>
       <libraryFunction>brownian</libraryFunction>
       <SupportedPlatforms>
@@ -403,7 +403,7 @@
       </ReturnValue>
     </Member>
 
-    <Member name='qlRealQGMCSimulationPath' type='QuantLib::RealQGMCSimulation' >
+    <Member name='qlRealMCSimulationPath' type='QuantLib::RealMCSimulation' >
       <description>Returns the n-th MC path.</description>
       <libraryFunction>observedPath</libraryFunction>
       <SupportedPlatforms>
@@ -429,23 +429,23 @@
 
     <!-- Payoffs and Pricer -->
 
-    <Procedure name='qlRealQGMCPayoffsNPV' >
+    <Procedure name='qlRealMCPayoffsNPV' >
       <description>Returns NPV of simulated payoff.</description>
-      <alias>QuantLib::RealQGMCPayoffPricer::NPV</alias>
+      <alias>QuantLib::RealMCPayoffPricer::NPV</alias>
       <SupportedPlatforms>
         <SupportedPlatform name='Excel'/>
       </SupportedPlatforms>
       <ParameterList>
         <Parameters>
           <Parameter name='Payoffs' >
-            <type>QuantLib::RealQGMCPayoff</type>
+            <type>QuantLib::RealMCPayoff</type>
             <tensorRank>vector</tensorRank>
             <description>reference to payoffs.</description>
           </Parameter>
           <Parameter name='Simulation' >
-            <type>QuantLib::RealQGMCSimulation</type>
+            <type>QuantLib::RealMCSimulation</type>
             <tensorRank>scalar</tensorRank>
-            <description>reference to RealQGMCSimulation object.</description>
+            <description>reference to RealMCSimulation object.</description>
           </Parameter>
         </Parameters>
       </ParameterList>
@@ -456,8 +456,8 @@
     </Procedure>
 
 
-    <Constructor name='qlRealQGMCPayoffPricer'>
-      <libraryFunction>RealQGMCPayoffPricer</libraryFunction>
+    <Constructor name='qlRealMCPayoffPricer'>
+      <libraryFunction>RealMCPayoffPricer</libraryFunction>
       <SupportedPlatforms>
         <SupportedPlatform name='Excel'/>
         <SupportedPlatform name='Cpp'/>
@@ -465,20 +465,20 @@
       <ParameterList>
         <Parameters>
           <Parameter name='Payoffs' >
-            <type>QuantLib::RealQGMCPayoff</type>
+            <type>QuantLib::RealMCPayoff</type>
             <tensorRank>vector</tensorRank>
             <description>reference to payoffs.</description>
           </Parameter>
           <Parameter name='Simulation' >
-            <type>QuantLib::RealQGMCSimulation</type>
+            <type>QuantLib::RealMCSimulation</type>
             <tensorRank>scalar</tensorRank>
-            <description>reference to RealQGMCSimulation object.</description>
+            <description>reference to RealMCSimulation object.</description>
           </Parameter>
         </Parameters>
       </ParameterList>
     </Constructor>
 
-    <Member name='qlRealQGMCPayoffPricerNPV' type='QuantLib::RealQGMCPayoffPricer' >
+    <Member name='qlRealMCPayoffPricerNPV' type='QuantLib::RealMCPayoffPricer' >
       <description>Returns NPV of simulated payoff.</description>
       <libraryFunction>NPV</libraryFunction>
       <SupportedPlatforms>
@@ -496,8 +496,8 @@
       </ReturnValue>
     </Member>
 
-    <Constructor name='qlRealQGMCCash'>
-      <libraryFunction>RealQGMCCash</libraryFunction>
+    <Constructor name='qlRealMCCash'>
+      <libraryFunction>RealMCCash</libraryFunction>
       <SupportedPlatforms>
         <SupportedPlatform name='Excel'/>
         <SupportedPlatform name='Cpp'/>
@@ -518,8 +518,8 @@
       </ParameterList>
     </Constructor>
 
-    <Constructor name='qlRealQGMCAnnuity'>
-      <libraryFunction>RealQGMCAnnuity</libraryFunction>
+    <Constructor name='qlRealMCAnnuity'>
+      <libraryFunction>RealMCAnnuity</libraryFunction>
       <SupportedPlatforms>
         <SupportedPlatform name='Excel'/>
         <SupportedPlatform name='Cpp'/>
@@ -545,8 +545,8 @@
       </ParameterList>
     </Constructor>
 
-    <Constructor name='qlRealQGMCModelSwaption'>
-      <libraryFunction>RealQGMCModelSwaption</libraryFunction>
+    <Constructor name='qlRealMCModelSwaption'>
+      <libraryFunction>RealMCModelSwaption</libraryFunction>
       <SupportedPlatforms>
         <SupportedPlatform name='Excel'/>
         <SupportedPlatform name='Cpp'/>
