@@ -68,6 +68,7 @@
     <categoryName>templateauxilliaries</categoryName>
     <categoryName>templatequasigaussian</categoryName>
     <categoryName>templatehestonmodel</categoryName>
+    <categoryName>templatemontecarlo</categoryName>
   </addinCategoryNames>
   
 </root>

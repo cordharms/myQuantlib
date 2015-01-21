@@ -94,6 +94,9 @@
     <Filter Include="Experimental\Template\StochVol">
       <UniqueIdentifier>{1043bab4-6f7b-4ba5-bd49-0a3b2fc31396}</UniqueIdentifier>
     </Filter>
+    <Filter Include="Experimental\Template\MonteCarlo">
+      <UniqueIdentifier>{a6777064-ffe3-46c9-ab3b-199bd6084b2c}</UniqueIdentifier>
+    </Filter>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="qlo\enumerations\register\register_all.cpp">
@@ -874,6 +877,18 @@
       <Filter>serialization\register</Filter>
     </ClCompile>
     <ClCompile Include="qlo\valueobjects\vo_templatehestonmodel.cpp">
+      <Filter>valueobjects</Filter>
+    </ClCompile>
+    <ClCompile Include="qlo\templatemontecarlo.cpp">
+      <Filter>Experimental\Template\MonteCarlo</Filter>
+    </ClCompile>
+    <ClCompile Include="qlo\serialization\create\create_templatemontecarlo.cpp">
+      <Filter>serialization\create</Filter>
+    </ClCompile>
+    <ClCompile Include="qlo\serialization\register\serialization_templatemontecarlo.cpp">
+      <Filter>serialization\register</Filter>
+    </ClCompile>
+    <ClCompile Include="qlo\valueobjects\vo_templatemontecarlo.cpp">
       <Filter>valueobjects</Filter>
     </ClCompile>
   </ItemGroup>
@@ -1778,6 +1793,18 @@
       <Filter>serialization\register</Filter>
     </ClInclude>
     <ClInclude Include="qlo\valueobjects\vo_templatehestonmodel.hpp">
+      <Filter>valueobjects</Filter>
+    </ClInclude>
+    <ClInclude Include="qlo\templatemontecarlo.hpp">
+      <Filter>Experimental\Template\MonteCarlo</Filter>
+    </ClInclude>
+    <ClInclude Include="qlo\serialization\create\create_templatemontecarlo.hpp">
+      <Filter>serialization\create</Filter>
+    </ClInclude>
+    <ClInclude Include="qlo\serialization\register\serialization_templatemontecarlo.hpp">
+      <Filter>serialization\register</Filter>
+    </ClInclude>
+    <ClInclude Include="qlo\valueobjects\vo_templatemontecarlo.hpp">
       <Filter>valueobjects</Filter>
     </ClInclude>
   </ItemGroup>

@@ -8,13 +8,13 @@
 #ifndef qla_templatequasigaussianmodels_hpp
 #define qla_templatequasigaussianmodels_hpp
 
-#include <ql/types.hpp>
-
-#include <ql/experimental/template/qgaussian/quasigaussianmodels.hpp>
-
 #include <qlo/baseinstruments.hpp>
 #include <qlo/termstructures.hpp>
 #include <qlo/pricingengines.hpp>
+
+#include <ql/types.hpp>
+#include <ql/experimental/template/qgaussian/quasigaussianmodels.hpp>
+
 
 
 namespace QuantLib {
@@ -52,71 +52,6 @@ namespace QuantLibAddin {
 							     bool permanent);
     };
 
-	OH_LIB_CLASS(TemplateSimulation, QuantLib::TemplateSimulation);
-
-	class RealMCSimulation : public TemplateSimulation {
-	public:
-		RealMCSimulation( const boost::shared_ptr<ObjectHandler::ValueObject>& properties,
-                          const boost::shared_ptr<QuantLib::RealStochasticProcess> process,
-			              const std::vector<QuantLib::Real>&              simTimes,
-						  const std::vector<QuantLib::Real>&              obsTimes,
-						  size_t                                          nPaths,
-						  QuantLib::BigNatural                            seed,
-						  bool                                            richardsonExtrapolation,
-						  bool                                            timeInterpolation,
-						  bool                                            storeBrownians,
-						  bool permanent);
-	};
-
-	OH_LIB_CLASS(RealMCPayoffPricerBase, QuantLib::RealMCPayoffPricer);
-
-	class RealMCPayoffPricer : public RealMCPayoffPricerBase {
-	public:
-		RealMCPayoffPricer(   const boost::shared_ptr<ObjectHandler::ValueObject>&              properties,
-			                  const std::vector< boost::shared_ptr<QuantLib::RealMCPayoff> >&   payoffs,
-							  const boost::shared_ptr<QuantLib::RealMCSimulation>&            simulation,
-			                  bool permanent);
-	};
-
-	OH_LIB_CLASS(RealMCPayoff, QuantLib::RealMCPayoff);
-
-	class RealMCCash : public RealMCPayoff {
-	public:
-		RealMCCash( const boost::shared_ptr<ObjectHandler::ValueObject>& properties,
-			          const QuantLib::Time  t,
-					  const QuantLib::Time  T,
-			          bool permanent);
-	};
-
-	class RealMCVanillaOption : public RealMCPayoff {
-	public:
-		RealMCVanillaOption( const boost::shared_ptr<ObjectHandler::ValueObject>& properties,
-			          const QuantLib::Time  t,
-					  const QuantLib::Time  T,
-					  const QuantLib::Real  strike,
-					  const QuantLib::Real  callOrPut,
-			          bool permanent);
-	};
-
-	class RealMCAnnuity : public RealMCPayoff {
-	public:
-		RealMCAnnuity( const boost::shared_ptr<ObjectHandler::ValueObject>& properties,
-			             const QuantLib::Time                                 t,
-						 const std::vector<QuantLib::Time>&                   payTimes,
-						 const std::vector<QuantLib::Real>&                   payWeights,
-			             bool permanent);
-	};
-
-	class RealMCModelSwaption : public RealMCPayoff {
-	public:
-		RealMCModelSwaption( const boost::shared_ptr<ObjectHandler::ValueObject>& properties,
-			                   const QuantLib::Time                                 t,
-						       const std::vector<QuantLib::Time>&                   times,
-						       const std::vector<QuantLib::Real>&                   payWeights,
-							   QuantLib::Real                                       strike,
-							   QuantLib::Real                                       payOrRec,
-			                   bool permanent);
-	};
 
 
 }  // namespace QuantLibAddin

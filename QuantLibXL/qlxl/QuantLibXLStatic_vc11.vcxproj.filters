@@ -428,6 +428,12 @@
     <ClCompile Include="register\register_templatehestonmodel.cpp">
       <Filter>register</Filter>
     </ClCompile>
+    <ClCompile Include="functions\templatemontecarlo.cpp">
+      <Filter>functions</Filter>
+    </ClCompile>
+    <ClCompile Include="register\register_templatemontecarlo.cpp">
+      <Filter>register</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="register\register_all.hpp">

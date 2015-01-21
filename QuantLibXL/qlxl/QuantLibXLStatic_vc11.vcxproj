@@ -573,6 +573,7 @@
     <ClCompile Include="functions\templateauxilliaries.cpp" />
     <ClCompile Include="functions\templatehestonmodel.cpp" />
     <ClCompile Include="functions\templatehullwhite.cpp" />
+    <ClCompile Include="functions\templatemontecarlo.cpp" />
     <ClCompile Include="functions\templatequasigaussian.cpp" />
     <ClCompile Include="register\addin.cpp" />
     <ClCompile Include="register\register_abcd.cpp" />
@@ -635,6 +636,7 @@
     <ClCompile Include="register\register_templateauxilliaries.cpp" />
     <ClCompile Include="register\register_templatehestonmodel.cpp" />
     <ClCompile Include="register\register_templatehullwhite.cpp" />
+    <ClCompile Include="register\register_templatemontecarlo.cpp" />
     <ClCompile Include="register\register_templatequasigaussian.cpp" />
     <ClCompile Include="register\register_termstructures.cpp" />
     <ClCompile Include="register\register_timeseries.cpp" />
