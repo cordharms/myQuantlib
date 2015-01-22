@@ -111,6 +111,25 @@ namespace QuantLibAddin {
             QuantLib::BlackCapFloorEngine(hYTS, vol));
     }
 
+	BachelierBlackCapFloorEngine::BachelierBlackCapFloorEngine(
+            const boost::shared_ptr<ObjectHandler::ValueObject>& properties,
+            const QuantLib::Handle<QuantLib::YieldTermStructure>& hYTS,
+            const QuantLib::Handle<QuantLib::Quote>& vol,
+            const QuantLib::DayCounter& dayCounter,
+			bool permanent) : BlackCapFloorEngine(properties,hYTS,vol,0.0,dayCounter,permanent) {
+        libraryObject_ = boost::shared_ptr<QuantLib::PricingEngine>(new
+            QuantLib::BachelierBlackCapFloorEngine(hYTS,vol,dayCounter) );
+	}
+
+    BachelierBlackCapFloorEngine::BachelierBlackCapFloorEngine(
+            const boost::shared_ptr<ObjectHandler::ValueObject>& properties,
+            const QuantLib::Handle<QuantLib::YieldTermStructure>& hYTS,
+            const QuantLib::Handle<QuantLib::OptionletVolatilityStructure>& vol,
+            bool permanent) : BlackCapFloorEngine(properties,hYTS,vol,0.0,permanent) {
+        libraryObject_ = boost::shared_ptr<QuantLib::PricingEngine>(new
+            QuantLib::BachelierBlackCapFloorEngine(hYTS,vol) );
+	}
+
     AnalyticCapFloorEngine::AnalyticCapFloorEngine(
         const boost::shared_ptr<ObjectHandler::ValueObject>& properties,
         const boost::shared_ptr < QuantLib::AffineModel >& model,
