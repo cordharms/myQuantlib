@@ -254,6 +254,44 @@
       </ReturnValue>
     </Member>
 
+    <!-- Quasi Gaussian Swaption model -->
+    
+    <Constructor name='qlRealQGSwaptionModel'>
+      <libraryFunction>RealQGSwaptionModel</libraryFunction>
+      <SupportedPlatforms>
+        <SupportedPlatform name='Excel'/>
+        <SupportedPlatform name='Cpp'/>
+      </SupportedPlatforms>
+      <ParameterList>
+        <Parameters>
+          <Parameter name='QuasiGaussianModel' >
+            <type>QuantLib::RealQuasiGaussianModel</type>
+            <tensorRank>scalar</tensorRank>
+            <description>reference to base model.</description>
+          </Parameter>
+          <Parameter name='SwapTimes' exampleValue='5, 10, ...'>
+            <type>QuantLib::Time</type>
+            <tensorRank>vector</tensorRank>
+            <description>underlying swap exercise and paydates</description>
+          </Parameter>
+          <Parameter name='SwapWeights' exampleValue ='1.0, 1.0, ...' default='1.0'>
+            <type>QuantLib::Real</type>
+            <tensorRank>vector</tensorRank>
+            <description>underlying swap annuity year fractions.</description>
+          </Parameter>
+          <Parameter name='ModelTimes' exampleValue='0, 1, 2, ...'>
+            <type>QuantLib::Time</type>
+            <tensorRank>vector</tensorRank>
+            <description>time grid for numerical integration.</description>
+          </Parameter>
+          <Parameter name='UseExpectedXY' exampleValue ='true' default='true'>
+            <type>bool</type>
+            <tensorRank>scalar</tensorRank>
+            <description>evaluate E^A[x(t)] and E^A[y(t)].</description>
+          </Parameter>
+        </Parameters>
+      </ParameterList>
+    </Constructor>
 
 
   </Functions>

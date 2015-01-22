@@ -263,6 +263,8 @@
 
     <DataType defaultSuperType='libraryClass'>QuantLib::RealStochasticProcess</DataType>
     <DataType defaultSuperType='libraryClass'>QuantLib::RealQuasiGaussianModel</DataType>
+    <DataType defaultSuperType='libraryClass'>QuantLib::RealQGSwaptionModel</DataType>
+
     <DataType defaultSuperType='libraryClass'>QuantLib::RealMCSimulation</DataType>
     <DataType defaultSuperType='libraryClass'>QuantLib::RealMCPayoff</DataType>
     <DataType defaultSuperType='libraryClass'>QuantLib::RealMCPayoffPricer</DataType>
@@ -278,7 +280,6 @@
     <DataType defaultSuperType='libraryClass'>QuantLib::RealPWCStochVolModel</DataType>
     
     <DataType defaultSuperType='enumeration'>QuantLib::RealStochasticProcess::VolEvolv</DataType>
-
 
   </DataTypes>
 
