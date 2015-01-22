@@ -36,6 +36,16 @@ namespace QuantLibAddin {
 			new QuantLib::RealQuasiGaussianModel( hYTS, d, times, lambda, alpha, b, eta, delta, chi, Gamma, theta, volEvolv ));
     }
 
-
+	RealQGSwaptionModel::RealQGSwaptionModel(
+		                    const boost::shared_ptr<ObjectHandler::ValueObject>&         properties,
+						    const boost::shared_ptr<QuantLib::RealQuasiGaussianModel>&   model,
+			                const std::vector<QuantLib::Time>&                           swapTimes,    // T[0], ..., T[N]
+			                const std::vector<QuantLib::Real>&                           swapWeights,  // w[0], ..., w[N-1]
+			                const std::vector<QuantLib::Time>&                           modelTimes,   // time grid for numerical integration
+			                const bool                                                   useExpectedXY, // evaluate E^A [ x(t) ], E^A [ y(t) ] as expansion points
+							bool permanent) : RealTDStochVolModel(properties,permanent) {
+        libraryObject_ = boost::shared_ptr<QuantLib::RealQGSwaptionModel>(
+			new QuantLib::RealQGSwaptionModel( model, swapTimes, swapWeights, modelTimes, useExpectedXY ) );
+	}
 
 }

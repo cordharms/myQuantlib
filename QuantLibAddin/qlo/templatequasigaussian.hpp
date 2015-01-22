@@ -12,6 +12,8 @@
 #include <qlo/termstructures.hpp>
 #include <qlo/pricingengines.hpp>
 
+#include <qlo/templatehestonmodel.hpp>
+
 #include <ql/types.hpp>
 #include <ql/experimental/template/qgaussian/quasigaussianmodels.hpp>
 
@@ -26,7 +28,7 @@ namespace QuantLib {
 
 namespace QuantLibAddin {
 
-    OH_LIB_CLASS(RealStochasticProcess, QuantLib::RealStochasticProcess);
+//    OH_LIB_CLASS(RealStochasticProcess, QuantLib::RealStochasticProcess);
 
     class RealQuasiGaussianModel : public RealStochasticProcess {
       public:
@@ -52,7 +54,16 @@ namespace QuantLibAddin {
 							     bool permanent);
     };
 
-
+	class RealQGSwaptionModel : public RealTDStochVolModel {
+	public:
+		RealQGSwaptionModel(const boost::shared_ptr<ObjectHandler::ValueObject>&         properties,
+						    const boost::shared_ptr<QuantLib::RealQuasiGaussianModel>&   model,
+			                const std::vector<QuantLib::Time>&                           swapTimes,    // T[0], ..., T[N]
+			                const std::vector<QuantLib::Real>&                           swapWeights,  // w[0], ..., w[N-1]
+			                const std::vector<QuantLib::Time>&                           modelTimes,   // time grid for numerical integration
+			                const bool                                                   useExpectedXY, // evaluate E^A [ x(t) ], E^A [ y(t) ] as expansion points
+							bool permanent);
+	};
 
 }  // namespace QuantLibAddin
 

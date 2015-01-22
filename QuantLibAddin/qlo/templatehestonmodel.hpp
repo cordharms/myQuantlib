@@ -22,7 +22,8 @@
 #include <ql/pricingengines/vanilla/analytichestonengine.hpp>
 #include <ql/experimental/template/stochvol/hestonmodels.hpp>
 
-#include <qlo/templatequasigaussian.hpp>
+// #include <qlo/templatequasigaussian.hpp>
+
 
 namespace QuantLib {
     template <class T>
@@ -111,6 +112,7 @@ namespace QuantLibAddin {
                 bool            permanent);
     };
 
+    OH_LIB_CLASS(RealStochasticProcess, QuantLib::RealStochasticProcess);
 	OH_OBJ_CLASS(RealTDStochVolModel, RealStochasticProcess);
       
 	class RealPWCStochVolModel : public RealTDStochVolModel {
