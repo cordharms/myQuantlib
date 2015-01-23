@@ -111,6 +111,7 @@ namespace QuantLibAddin {
             const boost::shared_ptr<QuantLib::EndCriteria> endCriteria,
             const boost::shared_ptr<QuantLib::OptimizationMethod> method,
             const QuantLib::DayCounter& dc,
+			const bool useNormlaVols,
             bool permanent);
 
         SabrInterpolatedSmileSection(
@@ -133,6 +134,7 @@ namespace QuantLibAddin {
             const boost::shared_ptr<QuantLib::EndCriteria> endCriteria,
             const boost::shared_ptr<QuantLib::OptimizationMethod> method,
             const QuantLib::DayCounter& dc,
+			const bool useNormlaVols,
             bool permanent);
     };
     

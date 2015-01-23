@@ -130,6 +130,7 @@ namespace QuantLibAddin {
                            const boost::shared_ptr<QuantLib::EndCriteria> endCriteria,
                            const boost::shared_ptr<QuantLib::OptimizationMethod> method,
                            const QuantLib::DayCounter& dc,
+						   const bool useNormlaVols,
                            bool permanent): SmileSection(properties, permanent)
     {
            libraryObject_ = 
@@ -151,7 +152,8 @@ namespace QuantLibAddin {
                                                    vegaWeighted,
                                                    endCriteria,
                                                    method,
-                                                   dc));
+                                                   dc,
+												   useNormlaVols));
     }
 
     SabrInterpolatedSmileSection::SabrInterpolatedSmileSection(
@@ -174,6 +176,7 @@ namespace QuantLibAddin {
             const boost::shared_ptr<QuantLib::EndCriteria> endCriteria,
             const boost::shared_ptr<QuantLib::OptimizationMethod> method,
             const QuantLib::DayCounter& dc,
+			const bool useNormlaVols,
             bool permanent): SmileSection(properties, permanent) {
 
            std::vector<QuantLib::Handle<QuantLib::Quote> > temp(volHandles.size());
@@ -199,7 +202,8 @@ namespace QuantLibAddin {
                                                    vegaWeighted,
                                                    endCriteria,
                                                    method,
-                                                   dc));    
+                                                   dc,
+												   useNormlaVols));    
     }
 
     SmileSectionFromSabrVolSurface::SmileSectionFromSabrVolSurface(
