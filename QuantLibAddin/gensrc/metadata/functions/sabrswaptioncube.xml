@@ -74,5 +74,23 @@
       </ParameterList>
     </Constructor>
 
+    <Constructor name='qlSABRCapletSurface'>
+      <libraryFunction>SABRCapletSurface</libraryFunction>
+      <SupportedPlatforms>
+        <SupportedPlatform name='Excel'/>
+        <SupportedPlatform name='Cpp'/>
+      </SupportedPlatforms>
+      <ParameterList>
+        <Parameters>
+          <Parameter name='SwaptionVTS' >
+            <type>QuantLib::SwaptionVolatilityStructure</type>
+            <tensorRank>scalar</tensorRank>
+            <description>reference to swaption vol cube.</description>
+          </Parameter>
+        </Parameters>
+      </ParameterList>
+    </Constructor>
+
+    
   </Functions>
 </Category>

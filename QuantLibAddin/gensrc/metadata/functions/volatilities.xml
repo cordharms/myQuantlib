@@ -71,6 +71,11 @@
             <tensorRank>scalar</tensorRank>
             <description>rho.</description>
           </Parameter>
+          <Parameter name='UseNromalVol' exampleValue ='false'>
+            <type>bool</type>
+            <tensorRank>scalar</tensorRank>
+            <description>Evaluate normal volatility (default is log-normal).</description>
+          </Parameter>
         </Parameters>
       </ParameterList>
       <ReturnValue>

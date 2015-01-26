@@ -22,8 +22,17 @@ namespace QuantLibAddin {
                            const QuantLib::DayCounter&                          dc,
                            bool permanent )
     : SwaptionVolatilityStructure(properties, permanent) {                
-        libraryObject_ = boost::shared_ptr<QuantLib::Extrapolator>(new
+        libraryObject_ = boost::shared_ptr<QuantLib::SwaptionVolatilityStructure>(new
             QuantLib::SabrSwaptionCube(optionTimes,swapTimes,alpha,beta,rho,nu,fwd,bdc,dc));
     }
+
+	SABRCapletSurface::SABRCapletSurface(
+		                   const boost::shared_ptr<ObjectHandler::ValueObject>& properties,
+			               const boost::shared_ptr<QuantLib::SwaptionVolatilityStructure> cube,
+                           bool permanent ) : OptionletVolatilityStructure(properties, permanent) { 
+        libraryObject_ = boost::shared_ptr<QuantLib::OptionletVolatilityStructure>(new QuantLib::SABRCapletSurface( cube ));
+	}
+
+
 
 }

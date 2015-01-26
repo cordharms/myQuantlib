@@ -35,6 +35,13 @@ namespace QuantLibAddin {
 
     };
 
+	class SABRCapletSurface : public OptionletVolatilityStructure {
+	public:
+		SABRCapletSurface( const boost::shared_ptr<ObjectHandler::ValueObject>& properties,
+			               const boost::shared_ptr<QuantLib::SwaptionVolatilityStructure> cube,
+                           bool permanent );
+	};
+
 }
 
 #endif
