@@ -17,13 +17,15 @@ namespace QuantLibAddin {
 			                  const std::vector<QuantLib::Real>&              simTimes,
 							  const std::vector<QuantLib::Real>&              obsTimes,
 							  size_t                                          nPaths,
+	  						  const std::vector<QuantLib::Real>&              zcbObservTimes,
+					          const std::vector<QuantLib::Real>&              zcbOffsetTimes,
 							  QuantLib::BigNatural                            seed,
 							  bool                                            richardsonExtrapolation,
 							  bool                                            timeInterpolation,
 							  bool                                            storeBrownians,
 							  bool permanent) : TemplateSimulation(properties,permanent) {
         libraryObject_ = boost::shared_ptr<QuantLib::RealMCSimulation>(
-			new QuantLib::RealMCSimulation( process, simTimes, obsTimes, nPaths, seed, richardsonExtrapolation, timeInterpolation, storeBrownians ));
+			new QuantLib::RealMCSimulation( process, simTimes, obsTimes, nPaths, zcbObservTimes, zcbOffsetTimes, seed, richardsonExtrapolation, timeInterpolation, storeBrownians ));
 	}
 
 	RealMCPayoffPricer::RealMCPayoffPricer(

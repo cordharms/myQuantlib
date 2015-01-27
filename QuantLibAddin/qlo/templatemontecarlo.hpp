@@ -27,6 +27,7 @@ namespace QuantLibAddin {
 
     OH_LIB_CLASS(RealStochasticProcess, QuantLib::RealStochasticProcess);
 
+	/*
     class RealQuasiGaussianModel : public RealStochasticProcess {
       public:
 		  RealQuasiGaussianModel(const boost::shared_ptr<ObjectHandler::ValueObject>& properties, bool permanent) : RealStochasticProcess(properties,permanent) {}
@@ -50,6 +51,7 @@ namespace QuantLibAddin {
 				                 const QuantLib::RealStochasticProcess::VolEvolv    volEvolv,
 							     bool permanent);
     };
+	*/
 
 	OH_LIB_CLASS(TemplateSimulation, QuantLib::TemplateSimulation);
 
@@ -60,6 +62,8 @@ namespace QuantLibAddin {
 			              const std::vector<QuantLib::Real>&              simTimes,
 						  const std::vector<QuantLib::Real>&              obsTimes,
 						  size_t                                          nPaths,
+						  const std::vector<QuantLib::Real>&              zcbObservTimes,
+					      const std::vector<QuantLib::Real>&              zcbOffsetTimes,
 						  QuantLib::BigNatural                            seed,
 						  bool                                            richardsonExtrapolation,
 						  bool                                            timeInterpolation,
