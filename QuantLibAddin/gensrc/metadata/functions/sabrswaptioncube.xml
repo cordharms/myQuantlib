@@ -70,6 +70,11 @@
             <tensorRank>scalar</tensorRank>
             <description>SwaptionVT day count convention.</description>
           </Parameter>
+          <Parameter name='UseNormalVols' exampleValue ='false' default='false'>
+            <type>bool</type>
+            <tensorRank>scalar</tensorRank>
+            <description>Use normal vols for interpolation (default is log-normal).</description>
+          </Parameter>
         </Parameters>
       </ParameterList>
     </Constructor>
@@ -86,6 +91,11 @@
             <type>QuantLib::SwaptionVolatilityStructure</type>
             <tensorRank>scalar</tensorRank>
             <description>reference to swaption vol cube.</description>
+          </Parameter>
+          <Parameter name='Term' exampleValue ='0.5' default='0.5'>
+            <type>QuantLib::Real</type>
+            <tensorRank>scalar</tensorRank>
+            <description>forwarding term in year fractions.</description>
           </Parameter>
         </Parameters>
       </ParameterList>

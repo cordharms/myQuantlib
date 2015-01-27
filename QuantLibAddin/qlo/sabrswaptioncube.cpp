@@ -20,17 +20,19 @@ namespace QuantLibAddin {
                            const std::vector< std::vector< QuantLib::Real > >&  fwd,
                            QuantLib::BusinessDayConvention                      bdc,
                            const QuantLib::DayCounter&                          dc,
+						   const bool                                           useNormalVols,
                            bool permanent )
     : SwaptionVolatilityStructure(properties, permanent) {                
         libraryObject_ = boost::shared_ptr<QuantLib::SwaptionVolatilityStructure>(new
-            QuantLib::SabrSwaptionCube(optionTimes,swapTimes,alpha,beta,rho,nu,fwd,bdc,dc));
+            QuantLib::SabrSwaptionCube(optionTimes,swapTimes,alpha,beta,rho,nu,fwd,bdc,dc,useNormalVols));
     }
 
 	SABRCapletSurface::SABRCapletSurface(
 		                   const boost::shared_ptr<ObjectHandler::ValueObject>& properties,
 			               const boost::shared_ptr<QuantLib::SwaptionVolatilityStructure> cube,
+					       const QuantLib::Real                                           swapTerm,
                            bool permanent ) : OptionletVolatilityStructure(properties, permanent) { 
-        libraryObject_ = boost::shared_ptr<QuantLib::OptionletVolatilityStructure>(new QuantLib::SABRCapletSurface( cube ));
+        libraryObject_ = boost::shared_ptr<QuantLib::OptionletVolatilityStructure>(new QuantLib::SABRCapletSurface( cube, swapTerm ));
 	}
 
 
