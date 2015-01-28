@@ -78,5 +78,18 @@ namespace QuantLibAddin {
 			new QuantLib::RealMCPayoff::ModelSwaption( t, times, payWeights, strike, payOrRec ));
 	}
 
+	RealMCGeneralSwaption::RealMCGeneralSwaption( const boost::shared_ptr<ObjectHandler::ValueObject>& properties,
+			                   const QuantLib::Time                                 t,
+						       const std::vector<QuantLib::Time>&                   floatTimes,
+						       const std::vector<QuantLib::Real>&                   floatWeights,
+						       const std::vector<QuantLib::Time>&                   fixedTimes,
+						       const std::vector<QuantLib::Real>&                   fixedWeights,
+							   QuantLib::Real                                       strike,
+							   QuantLib::Real                                       payOrRec,
+			                   bool permanent) : RealMCPayoff(properties,permanent) {
+        libraryObject_ = boost::shared_ptr<QuantLib::RealMCPayoff>(
+			new QuantLib::RealMCPayoff::GeneralSwaption( t, floatTimes, floatWeights, fixedTimes, fixedWeights, strike, payOrRec ));
+	}
+
 
 }

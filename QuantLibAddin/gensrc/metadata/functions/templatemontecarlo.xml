@@ -471,6 +471,53 @@
       </ParameterList>
     </Constructor>
 
+    <Constructor name='qlRealMCGeneralSwaption'>
+      <libraryFunction>RealMCGeneralSwaption</libraryFunction>
+      <SupportedPlatforms>
+        <SupportedPlatform name='Excel'/>
+        <SupportedPlatform name='Cpp'/>
+      </SupportedPlatforms>
+      <ParameterList>
+        <Parameters>
+          <Parameter name='ObservationTime' exampleValue ='1' default='1' >
+            <type>QuantLib::Time</type>
+            <tensorRank>scalar</tensorRank>
+            <description>observation time (t).</description>
+          </Parameter>
+          <Parameter name='FloatTimes' >
+            <type>QuantLib::Time</type>
+            <tensorRank>vector</tensorRank>
+            <description>vector of float leg payment times.</description>
+          </Parameter>
+          <Parameter name='FloatWeights' >
+            <type>QuantLib::Real</type>
+            <tensorRank>vector</tensorRank>
+            <description>vector of float leg cash flows (usually 1 and -1).</description>
+          </Parameter>
+          <Parameter name='FixedTimes' >
+            <type>QuantLib::Time</type>
+            <tensorRank>vector</tensorRank>
+            <description>vector of fixed leg payment times.</description>
+          </Parameter>
+          <Parameter name='FixedWeights' >
+            <type>QuantLib::Real</type>
+            <tensorRank>vector</tensorRank>
+            <description>vector of fixed leg weights (usually year fractions).</description>
+          </Parameter>
+          <Parameter name='StrikeRate' >
+            <type>QuantLib::Real</type>
+            <tensorRank>scalar</tensorRank>
+            <description>strike (or swap fixed) rate.</description>
+          </Parameter>
+          <Parameter name='PayOrReceive' >
+            <type>QuantLib::Real</type>
+            <tensorRank>scalar</tensorRank>
+            <description>pay (+1) or receive (-1) fixed rate.</description>
+          </Parameter>
+        </Parameters>
+      </ParameterList>
+    </Constructor>
+
 
 
   </Functions>

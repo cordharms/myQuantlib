@@ -269,15 +269,25 @@
             <tensorRank>scalar</tensorRank>
             <description>reference to base model.</description>
           </Parameter>
-          <Parameter name='SwapTimes' exampleValue='5, 10, ...'>
+          <Parameter name='FloatTimes' exampleValue='5, 10, ...'>
             <type>QuantLib::Time</type>
             <tensorRank>vector</tensorRank>
-            <description>underlying swap exercise and paydates</description>
+            <description>underlying swap float leg and paydates</description>
           </Parameter>
-          <Parameter name='SwapWeights' exampleValue ='1.0, 1.0, ...' default='1.0'>
+          <Parameter name='FloatWeights' exampleValue ='1.0, -1.0' default='1.0'>
             <type>QuantLib::Real</type>
             <tensorRank>vector</tensorRank>
-            <description>underlying swap annuity year fractions.</description>
+            <description>underlying swap float leg cash flows.</description>
+          </Parameter>
+          <Parameter name='FixedTimes' exampleValue='5, 10, ...'>
+            <type>QuantLib::Time</type>
+            <tensorRank>vector</tensorRank>
+            <description>underlying swap fixed leg paydates</description>
+          </Parameter>
+          <Parameter name='FixedWeights' exampleValue ='1.0, 1.0, ...' default='1.0'>
+            <type>QuantLib::Real</type>
+            <tensorRank>vector</tensorRank>
+            <description>underlying swap fixed leg annuity year fractions.</description>
           </Parameter>
           <Parameter name='ModelTimes' exampleValue='0, 1, 2, ...'>
             <type>QuantLib::Time</type>

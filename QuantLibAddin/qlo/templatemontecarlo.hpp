@@ -121,6 +121,19 @@ namespace QuantLibAddin {
 			                   bool permanent);
 	};
 
+	class RealMCGeneralSwaption : public RealMCPayoff {
+	public:
+		RealMCGeneralSwaption( const boost::shared_ptr<ObjectHandler::ValueObject>& properties,
+			                   const QuantLib::Time                                 t,
+						       const std::vector<QuantLib::Time>&                   floatTimes,
+						       const std::vector<QuantLib::Real>&                   floatWeights,
+						       const std::vector<QuantLib::Time>&                   fixedTimes,
+						       const std::vector<QuantLib::Real>&                   fixedWeights,
+							   QuantLib::Real                                       strike,
+							   QuantLib::Real                                       payOrRec,
+			                   bool permanent);
+	};
+
 
 }  // namespace QuantLibAddin
 
