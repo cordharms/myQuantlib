@@ -320,6 +320,54 @@
       </ReturnValue>
     </Procedure>
 
+    <Procedure name='qlBachelierBlackFormulaImpliedVol'>
+      <description>implied vol of Bachelier price.</description>
+      <alias>QuantLib::bachelierBlackFormulaImpliedVol</alias>
+      <SupportedPlatforms>
+        <!--SupportedPlatform name='Excel' calcInWizard='false'/-->
+        <SupportedPlatform name='Excel'/>
+        <!--SupportedPlatform name='Cpp'/-->
+      </SupportedPlatforms>
+      <ParameterList>
+        <Parameters>
+          <Parameter name='OptionType'>
+            <type>QuantLib::Option::Type</type>
+            <tensorRank>scalar</tensorRank>
+            <description>option type (i.e. Call or Put).</description>
+          </Parameter>
+          <Parameter name='Strike' exampleValue='100.0'>
+            <type>QuantLib::Real</type>
+            <tensorRank>scalar</tensorRank>
+            <description>option strike.</description>
+          </Parameter>
+          <Parameter name='AtmForwardValue' exampleValue='100.0'>
+            <type>QuantLib::Real</type>
+            <tensorRank>scalar</tensorRank>
+            <description>underlying asset at-the-money forward value.</description>
+          </Parameter>
+          <Parameter name='TimeToExercise' exampleValue='20.0'>
+            <type>QuantLib::Real</type>
+            <tensorRank>scalar</tensorRank>
+            <description>time to expiry (in year fractions).</description>
+          </Parameter>
+          <Parameter name='BachelierPrice' default='1.0'>
+            <type>QuantLib::Real</type>
+            <tensorRank>scalar</tensorRank>
+            <description>Option price.</description>
+          </Parameter>
+          <Parameter name='Deflator' default='1.0'>
+            <type>QuantLib::Real</type>
+            <tensorRank>scalar</tensorRank>
+            <description>Deflator (usually the discount factor, or the annuity, etc.).</description>
+          </Parameter>
+        </Parameters>
+      </ParameterList>
+      <ReturnValue>
+        <type>QuantLib::Real</type>
+        <tensorRank>scalar</tensorRank>
+      </ReturnValue>
+    </Procedure>
+
     <Procedure name='qlBlackFormula2'>
       <description>Black 1976 formula for option pricing with displacement. It uses a PlainVanillaPayoff object as input.</description>
       <alias>QuantLib::blackFormula</alias>
