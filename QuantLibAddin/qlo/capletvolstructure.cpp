@@ -155,15 +155,13 @@ namespace QuantLibAddin {
                         QuantLib::Rate switchStrike,
                         QuantLib::Real accuracy,
                         QuantLib::Natural maxIterations,
+						const QuantLib::Handle<QuantLib::YieldTermStructure>& discount,
+					    const bool useNormalVols,
                         bool permanent)
     : OptionletStripper(properties, permanent)
     {
         libraryObject_ = shared_ptr<QuantLib::OptionletStripper1>(new
-            QuantLib::OptionletStripper1(s,
-                                         index,
-                                         switchStrike,
-                                         accuracy,
-                                         maxIterations));
+            QuantLib::OptionletStripper1(s, index, switchStrike, accuracy, maxIterations, discount, useNormalVols));
     }
 
     OptionletStripper2::OptionletStripper2(
