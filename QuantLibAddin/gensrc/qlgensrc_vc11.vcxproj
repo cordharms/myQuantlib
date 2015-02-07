@@ -170,7 +170,9 @@
     <Xml Include="metadata\functions\templatehullwhite.xml">
       <SubType>Designer</SubType>
     </Xml>
-    <Xml Include="metadata\functions\templatemontecarlo.xml" />
+    <Xml Include="metadata\functions\templatemontecarlo.xml">
+      <SubType>Designer</SubType>
+    </Xml>
     <Xml Include="metadata\functions\templatequasigaussian.xml" />
   </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />

@@ -518,6 +518,33 @@
       </ParameterList>
     </Constructor>
 
+    <Constructor name='qlRealMCModelCorrelation'>
+      <libraryFunction>RealMCModelCorrelation</libraryFunction>
+      <SupportedPlatforms>
+        <SupportedPlatform name='Excel'/>
+        <SupportedPlatform name='Cpp'/>
+      </SupportedPlatforms>
+      <ParameterList>
+        <Parameters>
+          <Parameter name='ObservationTimes' >
+            <type>QuantLib::Time</type>
+            <tensorRank>vector</tensorRank>
+            <description>vector of observation (fixing) times.</description>
+          </Parameter>
+          <Parameter name='SwapTermOne' exampleValue ='2' default='2' >
+            <type>QuantLib::Time</type>
+            <tensorRank>scalar</tensorRank>
+            <description>swap term in year fractions.</description>
+          </Parameter>
+          <Parameter name='SwapTermTwo' exampleValue ='10' default='10' >
+            <type>QuantLib::Time</type>
+            <tensorRank>scalar</tensorRank>
+            <description>swap term in year fractions.</description>
+          </Parameter>
+        </Parameters>
+      </ParameterList>
+    </Constructor>
+
 
 
   </Functions>

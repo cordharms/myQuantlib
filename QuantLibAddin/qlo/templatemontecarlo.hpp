@@ -134,6 +134,15 @@ namespace QuantLibAddin {
 			                   bool permanent);
 	};
 
+	class RealMCModelCorrelation : public RealMCPayoff {
+	public:
+		RealMCModelCorrelation( const boost::shared_ptr<ObjectHandler::ValueObject>& properties,
+						       const std::vector<QuantLib::Time>&                   times,
+			                   const QuantLib::Time                                 T1,
+			                   const QuantLib::Time                                 T2,
+			                   bool permanent);
+	};
+
 
 }  // namespace QuantLibAddin
 
