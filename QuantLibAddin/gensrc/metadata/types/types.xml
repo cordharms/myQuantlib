@@ -278,7 +278,8 @@
     <DataType defaultSuperType='libraryClass'>QuantLib::RealTDStochVolModel</DataType>
     <DataType defaultSuperType='libraryClass'>QuantLib::RealPWCNumericalStochVolModel</DataType>
     <DataType defaultSuperType='libraryClass'>QuantLib::RealPWCStochVolModel</DataType>
-    
+    <DataType defaultSuperType='libraryClass'>QuantLib::StochVolModelCalibrator</DataType>
+
     <DataType defaultSuperType='enumeration'>QuantLib::RealStochasticProcess::VolEvolv</DataType>
 
   </DataTypes>

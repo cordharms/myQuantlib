@@ -784,5 +784,263 @@
     </Member>
 
 
+    <Constructor name='qlStochVolModelCalibrator'>
+      <libraryFunction>StochVolModelCalibrator</libraryFunction>
+      <SupportedPlatforms>
+        <SupportedPlatform name='Excel'/>
+        <SupportedPlatform name='Cpp'/>
+      </SupportedPlatforms>
+      <ParameterList>
+        <Parameters>
+          <Parameter name='Lambda' exampleValue ='0.10' default='0.10' >
+            <type>QuantLib::Real</type>
+            <tensorRank>scalar</tensorRank>
+            <description>(log-) volatility.</description>
+          </Parameter>
+          <Parameter name='B' exampleValue ='0.50' default='0.50' >
+            <type>QuantLib::Real</type>
+            <tensorRank>scalar</tensorRank>
+            <description>skew, 0...1 (normal ... log-normal).</description>
+          </Parameter>
+          <Parameter name='L' exampleValue ='1.0' default='1.0' >
+            <type>QuantLib::Real</type>
+            <tensorRank>scalar</tensorRank>
+            <description>level, L = S0.</description>
+          </Parameter>
+          <Parameter name='Theta' exampleValue ='0.1' default='0.1' >
+            <type>QuantLib::Real</type>
+            <tensorRank>scalar</tensorRank>
+            <description>mean reversion speed.</description>
+          </Parameter>
+          <Parameter name='M' exampleValue ='1.0' default='1.0' >
+            <type>QuantLib::Real</type>
+            <tensorRank>scalar</tensorRank>
+            <description>mean reversion level (equal initial stoch vol).</description>
+          </Parameter>
+          <Parameter name='Eta' exampleValue ='1.0' default='1.0' >
+            <type>QuantLib::Real</type>
+            <tensorRank>scalar</tensorRank>
+            <description>vol-of-vol.</description>
+          </Parameter>
+          <Parameter name='Z0' exampleValue ='1.0' default='1.0' >
+            <type>QuantLib::Real</type>
+            <tensorRank>scalar</tensorRank>
+            <description>initial stoch vol.</description>
+          </Parameter>
+          <Parameter name='Rho' exampleValue ='0.0' default='0.0' >
+            <type>QuantLib::Real</type>
+            <tensorRank>scalar</tensorRank>
+            <description>correlation.</description>
+          </Parameter>
+          <Parameter name='LambdaIsFixed' exampleValue ='true' default='true' >
+            <type>bool</type>
+            <tensorRank>scalar</tensorRank>
+            <description>return initial lambda</description>
+          </Parameter>
+          <Parameter name='BIsFixed' exampleValue ='true' default='true' >
+            <type>bool</type>
+            <tensorRank>scalar</tensorRank>
+            <description>return initial b</description>
+          </Parameter>
+          <Parameter name='LIsFixed' exampleValue ='true' default='true' >
+            <type>bool</type>
+            <tensorRank>scalar</tensorRank>
+            <description>return initial b</description>
+          </Parameter>
+          <Parameter name='ThetaIsFixed' exampleValue ='true' default='true' >
+            <type>bool</type>
+            <tensorRank>scalar</tensorRank>
+            <description>return initial theta</description>
+          </Parameter>
+          <Parameter name='MIsFixed' exampleValue ='true' default='true' >
+            <type>bool</type>
+            <tensorRank>scalar</tensorRank>
+            <description>return initial m</description>
+          </Parameter>
+          <Parameter name='EtaIsFixed' exampleValue ='true' default='true' >
+            <type>bool</type>
+            <tensorRank>scalar</tensorRank>
+            <description>return initial eta</description>
+          </Parameter>
+          <Parameter name='Z0IsFixed' exampleValue ='true' default='true' >
+            <type>bool</type>
+            <tensorRank>scalar</tensorRank>
+            <description>return initial z0</description>
+          </Parameter>
+          <Parameter name='RhoIsFixed' exampleValue ='true' default='true' >
+            <type>bool</type>
+            <tensorRank>scalar</tensorRank>
+            <description>return initial rho</description>
+          </Parameter>
+          <Parameter name='ExercTime' exampleValue ='1.0' default='1.0' >
+            <type>QuantLib::Real</type>
+            <tensorRank>scalar</tensorRank>
+            <description>option exercise time (in year fractions).</description>
+          </Parameter>
+          <Parameter name='Forward' exampleValue ='1.0' default='1.0' >
+            <type>QuantLib::Real</type>
+            <tensorRank>scalar</tensorRank>
+            <description>forward price or rate.</description>
+          </Parameter>
+          <Parameter name='Strikes' >
+            <type>QuantLib::Real</type>
+            <tensorRank>vector</tensorRank>
+            <description>option strikes.</description>
+          </Parameter>
+          <Parameter name='Vols' >
+            <type>QuantLib::Real</type>
+            <tensorRank>vector</tensorRank>
+            <description>option target normal volatilities.</description>
+          </Parameter>
+        </Parameters>
+      </ParameterList>
+    </Constructor>
+
+    <!-- StochVolModelCalibrator inspectors -->
+    
+    <Member name='qlStochVolModelCalibratorLambda' type='QuantLib::StochVolModelCalibrator' >
+      <description>Returns lambda.</description>
+      <libraryFunction>lambda</libraryFunction>
+      <SupportedPlatforms>
+        <!--SupportedPlatform name='Excel' calcInWizard='false'/-->
+        <SupportedPlatform name='Excel'/>
+        <!--SupportedPlatform name='Calc'/-->
+        <!--SupportedPlatform name='Cpp'/-->
+      </SupportedPlatforms>
+      <ParameterList>
+        <Parameters/>
+      </ParameterList>
+      <ReturnValue>
+        <type>QuantLib::Real</type>
+        <tensorRank>scalar</tensorRank>
+      </ReturnValue>
+    </Member>
+
+    <Member name='qlStochVolModelCalibratorB' type='QuantLib::StochVolModelCalibrator' >
+      <description>Returns b.</description>
+      <libraryFunction>b</libraryFunction>
+      <SupportedPlatforms>
+        <!--SupportedPlatform name='Excel' calcInWizard='false'/-->
+        <SupportedPlatform name='Excel'/>
+        <!--SupportedPlatform name='Calc'/-->
+        <!--SupportedPlatform name='Cpp'/-->
+      </SupportedPlatforms>
+      <ParameterList>
+        <Parameters/>
+      </ParameterList>
+      <ReturnValue>
+        <type>QuantLib::Real</type>
+        <tensorRank>scalar</tensorRank>
+      </ReturnValue>
+    </Member>
+
+    <Member name='qlStochVolModelCalibratorL' type='QuantLib::StochVolModelCalibrator' >
+      <description>Returns L.</description>
+      <libraryFunction>L</libraryFunction>
+      <SupportedPlatforms>
+        <!--SupportedPlatform name='Excel' calcInWizard='false'/-->
+        <SupportedPlatform name='Excel'/>
+        <!--SupportedPlatform name='Calc'/-->
+        <!--SupportedPlatform name='Cpp'/-->
+      </SupportedPlatforms>
+      <ParameterList>
+        <Parameters/>
+      </ParameterList>
+      <ReturnValue>
+        <type>QuantLib::Real</type>
+        <tensorRank>scalar</tensorRank>
+      </ReturnValue>
+    </Member>
+
+    <Member name='qlStochVolModelCalibratorTheta' type='QuantLib::StochVolModelCalibrator' >
+      <description>Returns theta.</description>
+      <libraryFunction>theta</libraryFunction>
+      <SupportedPlatforms>
+        <!--SupportedPlatform name='Excel' calcInWizard='false'/-->
+        <SupportedPlatform name='Excel'/>
+        <!--SupportedPlatform name='Calc'/-->
+        <!--SupportedPlatform name='Cpp'/-->
+      </SupportedPlatforms>
+      <ParameterList>
+        <Parameters/>
+      </ParameterList>
+      <ReturnValue>
+        <type>QuantLib::Real</type>
+        <tensorRank>scalar</tensorRank>
+      </ReturnValue>
+    </Member>
+
+    <Member name='qlStochVolModelCalibratorM' type='QuantLib::StochVolModelCalibrator' >
+      <description>Returns mean reversion level m.</description>
+      <libraryFunction>m</libraryFunction>
+      <SupportedPlatforms>
+        <!--SupportedPlatform name='Excel' calcInWizard='false'/-->
+        <SupportedPlatform name='Excel'/>
+        <!--SupportedPlatform name='Calc'/-->
+        <!--SupportedPlatform name='Cpp'/-->
+      </SupportedPlatforms>
+      <ParameterList>
+        <Parameters/>
+      </ParameterList>
+      <ReturnValue>
+        <type>QuantLib::Real</type>
+        <tensorRank>scalar</tensorRank>
+      </ReturnValue>
+    </Member>
+
+    <Member name='qlStochVolModelCalibratorEta' type='QuantLib::StochVolModelCalibrator' >
+      <description>Returns vol of vol eta.</description>
+      <libraryFunction>eta</libraryFunction>
+      <SupportedPlatforms>
+        <!--SupportedPlatform name='Excel' calcInWizard='false'/-->
+        <SupportedPlatform name='Excel'/>
+        <!--SupportedPlatform name='Calc'/-->
+        <!--SupportedPlatform name='Cpp'/-->
+      </SupportedPlatforms>
+      <ParameterList>
+        <Parameters/>
+      </ParameterList>
+      <ReturnValue>
+        <type>QuantLib::Real</type>
+        <tensorRank>scalar</tensorRank>
+      </ReturnValue>
+    </Member>
+
+    <Member name='qlStochVolModelCalibratorZ0' type='QuantLib::StochVolModelCalibrator' >
+      <description>Returns vol of vol z0.</description>
+      <libraryFunction>z0</libraryFunction>
+      <SupportedPlatforms>
+        <!--SupportedPlatform name='Excel' calcInWizard='false'/-->
+        <SupportedPlatform name='Excel'/>
+        <!--SupportedPlatform name='Calc'/-->
+        <!--SupportedPlatform name='Cpp'/-->
+      </SupportedPlatforms>
+      <ParameterList>
+        <Parameters/>
+      </ParameterList>
+      <ReturnValue>
+        <type>QuantLib::Real</type>
+        <tensorRank>scalar</tensorRank>
+      </ReturnValue>
+    </Member>
+
+    <Member name='qlStochVolModelCalibratorRho' type='QuantLib::StochVolModelCalibrator' >
+      <description>Returns vol of vol rho.</description>
+      <libraryFunction>rho</libraryFunction>
+      <SupportedPlatforms>
+        <!--SupportedPlatform name='Excel' calcInWizard='false'/-->
+        <SupportedPlatform name='Excel'/>
+        <!--SupportedPlatform name='Calc'/-->
+        <!--SupportedPlatform name='Cpp'/-->
+      </SupportedPlatforms>
+      <ParameterList>
+        <Parameters/>
+      </ParameterList>
+      <ReturnValue>
+        <type>QuantLib::Real</type>
+        <tensorRank>scalar</tensorRank>
+      </ReturnValue>
+    </Member>
+
   </Functions>
 </Category>

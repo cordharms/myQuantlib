@@ -106,6 +106,40 @@ namespace QuantLibAddin {
 	}
 
 
+	StochVolModelCalibrator::StochVolModelCalibrator(
+                const boost::shared_ptr<ObjectHandler::ValueObject>& properties,
+                // initial model parameters
+		        const QuantLib::Real                                 lambda,
+		        const QuantLib::Real                                 b,
+		        const QuantLib::Real                                 L,
+		        const QuantLib::Real                                 theta,
+		        const QuantLib::Real                                 m,
+		        const QuantLib::Real                                 eta,
+		        const QuantLib::Real                                 z0,
+		        const QuantLib::Real                                 rho,
+		        // calibration flags
+		        const bool                                           lambdaIsFixed,
+		        const bool                                           bIsFixed,
+		        const bool                                           LIsFixed,
+		        const bool                                           thetaIsFixed,
+		        const bool                                           mIsFixed,
+		        const bool                                           etaIsFixed,
+		        const bool                                           z0IsFixed,
+		        const bool                                           rhoIsFixed,
+		        // calibration targets
+		        const QuantLib::Real                                 exercTime,
+		        const QuantLib::Real                                 forward,
+		        const std::vector<QuantLib::Real>&                   strikes,
+		        const std::vector<QuantLib::Real>&                   vols,
+  				bool                                                 permanent)
+				: ObjectHandler::LibraryObject<QuantLib::StochVolModelCalibrator>(properties, permanent) {
+        libraryObject_ = boost::shared_ptr<QuantLib::StochVolModelCalibrator>(
+			new QuantLib::StochVolModelCalibrator(lambda,b,L,theta,m,eta,z0,rho,
+			     lambdaIsFixed,bIsFixed,LIsFixed,thetaIsFixed,mIsFixed,etaIsFixed,
+				 z0IsFixed,rhoIsFixed,exercTime,forward,strikes,vols));
+	}
+
+
 }
 
 

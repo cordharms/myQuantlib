@@ -21,6 +21,7 @@
 #include <ql/pricingengines/vanilla/analytichestonengine.hpp>
 #include <ql/pricingengines/vanilla/analytichestonengine.hpp>
 #include <ql/experimental/template/stochvol/hestonmodels.hpp>
+#include <ql/experimental/template/stochvol/stochvolcalibrator.hpp>
 
 // #include <qlo/templatequasigaussian.hpp>
 
@@ -134,6 +135,35 @@ namespace QuantLibAddin {
 	};
 
 
+	class StochVolModelCalibrator : public ObjectHandler::LibraryObject<QuantLib::StochVolModelCalibrator> {
+	public:
+		StochVolModelCalibrator(
+                const boost::shared_ptr<ObjectHandler::ValueObject>& properties,
+                // initial model parameters
+		        const QuantLib::Real                                 lambda,
+		        const QuantLib::Real                                 b,
+		        const QuantLib::Real                                 L,
+		        const QuantLib::Real                                 theta,
+		        const QuantLib::Real                                 m,
+		        const QuantLib::Real                                 eta,
+		        const QuantLib::Real                                 z0,
+		        const QuantLib::Real                                 rho,
+		        // calibration flags
+		        const bool                                           lambdaIsFixed,
+		        const bool                                           bIsFixed,
+		        const bool                                           LIsFixed,
+		        const bool                                           thetaIsFixed,
+		        const bool                                           mIsFixed,
+		        const bool                                           etaIsFixed,
+		        const bool                                           z0IsFixed,
+		        const bool                                           rhoIsFixed,
+		        // calibration targets
+		        const QuantLib::Real                                 exercTime,
+		        const QuantLib::Real                                 forward,
+		        const std::vector<QuantLib::Real>&                   strikes,
+		        const std::vector<QuantLib::Real>&                   vols,
+  				bool                                                 permanent);
+	};
 }
 
 #endif
