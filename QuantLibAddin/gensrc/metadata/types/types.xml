@@ -247,7 +247,8 @@
     <DataType defaultSuperType='underlyingClass'>QuantLib::Leg</DataType>
 
     <DataType defaultSuperType='objectClass'>QuantLibAddin::SabrSwaptionCube</DataType>
-    
+    <DataType defaultSuperType='objectClass'>QuantLibAddin::SABRCapletSurface</DataType>
+
     <DataType defaultSuperType='libraryClass'>QuantLib::BasisSwap</DataType>
     <DataType defaultSuperType='libraryClass'>QuantLib::BasisSwapEngine</DataType>
     <DataType defaultSuperType='libraryClass'>QuantLib::BasisSwapRateHelper</DataType>

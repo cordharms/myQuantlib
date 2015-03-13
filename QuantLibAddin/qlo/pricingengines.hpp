@@ -116,7 +116,22 @@ namespace QuantLibAddin {
             bool permanent);
     };
 
-    class AnalyticCapFloorEngine : public PricingEngine {
+    class BachelierBlackCapFloorEngine : public BlackCapFloorEngine {
+      public:
+        BachelierBlackCapFloorEngine(
+            const boost::shared_ptr<ObjectHandler::ValueObject>& properties,
+            const QuantLib::Handle<QuantLib::YieldTermStructure>&,
+            const QuantLib::Handle<QuantLib::Quote>& vol,
+            const QuantLib::DayCounter& dayCounter,
+            bool permanent);
+        BachelierBlackCapFloorEngine(
+            const boost::shared_ptr<ObjectHandler::ValueObject>& properties,
+            const QuantLib::Handle<QuantLib::YieldTermStructure>&,
+            const QuantLib::Handle<QuantLib::OptionletVolatilityStructure>&,
+            bool permanent);
+    };
+
+	class AnalyticCapFloorEngine : public PricingEngine {
       public:
         AnalyticCapFloorEngine(
             const boost::shared_ptr<ObjectHandler::ValueObject>& properties,

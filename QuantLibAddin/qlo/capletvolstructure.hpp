@@ -112,6 +112,8 @@ namespace QuantLibAddin {
                     QuantLib::Rate switchStrike,
                     QuantLib::Real accuracy,
                     QuantLib::Natural maxIterations,
+                    const QuantLib::Handle<QuantLib::YieldTermStructure>&,
+					const bool,
                     bool permanent);
     };
 

@@ -258,10 +258,15 @@
             <tensorRank>scalar</tensorRank>
             <description>OptimizationMethod object ID.</description>
           </Parameter>
-          <Parameter name='DayCounter' default='"Actual/365 (Fixed)"'>
+          <Parameter name='DC' default='"Actual/365 (Fixed)"'>
             <type>QuantLib::DayCounter</type>
             <tensorRank>scalar</tensorRank>
             <description>DayCounter ID.</description>
+          </Parameter>
+          <Parameter name='UseNormalVols' default='false'>
+            <type>bool</type>
+            <tensorRank>scalar</tensorRank>
+            <description>TRUE if the interpolation is based on normal volatilities (default is log-normal).</description>
           </Parameter>
         </Parameters>
       </ParameterList>
@@ -364,10 +369,15 @@
             <tensorRank>scalar</tensorRank>
             <description>OptimizationMethod object ID.</description>
           </Parameter>
-          <Parameter name='DayCounter' default='"Actual/365 (Fixed)"'>
+          <Parameter name='DC' default='"Actual/365 (Fixed)"'>
             <type>QuantLib::DayCounter</type>
             <tensorRank>scalar</tensorRank>
             <description>DayCounter ID.</description>
+          </Parameter>
+          <Parameter name='UseNormalVols' default='false'>
+            <type>bool</type>
+            <tensorRank>scalar</tensorRank>
+            <description>TRUE if the interpolation is based on normal volatilities (default is log-normal).</description>
           </Parameter>
         </Parameters>
       </ParameterList>

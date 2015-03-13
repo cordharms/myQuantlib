@@ -31,9 +31,18 @@ namespace QuantLibAddin {
                            const std::vector< std::vector< QuantLib::Real > >&  fwd,
                            QuantLib::BusinessDayConvention                      bdc,
                            const QuantLib::DayCounter&                          dc,
+						   const bool                                           useNormalVols,
                            bool permanent );
 
     };
+
+	class SABRCapletSurface : public OptionletVolatilityStructure {
+	public:
+		SABRCapletSurface( const boost::shared_ptr<ObjectHandler::ValueObject>& properties,
+			               const boost::shared_ptr<QuantLib::SwaptionVolatilityStructure> cube,
+						   const QuantLib::Real                                           swapTerm,
+                           bool permanent );
+	};
 
 }
 
