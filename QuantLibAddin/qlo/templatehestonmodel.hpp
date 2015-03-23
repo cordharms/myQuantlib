@@ -162,6 +162,7 @@ namespace QuantLibAddin {
 		        const QuantLib::Real                                 forward,
 		        const std::vector<QuantLib::Real>&                   strikes,
 		        const std::vector<QuantLib::Real>&                   vols,
+				const std::vector<QuantLib::Real>&                   optimizationParams,  // { [min], [max], epsfcn, ftol, xtol, gtol, maxfev, glAbsAcc, glMaxEval }							 
   				bool                                                 permanent);
 	};
 }

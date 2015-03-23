@@ -131,12 +131,13 @@ namespace QuantLibAddin {
 		        const QuantLib::Real                                 forward,
 		        const std::vector<QuantLib::Real>&                   strikes,
 		        const std::vector<QuantLib::Real>&                   vols,
+				const std::vector<QuantLib::Real>&                   optimizationParams,  // { [min], [max], epsfcn, ftol, xtol, gtol, maxfev, glAbsAcc, glMaxEval }							 
   				bool                                                 permanent)
 				: ObjectHandler::LibraryObject<QuantLib::StochVolModelCalibrator>(properties, permanent) {
         libraryObject_ = boost::shared_ptr<QuantLib::StochVolModelCalibrator>(
 			new QuantLib::StochVolModelCalibrator(lambda,b,L,theta,m,eta,z0,rho,
 			     lambdaIsFixed,bIsFixed,LIsFixed,thetaIsFixed,mIsFixed,etaIsFixed,
-				 z0IsFixed,rhoIsFixed,exercTime,forward,strikes,vols));
+				 z0IsFixed,rhoIsFixed,exercTime,forward,strikes,vols,optimizationParams));
 	}
 
 

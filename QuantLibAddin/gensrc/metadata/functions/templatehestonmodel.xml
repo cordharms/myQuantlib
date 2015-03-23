@@ -892,6 +892,11 @@
             <tensorRank>vector</tensorRank>
             <description>option target normal volatilities.</description>
           </Parameter>
+          <Parameter name='OptimizationParams' >
+            <type>QuantLib::Real</type>
+            <tensorRank>vector</tensorRank>
+            <description>[ min(8), max(8), epsfcn, ftol, xtol, gtol, maxfev, glAbsAcc, glMaxEval ]</description>
+          </Parameter>
         </Parameters>
       </ParameterList>
     </Constructor>
