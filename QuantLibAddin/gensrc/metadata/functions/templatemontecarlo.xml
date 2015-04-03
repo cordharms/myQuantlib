@@ -58,16 +58,6 @@
             <tensorRank>scalar</tensorRank>
             <description>number of MC paths.</description>
           </Parameter>
-          <Parameter name='ZcbObservTimes' exampleValue='5, 10, ...'>
-            <type>QuantLib::Time</type>
-            <tensorRank>vector</tensorRank>
-            <description>vector of time-grid for zcb adjuster (in year fractions)</description>
-          </Parameter>
-          <Parameter name='ZcbOffsetTimes' exampleValue='5, 10, ...'>
-            <type>QuantLib::Time</type>
-            <tensorRank>vector</tensorRank>
-            <description>vector of time-grid for zcb adjuster (in year fractions)</description>
-          </Parameter>
           <Parameter name='Seed' exampleValue ='1234' default='1234' >
             <type>QuantLib::Size</type>
             <tensorRank>scalar</tensorRank>
@@ -228,7 +218,18 @@
         <!--SupportedPlatform name='Cpp'/-->
       </SupportedPlatforms>
       <ParameterList>
-        <Parameters/>
+        <Parameters>
+          <Parameter name='ZcbObservTimes' exampleValue='5, 10, ...'>
+            <type>QuantLib::Time</type>
+            <tensorRank>vector</tensorRank>
+            <description>vector of time-grid for zcb adjuster (in year fractions)</description>
+          </Parameter>
+          <Parameter name='ZcbOffsetTimes' exampleValue='5, 10, ...'>
+            <type>QuantLib::Time</type>
+            <tensorRank>vector</tensorRank>
+            <description>vector of time-grid for zcb adjuster (in year fractions)</description>
+          </Parameter>
+        </Parameters>
       </ParameterList>
       <ReturnValue>
         <type>void</type>
@@ -274,6 +275,74 @@
             <type>QuantLib::Time</type>
             <tensorRank>scalar</tensorRank>
             <description>zcb maturity time.</description>
+          </Parameter>
+        </Parameters>
+      </ParameterList>
+      <ReturnValue>
+        <type>QuantLib::Real</type>
+        <tensorRank>scalar</tensorRank>
+      </ReturnValue>
+    </Member>
+
+    <!-- Asset adjuster calculation and inspectors -->
+
+    <Member name='qlRealMCSimulationCalcAssetAdjuster' type='QuantLib::RealMCSimulation' >
+      <description>calculate the asset adjuster vector for given simulation.</description>
+      <libraryFunction>calculateAssetAdjuster</libraryFunction>
+      <SupportedPlatforms>
+        <!--SupportedPlatform name='Excel' calcInWizard='false'/-->
+        <SupportedPlatform name='Excel'/>
+        <!--SupportedPlatform name='Calc'/-->
+        <!--SupportedPlatform name='Cpp'/-->
+      </SupportedPlatforms>
+      <ParameterList>
+        <Parameters>
+          <Parameter name='AssetObservTimes' exampleValue='5, 10, ...'>
+            <type>QuantLib::Time</type>
+            <tensorRank>vector</tensorRank>
+            <description>vector of time-grid for asset adjuster (in year fractions)</description>
+          </Parameter>
+        </Parameters>
+      </ParameterList>
+      <ReturnValue>
+        <type>void</type>
+        <tensorRank>scalar</tensorRank>
+      </ReturnValue>
+    </Member>
+
+    <Member name='qlRealMCSimulationAssetAdjuster' type='QuantLib::RealMCSimulation' >
+      <description>Returns the asset adjuster vector.</description>
+      <libraryFunction>assetAdjuster</libraryFunction>
+      <SupportedPlatforms>
+        <!--SupportedPlatform name='Excel' calcInWizard='false'/-->
+        <SupportedPlatform name='Excel'/>
+        <!--SupportedPlatform name='Calc'/-->
+        <!--SupportedPlatform name='Cpp'/-->
+      </SupportedPlatforms>
+      <ParameterList>
+        <Parameters/>
+      </ParameterList>
+      <ReturnValue>
+        <type>QuantLib::Real</type>
+        <tensorRank>vector</tensorRank>
+      </ReturnValue>
+    </Member>
+
+    <Member name='qlRealMCSimulationAssetAdjustertT' type='QuantLib::RealMCSimulation' >
+      <description>Returns the asset adjuster .</description>
+      <libraryFunction>assetAdjuster</libraryFunction>
+      <SupportedPlatforms>
+        <!--SupportedPlatform name='Excel' calcInWizard='false'/-->
+        <SupportedPlatform name='Excel'/>
+        <!--SupportedPlatform name='Calc'/-->
+        <!--SupportedPlatform name='Cpp'/-->
+      </SupportedPlatforms>
+      <ParameterList>
+        <Parameters>
+          <Parameter name='ObsTime' exampleValue ='1' default='1' >
+            <type>QuantLib::Time</type>
+            <tensorRank>scalar</tensorRank>
+            <description>asset observation time.</description>
           </Parameter>
         </Parameters>
       </ParameterList>

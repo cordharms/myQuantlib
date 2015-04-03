@@ -62,8 +62,6 @@ namespace QuantLibAddin {
 			              const std::vector<QuantLib::Real>&              simTimes,
 						  const std::vector<QuantLib::Real>&              obsTimes,
 						  size_t                                          nPaths,
-						  const std::vector<QuantLib::Real>&              zcbObservTimes,
-					      const std::vector<QuantLib::Real>&              zcbOffsetTimes,
 						  QuantLib::BigNatural                            seed,
 						  bool                                            richardsonExtrapolation,
 						  bool                                            timeInterpolation,

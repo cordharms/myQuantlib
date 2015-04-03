@@ -134,6 +134,19 @@ namespace QuantLibAddin {
   				bool                                                 permanent);			   
 	};
 
+	class RealShiftedSABRModel : public RealStochasticProcess {
+	public:
+		RealShiftedSABRModel(
+                const boost::shared_ptr<ObjectHandler::ValueObject>& properties,
+				const QuantLib::Real                                 S0,
+				const QuantLib::Real                                 lambda,
+				const QuantLib::Real                                 alpha,
+				const QuantLib::Real                                 beta,
+				const QuantLib::Real                                 rho,
+				const QuantLib::Real                                 nu,
+  				bool                                                 permanent);			   
+	};
+
 
 	class StochVolModelCalibrator : public ObjectHandler::LibraryObject<QuantLib::StochVolModelCalibrator> {
 	public:

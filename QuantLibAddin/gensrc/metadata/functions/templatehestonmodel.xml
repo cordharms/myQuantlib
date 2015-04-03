@@ -783,6 +783,50 @@
       </ReturnValue>
     </Member>
 
+    <Constructor name='qlRealShiftedSABRModel'>
+      <libraryFunction>RealShiftedSABRModel</libraryFunction>
+      <SupportedPlatforms>
+        <SupportedPlatform name='Excel'/>
+        <SupportedPlatform name='Cpp'/>
+      </SupportedPlatforms>
+      <ParameterList>
+        <Parameters>
+          <Parameter name='S0' exampleValue ='1.0' default='1.0' >
+            <type>QuantLib::Real</type>
+            <tensorRank>scalar</tensorRank>
+            <description>initial asset value.</description>
+          </Parameter>
+          <Parameter name='Lambda' exampleValue ='0.0' default='0.0' >
+            <type>QuantLib::Real</type>
+            <tensorRank>scalar</tensorRank>
+            <description>diffusion shift parameter.</description>
+          </Parameter>
+          <Parameter name='Alpha' exampleValue ='1.0' default='1.0' >
+            <type>QuantLib::Real</type>
+            <tensorRank>scalar</tensorRank>
+            <description>initial volatility value.</description>
+          </Parameter>
+          <Parameter name='Beta' exampleValue ='0.5' default='0.5' >
+            <type>QuantLib::Real</type>
+            <tensorRank>scalar</tensorRank>
+            <description>elasticity parameter.</description>
+          </Parameter>
+          <Parameter name='Rho' exampleValue ='0.5' default='0.5' >
+            <type>QuantLib::Real</type>
+            <tensorRank>scalar</tensorRank>
+            <description>asset vs volatility correlation.</description>
+          </Parameter>
+          <Parameter name='Nu' exampleValue ='1.0' default='1.0' >
+            <type>QuantLib::Real</type>
+            <tensorRank>scalar</tensorRank>
+            <description>volatilty of volatility.</description>
+          </Parameter>
+        </Parameters>
+      </ParameterList>
+    </Constructor>
+    
+    
+    <!-- Stochastic model calibrator -->
 
     <Constructor name='qlStochVolModelCalibrator'>
       <libraryFunction>StochVolModelCalibrator</libraryFunction>
