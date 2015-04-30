@@ -51,6 +51,7 @@ namespace QuantLibAddin {
 		                         // stochastic volatility process parameters
 		                         QuantLib::Real                                     theta,   // mean reversion speed
 				                 const QuantLib::RealStochasticProcess::VolEvolv    volEvolv,
+		                         const std::vector<QuantLib::Real>&                 procLimit,  // stochastic process limits
 							     bool permanent);
     };
 

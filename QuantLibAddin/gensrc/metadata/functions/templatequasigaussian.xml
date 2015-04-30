@@ -101,6 +101,11 @@
             <tensorRank>scalar</tensorRank>
             <description>FullTruncation or LogNormalApproximation.</description>
           </Parameter>
+          <Parameter name='ProcLimits' exampleValue ='0.0, 0.0, ...' default='0.0'>
+            <type>QuantLib::Real</type>
+            <tensorRank>vector</tensorRank>
+            <description>limits of simulated process (z-,y-,x-)limit.</description>
+          </Parameter>
         </Parameters>
       </ParameterList>
     </Constructor>
