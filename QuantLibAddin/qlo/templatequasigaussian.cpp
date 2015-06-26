@@ -31,10 +31,11 @@ namespace QuantLibAddin {
 		                         QuantLib::Real                                     theta,   // mean reversion speed
  				                 const QuantLib::RealStochasticProcess::VolEvolv    volEvolv,
 		                         const std::vector<QuantLib::Real>&                 procLimit,  // stochastic process limits
+								 const bool                                         useSwapRateScaling,  // re-scale alpha and b to match swap dynamics
 						   bool permanent) : RealStochasticProcess(properties,permanent) {
 
         libraryObject_ = boost::shared_ptr<QuantLib::RealStochasticProcess>(
-			new QuantLib::RealQuasiGaussianModel( hYTS, d, times, lambda, alpha, b, eta, delta, chi, Gamma, theta, volEvolv, procLimit ));
+			new QuantLib::RealQuasiGaussianModel( hYTS, d, times, lambda, alpha, b, eta, delta, chi, Gamma, theta, volEvolv, procLimit, useSwapRateScaling ));
     }
 
 	RealQGSwaptionModel::RealQGSwaptionModel(

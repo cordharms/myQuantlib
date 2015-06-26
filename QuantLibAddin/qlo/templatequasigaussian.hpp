@@ -52,6 +52,7 @@ namespace QuantLibAddin {
 		                         QuantLib::Real                                     theta,   // mean reversion speed
 				                 const QuantLib::RealStochasticProcess::VolEvolv    volEvolv,
 		                         const std::vector<QuantLib::Real>&                 procLimit,  // stochastic process limits
+								 const bool                                         useSwapRateScaling,  // re-scale alpha and b to match swap dynamics
 							     bool permanent);
     };
 

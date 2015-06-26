@@ -13,6 +13,7 @@
 #include <ql/experimental/basisswap/basisswapengine.hpp>
 #include <ql/experimental/basisswap/basisswapratehelpers.hpp>
 #include <ql/experimental/basisswap/spreadyieldtermstructure.hpp>
+#include <ql/experimental/template/basismodel/swaptioncfs.hpp>
 #include <qlo/leg.hpp>
 #include <qlo/swap.hpp>
 #include <qlo/pricingengines.hpp>
@@ -107,6 +108,17 @@ namespace QuantLibAddin {
 					const QuantLib::Real alpha,
 			        bool permanent );
     };
+
+
+    //class SwaptionCashFlows :  {
+    //public:
+    //    SpreadYTS ( const boost::shared_ptr<ObjectHandler::ValueObject>& properties,
+    //                const QuantLib::Handle<QuantLib::YieldTermStructure>& baseCurve,
+    //                const QuantLib::Handle<QuantLib::YieldTermStructure>& sprdCurve,
+				//	const QuantLib::Real alpha,
+			 //       bool permanent );
+    //};
+
 
 
 }
