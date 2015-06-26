@@ -99,6 +99,23 @@ namespace QuantLibAddin {
             bool permanent);
     };
 
+    class BachelierBlackSwaptionEngine : public BlackSwaptionEngine {
+      public:
+          BachelierBlackSwaptionEngine(
+            const boost::shared_ptr<ObjectHandler::ValueObject>& properties,
+            const QuantLib::Handle<QuantLib::YieldTermStructure>&,
+            const QuantLib::Handle<QuantLib::Quote>& vol,
+            const QuantLib::Real displacement,
+            const QuantLib::DayCounter& dayCounter,
+            bool permanent);
+          BachelierBlackSwaptionEngine(
+            const boost::shared_ptr<ObjectHandler::ValueObject>& properties,
+            const QuantLib::Handle<QuantLib::YieldTermStructure>&,
+            const QuantLib::Handle<QuantLib::SwaptionVolatilityStructure>&,
+            const QuantLib::Real displacement,
+            bool permanent);
+    };
+
     class BlackCapFloorEngine : public PricingEngine {
       public:
         BlackCapFloorEngine(

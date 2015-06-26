@@ -88,6 +88,29 @@ namespace QuantLibAddin {
             QuantLib::BlackSwaptionEngine(hYTS, vol, displacement));
     }
 
+    BachelierBlackSwaptionEngine::BachelierBlackSwaptionEngine(
+        const boost::shared_ptr<ObjectHandler::ValueObject>& properties,
+        const QuantLib::Handle<QuantLib::YieldTermStructure>& hYTS,
+        const QuantLib::Handle<QuantLib::Quote>& vol,
+        const QuantLib::Real displacement,
+        const QuantLib::DayCounter& dayCounter,
+        bool permanent) : BlackSwaptionEngine(properties,hYTS,vol,displacement,dayCounter,permanent)
+    {
+        libraryObject_ = boost::shared_ptr<QuantLib::PricingEngine>(new
+            QuantLib::BachelierBlackSwaptionEngine(hYTS, vol, dayCounter, displacement));
+    }
+
+    BachelierBlackSwaptionEngine::BachelierBlackSwaptionEngine(
+        const boost::shared_ptr<ObjectHandler::ValueObject>& properties,
+        const QuantLib::Handle<QuantLib::YieldTermStructure>& hYTS,
+        const QuantLib::Handle<QuantLib::SwaptionVolatilityStructure>& vol,
+        const QuantLib::Real displacement,
+        bool permanent) : BlackSwaptionEngine(properties,hYTS,vol,displacement,permanent)
+    {
+        libraryObject_ = boost::shared_ptr<QuantLib::PricingEngine>(new
+            QuantLib::BachelierBlackSwaptionEngine(hYTS, vol, displacement));
+    }
+
     BlackCapFloorEngine::BlackCapFloorEngine(
         const boost::shared_ptr<ObjectHandler::ValueObject>& properties,
         const QuantLib::Handle<QuantLib::YieldTermStructure>& hYTS,
