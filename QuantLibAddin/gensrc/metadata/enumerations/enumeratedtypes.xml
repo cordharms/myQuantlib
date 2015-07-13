@@ -1942,6 +1942,21 @@
       </EnumeratedTypes>
     </EnumeratedTypeGroup>
 
+    <EnumeratedTypeGroup type='QuantLib::VolatilityType'>
+      <includeFile>oh/enumerations/typefactory.hpp</includeFile>
+      <constructor>false</constructor>
+      <EnumeratedTypes>
+        <EnumeratedType>
+          <string>ShiftedLognormal</string>
+          <value>QuantLib::VolatilityType(QuantLib::ShiftedLognormal)</value>
+        </EnumeratedType>
+        <EnumeratedType>
+          <string>Normal</string>
+          <value>QuantLib::VolatilityType(QuantLib::Normal)</value>
+        </EnumeratedType>
+      </EnumeratedTypes>
+    </EnumeratedTypeGroup>
+
 
   </EnumeratedTypeGroups>
 

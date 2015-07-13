@@ -25,6 +25,8 @@
 
 #include <ql/types.hpp>
 #include <ql/time/businessdayconvention.hpp>
+#include <ql/termstructures/volatility/volatilitytype.hpp>
+
 
 namespace QuantLib {
     class Period;
@@ -113,7 +115,9 @@ namespace QuantLibAddin {
                     QuantLib::Real accuracy,
                     QuantLib::Natural maxIterations,
                     const QuantLib::Handle<QuantLib::YieldTermStructure>&,
-					const bool,
+                    const QuantLib::VolatilityType type,
+                    const QuantLib::Real displacement,
+                    const bool dontThrow,
                     bool permanent);
     };
 

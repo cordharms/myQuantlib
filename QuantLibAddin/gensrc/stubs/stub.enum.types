@@ -31,6 +31,8 @@
 #include <ql/experimental/credit/defaulttype.hpp>
 
 #include <ql/experimental/template/templatestochasticprocess.hpp>
+#include <ql/termstructures/volatility/volatilitytype.hpp>
+
 
 #include <oh/enumerations/typefactory.hpp>
 

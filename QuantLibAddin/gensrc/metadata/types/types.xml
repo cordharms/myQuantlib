@@ -300,6 +300,7 @@
     <DataType defaultSuperType='libraryClass'>QuantLib::StochVolModelCalibrator</DataType>
 
     <DataType defaultSuperType='enumeration'>QuantLib::RealStochasticProcess::VolEvolv</DataType>
+    <DataType defaultSuperType='enumeration'>QuantLib::VolatilityType</DataType>
 
   </DataTypes>
 

@@ -32,6 +32,7 @@
 #include <ql/termstructures/volatility/optionlet/optionletstripper2.hpp>
 #include <ql/termstructures/volatility/optionlet/strippedoptionlet.hpp>
 
+
 using std::vector;
 using QuantLib::Handle;
 using QuantLib::Quote;
@@ -156,12 +157,14 @@ namespace QuantLibAddin {
                         QuantLib::Real accuracy,
                         QuantLib::Natural maxIterations,
 						const QuantLib::Handle<QuantLib::YieldTermStructure>& discount,
-					    const bool useNormalVols,
+                        const QuantLib::VolatilityType type,
+                        const QuantLib::Real displacement,
+                        const bool dontThrow,
                         bool permanent)
     : OptionletStripper(properties, permanent)
     {
         libraryObject_ = shared_ptr<QuantLib::OptionletStripper1>(new
-            QuantLib::OptionletStripper1(s, index, switchStrike, accuracy, maxIterations, discount, useNormalVols));
+            QuantLib::OptionletStripper1(s, index, switchStrike, accuracy, maxIterations, discount, type, displacement, dontThrow));
     }
 
     OptionletStripper2::OptionletStripper2(

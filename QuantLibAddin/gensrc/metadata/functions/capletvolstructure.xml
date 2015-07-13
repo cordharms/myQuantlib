@@ -627,10 +627,20 @@
             <tensorRank>scalar</tensorRank>
             <description>discounting yield term structure object ID.</description>
           </Parameter>
-          <Parameter name='UseNormalVols' default='false'>
+          <Parameter name='VolatilityType' default='"ShiftedLognormal"'>
+            <type>QuantLib::VolatilityType</type>
+            <tensorRank>scalar</tensorRank>
+            <description>ShiftedLognormal or Normal.</description>
+          </Parameter>
+          <Parameter name='Displacement' default='0.0'>
+            <type>QuantLib::Real</type>
+            <tensorRank>scalar</tensorRank>
+            <description>ShiftedLogNormal displacement.</description>
+          </Parameter>
+          <Parameter name='DontThrow' default='false'>
             <type>bool</type>
             <tensorRank>scalar</tensorRank>
-            <description>use normal volatilities (default is log-normal vols).</description>
+            <description>Do not throw exception if stripping fails (zero vol instead).</description>
           </Parameter>
         </Parameters>
       </ParameterList>
