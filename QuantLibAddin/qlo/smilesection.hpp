@@ -111,6 +111,7 @@ namespace QuantLibAddin {
             const boost::shared_ptr<QuantLib::EndCriteria> endCriteria,
             const boost::shared_ptr<QuantLib::OptimizationMethod> method,
             const QuantLib::DayCounter& dc,
+			const QuantLib::Real shift,
 			const bool useNormlaVols,
             bool permanent);
 
@@ -134,6 +135,7 @@ namespace QuantLibAddin {
             const boost::shared_ptr<QuantLib::EndCriteria> endCriteria,
             const boost::shared_ptr<QuantLib::OptimizationMethod> method,
             const QuantLib::DayCounter& dc,
+			const QuantLib::Real shift,
 			const bool useNormlaVols,
             bool permanent);
     };

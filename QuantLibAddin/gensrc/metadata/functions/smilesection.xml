@@ -263,6 +263,11 @@
             <tensorRank>scalar</tensorRank>
             <description>DayCounter ID.</description>
           </Parameter>
+          <Parameter name='Shift' default='0.0'>
+            <type>QuantLib::Real</type>
+            <tensorRank>scalar</tensorRank>
+            <description>Displacement for shifted SABR.</description>
+          </Parameter>
           <Parameter name='UseNormalVols' default='false'>
             <type>bool</type>
             <tensorRank>scalar</tensorRank>
@@ -373,6 +378,11 @@
             <type>QuantLib::DayCounter</type>
             <tensorRank>scalar</tensorRank>
             <description>DayCounter ID.</description>
+          </Parameter>
+          <Parameter name='Shift' default='0.0'>
+            <type>QuantLib::Real</type>
+            <tensorRank>scalar</tensorRank>
+            <description>Displacement for shifted SABR.</description>
           </Parameter>
           <Parameter name='UseNormalVols' default='false'>
             <type>bool</type>

@@ -130,6 +130,7 @@ namespace QuantLibAddin {
                            const boost::shared_ptr<QuantLib::EndCriteria> endCriteria,
                            const boost::shared_ptr<QuantLib::OptimizationMethod> method,
                            const QuantLib::DayCounter& dc,
+						   const QuantLib::Real shift,
 						   const bool useNormlaVols,
                            bool permanent): SmileSection(properties, permanent)
     {
@@ -153,6 +154,7 @@ namespace QuantLibAddin {
                                                    endCriteria,
                                                    method,
                                                    dc,
+												   shift,
 												   useNormlaVols));
     }
 
@@ -176,6 +178,7 @@ namespace QuantLibAddin {
             const boost::shared_ptr<QuantLib::EndCriteria> endCriteria,
             const boost::shared_ptr<QuantLib::OptimizationMethod> method,
             const QuantLib::DayCounter& dc,
+			const QuantLib::Real shift,
 			const bool useNormlaVols,
             bool permanent): SmileSection(properties, permanent) {
 
@@ -203,6 +206,7 @@ namespace QuantLibAddin {
                                                    endCriteria,
                                                    method,
                                                    dc,
+												   shift,												
 												   useNormlaVols));    
     }
 
