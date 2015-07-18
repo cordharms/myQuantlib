@@ -9,6 +9,7 @@
 #define qla_templatemontecarlo_hpp
 
 #include <qlo/termstructures.hpp>
+#include <qlo/templatequasigaussian.hpp>
 
 #include <ql/types.hpp>
 
@@ -25,7 +26,7 @@ namespace QuantLib {
 
 namespace QuantLibAddin {
 
-    OH_LIB_CLASS(RealStochasticProcess, QuantLib::RealStochasticProcess);
+    // OH_LIB_CLASS(RealStochasticProcess, QuantLib::RealStochasticProcess);
 
 	/*
     class RealQuasiGaussianModel : public RealStochasticProcess {

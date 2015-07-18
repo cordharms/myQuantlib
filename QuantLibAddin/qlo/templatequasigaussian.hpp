@@ -16,6 +16,8 @@
 
 #include <ql/types.hpp>
 #include <ql/experimental/template/qgaussian/quasigaussianmodels.hpp>
+#include <ql/experimental/template/qgaussian/qgaussiancalibrator.hpp>
+
 
 
 
@@ -28,7 +30,7 @@ namespace QuantLib {
 
 namespace QuantLibAddin {
 
-//    OH_LIB_CLASS(RealStochasticProcess, QuantLib::RealStochasticProcess);
+    // OH_LIB_CLASS(RealStochasticProcess, QuantLib::RealStochasticProcess);
 
     class RealQuasiGaussianModel : public RealStochasticProcess {
       public:
@@ -54,6 +56,20 @@ namespace QuantLibAddin {
 		                         const std::vector<QuantLib::Real>&                 procLimit,  // stochastic process limits
 								 const bool                                         useSwapRateScaling,  // re-scale alpha and b to match swap dynamics
 							     bool permanent);
+
+		  // model from calibration
+		  RealQuasiGaussianModel(const boost::shared_ptr<ObjectHandler::ValueObject>&              properties, 
+			                     const boost::shared_ptr<QuantLib::QuasiGaussianModelCalibrator>&  calibrator,
+					             const std::vector< std::vector< bool > >&                         isInput,
+			                     const std::vector< std::vector< bool > >&                         isOutput,
+								 	// optimization parameters
+		                         QuantLib::Real                                                    epsfcn,
+								 QuantLib::Real                                                    ftol,
+								 QuantLib::Real                                                    xtol,
+								 QuantLib::Real                                                    gtol,
+		                         QuantLib::Size                                                    maxfev,
+			                     bool permanent);
+
     };
 
 	class RealQGSwaptionModel : public RealTDStochVolModel {
@@ -67,6 +83,27 @@ namespace QuantLibAddin {
 			                const std::vector<QuantLib::Time>&                           modelTimes,    // time grid for numerical integration
 			                const bool                                                   useExpectedXY, // evaluate E^A [ x(t) ], E^A [ y(t) ] as expansion points
 							bool permanent);
+	};
+
+
+	class QuasiGaussianModelCalibrator : public ObjectHandler::LibraryObject<QuantLib::QuasiGaussianModelCalibrator> {
+	public:
+		QuasiGaussianModelCalibrator(const boost::shared_ptr<ObjectHandler::ValueObject>&         properties,
+			                         boost::shared_ptr<QuantLib::RealQuasiGaussianModel>          model,
+			                         boost::shared_ptr<QuantLib::RealMCSimulation>                mcSimulation,
+									 std::vector< boost::shared_ptr<QuantLib::Swaption> >         swaptions,
+									 std::vector< std::vector< QuantLib::Real > > lambda,
+                                     std::vector< std::vector< QuantLib::Real > > b,
+                                     std::vector< std::vector< QuantLib::Real > > eta,
+									 QuantLib::Real                               lambdaMin,
+									 QuantLib::Real                               lambdaMax,
+									 QuantLib::Real                               bMin,
+									 QuantLib::Real                               bMax,
+									 QuantLib::Real                               etaMin,
+									 QuantLib::Real                               etaMax,
+									 std::vector< QuantLib::Real >                modelTimes,
+                                     bool                                         useExpectedXY,
+			                         bool permanent);
 	};
 
 }  // namespace QuantLibAddin

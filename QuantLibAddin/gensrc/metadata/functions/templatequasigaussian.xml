@@ -11,6 +11,7 @@
     <include>qlo/swaption.hpp</include>
     <include>qlo/schedule.hpp</include>    
     <include>qlo/templatequasigaussian.hpp</include>
+    <include>qlo/templatemontecarlo.hpp</include>
     <include>ql/experimental/template/qgaussian/quasigaussianmodels.hpp</include>
   </serializationIncludes>
   <addinIncludes>
@@ -23,6 +24,7 @@
     <include>qlo/swaption.hpp</include>
     <include>qlo/schedule.hpp</include>
     <include>qlo/templatequasigaussian.hpp</include>
+    <include>qlo/templatemontecarlo.hpp</include>
     <include>ql/experimental/template/qgaussian/quasigaussianmodels.hpp</include>
   </addinIncludes>
   <copyright>
@@ -363,6 +365,143 @@
         <tensorRank>matrix</tensorRank>
       </ReturnValue>
     </Member>
+
+    
+    <Constructor name='qlRealQuasiGaussianModelCalibrator'>
+      <libraryFunction>QuasiGaussianModelCalibrator</libraryFunction>
+      <SupportedPlatforms>
+        <SupportedPlatform name='Excel'/>
+        <SupportedPlatform name='Cpp'/>
+      </SupportedPlatforms>
+      <ParameterList>
+        <Parameters>
+          <Parameter name='QGModel'>
+            <type>QuantLib::RealQuasiGaussianModel</type>
+            <tensorRank>scalar</tensorRank>
+            <description>Input model to be calibrated.</description>
+          </Parameter>
+          <Parameter name='MCSimulation'>
+            <type>QuantLib::RealMCSimulation</type>
+            <tensorRank>scalar</tensorRank>
+            <description>MC simulation object (so far not used).</description>
+          </Parameter>
+          <Parameter name='Swaptions'>
+            <type>QuantLib::Swaption</type>
+            <tensorRank>vector</tensorRank>
+            <description>Reference swaption matrix.</description>
+          </Parameter>
+          <Parameter name='Lambda'>
+            <type>QuantLib::Time</type>
+            <tensorRank>matrix</tensorRank>
+            <description>Reference swaption lambda.</description>
+          </Parameter>
+          <Parameter name='B'>
+            <type>QuantLib::Time</type>
+            <tensorRank>matrix</tensorRank>
+            <description>Reference swaption b.</description>
+          </Parameter>
+          <Parameter name='Eta'>
+            <type>QuantLib::Time</type>
+            <tensorRank>matrix</tensorRank>
+            <description>Reference swaption eta.</description>
+          </Parameter>
+          <Parameter name='LambdaMin' exampleValue ='0.0' default='0.0'>
+            <type>QuantLib::Real</type>
+            <tensorRank>scalar</tensorRank>
+            <description>Minimum lambda.</description>
+          </Parameter>
+          <Parameter name='LambdaMax' exampleValue ='3.0' default='3.0'>
+            <type>QuantLib::Real</type>
+            <tensorRank>scalar</tensorRank>
+            <description>Maximum lambda.</description>
+          </Parameter>
+          <Parameter name='BMin' exampleValue ='0.0' default='0.0'>
+            <type>QuantLib::Real</type>
+            <tensorRank>scalar</tensorRank>
+            <description>Minimum b.</description>
+          </Parameter>
+          <Parameter name='BMax' exampleValue ='1.0' default='1.0'>
+            <type>QuantLib::Real</type>
+            <tensorRank>scalar</tensorRank>
+            <description>Maximum b.</description>
+          </Parameter>
+          <Parameter name='EtaMin' exampleValue ='0.0' default='0.0'>
+            <type>QuantLib::Real</type>
+            <tensorRank>scalar</tensorRank>
+            <description>Minimum eta.</description>
+          </Parameter>
+          <Parameter name='EtaMax' exampleValue ='3.0' default='3.0'>
+            <type>QuantLib::Real</type>
+            <tensorRank>scalar</tensorRank>
+            <description>Maximum eta.</description>
+          </Parameter>
+          <Parameter name='ModelTimes' >
+            <type>QuantLib::Real</type>
+            <tensorRank>vector</tensorRank>
+            <description>Model times for swaption models.</description>
+          </Parameter>
+          <Parameter name='UseExpectedXY' >
+            <type>bool</type>
+            <tensorRank>scalar</tensorRank>
+            <description>Use expectation of X and Y in swaption model.</description>
+          </Parameter>
+        </Parameters>
+      </ParameterList>
+    </Constructor>
+
+    <Constructor name='qlRealQuasiGaussianModelCalibratorCalibrate'>
+      <libraryFunction>RealQuasiGaussianModel</libraryFunction>
+      <SupportedPlatforms>
+        <SupportedPlatform name='Excel'/>
+        <SupportedPlatform name='Cpp'/>
+      </SupportedPlatforms>
+      <ParameterList>
+        <Parameters>
+          <Parameter name='QGModelCalibrator'>
+            <type>QuantLib::QuasiGaussianModelCalibrator</type>
+            <tensorRank>scalar</tensorRank>
+            <description>Input model to be calibrated.</description>
+          </Parameter>
+
+          <Parameter name='IsInput' >
+            <type>bool</type>
+            <tensorRank>matrix</tensorRank>
+            <description>Flag calibration input variables.</description>
+          </Parameter>
+          <Parameter name='IsOutput' >
+            <type>bool</type>
+            <tensorRank>matrix</tensorRank>
+            <description>Flag calibration input variables.</description>
+          </Parameter>
+          <Parameter name='Epsfcn' exampleValue ='1.0e-8' default='1.0e-2'>
+            <type>QuantLib::Real</type>
+            <tensorRank>scalar</tensorRank>
+            <description>Levenberg-Marquardt Epsfcn.</description>
+          </Parameter>
+          <Parameter name='Ftol' exampleValue ='1.0e-6' default='1.0e-2'>
+            <type>QuantLib::Real</type>
+            <tensorRank>scalar</tensorRank>
+            <description>Levenberg-Marquardt ftol.</description>
+          </Parameter>
+          <Parameter name='Xtol' exampleValue ='1.0e-6' default='1.0e-2'>
+            <type>QuantLib::Real</type>
+            <tensorRank>scalar</tensorRank>
+            <description>Levenberg-Marquardt xtol.</description>
+          </Parameter>
+          <Parameter name='Gtol' exampleValue ='1.0e-6' default='1.0e-2'>
+            <type>QuantLib::Real</type>
+            <tensorRank>scalar</tensorRank>
+            <description>Levenberg-Marquardt gtol.</description>
+          </Parameter>
+          <Parameter name='Maxfev' exampleValue ='1000' default='100'>
+            <type>QuantLib::Size</type>
+            <tensorRank>scalar</tensorRank>
+            <description>Levenberg-Marquardt maxfev.</description>
+          </Parameter>
+        </Parameters>
+      </ParameterList>
+    </Constructor>
+
 
 
   </Functions>

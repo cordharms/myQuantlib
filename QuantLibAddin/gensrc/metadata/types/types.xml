@@ -298,6 +298,7 @@
     <DataType defaultSuperType='libraryClass'>QuantLib::RealPWCStochVolModel</DataType>
     <DataType defaultSuperType='libraryClass'>QuantLib::RealShiftedSABRModel</DataType>
     <DataType defaultSuperType='libraryClass'>QuantLib::StochVolModelCalibrator</DataType>
+    <DataType defaultSuperType='libraryClass'>QuantLib::QuasiGaussianModelCalibrator</DataType>
 
     <DataType defaultSuperType='enumeration'>QuantLib::RealStochasticProcess::VolEvolv</DataType>
     <DataType defaultSuperType='enumeration'>QuantLib::VolatilityType</DataType>

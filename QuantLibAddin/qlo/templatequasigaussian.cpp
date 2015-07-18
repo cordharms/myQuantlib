@@ -52,4 +52,55 @@ namespace QuantLibAddin {
 			new QuantLib::RealQGSwaptionModel( model, floatTimes, floatWeights, fixedTimes, fixedWeights, modelTimes, useExpectedXY ) );
 	}
 
+	QuasiGaussianModelCalibrator::QuasiGaussianModelCalibrator(
+		                             const boost::shared_ptr<ObjectHandler::ValueObject>&         properties,
+			                         boost::shared_ptr<QuantLib::RealQuasiGaussianModel>          model,
+			                         boost::shared_ptr<QuantLib::RealMCSimulation>                mcSimulation,
+									 std::vector< boost::shared_ptr<QuantLib::Swaption> >         swaptions,
+									 std::vector< std::vector< QuantLib::Real > > lambda,
+                                     std::vector< std::vector< QuantLib::Real > > b,
+                                     std::vector< std::vector< QuantLib::Real > > eta,
+									 QuantLib::Real                               lambdaMin,
+									 QuantLib::Real                               lambdaMax,
+									 QuantLib::Real                               bMin,
+									 QuantLib::Real                               bMax,
+									 QuantLib::Real                               etaMin,
+									 QuantLib::Real                               etaMax,
+									 std::vector< QuantLib::Real >                modelTimes,
+                                     bool                                         useExpectedXY,
+			                         bool permanent) : ObjectHandler::LibraryObject<QuantLib::QuasiGaussianModelCalibrator>(properties,permanent) {
+        // we need to re-order swaptions in matrix form
+		QL_REQUIRE( lambda.size()>0, "QuasiGaussianModelCalibrator: lambda required." );
+		QuantLib::Size nRows = lambda.size();
+		QuantLib::Size nCols = lambda[0].size();
+		QL_REQUIRE( swaptions.size()==nRows*nCols, "QuasiGaussianModelCalibrator: wrong number of swaptions." );
+		std::vector< std::vector< boost::shared_ptr<QuantLib::Swaption> > > swaptionMatrix;
+		swaptionMatrix.resize(nRows);
+		for (QuantLib::Size i=0; i<nRows; ++i) {
+			swaptionMatrix[i].resize(nCols);
+			for (QuantLib::Size j=0; j<nCols; ++j) {
+				swaptionMatrix[i][j] = swaptions[i*nCols+j];
+			}
+		}
+
+        libraryObject_ = boost::shared_ptr<QuantLib::QuasiGaussianModelCalibrator>(
+			new QuantLib::QuasiGaussianModelCalibrator( model, mcSimulation, swaptionMatrix, lambda, b, eta, lambdaMin, lambdaMax, bMin, bMax, etaMin, etaMax, modelTimes, useExpectedXY ) );
+	}
+
+	// model from calibration
+	RealQuasiGaussianModel::RealQuasiGaussianModel(
+		                         const boost::shared_ptr<ObjectHandler::ValueObject>&              properties, 
+			                     const boost::shared_ptr<QuantLib::QuasiGaussianModelCalibrator>&  calibrator,
+					             const std::vector< std::vector< bool > >&                         isInput,
+			                     const std::vector< std::vector< bool > >&                         isOutput,
+								 	// optimization parameters
+		                         QuantLib::Real                                                    epsfcn,
+								 QuantLib::Real                                                    ftol,
+								 QuantLib::Real                                                    xtol,
+								 QuantLib::Real                                                    gtol,
+		                         QuantLib::Size                                                    maxfev,
+			                     bool permanent) : RealStochasticProcess(properties,permanent) {
+	    libraryObject_ = boost::shared_ptr<QuantLib::RealStochasticProcess>( calibrator->calibrate(isInput,isOutput,epsfcn,ftol,xtol,gtol,maxfev) );
+	}
+
 }
