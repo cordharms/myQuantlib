@@ -60,14 +60,6 @@ namespace QuantLibAddin {
 		  // model from calibration
 		  RealQuasiGaussianModel(const boost::shared_ptr<ObjectHandler::ValueObject>&              properties, 
 			                     const boost::shared_ptr<QuantLib::QuasiGaussianModelCalibrator>&  calibrator,
-					             const std::vector< std::vector< bool > >&                         isInput,
-			                     const std::vector< std::vector< bool > >&                         isOutput,
-								 	// optimization parameters
-		                         QuantLib::Real                                                    epsfcn,
-								 QuantLib::Real                                                    ftol,
-								 QuantLib::Real                                                    xtol,
-								 QuantLib::Real                                                    gtol,
-		                         QuantLib::Size                                                    maxfev,
 			                     bool permanent);
 
     };
@@ -101,7 +93,7 @@ namespace QuantLibAddin {
 									 QuantLib::Real                               bMax,
 									 QuantLib::Real                               etaMin,
 									 QuantLib::Real                               etaMax,
-									 std::vector< QuantLib::Real >                modelTimes,
+									 QuantLib::Real                               modelTimesStepSize,
                                      bool                                         useExpectedXY,
 			                         bool permanent);
 	};

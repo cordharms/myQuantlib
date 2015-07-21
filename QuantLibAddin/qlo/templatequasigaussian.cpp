@@ -66,7 +66,7 @@ namespace QuantLibAddin {
 									 QuantLib::Real                               bMax,
 									 QuantLib::Real                               etaMin,
 									 QuantLib::Real                               etaMax,
-									 std::vector< QuantLib::Real >                modelTimes,
+                                     QuantLib::Real                               modelTimesStepSize,
                                      bool                                         useExpectedXY,
 			                         bool permanent) : ObjectHandler::LibraryObject<QuantLib::QuasiGaussianModelCalibrator>(properties,permanent) {
         // we need to re-order swaptions in matrix form
@@ -84,23 +84,15 @@ namespace QuantLibAddin {
 		}
 
         libraryObject_ = boost::shared_ptr<QuantLib::QuasiGaussianModelCalibrator>(
-			new QuantLib::QuasiGaussianModelCalibrator( model, mcSimulation, swaptionMatrix, lambda, b, eta, lambdaMin, lambdaMax, bMin, bMax, etaMin, etaMax, modelTimes, useExpectedXY ) );
+			new QuantLib::QuasiGaussianModelCalibrator( model, mcSimulation, swaptionMatrix, lambda, b, eta, lambdaMin, lambdaMax, bMin, bMax, etaMin, etaMax, modelTimesStepSize, useExpectedXY ) );
 	}
 
 	// model from calibration
 	RealQuasiGaussianModel::RealQuasiGaussianModel(
 		                         const boost::shared_ptr<ObjectHandler::ValueObject>&              properties, 
 			                     const boost::shared_ptr<QuantLib::QuasiGaussianModelCalibrator>&  calibrator,
-					             const std::vector< std::vector< bool > >&                         isInput,
-			                     const std::vector< std::vector< bool > >&                         isOutput,
-								 	// optimization parameters
-		                         QuantLib::Real                                                    epsfcn,
-								 QuantLib::Real                                                    ftol,
-								 QuantLib::Real                                                    xtol,
-								 QuantLib::Real                                                    gtol,
-		                         QuantLib::Size                                                    maxfev,
 			                     bool permanent) : RealStochasticProcess(properties,permanent) {
-	    libraryObject_ = boost::shared_ptr<QuantLib::RealStochasticProcess>( calibrator->calibrate(isInput,isOutput,epsfcn,ftol,xtol,gtol,maxfev) );
+	    libraryObject_ = boost::shared_ptr<QuantLib::RealStochasticProcess>( calibrator->calibratedModel() );
 	}
 
 }

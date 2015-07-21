@@ -435,10 +435,10 @@
             <tensorRank>scalar</tensorRank>
             <description>Maximum eta.</description>
           </Parameter>
-          <Parameter name='ModelTimes' >
+          <Parameter name='ModelTimesStepSize' exampleValue ='0.25' default='0.25'>
             <type>QuantLib::Real</type>
-            <tensorRank>vector</tensorRank>
-            <description>Model times for swaption models.</description>
+            <tensorRank>scalar</tensorRank>
+            <description>Model times step size for swaption models.</description>
           </Parameter>
           <Parameter name='UseExpectedXY' >
             <type>bool</type>
@@ -449,20 +449,17 @@
       </ParameterList>
     </Constructor>
 
-    <Constructor name='qlRealQuasiGaussianModelCalibratorCalibrate'>
-      <libraryFunction>RealQuasiGaussianModel</libraryFunction>
+    <Member name='qlRealQuasiGaussianModelCalibratorCalibrate' type='QuantLib::QuasiGaussianModelCalibrator' >
+      <description>Perform calibration and return LM info.</description>
+      <libraryFunction>calibrate</libraryFunction>
       <SupportedPlatforms>
+        <!--SupportedPlatform name='Excel' calcInWizard='false'/-->
         <SupportedPlatform name='Excel'/>
-        <SupportedPlatform name='Cpp'/>
+        <!--SupportedPlatform name='Calc'/-->
+        <!--SupportedPlatform name='Cpp'/-->
       </SupportedPlatforms>
       <ParameterList>
         <Parameters>
-          <Parameter name='QGModelCalibrator'>
-            <type>QuantLib::QuasiGaussianModelCalibrator</type>
-            <tensorRank>scalar</tensorRank>
-            <description>Input model to be calibrated.</description>
-          </Parameter>
-
           <Parameter name='IsInput' >
             <type>bool</type>
             <tensorRank>matrix</tensorRank>
@@ -497,6 +494,28 @@
             <type>QuantLib::Size</type>
             <tensorRank>scalar</tensorRank>
             <description>Levenberg-Marquardt maxfev.</description>
+          </Parameter>
+        </Parameters>
+      </ParameterList>
+      <ReturnValue>
+        <type>QuantLib::Integer</type>
+        <tensorRank>scalar</tensorRank>
+      </ReturnValue>
+    </Member>
+
+
+    <Constructor name='qlRealQuasiGaussianModelCalibratorCalibratedModel'>
+      <libraryFunction>RealQuasiGaussianModel</libraryFunction>
+      <SupportedPlatforms>
+        <SupportedPlatform name='Excel'/>
+        <SupportedPlatform name='Cpp'/>
+      </SupportedPlatforms>
+      <ParameterList>
+        <Parameters>
+          <Parameter name='QGModelCalibrator'>
+            <type>QuantLib::QuasiGaussianModelCalibrator</type>
+            <tensorRank>scalar</tensorRank>
+            <description>Input model to be calibrated.</description>
           </Parameter>
         </Parameters>
       </ParameterList>
