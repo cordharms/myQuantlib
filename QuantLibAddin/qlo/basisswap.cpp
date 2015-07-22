@@ -119,6 +119,17 @@ namespace QuantLibAddin {
 			new QuantLib::SpreadYTS(baseCurve, sprdCurve, alpha));
 	}
 
+	SwaptionCashFlows::SwaptionCashFlows ( 
+		                    const boost::shared_ptr<ObjectHandler::ValueObject>&   properties,
+			                const boost::shared_ptr<QuantLib::Swaption>&           swaption,
+			                const QuantLib::Handle<QuantLib::YieldTermStructure>&  discountCurve,
+						    bool                                                   contTenorSpread,
+			                bool                                                   permanent ) 
+	: ObjectHandler::LibraryObject<QuantLib::SwaptionCashFlows>(properties,permanent) {
+		libraryObject_ = boost::shared_ptr<QuantLib::SwaptionCashFlows>(
+			new QuantLib::SwaptionCashFlows(swaption, discountCurve, contTenorSpread) );
+	}
+
 
 }
 

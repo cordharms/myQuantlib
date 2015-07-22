@@ -272,6 +272,7 @@
     <DataType defaultSuperType='libraryClass'>QuantLib::TenorSwapRateHelper</DataType>
     <DataType defaultSuperType='libraryClass'>QuantLib::XCCYSwapRateHelper</DataType>
     <DataType defaultSuperType='libraryClass'>QuantLib::SpreadYTS</DataType>
+    <DataType defaultSuperType='libraryClass'>QuantLib::SwaptionCashFlows</DataType>
 
     <DataType defaultSuperType='libraryClass'>QuantLib::RealHullWhiteModel</DataType>
     <DataType defaultSuperType='libraryClass'>QuantLib::MinimADHullWhiteModel</DataType>

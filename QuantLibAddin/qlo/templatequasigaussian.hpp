@@ -75,6 +75,12 @@ namespace QuantLibAddin {
 			                const std::vector<QuantLib::Time>&                           modelTimes,    // time grid for numerical integration
 			                const bool                                                   useExpectedXY, // evaluate E^A [ x(t) ], E^A [ y(t) ] as expansion points
 							bool permanent);
+		RealQGSwaptionModel(const boost::shared_ptr<ObjectHandler::ValueObject>&         properties,
+						    const boost::shared_ptr<QuantLib::RealQuasiGaussianModel>&   model,
+							boost::shared_ptr<QuantLib::Swaption>                        swaption,
+			                const QuantLib::Time                                         modelTimesStepSize,  // time grid for numerical integration
+			                const bool                                                   useExpectedXY,       // evaluate E^A [ x(t) ], E^A [ y(t) ] as expansion points
+							bool permanent);
 	};
 
 

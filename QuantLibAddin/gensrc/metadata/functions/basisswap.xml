@@ -14,6 +14,8 @@
     <include>ql/experimental/basisswap/basisswap.hpp</include>
     <include>ql/experimental/basisswap/basisswapengine.hpp</include>
     <include>ql/experimental/basisswap/spreadyieldtermstructure.hpp</include>
+    <include>qlo/swaption.hpp</include>
+    <include>ql/instruments/swaption.hpp</include>
   </serializationIncludes>
   <addinIncludes>
     <include>qlo/handleimpl.hpp</include>
@@ -28,6 +30,8 @@
     <include>ql/experimental/basisswap/basisswap.hpp</include>
     <include>ql/experimental/basisswap/basisswapengine.hpp</include>
     <include>ql/experimental/basisswap/spreadyieldtermstructure.hpp</include>
+    <include>qlo/swaption.hpp</include>
+    <include>ql/instruments/swaption.hpp</include>
   </addinIncludes>
   <copyright>
     Copyright (C) 2014, Sebastian Schlenkrich
@@ -310,6 +314,147 @@
         </Parameters>
       </ParameterList>
     </Constructor>
+
+    <!-- SwaptionCashFlow model -->
+
+    <Constructor name='qlSwaptionCashFlows'>
+      <libraryFunction>SwaptionCashFlows</libraryFunction>
+      <SupportedPlatforms>
+        <SupportedPlatform name='Excel'/>
+        <SupportedPlatform name='Cpp'/>
+      </SupportedPlatforms>
+      <ParameterList>
+        <Parameters>
+          <Parameter name='Swaption' >
+           <type>QuantLib::Swaption</type>
+           <tensorRank>scalar</tensorRank>
+           <description>reference to swaption instrument.</description>
+         </Parameter>
+         <Parameter name='DiscountCurve'>
+           <type>QuantLib::YieldTermStructure</type>
+           <superType>libToHandle</superType>
+           <tensorRank>scalar</tensorRank>
+           <description>Discount curve.</description>
+         </Parameter>
+          <Parameter name='ContTenorSpread'>
+            <type>bool</type>
+            <tensorRank>scalar</tensorRank>
+            <description>Use continuous compounded (true) or simple (false) compounded tenor spreads.</description>
+          </Parameter>
+        </Parameters>
+      </ParameterList>
+    </Constructor>
+
+    <!-- inspectors -->
+    
+    <Member name='qlSwaptionCashFlowsExerciseTimes' type='QuantLib::SwaptionCashFlows' >
+      <description>Returns exercise times after reference date (in year fractions).</description>
+      <libraryFunction>exerciseTimes</libraryFunction>
+      <SupportedPlatforms>
+        <!--SupportedPlatform name='Excel' calcInWizard='false'/-->
+        <SupportedPlatform name='Excel'/>
+        <!--SupportedPlatform name='Calc'/-->
+        <!--SupportedPlatform name='Cpp'/-->
+      </SupportedPlatforms>
+      <ParameterList>
+        <Parameters/>
+      </ParameterList>
+      <ReturnValue>
+        <type>QuantLib::Time</type>
+        <tensorRank>vector</tensorRank>
+      </ReturnValue>
+    </Member>
+
+    <Member name='qlSwaptionCashFlowsFloatTimes' type='QuantLib::SwaptionCashFlows' >
+      <description>Returns float leg times (in year fractions).</description>
+      <libraryFunction>floatTimes</libraryFunction>
+      <SupportedPlatforms>
+        <!--SupportedPlatform name='Excel' calcInWizard='false'/-->
+        <SupportedPlatform name='Excel'/>
+        <!--SupportedPlatform name='Calc'/-->
+        <!--SupportedPlatform name='Cpp'/-->
+      </SupportedPlatforms>
+      <ParameterList>
+        <Parameters/>
+      </ParameterList>
+      <ReturnValue>
+        <type>QuantLib::Time</type>
+        <tensorRank>vector</tensorRank>
+      </ReturnValue>
+    </Member>
+
+    <Member name='qlSwaptionCashFlowsFixedTimes' type='QuantLib::SwaptionCashFlows' >
+      <description>Returns fixed leg times (in year fractions).</description>
+      <libraryFunction>fixedTimes</libraryFunction>
+      <SupportedPlatforms>
+        <!--SupportedPlatform name='Excel' calcInWizard='false'/-->
+        <SupportedPlatform name='Excel'/>
+        <!--SupportedPlatform name='Calc'/-->
+        <!--SupportedPlatform name='Cpp'/-->
+      </SupportedPlatforms>
+      <ParameterList>
+        <Parameters/>
+      </ParameterList>
+      <ReturnValue>
+        <type>QuantLib::Time</type>
+        <tensorRank>vector</tensorRank>
+      </ReturnValue>
+    </Member>
+
+    <Member name='qlSwaptionCashFlowsFloatWeights' type='QuantLib::SwaptionCashFlows' >
+      <description>Returns float leg weights (i.e. cash flows).</description>
+      <libraryFunction>floatWeights</libraryFunction>
+      <SupportedPlatforms>
+        <!--SupportedPlatform name='Excel' calcInWizard='false'/-->
+        <SupportedPlatform name='Excel'/>
+        <!--SupportedPlatform name='Calc'/-->
+        <!--SupportedPlatform name='Cpp'/-->
+      </SupportedPlatforms>
+      <ParameterList>
+        <Parameters/>
+      </ParameterList>
+      <ReturnValue>
+        <type>QuantLib::Real</type>
+        <tensorRank>vector</tensorRank>
+      </ReturnValue>
+    </Member>
+
+    <Member name='qlSwaptionCashFlowsFixedWeights' type='QuantLib::SwaptionCashFlows' >
+      <description>Returns fixed leg weights (i.e. cash flows).</description>
+      <libraryFunction>fixedWeights</libraryFunction>
+      <SupportedPlatforms>
+        <!--SupportedPlatform name='Excel' calcInWizard='false'/-->
+        <SupportedPlatform name='Excel'/>
+        <!--SupportedPlatform name='Calc'/-->
+        <!--SupportedPlatform name='Cpp'/-->
+      </SupportedPlatforms>
+      <ParameterList>
+        <Parameters/>
+      </ParameterList>
+      <ReturnValue>
+        <type>QuantLib::Real</type>
+        <tensorRank>vector</tensorRank>
+      </ReturnValue>
+    </Member>
+
+    <Member name='qlSwaptionCashFlowsAnnuityWeights' type='QuantLib::SwaptionCashFlows' >
+      <description>Returns fixed leg annuity weights (i.e. rate equal 1).</description>
+      <libraryFunction>annuityWeights</libraryFunction>
+      <SupportedPlatforms>
+        <!--SupportedPlatform name='Excel' calcInWizard='false'/-->
+        <SupportedPlatform name='Excel'/>
+        <!--SupportedPlatform name='Calc'/-->
+        <!--SupportedPlatform name='Cpp'/-->
+      </SupportedPlatforms>
+      <ParameterList>
+        <Parameters/>
+      </ParameterList>
+      <ReturnValue>
+        <type>QuantLib::Real</type>
+        <tensorRank>vector</tensorRank>
+      </ReturnValue>
+    </Member>
+
 
 
   </Functions>

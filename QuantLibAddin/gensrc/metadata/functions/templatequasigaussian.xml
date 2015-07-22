@@ -117,6 +117,98 @@
       </ParameterList>
     </Constructor>
 
+    <!-- Attribute inspectors for RealQuasiGaussianModel -->
+
+    <Member name='qlRealQuasiGaussianModelTimes' type='QuantLib::RealQuasiGaussianModel' >
+      <description>Returns model time grid.</description>
+      <libraryFunction>times</libraryFunction>
+      <SupportedPlatforms>
+        <!--SupportedPlatform name='Excel' calcInWizard='false'/-->
+        <SupportedPlatform name='Excel'/>
+        <!--SupportedPlatform name='Calc'/-->
+        <!--SupportedPlatform name='Cpp'/-->
+      </SupportedPlatforms>
+      <ParameterList>
+        <Parameters/>
+      </ParameterList>
+      <ReturnValue>
+        <type>QuantLib::Real</type>
+        <tensorRank>vector</tensorRank>
+      </ReturnValue>
+    </Member>
+
+    <Member name='qlRealQuasiGaussianModelLambdas' type='QuantLib::RealQuasiGaussianModel' >
+      <description>Returns model vol.</description>
+      <libraryFunction>lambda</libraryFunction>
+      <SupportedPlatforms>
+        <!--SupportedPlatform name='Excel' calcInWizard='false'/-->
+        <SupportedPlatform name='Excel'/>
+        <!--SupportedPlatform name='Calc'/-->
+        <!--SupportedPlatform name='Cpp'/-->
+      </SupportedPlatforms>
+      <ParameterList>
+        <Parameters/>
+      </ParameterList>
+      <ReturnValue>
+        <type>QuantLib::Time</type>
+        <tensorRank>matrix</tensorRank>
+      </ReturnValue>
+    </Member>
+
+    <Member name='qlRealQuasiGaussianModelBs' type='QuantLib::RealQuasiGaussianModel' >
+      <description>Returns model input b.</description>
+      <libraryFunction>b</libraryFunction>
+      <SupportedPlatforms>
+        <!--SupportedPlatform name='Excel' calcInWizard='false'/-->
+        <SupportedPlatform name='Excel'/>
+        <!--SupportedPlatform name='Calc'/-->
+        <!--SupportedPlatform name='Cpp'/-->
+      </SupportedPlatforms>
+      <ParameterList>
+        <Parameters/>
+      </ParameterList>
+      <ReturnValue>
+        <type>QuantLib::Time</type>
+        <tensorRank>matrix</tensorRank>
+      </ReturnValue>
+    </Member>
+
+    <Member name='qlRealQuasiGaussianModelAlphas' type='QuantLib::RealQuasiGaussianModel' >
+      <description>Returns model input alpha.</description>
+      <libraryFunction>alpha</libraryFunction>
+      <SupportedPlatforms>
+        <!--SupportedPlatform name='Excel' calcInWizard='false'/-->
+        <SupportedPlatform name='Excel'/>
+        <!--SupportedPlatform name='Calc'/-->
+        <!--SupportedPlatform name='Cpp'/-->
+      </SupportedPlatforms>
+      <ParameterList>
+        <Parameters/>
+      </ParameterList>
+      <ReturnValue>
+        <type>QuantLib::Time</type>
+        <tensorRank>matrix</tensorRank>
+      </ReturnValue>
+    </Member>
+
+    <Member name='qlRealQuasiGaussianModelEtas' type='QuantLib::RealQuasiGaussianModel' >
+      <description>Returns model input eta.</description>
+      <libraryFunction>eta</libraryFunction>
+      <SupportedPlatforms>
+        <!--SupportedPlatform name='Excel' calcInWizard='false'/-->
+        <SupportedPlatform name='Excel'/>
+        <!--SupportedPlatform name='Calc'/-->
+        <!--SupportedPlatform name='Cpp'/-->
+      </SupportedPlatforms>
+      <ParameterList>
+        <Parameters/>
+      </ParameterList>
+      <ReturnValue>
+        <type>QuantLib::Real</type>
+        <tensorRank>vector</tensorRank>
+      </ReturnValue>
+    </Member>
+
     <!-- Inspectors for RealQuasiGaussianModel -->
 
     <Member name='qlRealQuasiGaussianModelDfT' type='QuantLib::RealQuasiGaussianModel' >
@@ -315,6 +407,38 @@
       </ParameterList>
     </Constructor>
 
+    <Constructor name='qlRealQGSwaptionModelFromSwaption'>
+      <libraryFunction>RealQGSwaptionModel</libraryFunction>
+      <SupportedPlatforms>
+        <SupportedPlatform name='Excel'/>
+        <SupportedPlatform name='Cpp'/>
+      </SupportedPlatforms>
+      <ParameterList>
+        <Parameters>
+          <Parameter name='QuasiGaussianModel' >
+            <type>QuantLib::RealQuasiGaussianModel</type>
+            <tensorRank>scalar</tensorRank>
+            <description>reference to base model.</description>
+          </Parameter>
+          <Parameter name='Swaption'>
+            <type>QuantLib::Swaption</type>
+            <tensorRank>scalar</tensorRank>
+            <description>Reference underlying swaption.</description>
+          </Parameter>
+          <Parameter name='ModelTimesStepSize' exampleValue ='0.25' default='0.25'>
+            <type>QuantLib::Time</type>
+            <tensorRank>scalar</tensorRank>
+            <description>time grid for numerical integration.</description>
+          </Parameter>
+          <Parameter name='UseExpectedXY' exampleValue ='true' default='true'>
+            <type>bool</type>
+            <tensorRank>scalar</tensorRank>
+            <description>evaluate E^A[x(t)] and E^A[y(t)].</description>
+          </Parameter>
+        </Parameters>
+      </ParameterList>
+    </Constructor>
+
     <!--  VecA barX( DateType t ), inline MatA barY( DateType t )
     -->
 
@@ -461,14 +585,14 @@
       <ParameterList>
         <Parameters>
           <Parameter name='IsInput' >
-            <type>bool</type>
+            <type>QuantLib::Time</type>
             <tensorRank>matrix</tensorRank>
-            <description>Flag calibration input variables.</description>
+            <description>Scaling calibration input variables.</description>
           </Parameter>
           <Parameter name='IsOutput' >
-            <type>bool</type>
+            <type>QuantLib::Time</type>
             <tensorRank>matrix</tensorRank>
-            <description>Flag calibration input variables.</description>
+            <description>Scaling calibration output variables.</description>
           </Parameter>
           <Parameter name='Epsfcn' exampleValue ='1.0e-8' default='1.0e-2'>
             <type>QuantLib::Real</type>
@@ -503,7 +627,6 @@
       </ReturnValue>
     </Member>
 
-
     <Constructor name='qlRealQuasiGaussianModelCalibratorCalibratedModel'>
       <libraryFunction>RealQuasiGaussianModel</libraryFunction>
       <SupportedPlatforms>
@@ -520,6 +643,25 @@
         </Parameters>
       </ParameterList>
     </Constructor>
+
+    <Member name='qlRealQuasiGaussianModelCalibratorAcceptCalibration' type='QuantLib::QuasiGaussianModelCalibrator' >
+      <description>Copy calibrated model to input model.</description>
+      <libraryFunction>acceptCalibration</libraryFunction>
+      <SupportedPlatforms>
+        <!--SupportedPlatform name='Excel' calcInWizard='false'/-->
+        <SupportedPlatform name='Excel'/>
+        <!--SupportedPlatform name='Calc'/-->
+        <!--SupportedPlatform name='Cpp'/-->
+      </SupportedPlatforms>
+      <ParameterList>
+        <Parameters/>
+      </ParameterList>
+      <ReturnValue>
+        <type>void</type>
+        <tensorRank>scalar</tensorRank>
+      </ReturnValue>
+    </Member>
+
 
 
 
