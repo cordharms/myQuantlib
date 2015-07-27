@@ -14,6 +14,7 @@
 #include <ql/types.hpp>
 
 #include <ql/experimental/template/montecarlo/montecarlomodells.hpp>
+#include <ql/experimental/template/basismodel/swaptioncfs.hpp>
 
 
 
@@ -130,6 +131,10 @@ namespace QuantLibAddin {
 						       const std::vector<QuantLib::Real>&                   fixedWeights,
 							   QuantLib::Real                                       strike,
 							   QuantLib::Real                                       payOrRec,
+			                   bool permanent);
+		RealMCGeneralSwaption( const boost::shared_ptr<ObjectHandler::ValueObject>& properties,
+			                   const boost::shared_ptr<QuantLib::Swaption>&           swaption,
+			                   const QuantLib::Handle<QuantLib::YieldTermStructure>&  discountCurve,
 			                   bool permanent);
 	};
 

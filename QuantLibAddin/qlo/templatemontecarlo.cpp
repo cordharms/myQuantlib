@@ -89,6 +89,18 @@ namespace QuantLibAddin {
 			new QuantLib::RealMCPayoff::GeneralSwaption( t, floatTimes, floatWeights, fixedTimes, fixedWeights, strike, payOrRec ));
 	}
 
+	RealMCGeneralSwaption::RealMCGeneralSwaption(
+		                       const boost::shared_ptr<ObjectHandler::ValueObject>& properties,
+			                   const boost::shared_ptr<QuantLib::Swaption>&           swaption,
+			                   const QuantLib::Handle<QuantLib::YieldTermStructure>&  discountCurve,
+			                   bool permanent) : RealMCPayoff(properties,permanent) {
+		// use swaption cash flow model
+		QuantLib::SwaptionCashFlows cf(swaption,discountCurve);
+        libraryObject_ = boost::shared_ptr<QuantLib::RealMCPayoff>(
+			new QuantLib::RealMCPayoff::GeneralSwaption( cf.exerciseTimes()[0], cf.floatTimes(), cf.floatWeights(), cf.fixedTimes(), cf.annuityWeights(), swaption->underlyingSwap()->fixedRate(), swaption->underlyingSwap()->type() ));
+	}
+
+
 	RealMCModelCorrelation::RealMCModelCorrelation( const boost::shared_ptr<ObjectHandler::ValueObject>& properties,
 						       const std::vector<QuantLib::Time>&                   times,
 			                   const QuantLib::Time                                 T1,
