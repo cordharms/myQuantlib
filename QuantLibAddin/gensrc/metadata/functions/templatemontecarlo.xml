@@ -385,6 +385,57 @@
       </ReturnValue>
     </Procedure>
 
+    <Procedure name='qlRealMCPayoffAt' >
+      <description>Returns NPV of simulated payoff.</description>
+      <alias>QuantLib::RealMCPayoffPricer::at</alias>
+      <SupportedPlatforms>
+        <SupportedPlatform name='Excel'/>
+      </SupportedPlatforms>
+      <ParameterList>
+        <Parameters>
+          <Parameter name='Payoff' >
+            <type>QuantLib::RealMCPayoff</type>
+            <tensorRank>scalar</tensorRank>
+            <description>reference to payoff.</description>
+          </Parameter>
+          <Parameter name='Simulation' >
+            <type>QuantLib::RealMCSimulation</type>
+            <tensorRank>scalar</tensorRank>
+            <description>reference to RealMCSimulation object.</description>
+          </Parameter>
+        </Parameters>
+      </ParameterList>
+      <ReturnValue>
+        <type>QuantLib::Real</type>
+        <tensorRank>vector</tensorRank>
+      </ReturnValue>
+    </Procedure>
+
+    <Procedure name='qlRealMCPayoffDiscountedAt' >
+      <description>Returns NPV of simulated payoff.</description>
+      <alias>QuantLib::RealMCPayoffPricer::discountedAt</alias>
+      <SupportedPlatforms>
+        <SupportedPlatform name='Excel'/>
+      </SupportedPlatforms>
+      <ParameterList>
+        <Parameters>
+          <Parameter name='Payoff' >
+            <type>QuantLib::RealMCPayoff</type>
+            <tensorRank>scalar</tensorRank>
+            <description>reference to payoff.</description>
+          </Parameter>
+          <Parameter name='Simulation' >
+            <type>QuantLib::RealMCSimulation</type>
+            <tensorRank>scalar</tensorRank>
+            <description>reference to RealMCSimulation object.</description>
+          </Parameter>
+        </Parameters>
+      </ParameterList>
+      <ReturnValue>
+        <type>QuantLib::Real</type>
+        <tensorRank>vector</tensorRank>
+      </ReturnValue>
+    </Procedure>
 
     <Constructor name='qlRealMCPayoffPricer'>
       <libraryFunction>RealMCPayoffPricer</libraryFunction>
@@ -614,6 +665,29 @@
       </ParameterList>
     </Constructor>
 
+    <Constructor name='qlRealMCSwapRate'>
+      <libraryFunction>RealMCSwapRate</libraryFunction>
+      <SupportedPlatforms>
+        <SupportedPlatform name='Excel'/>
+        <SupportedPlatform name='Cpp'/>
+      </SupportedPlatforms>
+      <ParameterList>
+        <Parameters>
+          <Parameter name='Swaption' >
+            <type>QuantLib::Swaption</type>
+            <tensorRank>scalar</tensorRank>
+            <description>reference to swaption instrument.</description>
+          </Parameter>
+          <Parameter name='DiscountCurve'>
+            <type>QuantLib::YieldTermStructure</type>
+            <superType>libToHandle</superType>
+            <tensorRank>scalar</tensorRank>
+            <description>Discount curve.</description>
+          </Parameter>
+        </Parameters>
+      </ParameterList>
+    </Constructor>
+
 
     <Constructor name='qlRealMCModelCorrelation'>
       <libraryFunction>RealMCModelCorrelation</libraryFunction>
@@ -629,6 +703,43 @@
             <description>vector of observation (fixing) times.</description>
           </Parameter>
           <Parameter name='SwapTermOne' exampleValue ='2' default='2' >
+            <type>QuantLib::Time</type>
+            <tensorRank>scalar</tensorRank>
+            <description>swap term in year fractions.</description>
+          </Parameter>
+          <Parameter name='SwapTermTwo' exampleValue ='10' default='10' >
+            <type>QuantLib::Time</type>
+            <tensorRank>scalar</tensorRank>
+            <description>swap term in year fractions.</description>
+          </Parameter>
+        </Parameters>
+      </ParameterList>
+    </Constructor>
+
+    <Constructor name='qlRealMCForwardRateCorrelation'>
+      <libraryFunction>RealMCForwardRateCorrelation</libraryFunction>
+      <SupportedPlatforms>
+        <SupportedPlatform name='Excel'/>
+        <SupportedPlatform name='Cpp'/>
+      </SupportedPlatforms>
+      <ParameterList>
+        <Parameters>
+          <Parameter name='ObservationTimes' >
+            <type>QuantLib::Time</type>
+            <tensorRank>vector</tensorRank>
+            <description>vector of observation (fixing) times.</description>
+          </Parameter>
+          <Parameter name='FixingTimeOne' exampleValue ='5' default='5' >
+            <type>QuantLib::Time</type>
+            <tensorRank>scalar</tensorRank>
+            <description>swap term in year fractions.</description>
+          </Parameter>
+          <Parameter name='SwapTermOne' exampleValue ='2' default='2' >
+            <type>QuantLib::Time</type>
+            <tensorRank>scalar</tensorRank>
+            <description>swap term in year fractions.</description>
+          </Parameter>
+          <Parameter name='FixingTimeTwo' exampleValue ='5' default='5' >
             <type>QuantLib::Time</type>
             <tensorRank>scalar</tensorRank>
             <description>swap term in year fractions.</description>

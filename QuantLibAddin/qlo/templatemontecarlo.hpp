@@ -138,6 +138,22 @@ namespace QuantLibAddin {
 			                   bool permanent);
 	};
 
+	class RealMCSwapRate : public RealMCPayoff {
+	public:
+		RealMCSwapRate( const boost::shared_ptr<ObjectHandler::ValueObject>& properties,
+			            const QuantLib::Time                                 t,
+						const std::vector<QuantLib::Time>&                   floatTimes,
+						const std::vector<QuantLib::Real>&                   floatWeights,
+						const std::vector<QuantLib::Time>&                   fixedTimes,
+						const std::vector<QuantLib::Real>&                   annuityWeights,
+			            bool permanent);
+		RealMCSwapRate( const boost::shared_ptr<ObjectHandler::ValueObject>& properties,
+			            const boost::shared_ptr<QuantLib::Swaption>&           swaption,
+			            const QuantLib::Handle<QuantLib::YieldTermStructure>&  discountCurve,
+			            bool permanent);
+	};
+
+
 	class RealMCModelCorrelation : public RealMCPayoff {
 	public:
 		RealMCModelCorrelation( const boost::shared_ptr<ObjectHandler::ValueObject>& properties,
@@ -146,6 +162,19 @@ namespace QuantLibAddin {
 			                   const QuantLib::Time                                 T2,
 			                   bool permanent);
 	};
+
+
+	class RealMCForwardRateCorrelation : public RealMCPayoff {
+	public:
+		RealMCForwardRateCorrelation( const boost::shared_ptr<ObjectHandler::ValueObject>& properties,
+						              const std::vector<QuantLib::Time>&                   times,
+			                          const QuantLib::Time                                 T1,
+			                          const QuantLib::Time                                 Term1,
+			                          const QuantLib::Time                                 T2,
+			                          const QuantLib::Time                                 Term2,
+			                          bool permanent);
+	};
+
 
 
 }  // namespace QuantLibAddin
