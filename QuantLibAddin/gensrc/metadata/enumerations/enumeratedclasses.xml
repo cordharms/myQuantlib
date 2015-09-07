@@ -141,6 +141,11 @@
           <value>CONUNDRUM_BY_BLACK_Pricer</value>
           <libraryClass>QuantLib::AnalyticHaganPricer</libraryClass>
         </EnumeratedClass>
+        <EnumeratedClass>
+          <string>ConundrumByBachelier</string>
+          <value>CONUNDRUM_BY_BACHELIER_Pricer</value>
+          <libraryClass>QuantLib::AnalyticNormalHaganPricer</libraryClass>
+        </EnumeratedClass>
       </EnumeratedClasses>
     </EnumeratedClassGroup>
 

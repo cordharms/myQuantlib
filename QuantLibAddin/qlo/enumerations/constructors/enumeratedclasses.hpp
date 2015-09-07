@@ -189,6 +189,11 @@ namespace QuantLibAddin {
             const QuantLib::Handle<QuantLib::SwaptionVolatilityStructure>& swaptionVol,
             const QuantLib::GFunctionFactory::YieldCurveModel modelOfYieldCurve,
             const QuantLib::Handle<QuantLib::Quote>& meanReversion);
+    boost::shared_ptr<QuantLib::CmsCouponPricer>
+        CONUNDRUM_BY_BACHELIER_Pricer(
+            const QuantLib::Handle<QuantLib::SwaptionVolatilityStructure>& swaptionVol,
+            const QuantLib::GFunctionFactory::YieldCurveModel modelOfYieldCurve,
+            const QuantLib::Handle<QuantLib::Quote>& meanReversion);
 
 }
 

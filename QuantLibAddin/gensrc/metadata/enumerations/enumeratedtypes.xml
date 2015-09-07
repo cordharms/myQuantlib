@@ -1609,6 +1609,10 @@
           <string>ParallelShifts</string>
           <value>QuantLib::GFunctionFactory::ParallelShifts</value>
         </EnumeratedType>
+        <EnumeratedType>
+          <string>Affine</string>
+          <value>QuantLib::GFunctionFactory::Affine</value>
+        </EnumeratedType>
       </EnumeratedTypes>
     </EnumeratedTypeGroup>
 
