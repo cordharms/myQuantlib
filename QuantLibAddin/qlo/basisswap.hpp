@@ -14,6 +14,7 @@
 #include <ql/experimental/basisswap/basisswapratehelpers.hpp>
 #include <ql/experimental/basisswap/spreadyieldtermstructure.hpp>
 #include <ql/experimental/template/basismodel/swaptioncfs.hpp>
+#include <ql/experimental/template/basismodel/tenorswaptionvts.hpp>
 #include <qlo/leg.hpp>
 #include <qlo/swap.hpp>
 #include <qlo/pricingengines.hpp>
@@ -118,6 +119,21 @@ namespace QuantLibAddin {
 						    bool                                                   contTenorSpread,
 			                bool                                                   permanent );
 	};
+
+	class TenorSwaptionVTS : public SwaptionVolatilityStructure {
+	public:
+		TenorSwaptionVTS( const boost::shared_ptr<ObjectHandler::ValueObject>& properties,
+                          const boost::shared_ptr<QuantLib::SwaptionVolatilityStructure>& baseVTS,
+		                  const QuantLib::Handle<QuantLib::YieldTermStructure>&           discountCurve,
+		                  const boost::shared_ptr<QuantLib::IborIndex>&                   baseIndex,
+		                  const boost::shared_ptr<QuantLib::IborIndex>&                   targIndex,
+		                  const QuantLib::Period&                                         baseFixedFreq,
+		                  const QuantLib::Period&                                         targFixedFreq,
+		                  const QuantLib::DayCounter&                                     baseFixedDC,
+		                  const QuantLib::DayCounter&                                     targFixedDC,
+                          bool                                                            permanent );
+	};
+
 
 }
 

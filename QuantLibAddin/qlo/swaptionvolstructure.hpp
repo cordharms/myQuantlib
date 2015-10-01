@@ -27,6 +27,7 @@
 #include <qlo/termstructures.hpp>
 #include <qlo/smilesection.hpp>
 #include <ql/time/businessdayconvention.hpp>
+#include <ql/termstructures/volatility/volatilitytype.hpp>
 
 namespace QuantLib {
     class Calendar;
@@ -68,6 +69,7 @@ namespace QuantLibAddin {
                                  const std::vector<QuantLib::Period>& tenors,
                                  const std::vector<std::vector<QuantLib::Handle<QuantLib::Quote> > >& vols,
                                  const QuantLib::DayCounter& dayCounter,
+								 const QuantLib::VolatilityType& volatilityType,
                                  bool permanent);
         std::vector<long> locate(const QuantLib::Date& d,
                                  const QuantLib::Period& p);

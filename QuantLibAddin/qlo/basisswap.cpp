@@ -130,6 +130,22 @@ namespace QuantLibAddin {
 			new QuantLib::SwaptionCashFlows(swaption, discountCurve, contTenorSpread) );
 	}
 
+	TenorSwaptionVTS::TenorSwaptionVTS(
+		                  const boost::shared_ptr<ObjectHandler::ValueObject>&            properties,
+                          const boost::shared_ptr<QuantLib::SwaptionVolatilityStructure>& baseVTS,
+		                  const QuantLib::Handle<QuantLib::YieldTermStructure>&           discountCurve,
+		                  const boost::shared_ptr<QuantLib::IborIndex>&                   baseIndex,
+		                  const boost::shared_ptr<QuantLib::IborIndex>&                   targIndex,
+		                  const QuantLib::Period&                                         baseFixedFreq,
+		                  const QuantLib::Period&                                         targFixedFreq,
+		                  const QuantLib::DayCounter&                                     baseFixedDC,
+		                  const QuantLib::DayCounter&                                     targFixedDC,
+                          bool                                                            permanent )
+						  : SwaptionVolatilityStructure(properties, permanent) {                
+        libraryObject_ = boost::shared_ptr<QuantLib::SwaptionVolatilityStructure>(new
+			QuantLib::TenorSwaptionVTS(baseVTS,discountCurve,baseIndex,targIndex,baseFixedFreq,targFixedFreq,baseFixedDC,targFixedDC));
+    }
+
 
 }
 

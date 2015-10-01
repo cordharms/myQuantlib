@@ -74,6 +74,7 @@ namespace QuantLibAddin {
             const std::vector<QuantLib::Period>& swapTenors,
             const std::vector<std::vector<QuantLib::Handle<QuantLib::Quote> > >& vols,
             const QuantLib::DayCounter& dayCounter,
+            const QuantLib::VolatilityType& volatilityType,
             bool permanent)
     : SwaptionVolatilityDiscrete(properties, permanent)
     {
@@ -83,7 +84,11 @@ namespace QuantLibAddin {
                                                optionTenors,
                                                swapTenors,
                                                vols,
-                                               dayCounter));
+                                               dayCounter,
+											   true, // flat extrapolation
+											   std::vector<std::vector<QuantLib::Real> >(), // shifts
+											   volatilityType 
+											   ));
     }
 
     std::vector<long> SwaptionVolatilityMatrix::locate(

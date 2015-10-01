@@ -416,6 +416,11 @@
             <tensorRank>scalar</tensorRank>
             <description>DayCounter ID.</description>
           </Parameter>
+          <Parameter name='VolatilityType' default='"Lognormal"'>
+            <type>QuantLib::VolatilityType</type>
+            <tensorRank>scalar</tensorRank>
+            <description>Volatility type (Lognormal, ShiftedLognormal, Normal).</description>
+          </Parameter>
         </Parameters>
       </ParameterList>
     </Constructor>
