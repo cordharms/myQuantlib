@@ -30,6 +30,7 @@
 #include <ql/quotes/impliedstddevquote.hpp>
 #include <ql/quotes/lastfixingquote.hpp>
 #include <ql/experimental/risk/sensitivityanalysis.hpp>
+#include <ql/termstructures/volatility/volatilitytype.hpp>
 #include <ql/termstructures/volatility/optionlet/optionletstripper.hpp>
 
 using std::vector;

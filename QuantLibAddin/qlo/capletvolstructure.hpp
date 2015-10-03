@@ -23,6 +23,7 @@
 
 #include <qlo/termstructures.hpp>
 
+#include <ql/termstructures/volatility/volatilitytype.hpp>
 #include <ql/types.hpp>
 #include <ql/time/businessdayconvention.hpp>
 #include <ql/termstructures/volatility/volatilitytype.hpp>
@@ -100,6 +101,7 @@ namespace QuantLibAddin {
         const std::vector<QuantLib::Rate>& strikes,
         const std::vector<std::vector<QuantLib::Handle<QuantLib::Quote> > >&,
         const QuantLib::DayCounter& dc,
+ 	    const QuantLib::VolatilityType& volatilityType,
         bool permanent);
     };
 

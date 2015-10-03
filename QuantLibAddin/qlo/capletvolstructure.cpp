@@ -135,6 +135,7 @@ namespace QuantLibAddin {
                                 const vector<QuantLib::Rate>& strikes,
                                 const vector<vector<Handle<Quote> > >& vols,
                                 const QuantLib::DayCounter& dc,
+ 	                            const QuantLib::VolatilityType& volatilityType,
                                 bool permanent)
     : StrippedOptionletBase(properties, permanent)
     {
@@ -146,7 +147,8 @@ namespace QuantLibAddin {
                                         optionletDates,
                                         strikes,
                                         vols,
-                                        dc));
+                                        dc,
+										volatilityType));
     }
 
     OptionletStripper1::OptionletStripper1(
