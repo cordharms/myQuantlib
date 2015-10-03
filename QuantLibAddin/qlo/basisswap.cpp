@@ -132,7 +132,7 @@ namespace QuantLibAddin {
 
 	TenorSwaptionVTS::TenorSwaptionVTS(
 		                  const boost::shared_ptr<ObjectHandler::ValueObject>&            properties,
-                          const boost::shared_ptr<QuantLib::SwaptionVolatilityStructure>& baseVTS,
+                          const QuantLib::Handle<QuantLib::SwaptionVolatilityStructure>&  baseVTS,
 		                  const QuantLib::Handle<QuantLib::YieldTermStructure>&           discountCurve,
 		                  const boost::shared_ptr<QuantLib::IborIndex>&                   baseIndex,
 		                  const boost::shared_ptr<QuantLib::IborIndex>&                   targIndex,
@@ -145,6 +145,29 @@ namespace QuantLibAddin {
         libraryObject_ = boost::shared_ptr<QuantLib::SwaptionVolatilityStructure>(new
 			QuantLib::TenorSwaptionVTS(baseVTS,discountCurve,baseIndex,targIndex,baseFixedFreq,targFixedFreq,baseFixedDC,targFixedDC));
     }
+
+	TwoParameterCorrelation::TwoParameterCorrelation(
+		                     const boost::shared_ptr<ObjectHandler::ValueObject>& properties,
+                             const boost::shared_ptr<QuantLib::Interpolation>&    rhoInf, 
+                             const boost::shared_ptr<QuantLib::Interpolation>&    beta, 
+                             bool                                                 permanent )
+							 : TenorOptionletVTSCorrelationStructure(properties,permanent) {
+        libraryObject_ = boost::shared_ptr<QuantLib::TenorOptionletVTSCorrelationStructure>(new
+			QuantLib::TenorOptionletVTS::TwoParameterCorrelation(rhoInf,beta));
+	}
+
+
+	TenorOptionletVTS::TenorOptionletVTS(
+		                   const boost::shared_ptr<ObjectHandler::ValueObject>&             properties,
+			               const QuantLib::Handle<QuantLib::OptionletVolatilityStructure>&  baseVTS,
+			               const boost::shared_ptr<QuantLib::IborIndex>&                    baseIndex,
+		                   const boost::shared_ptr<QuantLib::IborIndex>&                    targIndex,
+						   const boost::shared_ptr<QuantLib::TenorOptionletVTS::CorrelationStructure>&  correlation,
+                           bool                                                             permanent )
+						   : OptionletVolatilityStructure(properties,permanent) {
+        libraryObject_ = boost::shared_ptr<QuantLib::OptionletVolatilityStructure>(new
+			QuantLib::TenorOptionletVTS(baseVTS,baseIndex,targIndex,correlation));
+	}
 
 
 }

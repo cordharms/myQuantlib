@@ -9,7 +9,8 @@
     <include>qlo/pricingengines.hpp</include>
     <include>qlo/leg.hpp</include>
     <include>qlo/indexes/iborindex.hpp</include>
-    <include>qlo/basisswap.hpp</include>
+    <include>qlo/interpolation.hpp</include>
+    <include>qlo/basisswap.hpp</include>    
     <include>ql/time/period.hpp</include>
     <include>ql/experimental/basisswap/basisswap.hpp</include>
     <include>ql/experimental/basisswap/basisswapengine.hpp</include>
@@ -25,6 +26,7 @@
     <include>qlo/pricingengines.hpp</include>
     <include>qlo/leg.hpp</include>
     <include>qlo/indexes/iborindex.hpp</include>
+    <include>qlo/interpolation.hpp</include>
     <include>qlo/basisswap.hpp</include>
     <include>ql/time/period.hpp</include>
     <include>ql/experimental/basisswap/basisswap.hpp</include>
@@ -467,6 +469,7 @@
         <Parameters>
           <Parameter name='SwaptionVTS' >
             <type>QuantLib::SwaptionVolatilityStructure</type>
+            <superType>libToHandle</superType>
             <tensorRank>scalar</tensorRank>
             <description>reference to swaption base swaption vols.</description>
           </Parameter>
@@ -506,10 +509,61 @@
             <tensorRank>scalar</tensorRank>
             <description>Target fixed leg day counter.</description>
           </Parameter>
+        </Parameters>
+      </ParameterList>
+    </Constructor>
 
+    <Constructor name='qlTwoParameterCorrelation'>
+      <libraryFunction>TwoParameterCorrelation</libraryFunction>
+      <SupportedPlatforms>
+        <SupportedPlatform name='Excel'/>
+        <SupportedPlatform name='Cpp'/>
+      </SupportedPlatforms>
+      <ParameterList>
+        <Parameters>
+          <Parameter name='RhoInf' >
+            <type>QuantLib::Interpolation</type>
+            <tensorRank>scalar</tensorRank>
+            <description>reference to rho_inf interpolation.</description>
+          </Parameter>
+          <Parameter name='Beta' >
+            <type>QuantLib::Interpolation</type>
+            <tensorRank>scalar</tensorRank>
+            <description>reference to rho_inf interpolation.</description>
+          </Parameter>
+        </Parameters>
+      </ParameterList>
+    </Constructor>
 
-
-
+    <Constructor name='qlTenorOptionletVTS'>
+      <libraryFunction>TenorOptionletVTS</libraryFunction>
+      <SupportedPlatforms>
+        <SupportedPlatform name='Excel'/>
+        <SupportedPlatform name='Cpp'/>
+      </SupportedPlatforms>
+      <ParameterList>
+        <Parameters>
+          <Parameter name='OptionletVTS' >
+            <type>QuantLib::OptionletVolatilityStructure</type>
+            <superType>libToHandle</superType>
+            <tensorRank>scalar</tensorRank>
+            <description>reference to swaption base swaption vols.</description>
+          </Parameter>
+          <Parameter name='BaseIndex' exampleValue='Libor3M'>
+            <type>QuantLib::IborIndex</type>
+            <tensorRank>scalar</tensorRank>
+            <description>Base IborIndex object ID.</description>
+          </Parameter>
+          <Parameter name='TargetIndex' exampleValue='Libor6M'>
+            <type>QuantLib::IborIndex</type>
+            <tensorRank>scalar</tensorRank>
+            <description>Target IborIndex object ID.</description>
+          </Parameter>          
+          <Parameter name='Correlation' >
+            <type>QuantLib::TenorOptionletVTSCorrelationStructure</type>
+            <tensorRank>scalar</tensorRank>
+            <description>Reference to correlation structure.</description>
+          </Parameter>
         </Parameters>
       </ParameterList>
     </Constructor>

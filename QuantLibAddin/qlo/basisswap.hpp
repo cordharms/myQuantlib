@@ -15,6 +15,7 @@
 #include <ql/experimental/basisswap/spreadyieldtermstructure.hpp>
 #include <ql/experimental/template/basismodel/swaptioncfs.hpp>
 #include <ql/experimental/template/basismodel/tenorswaptionvts.hpp>
+#include <ql/experimental/template/basismodel/tenoroptionletvts.hpp>
 #include <qlo/leg.hpp>
 #include <qlo/swap.hpp>
 #include <qlo/pricingengines.hpp>
@@ -123,7 +124,7 @@ namespace QuantLibAddin {
 	class TenorSwaptionVTS : public SwaptionVolatilityStructure {
 	public:
 		TenorSwaptionVTS( const boost::shared_ptr<ObjectHandler::ValueObject>& properties,
-                          const boost::shared_ptr<QuantLib::SwaptionVolatilityStructure>& baseVTS,
+                          const QuantLib::Handle<QuantLib::SwaptionVolatilityStructure>&  baseVTS,
 		                  const QuantLib::Handle<QuantLib::YieldTermStructure>&           discountCurve,
 		                  const boost::shared_ptr<QuantLib::IborIndex>&                   baseIndex,
 		                  const boost::shared_ptr<QuantLib::IborIndex>&                   targIndex,
@@ -134,6 +135,26 @@ namespace QuantLibAddin {
                           bool                                                            permanent );
 	};
 
+	OH_LIB_CLASS(TenorOptionletVTSCorrelationStructure, QuantLib::TenorOptionletVTSCorrelationStructure);
+
+	class TwoParameterCorrelation : public TenorOptionletVTSCorrelationStructure {
+	public:
+		TwoParameterCorrelation( const boost::shared_ptr<ObjectHandler::ValueObject>& properties,
+                                 const boost::shared_ptr<QuantLib::Interpolation>&    rhoInf, 
+                                 const boost::shared_ptr<QuantLib::Interpolation>&    beta, 
+                                 bool                                                 permanent );
+	};
+
+	class TenorOptionletVTS : public OptionletVolatilityStructure {
+	public:
+		TenorOptionletVTS( const boost::shared_ptr<ObjectHandler::ValueObject>&             properties,
+			               const QuantLib::Handle<QuantLib::OptionletVolatilityStructure>&  baseVTS,
+			               const boost::shared_ptr<QuantLib::IborIndex>&                    baseIndex,
+		                   const boost::shared_ptr<QuantLib::IborIndex>&                    targIndex,
+						   const boost::shared_ptr<QuantLib::TenorOptionletVTS::CorrelationStructure>&  correlation,
+                           bool                                                             permanent );
+
+	};
 
 }
 
