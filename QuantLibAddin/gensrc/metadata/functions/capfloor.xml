@@ -10,6 +10,7 @@
     <include>qlo/termstructures.hpp</include>
 
     <include>ql/indexes/iborindex.hpp</include>
+    <include>ql/termstructures/volatility/volatilitytype.hpp</include>
   </serializationIncludes>
   <addinIncludes>
     <include>qlo/capfloor.hpp</include>
@@ -20,6 +21,7 @@
 
     <include>ql/termstructures/yieldtermstructure.hpp</include>
     <include>ql/indexes/iborindex.hpp</include>
+    <include>ql/termstructures/volatility/volatilitytype.hpp</include>
   </addinIncludes>
   <copyright>
     Copyright (C) 2006, 2007, 2008, 2011, 2014 Ferdinando Ametrano
@@ -182,6 +184,11 @@
             <type>QuantLib::Real</type>
             <tensorRank>scalar</tensorRank>
             <description>displacement in a displaced diffusion model.</description>
+          </Parameter>
+          <Parameter name='VolType' default='"ShiftedLogNormal"'>
+            <type>QuantLib::VolatilityType</type>
+            <tensorRank>scalar</tensorRank>
+            <description>Type of implied volatility (Normal, ShiftedLognormal).</description>
           </Parameter>
         </Parameters>
       </ParameterList>
