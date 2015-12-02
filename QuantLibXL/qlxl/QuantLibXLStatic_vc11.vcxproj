@@ -1,4 +1,4 @@
-<?xml version="1.0" encoding="utf-8"?>
+﻿<?xml version="1.0" encoding="utf-8"?>
 <Project DefaultTargets="Build" ToolsVersion="4.0" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
   <ItemGroup Label="ProjectConfigurations">
     <ProjectConfiguration Include="Debug (static runtime)|Win32">
@@ -571,6 +571,7 @@
     <ClCompile Include="functions\basisswap.cpp" />
     <ClCompile Include="functions\sabrswaptioncube.cpp" />
     <ClCompile Include="functions\templateauxilliaries.cpp" />
+    <ClCompile Include="functions\templatecommodity.cpp" />
     <ClCompile Include="functions\templatehestonmodel.cpp" />
     <ClCompile Include="functions\templatehullwhite.cpp" />
     <ClCompile Include="functions\templatemontecarlo.cpp" />
@@ -637,6 +638,7 @@
     <ClCompile Include="register\register_swaption.cpp" />
     <ClCompile Include="register\register_swaptionvolstructure.cpp" />
     <ClCompile Include="register\register_templateauxilliaries.cpp" />
+    <ClCompile Include="register\register_templatecommodity.cpp" />
     <ClCompile Include="register\register_templatehestonmodel.cpp" />
     <ClCompile Include="register\register_templatehullwhite.cpp" />
     <ClCompile Include="register\register_templatemontecarlo.cpp" />

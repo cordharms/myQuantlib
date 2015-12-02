@@ -1,4 +1,4 @@
-<?xml version="1.0" encoding="utf-8"?>
+﻿<?xml version="1.0" encoding="utf-8"?>
 <Project ToolsVersion="4.0" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
   <ItemGroup>
     <Filter Include="enumerations">
@@ -96,6 +96,9 @@
     </Filter>
     <Filter Include="Experimental\Template\MonteCarlo">
       <UniqueIdentifier>{a6777064-ffe3-46c9-ab3b-199bd6084b2c}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Experimental\Template\Commodity">
+      <UniqueIdentifier>{4c20b5bc-5792-44f8-bdc7-39b62563c947}</UniqueIdentifier>
     </Filter>
   </ItemGroup>
   <ItemGroup>
@@ -932,6 +935,18 @@
     </ClCompile>
     <ClCompile Include="qlo\valueobjects\vo_templatemontecarlo.cpp">
       <Filter>valueobjects</Filter>
+    </ClCompile>
+    <ClCompile Include="qlo\templatecommodity.cpp">
+      <Filter>Experimental\Template\Commodity</Filter>
+    </ClCompile>
+    <ClCompile Include="qlo\valueobjects\vo_templatecommodity.cpp">
+      <Filter>valueobjects</Filter>
+    </ClCompile>
+    <ClCompile Include="qlo\serialization\create\create_templatecommodity.cpp">
+      <Filter>serialization\create</Filter>
+    </ClCompile>
+    <ClCompile Include="qlo\serialization\register\serialization_templatecommodity.cpp">
+      <Filter>serialization\register</Filter>
     </ClCompile>
   </ItemGroup>
   <ItemGroup>
@@ -1891,6 +1906,17 @@
     <ClInclude Include="qlo\valueobjects\vo_templatemontecarlo.hpp">
       <Filter>valueobjects</Filter>
     </ClInclude>
+    <ClInclude Include="qlo\templatecommodity.hpp">
+      <Filter>Experimental\Template\Commodity</Filter>
+    </ClInclude>
+    <ClInclude Include="qlo\valueobjects\vo_templatecommodity.hpp">
+      <Filter>valueobjects</Filter>
+    </ClInclude>
+    <ClInclude Include="qlo\serialization\create\create_templatecommodity.hpp">
+      <Filter>serialization\create</Filter>
+    </ClInclude>
+    <ClInclude Include="qlo\serialization\register\serialization_templatecommodity.hpp">
+      <Filter>serialization\register</Filter>
+    </ClInclude>
   </ItemGroup>
 </Project>
-

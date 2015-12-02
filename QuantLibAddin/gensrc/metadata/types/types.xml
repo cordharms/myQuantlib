@@ -305,6 +305,8 @@
     <DataType defaultSuperType='libraryClass'>QuantLib::StochVolModelCalibrator</DataType>
     <DataType defaultSuperType='libraryClass'>QuantLib::QuasiGaussianModelCalibrator</DataType>
 
+    <DataType defaultSuperType='libraryClass'>QuantLib::IndexTermStructure</DataType>
+
     <DataType defaultSuperType='enumeration'>QuantLib::RealStochasticProcess::VolEvolv</DataType>
     <DataType defaultSuperType='enumeration'>QuantLib::VolatilityType</DataType>
 

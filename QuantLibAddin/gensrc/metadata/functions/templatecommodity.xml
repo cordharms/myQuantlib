@@ -1,0 +1,119 @@
+<Category name='templatecommodity'>
+  <description>functions and methods for commodity models.</description>
+  <displayName>Commodity Models</displayName>
+  <xlFunctionWizardCategory>QuantLib - Financial</xlFunctionWizardCategory>
+  <serializationIncludes>
+    <include>qlo/conversions/coercetermstructure.hpp</include>
+    <include>qlo/baseinstruments.hpp</include>
+    <include>qlo/termstructures.hpp</include>
+    <include>qlo/pricingengines.hpp</include>
+    <include>qlo/interpolation.hpp</include>
+    <include>qlo/templatecommodity.hpp</include>
+  </serializationIncludes>
+  <addinIncludes>
+    <include>qlo/handleimpl.hpp</include>
+    <include>qlo/conversions/coercetermstructure.hpp</include>
+    <include>qlo/baseinstruments.hpp</include>
+    <include>qlo/termstructures.hpp</include>
+    <include>qlo/pricingengines.hpp</include>
+    <include>qlo/interpolation.hpp</include>
+    <include>qlo/templatecommodity.hpp</include>
+  </addinIncludes>
+  <copyright>
+    Copyright (C) 2015, Sebastian Schlenkrich
+  </copyright>
+  <Functions>
+  
+    <Constructor name='qlIndexTermStructure'>
+      <libraryFunction>IndexTermStructure</libraryFunction>
+      <SupportedPlatforms>
+        <SupportedPlatform name='Excel'/>
+        <SupportedPlatform name='Cpp'/>
+      </SupportedPlatforms>
+      <ParameterList>
+        <Parameters>
+          <Parameter name='RefDate'>
+            <type>QuantLib::Date</type>
+            <tensorRank>scalar</tensorRank>
+            <description>Reference date, t=0.</description>
+          </Parameter>
+          <Parameter name='Calendar'>
+            <type>QuantLib::Calendar</type>
+            <tensorRank>scalar</tensorRank>
+            <description>holiday calendar (e.g. TARGET) to advance from global EvaluationDate.</description>
+          </Parameter>
+          <Parameter name='DayCounter' default='"Actual/365 (Fixed)"'>
+            <type>QuantLib::DayCounter</type>
+            <tensorRank>scalar</tensorRank>
+            <description>DayCounter ID.</description>
+          </Parameter>
+          <Parameter name='TimeInterpol' >
+            <type>QuantLib::Interpolation</type>
+            <tensorRank>scalar</tensorRank>
+            <description>reference to index interpolation I(t).</description>
+          </Parameter>
+        </Parameters>
+      </ParameterList>
+    </Constructor>
+
+    <Member name='qlIndexTermStructureValue' type='QuantLib::IndexTermStructure' >
+      <description>Returns the (interpolated) value at future date.</description>
+      <libraryFunction>value</libraryFunction>
+      <SupportedPlatforms>
+        <!--SupportedPlatform name='Excel' calcInWizard='false'/-->
+        <SupportedPlatform name='Excel'/>
+        <!--SupportedPlatform name='Calc'/-->
+        <!--SupportedPlatform name='Cpp'/-->
+      </SupportedPlatforms>
+      <ParameterList>
+        <Parameters>
+          <Parameter name='Date' >
+            <type>QuantLib::Date</type>
+            <tensorRank>scalar</tensorRank>
+            <description>Fixing date.</description>
+          </Parameter>
+          <Parameter name='Extrapolate' default='false' example='false'>
+            <type>bool</type>
+            <tensorRank>scalar</tensorRank>
+            <description>Allow extrapolation.</description>
+          </Parameter>
+        </Parameters>
+      </ParameterList>
+      <ReturnValue>
+        <type>QuantLib::Real</type>
+        <tensorRank>scalar</tensorRank>
+      </ReturnValue>
+    </Member>
+
+    <Member name='qlIndexTermStructureValue2' type='QuantLib::IndexTermStructure' >
+      <description>Returns the (interpolated) value at future date.</description>
+      <libraryFunction>value</libraryFunction>
+      <SupportedPlatforms>
+        <!--SupportedPlatform name='Excel' calcInWizard='false'/-->
+        <SupportedPlatform name='Excel'/>
+        <!--SupportedPlatform name='Calc'/-->
+        <!--SupportedPlatform name='Cpp'/-->
+      </SupportedPlatforms>
+      <ParameterList>
+        <Parameters>
+          <Parameter name='Time' >
+            <type>QuantLib::Time</type>
+            <tensorRank>scalar</tensorRank>
+            <description>Fixing time in year fractions.</description>
+          </Parameter>
+          <Parameter name='Extrapolate' default='false' example='false'>
+            <type>bool</type>
+            <tensorRank>scalar</tensorRank>
+            <description>Allow extrapolation.</description>
+          </Parameter>
+        </Parameters>
+      </ParameterList>
+      <ReturnValue>
+        <type>QuantLib::Real</type>
+        <tensorRank>scalar</tensorRank>
+      </ReturnValue>
+    </Member>
+
+
+  </Functions>
+</Category>

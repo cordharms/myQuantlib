@@ -15,7 +15,7 @@
     <categoryName>capletvolstructure</categoryName>
     <categoryName>cmsmarket</categoryName>
     <categoryName>cmsmarketcalibration</categoryName>
-    <categoryName>couponvectors</categoryName>
+    <categoryName>couponvectors</categoryName>    
     <categoryName>correlation</categoryName>
     <categoryName>ctsmmcapletcalibration</categoryName>
     <categoryName>curvestate</categoryName>
@@ -72,6 +72,7 @@
     <categoryName>templatequasigaussian</categoryName>
     <categoryName>templatehestonmodel</categoryName>
     <categoryName>templatemontecarlo</categoryName>
+    <categoryName>templatecommodity</categoryName>
   </addinCategoryNames>
   
 </root>

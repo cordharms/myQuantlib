@@ -1,4 +1,4 @@
-<?xml version="1.0" encoding="utf-8"?>
+﻿<?xml version="1.0" encoding="utf-8"?>
 <Project DefaultTargets="Build" ToolsVersion="4.0" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
   <ItemGroup Label="ProjectConfigurations">
     <ProjectConfiguration Include="Debug (static runtime)|Win32">
@@ -439,16 +439,19 @@
     <ClCompile Include="qlo\sabrswaptioncube.cpp" />
     <ClCompile Include="qlo\serialization\create\create_basisswap.cpp" />
     <ClCompile Include="qlo\serialization\create\create_sabrswaptioncube.cpp" />
+    <ClCompile Include="qlo\serialization\create\create_templatecommodity.cpp" />
     <ClCompile Include="qlo\serialization\create\create_templatehestonmodel.cpp" />
     <ClCompile Include="qlo\serialization\create\create_templatehullwhite.cpp" />
     <ClCompile Include="qlo\serialization\create\create_templatemontecarlo.cpp" />
     <ClCompile Include="qlo\serialization\create\create_templatequasigaussian.cpp" />
     <ClCompile Include="qlo\serialization\register\serialization_basisswap.cpp" />
     <ClCompile Include="qlo\serialization\register\serialization_sabrswaptioncube.cpp" />
+    <ClCompile Include="qlo\serialization\register\serialization_templatecommodity.cpp" />
     <ClCompile Include="qlo\serialization\register\serialization_templatehestonmodel.cpp" />
     <ClCompile Include="qlo\serialization\register\serialization_templatehullwhite.cpp" />
     <ClCompile Include="qlo\serialization\register\serialization_templatemontecarlo.cpp" />
     <ClCompile Include="qlo\serialization\register\serialization_templatequasigaussian.cpp" />
+    <ClCompile Include="qlo\templatecommodity.cpp" />
     <ClCompile Include="qlo\templatehestonmodel.cpp" />
     <ClCompile Include="qlo\templatehullwhite.cpp" />
     <ClCompile Include="qlo\templatemontecarlo.cpp" />
@@ -505,6 +508,7 @@
     <ClCompile Include="qlo\valueobjects\vo_swap.cpp" />
     <ClCompile Include="qlo\valueobjects\vo_swaption.cpp" />
     <ClCompile Include="qlo\valueobjects\vo_swaptionvolstructure.cpp" />
+    <ClCompile Include="qlo\valueobjects\vo_templatecommodity.cpp" />
     <ClCompile Include="qlo\valueobjects\vo_templatehestonmodel.cpp" />
     <ClCompile Include="qlo\valueobjects\vo_templatehullwhite.cpp" />
     <ClCompile Include="qlo\valueobjects\vo_templatemontecarlo.cpp" />
@@ -729,16 +733,19 @@
     <ClInclude Include="qlo\sabrswaptioncube.hpp" />
     <ClInclude Include="qlo\serialization\create\create_basisswap.hpp" />
     <ClInclude Include="qlo\serialization\create\create_sabrswaptioncube.hpp" />
+    <ClInclude Include="qlo\serialization\create\create_templatecommodity.hpp" />
     <ClInclude Include="qlo\serialization\create\create_templatehestonmodel.hpp" />
     <ClInclude Include="qlo\serialization\create\create_templatehullwhite.hpp" />
     <ClInclude Include="qlo\serialization\create\create_templatemontecarlo.hpp" />
     <ClInclude Include="qlo\serialization\create\create_templatequasigaussian.hpp" />
     <ClInclude Include="qlo\serialization\register\serialization_basisswap.hpp" />
     <ClInclude Include="qlo\serialization\register\serialization_sabrswaptioncube.hpp" />
+    <ClInclude Include="qlo\serialization\register\serialization_templatecommodity.hpp" />
     <ClInclude Include="qlo\serialization\register\serialization_templatehestonmodel.hpp" />
     <ClInclude Include="qlo\serialization\register\serialization_templatehullwhite.hpp" />
     <ClInclude Include="qlo\serialization\register\serialization_templatemontecarlo.hpp" />
     <ClInclude Include="qlo\serialization\register\serialization_templatequasigaussian.hpp" />
+    <ClInclude Include="qlo\templatecommodity.hpp" />
     <ClInclude Include="qlo\templatehestonmodel.hpp" />
     <ClInclude Include="qlo\templatehullwhite.hpp" />
     <ClInclude Include="qlo\templatemontecarlo.hpp" />
@@ -798,6 +805,7 @@
     <ClInclude Include="qlo\valueobjects\vo_swap.hpp" />
     <ClInclude Include="qlo\valueobjects\vo_swaption.hpp" />
     <ClInclude Include="qlo\valueobjects\vo_swaptionvolstructure.hpp" />
+    <ClInclude Include="qlo\valueobjects\vo_templatecommodity.hpp" />
     <ClInclude Include="qlo\valueobjects\vo_templatehestonmodel.hpp" />
     <ClInclude Include="qlo\valueobjects\vo_templatehullwhite.hpp" />
     <ClInclude Include="qlo\valueobjects\vo_templatemontecarlo.hpp" />
