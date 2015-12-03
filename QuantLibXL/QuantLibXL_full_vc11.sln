@@ -1,6 +1,5 @@
-
 Microsoft Visual Studio Solution File, Format Version 12.00
-# Visual Studio Express 2012 for Windows Desktop
+# Visual Studio 2012
 Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "ohgensrc", "..\ObjectHandler\gensrc\ohgensrc_vc11.vcxproj", "{88BE5568-6E55-41C5-A251-670FAFB44336}"
 EndProject
 Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "QuantLib", "..\QuantLib\QuantLib.vcxproj", "{AD0A27DA-91DA-46A2-ACBD-296C419ED3AA}"
@@ -25,6 +24,8 @@ Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		All|Win32 = All|Win32
 		All|x64 = All|x64
+		Debug (sr, light)|Win32 = Debug (sr, light)|Win32
+		Debug (sr, light)|x64 = Debug (sr, light)|x64
 		Debug (static runtime)|Win32 = Debug (static runtime)|Win32
 		Debug (static runtime)|x64 = Debug (static runtime)|x64
 		Debug|Win32 = Debug|Win32
@@ -39,6 +40,10 @@ Global
 		{88BE5568-6E55-41C5-A251-670FAFB44336}.All|Win32.Build.0 = All|Win32
 		{88BE5568-6E55-41C5-A251-670FAFB44336}.All|x64.ActiveCfg = All|x64
 		{88BE5568-6E55-41C5-A251-670FAFB44336}.All|x64.Build.0 = All|x64
+		{88BE5568-6E55-41C5-A251-670FAFB44336}.Debug (sr, light)|Win32.ActiveCfg = Debug (sr, light)|Win32
+		{88BE5568-6E55-41C5-A251-670FAFB44336}.Debug (sr, light)|Win32.Build.0 = Debug (sr, light)|Win32
+		{88BE5568-6E55-41C5-A251-670FAFB44336}.Debug (sr, light)|x64.ActiveCfg = Debug (sr, light)|x64
+		{88BE5568-6E55-41C5-A251-670FAFB44336}.Debug (sr, light)|x64.Build.0 = Debug (sr, light)|x64
 		{88BE5568-6E55-41C5-A251-670FAFB44336}.Debug (static runtime)|Win32.ActiveCfg = All|Win32
 		{88BE5568-6E55-41C5-A251-670FAFB44336}.Debug (static runtime)|Win32.Build.0 = All|Win32
 		{88BE5568-6E55-41C5-A251-670FAFB44336}.Debug (static runtime)|x64.ActiveCfg = All|x64
@@ -59,6 +64,10 @@ Global
 		{AD0A27DA-91DA-46A2-ACBD-296C419ED3AA}.All|Win32.Build.0 = Release|Win32
 		{AD0A27DA-91DA-46A2-ACBD-296C419ED3AA}.All|x64.ActiveCfg = Debug (static runtime)|x64
 		{AD0A27DA-91DA-46A2-ACBD-296C419ED3AA}.All|x64.Build.0 = Debug (static runtime)|x64
+		{AD0A27DA-91DA-46A2-ACBD-296C419ED3AA}.Debug (sr, light)|Win32.ActiveCfg = Debug (sr, light)|Win32
+		{AD0A27DA-91DA-46A2-ACBD-296C419ED3AA}.Debug (sr, light)|Win32.Build.0 = Debug (sr, light)|Win32
+		{AD0A27DA-91DA-46A2-ACBD-296C419ED3AA}.Debug (sr, light)|x64.ActiveCfg = Debug (sr, light)|x64
+		{AD0A27DA-91DA-46A2-ACBD-296C419ED3AA}.Debug (sr, light)|x64.Build.0 = Debug (sr, light)|x64
 		{AD0A27DA-91DA-46A2-ACBD-296C419ED3AA}.Debug (static runtime)|Win32.ActiveCfg = Debug (static runtime)|Win32
 		{AD0A27DA-91DA-46A2-ACBD-296C419ED3AA}.Debug (static runtime)|Win32.Build.0 = Debug (static runtime)|Win32
 		{AD0A27DA-91DA-46A2-ACBD-296C419ED3AA}.Debug (static runtime)|x64.ActiveCfg = Debug (static runtime)|x64
@@ -79,6 +88,10 @@ Global
 		{C8A6BB98-75CA-4EB9-A750-8BA3B3AA5969}.All|Win32.Build.0 = All|Win32
 		{C8A6BB98-75CA-4EB9-A750-8BA3B3AA5969}.All|x64.ActiveCfg = All|x64
 		{C8A6BB98-75CA-4EB9-A750-8BA3B3AA5969}.All|x64.Build.0 = All|x64
+		{C8A6BB98-75CA-4EB9-A750-8BA3B3AA5969}.Debug (sr, light)|Win32.ActiveCfg = Debug (sr, light)|Win32
+		{C8A6BB98-75CA-4EB9-A750-8BA3B3AA5969}.Debug (sr, light)|Win32.Build.0 = Debug (sr, light)|Win32
+		{C8A6BB98-75CA-4EB9-A750-8BA3B3AA5969}.Debug (sr, light)|x64.ActiveCfg = Debug (sr, light)|x64
+		{C8A6BB98-75CA-4EB9-A750-8BA3B3AA5969}.Debug (sr, light)|x64.Build.0 = Debug (sr, light)|x64
 		{C8A6BB98-75CA-4EB9-A750-8BA3B3AA5969}.Debug (static runtime)|Win32.ActiveCfg = All|Win32
 		{C8A6BB98-75CA-4EB9-A750-8BA3B3AA5969}.Debug (static runtime)|Win32.Build.0 = All|Win32
 		{C8A6BB98-75CA-4EB9-A750-8BA3B3AA5969}.Debug (static runtime)|x64.ActiveCfg = All|x64
@@ -99,6 +112,10 @@ Global
 		{CAB8330C-6424-4455-9285-3654587EF71F}.All|Win32.Build.0 = Release|Win32
 		{CAB8330C-6424-4455-9285-3654587EF71F}.All|x64.ActiveCfg = Debug (static runtime)|x64
 		{CAB8330C-6424-4455-9285-3654587EF71F}.All|x64.Build.0 = Debug (static runtime)|x64
+		{CAB8330C-6424-4455-9285-3654587EF71F}.Debug (sr, light)|Win32.ActiveCfg = Debug (sr, light)|Win32
+		{CAB8330C-6424-4455-9285-3654587EF71F}.Debug (sr, light)|Win32.Build.0 = Debug (sr, light)|Win32
+		{CAB8330C-6424-4455-9285-3654587EF71F}.Debug (sr, light)|x64.ActiveCfg = Debug (sr, light)|x64
+		{CAB8330C-6424-4455-9285-3654587EF71F}.Debug (sr, light)|x64.Build.0 = Debug (sr, light)|x64
 		{CAB8330C-6424-4455-9285-3654587EF71F}.Debug (static runtime)|Win32.ActiveCfg = Debug (static runtime)|Win32
 		{CAB8330C-6424-4455-9285-3654587EF71F}.Debug (static runtime)|Win32.Build.0 = Debug (static runtime)|Win32
 		{CAB8330C-6424-4455-9285-3654587EF71F}.Debug (static runtime)|x64.ActiveCfg = Debug (static runtime)|x64
@@ -119,6 +136,10 @@ Global
 		{DADFEC4C-A850-4312-8146-FB9BCC19CE92}.All|Win32.Build.0 = Release|Win32
 		{DADFEC4C-A850-4312-8146-FB9BCC19CE92}.All|x64.ActiveCfg = Debug (static runtime)|x64
 		{DADFEC4C-A850-4312-8146-FB9BCC19CE92}.All|x64.Build.0 = Debug (static runtime)|x64
+		{DADFEC4C-A850-4312-8146-FB9BCC19CE92}.Debug (sr, light)|Win32.ActiveCfg = Debug (sr, light)|Win32
+		{DADFEC4C-A850-4312-8146-FB9BCC19CE92}.Debug (sr, light)|Win32.Build.0 = Debug (sr, light)|Win32
+		{DADFEC4C-A850-4312-8146-FB9BCC19CE92}.Debug (sr, light)|x64.ActiveCfg = Debug (sr, light)|x64
+		{DADFEC4C-A850-4312-8146-FB9BCC19CE92}.Debug (sr, light)|x64.Build.0 = Debug (sr, light)|x64
 		{DADFEC4C-A850-4312-8146-FB9BCC19CE92}.Debug (static runtime)|Win32.ActiveCfg = Debug (static runtime)|Win32
 		{DADFEC4C-A850-4312-8146-FB9BCC19CE92}.Debug (static runtime)|Win32.Build.0 = Debug (static runtime)|Win32
 		{DADFEC4C-A850-4312-8146-FB9BCC19CE92}.Debug (static runtime)|x64.ActiveCfg = Debug (static runtime)|x64
@@ -139,6 +160,10 @@ Global
 		{4BD77A1E-AAE9-47A4-81FE-2308E5A460AF}.All|Win32.Build.0 = Release|Win32
 		{4BD77A1E-AAE9-47A4-81FE-2308E5A460AF}.All|x64.ActiveCfg = Debug (static runtime)|x64
 		{4BD77A1E-AAE9-47A4-81FE-2308E5A460AF}.All|x64.Build.0 = Debug (static runtime)|x64
+		{4BD77A1E-AAE9-47A4-81FE-2308E5A460AF}.Debug (sr, light)|Win32.ActiveCfg = Release (static runtime)|Win32
+		{4BD77A1E-AAE9-47A4-81FE-2308E5A460AF}.Debug (sr, light)|Win32.Build.0 = Release (static runtime)|Win32
+		{4BD77A1E-AAE9-47A4-81FE-2308E5A460AF}.Debug (sr, light)|x64.ActiveCfg = Debug (sr, light)|x64
+		{4BD77A1E-AAE9-47A4-81FE-2308E5A460AF}.Debug (sr, light)|x64.Build.0 = Debug (sr, light)|x64
 		{4BD77A1E-AAE9-47A4-81FE-2308E5A460AF}.Debug (static runtime)|Win32.ActiveCfg = Debug (static runtime)|Win32
 		{4BD77A1E-AAE9-47A4-81FE-2308E5A460AF}.Debug (static runtime)|Win32.Build.0 = Debug (static runtime)|Win32
 		{4BD77A1E-AAE9-47A4-81FE-2308E5A460AF}.Debug (static runtime)|x64.ActiveCfg = Debug (static runtime)|x64
@@ -159,6 +184,10 @@ Global
 		{66021664-4359-442C-ACC7-7C82F51C9D5A}.All|Win32.Build.0 = Release|Win32
 		{66021664-4359-442C-ACC7-7C82F51C9D5A}.All|x64.ActiveCfg = Debug (static runtime)|x64
 		{66021664-4359-442C-ACC7-7C82F51C9D5A}.All|x64.Build.0 = Debug (static runtime)|x64
+		{66021664-4359-442C-ACC7-7C82F51C9D5A}.Debug (sr, light)|Win32.ActiveCfg = Release (static runtime)|Win32
+		{66021664-4359-442C-ACC7-7C82F51C9D5A}.Debug (sr, light)|Win32.Build.0 = Release (static runtime)|Win32
+		{66021664-4359-442C-ACC7-7C82F51C9D5A}.Debug (sr, light)|x64.ActiveCfg = Debug (sr, light)|x64
+		{66021664-4359-442C-ACC7-7C82F51C9D5A}.Debug (sr, light)|x64.Build.0 = Debug (sr, light)|x64
 		{66021664-4359-442C-ACC7-7C82F51C9D5A}.Debug (static runtime)|Win32.ActiveCfg = Debug (static runtime)|Win32
 		{66021664-4359-442C-ACC7-7C82F51C9D5A}.Debug (static runtime)|Win32.Build.0 = Debug (static runtime)|Win32
 		{66021664-4359-442C-ACC7-7C82F51C9D5A}.Debug (static runtime)|x64.ActiveCfg = Debug (static runtime)|x64
@@ -179,6 +208,10 @@ Global
 		{A5EEE6C6-C626-4F88-B0BD-551BE9C577C5}.All|Win32.Build.0 = Release|Win32
 		{A5EEE6C6-C626-4F88-B0BD-551BE9C577C5}.All|x64.ActiveCfg = Debug (static runtime)|x64
 		{A5EEE6C6-C626-4F88-B0BD-551BE9C577C5}.All|x64.Build.0 = Debug (static runtime)|x64
+		{A5EEE6C6-C626-4F88-B0BD-551BE9C577C5}.Debug (sr, light)|Win32.ActiveCfg = Release (static runtime)|Win32
+		{A5EEE6C6-C626-4F88-B0BD-551BE9C577C5}.Debug (sr, light)|Win32.Build.0 = Release (static runtime)|Win32
+		{A5EEE6C6-C626-4F88-B0BD-551BE9C577C5}.Debug (sr, light)|x64.ActiveCfg = Debug (sr, light)|x64
+		{A5EEE6C6-C626-4F88-B0BD-551BE9C577C5}.Debug (sr, light)|x64.Build.0 = Debug (sr, light)|x64
 		{A5EEE6C6-C626-4F88-B0BD-551BE9C577C5}.Debug (static runtime)|Win32.ActiveCfg = Debug (static runtime)|Win32
 		{A5EEE6C6-C626-4F88-B0BD-551BE9C577C5}.Debug (static runtime)|Win32.Build.0 = Debug (static runtime)|Win32
 		{A5EEE6C6-C626-4F88-B0BD-551BE9C577C5}.Debug (static runtime)|x64.ActiveCfg = Debug (static runtime)|x64
@@ -199,6 +232,10 @@ Global
 		{0082D6A9-8051-4946-888B-4E52C17BF98E}.All|Win32.Build.0 = Release|Win32
 		{0082D6A9-8051-4946-888B-4E52C17BF98E}.All|x64.ActiveCfg = Debug (static runtime)|x64
 		{0082D6A9-8051-4946-888B-4E52C17BF98E}.All|x64.Build.0 = Debug (static runtime)|x64
+		{0082D6A9-8051-4946-888B-4E52C17BF98E}.Debug (sr, light)|Win32.ActiveCfg = Release (static runtime)|Win32
+		{0082D6A9-8051-4946-888B-4E52C17BF98E}.Debug (sr, light)|Win32.Build.0 = Release (static runtime)|Win32
+		{0082D6A9-8051-4946-888B-4E52C17BF98E}.Debug (sr, light)|x64.ActiveCfg = Debug (sr, light)|x64
+		{0082D6A9-8051-4946-888B-4E52C17BF98E}.Debug (sr, light)|x64.Build.0 = Debug (sr, light)|x64
 		{0082D6A9-8051-4946-888B-4E52C17BF98E}.Debug (static runtime)|Win32.ActiveCfg = Debug (static runtime)|Win32
 		{0082D6A9-8051-4946-888B-4E52C17BF98E}.Debug (static runtime)|Win32.Build.0 = Debug (static runtime)|Win32
 		{0082D6A9-8051-4946-888B-4E52C17BF98E}.Debug (static runtime)|x64.ActiveCfg = Debug (static runtime)|x64
@@ -219,6 +256,10 @@ Global
 		{FA6EB34E-6BE0-46F5-AA4C-704B49BE63D2}.All|Win32.Build.0 = Release|Win32
 		{FA6EB34E-6BE0-46F5-AA4C-704B49BE63D2}.All|x64.ActiveCfg = Debug (static runtime)|x64
 		{FA6EB34E-6BE0-46F5-AA4C-704B49BE63D2}.All|x64.Build.0 = Debug (static runtime)|x64
+		{FA6EB34E-6BE0-46F5-AA4C-704B49BE63D2}.Debug (sr, light)|Win32.ActiveCfg = Release (static runtime)|Win32
+		{FA6EB34E-6BE0-46F5-AA4C-704B49BE63D2}.Debug (sr, light)|Win32.Build.0 = Release (static runtime)|Win32
+		{FA6EB34E-6BE0-46F5-AA4C-704B49BE63D2}.Debug (sr, light)|x64.ActiveCfg = Debug (sr, light)|x64
+		{FA6EB34E-6BE0-46F5-AA4C-704B49BE63D2}.Debug (sr, light)|x64.Build.0 = Debug (sr, light)|x64
 		{FA6EB34E-6BE0-46F5-AA4C-704B49BE63D2}.Debug (static runtime)|Win32.ActiveCfg = Debug (static runtime)|Win32
 		{FA6EB34E-6BE0-46F5-AA4C-704B49BE63D2}.Debug (static runtime)|Win32.Build.0 = Debug (static runtime)|Win32
 		{FA6EB34E-6BE0-46F5-AA4C-704B49BE63D2}.Debug (static runtime)|x64.ActiveCfg = Debug (static runtime)|x64

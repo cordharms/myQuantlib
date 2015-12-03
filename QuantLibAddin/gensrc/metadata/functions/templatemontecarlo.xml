@@ -531,6 +531,43 @@
       </ParameterList>
     </Constructor>
 
+    <Constructor name='qlRealMCAverageFutureOption'>
+      <libraryFunction>RealMCAverageFutureOption</libraryFunction>
+      <SupportedPlatforms>
+        <SupportedPlatform name='Excel'/>
+        <SupportedPlatform name='Cpp'/>
+      </SupportedPlatforms>
+      <ParameterList>
+        <Parameters>
+          <Parameter name='ObservationTime' exampleValue ='1' default='1' >
+            <type>QuantLib::Time</type>
+            <tensorRank>scalar</tensorRank>
+            <description>observation time (t).</description>
+          </Parameter>
+          <Parameter name='SettlementTimes' >
+            <type>QuantLib::Time</type>
+            <tensorRank>vector</tensorRank>
+            <description>vector of settlement times.</description>
+          </Parameter>
+          <Parameter name='SettlementWeights' >
+            <type>QuantLib::Real</type>
+            <tensorRank>vector</tensorRank>
+            <description>vector of weights for each settlement.</description>
+          </Parameter>
+          <Parameter name='Strike' exampleValue ='1' default='1' >
+            <type>QuantLib::Real</type>
+            <tensorRank>scalar</tensorRank>
+            <description>option strike.</description>
+          </Parameter>
+          <Parameter name='CallOrPut' exampleValue ='2' default='2' >
+            <type>QuantLib::Real</type>
+            <tensorRank>scalar</tensorRank>
+            <description>call (+1) or Put (-1) option.</description>
+          </Parameter>
+        </Parameters>
+      </ParameterList>
+    </Constructor>
+
     <Constructor name='qlRealMCAnnuity'>
       <libraryFunction>RealMCAnnuity</libraryFunction>
       <SupportedPlatforms>

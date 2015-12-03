@@ -8,12 +8,12 @@
 #ifndef qla_templatecommodity_hpp
 #define qla_templatecommodity_hpp
 
-#include <ql/types.hpp>
-
 #include <qlo/termstructures.hpp>
+#include <qlo/templatehestonmodel.hpp>
 
+#include <ql/types.hpp>
 #include <ql/experimental/template/commodity/indextermstructure.hpp>
-
+#include <ql/experimental/template/commodity/commoditymodels.hpp>
 
 
 namespace QuantLib {
@@ -36,6 +36,21 @@ namespace QuantLibAddin {
 			          const boost::shared_ptr<QuantLib::Interpolation>&    timeInterpol,
                       bool permanent);
     };
+
+	class Real2FNormalModel : public RealStochasticProcess {
+	public:
+		Real2FNormalModel(
+                const boost::shared_ptr<ObjectHandler::ValueObject>&   properties,
+                const QuantLib::Handle<QuantLib::IndexTermStructure>&  phi,
+                const std::vector<QuantLib::Time>&                     times,   // time-grid of left-constant model parameter values
+		        // time-dependent parameters, left-piecewise constant on times_-grid
+		        const std::vector< QuantLib::Real >&                   sigma,  // Y-volatility
+		        const std::vector< QuantLib::Real >&                   eta,    // Z-volatility
+				const QuantLib::Real                                   a,      // Y-mean reversion
+				const QuantLib::Real                                   b,      // Z-mean reversion
+				const QuantLib::Real                                   rho,    // Y vs Z correlation
+				bool                                                   permanent);			   
+	};
 
 
 }
