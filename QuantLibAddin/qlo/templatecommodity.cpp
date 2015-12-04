@@ -33,9 +33,25 @@ namespace QuantLibAddin {
 				const QuantLib::Real                                   b,      // Z-mean reversion
 				const QuantLib::Real                                   rho,    // Y vs Z correlation
 				bool                                                   permanent)
-				: RealStochasticProcess(properties,permanent) {
+				: Real2FMeanReversionModel(properties,permanent) {
        libraryObject_ = boost::shared_ptr<QuantLib::Real2FNormalModel>(
 			new QuantLib::Real2FNormalModel( phi, times, sigma, eta, a, b, rho ));            	    
+	}
+
+	Real2FLognormalModel::Real2FLognormalModel(
+                const boost::shared_ptr<ObjectHandler::ValueObject>&   properties,
+                const QuantLib::Handle<QuantLib::IndexTermStructure>&  phi,
+                const std::vector<QuantLib::Time>&                     times,   // time-grid of left-constant model parameter values
+		        // time-dependent parameters, left-piecewise constant on times_-grid
+		        const std::vector< QuantLib::Real >&                   sigma,  // Y-volatility
+		        const std::vector< QuantLib::Real >&                   eta,    // Z-volatility
+				const QuantLib::Real                                   a,      // Y-mean reversion
+				const QuantLib::Real                                   b,      // Z-mean reversion
+				const QuantLib::Real                                   rho,    // Y vs Z correlation
+				bool                                                   permanent)
+				: Real2FMeanReversionModel(properties,permanent) {
+       libraryObject_ = boost::shared_ptr<QuantLib::Real2FLognormalModel>(
+			new QuantLib::Real2FLognormalModel( phi, times, sigma, eta, a, b, rho ));            	    
 	}
 
 

@@ -115,7 +115,7 @@
     </Member>
 
     
-    <!-- mean reverting 2-factor normal model -->
+    <!-- mean reverting 2-factor normal/lognormal model -->
 
     <Constructor name='qlReal2FNormalModel'>
       <libraryFunction>Real2FNormalModel</libraryFunction>
@@ -165,7 +165,57 @@
       </ParameterList>
     </Constructor>
 
-    <Member name='qlReal2FNormalModelAverageFuture' type='QuantLib::Real2FNormalModel' >
+
+    <Constructor name='qlReal2FLognormalModel'>
+      <libraryFunction>Real2FLognormalModel</libraryFunction>
+      <SupportedPlatforms>
+        <SupportedPlatform name='Excel'/>
+        <SupportedPlatform name='Cpp'/>
+      </SupportedPlatforms>
+      <ParameterList>
+        <Parameters>
+          <Parameter name='Phi'>
+            <type>QuantLib::IndexTermStructure</type>
+            <superType>libToHandle</superType>
+            <tensorRank>scalar</tensorRank>
+            <description>deterministic drift.</description>
+          </Parameter>
+          <Parameter name='Times' exampleValue='5, 10, ...'>
+            <type>QuantLib::Time</type>
+            <tensorRank>vector</tensorRank>
+            <description>vector of time-grid of left-constant model parameter values (in year fractions)</description>
+          </Parameter>
+          <Parameter name='Sigma' exampleValue ='0.05, 0.05, ...' default='0.0'>
+            <type>QuantLib::Real</type>
+            <tensorRank>vector</tensorRank>
+            <description>Y-factor volatility.</description>
+          </Parameter>
+          <Parameter name='Eta' exampleValue ='0.05, 0.05, ...' default='0.0'>
+            <type>QuantLib::Real</type>
+            <tensorRank>vector</tensorRank>
+            <description>Z-factor volatility.</description>
+          </Parameter>
+          <Parameter name='MeanA' exampleValue ='0.1' default='0.1'>
+            <type>QuantLib::Real</type>
+            <tensorRank>scalar</tensorRank>
+            <description>Y-factor mean reversion.</description>
+          </Parameter>
+          <Parameter name='MeanB' exampleValue ='0.01' default='0.01'>
+            <type>QuantLib::Real</type>
+            <tensorRank>scalar</tensorRank>
+            <description>Z-factor mean reversion.</description>
+          </Parameter>
+          <Parameter name='Rho' exampleValue ='0.5' default='0.5'>
+            <type>QuantLib::Real</type>
+            <tensorRank>scalar</tensorRank>
+            <description>Y- vs Z-factor correlation.</description>
+          </Parameter>
+        </Parameters>
+      </ParameterList>
+    </Constructor>
+
+
+    <Member name='qlReal2FMRModelAverageFuture' type='QuantLib::Real2FMeanReversionModel' >
       <description>Returns the future value for a delivery period.</description>
       <libraryFunction>averageFuture</libraryFunction>
       <SupportedPlatforms>
@@ -192,7 +242,7 @@
       </ReturnValue>
     </Member>
 
-    <Member name='qlReal2FNormalModelVanillaOption' type='QuantLib::Real2FNormalModel' >
+    <Member name='qlReal2FMRModelVanillaOption' type='QuantLib::Real2FMeanReversionModel' >
       <description>Returns the Vanilla option price on a future for a delivery period.</description>
       <libraryFunction>vanillaOption</libraryFunction>
       <SupportedPlatforms>

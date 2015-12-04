@@ -37,9 +37,26 @@ namespace QuantLibAddin {
                       bool permanent);
     };
 
-	class Real2FNormalModel : public RealStochasticProcess {
+	OH_OBJ_CLASS(Real2FMeanReversionModel,    RealStochasticProcess);
+
+	class Real2FNormalModel : public Real2FMeanReversionModel {
 	public:
 		Real2FNormalModel(
+                const boost::shared_ptr<ObjectHandler::ValueObject>&   properties,
+                const QuantLib::Handle<QuantLib::IndexTermStructure>&  phi,
+                const std::vector<QuantLib::Time>&                     times,   // time-grid of left-constant model parameter values
+		        // time-dependent parameters, left-piecewise constant on times_-grid
+		        const std::vector< QuantLib::Real >&                   sigma,  // Y-volatility
+		        const std::vector< QuantLib::Real >&                   eta,    // Z-volatility
+				const QuantLib::Real                                   a,      // Y-mean reversion
+				const QuantLib::Real                                   b,      // Z-mean reversion
+				const QuantLib::Real                                   rho,    // Y vs Z correlation
+				bool                                                   permanent);			   
+	};
+
+	class Real2FLognormalModel : public Real2FMeanReversionModel {
+	public:
+		Real2FLognormalModel(
                 const boost::shared_ptr<ObjectHandler::ValueObject>&   properties,
                 const QuantLib::Handle<QuantLib::IndexTermStructure>&  phi,
                 const std::vector<QuantLib::Time>&                     times,   // time-grid of left-constant model parameter values

@@ -306,6 +306,7 @@
     <DataType defaultSuperType='libraryClass'>QuantLib::QuasiGaussianModelCalibrator</DataType>
 
     <DataType defaultSuperType='libraryClass'>QuantLib::IndexTermStructure</DataType>
+    <DataType defaultSuperType='libraryClass'>QuantLib::Real2FMeanReversionModel</DataType>
     <DataType defaultSuperType='libraryClass'>QuantLib::Real2FNormalModel</DataType>
 
     <DataType defaultSuperType='enumeration'>QuantLib::RealStochasticProcess::VolEvolv</DataType>
