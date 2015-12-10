@@ -284,6 +284,44 @@
       </ReturnValue>
     </Member>
 
+    <!-- Debug various lognormal volatility approximations -->
+    <Member name='qlReal2FLognormalModelAverageFutureStDev' type='QuantLib::Real2FLognormalModel' >
+      <description>Returns the approximate Black standard deviation.</description>
+      <libraryFunction>averageFutureStDev</libraryFunction>
+      <SupportedPlatforms>
+        <SupportedPlatform name='Excel'/>
+        <SupportedPlatform name='Cpp'/>
+      </SupportedPlatforms>
+      <ParameterList>
+        <Parameters>
+          <Parameter name='ExpiryTime' exampleValue='10'>
+            <type>QuantLib::Time</type>
+            <tensorRank>scalar</tensorRank>
+            <description>option expiry time</description>
+          </Parameter>
+          <Parameter name='SettlementTimes' exampleValue='10, 11, ...'>
+            <type>QuantLib::Time</type>
+            <tensorRank>vector</tensorRank>
+            <description>vector of future settlement times</description>
+          </Parameter>
+          <Parameter name='SettlementWeights' exampleValue='1/30, 1/30, ...'>
+            <type>QuantLib::Real</type>
+            <tensorRank>vector</tensorRank>
+            <description>vector of future settlement weights</description>
+          </Parameter>
+          <Parameter name='ApproximationType' exampleValue='0' default='0'>
+            <type>long</type>
+            <tensorRank>scalar</tensorRank>
+            <description>Various approximation, see source code for details.</description>
+          </Parameter>
+        </Parameters>
+      </ParameterList>
+      <ReturnValue>
+        <type>QuantLib::Real</type>
+        <tensorRank>scalar</tensorRank>
+      </ReturnValue>
+    </Member>
+
 
   </Functions>
 </Category>
