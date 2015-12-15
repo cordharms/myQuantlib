@@ -214,6 +214,43 @@
       </ParameterList>
     </Constructor>
 
+    <Member name='qlReal2FMRModelFutureAsset' type='QuantLib::Real2FMeanReversionModel' >
+      <description>Returns the future asset value for a delivery period.</description>
+      <libraryFunction>futureAsset</libraryFunction>
+      <SupportedPlatforms>
+        <SupportedPlatform name='Excel'/>
+        <SupportedPlatform name='Cpp'/>
+      </SupportedPlatforms>
+      <ParameterList>
+        <Parameters>
+          <Parameter name='ObservationTime' exampleValue='1'>
+            <type>QuantLib::Time</type>
+            <tensorRank>scalar</tensorRank>
+            <description>future observation times</description>
+          </Parameter>
+          <Parameter name='SettlementTime' exampleValue='2'>
+            <type>QuantLib::Time</type>
+            <tensorRank>scalar</tensorRank>
+            <description>future settlement or delivery time</description>
+          </Parameter>
+          <Parameter name='Y' exampleValue='0'>
+            <type>QuantLib::Real</type>
+            <tensorRank>scalar</tensorRank>
+            <description>future state variable Y(obsTime)</description>
+          </Parameter>
+          <Parameter name='Z' exampleValue='0'>
+            <type>QuantLib::Real</type>
+            <tensorRank>scalar</tensorRank>
+            <description>future state variable Z(obsTime)</description>
+          </Parameter>
+        </Parameters>
+      </ParameterList>
+      <ReturnValue>
+        <type>QuantLib::Real</type>
+        <tensorRank>scalar</tensorRank>
+      </ReturnValue>
+    </Member>
+
 
     <Member name='qlReal2FMRModelAverageFuture' type='QuantLib::Real2FMeanReversionModel' >
       <description>Returns the future value for a delivery period.</description>

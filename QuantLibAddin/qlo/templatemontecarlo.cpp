@@ -53,19 +53,6 @@ namespace QuantLibAddin {
 			new QuantLib::RealMCPayoff::VanillaOption( t, T, strike, callOrPut ));
 	}
 
-	RealMCAverageFutureOption::RealMCAverageFutureOption(
-		              const boost::shared_ptr<ObjectHandler::ValueObject>& properties,
-			          const QuantLib::Time                                 t,
-					  const std::vector<QuantLib::Time>&                   settlementTimes,
-					  const std::vector<QuantLib::Real>&                   settlementWeights,
-					  const QuantLib::Real                                 strike,
-					  const QuantLib::Real                                 callOrPut,
-			          bool                                                 permanent) : RealMCPayoff(properties,permanent) {
-        libraryObject_ = boost::shared_ptr<QuantLib::RealMCPayoff>(
-			new QuantLib::RealMCPayoff::AverageFutureOption( t, settlementTimes, settlementWeights, strike, callOrPut ));
-	}
-
-
 
 
 	RealMCAnnuity::RealMCAnnuity( 
@@ -156,6 +143,34 @@ namespace QuantLibAddin {
 			new QuantLib::RealMCPayoff::ForwardRateCorrelation( times, T1, Term1, T2, Term2 ));
 	}
 
+
+	RealMCAverageFutureOption::RealMCAverageFutureOption(
+		              const boost::shared_ptr<ObjectHandler::ValueObject>& properties,
+			          const QuantLib::Time                                 t,
+					  const std::vector<QuantLib::Time>&                   settlementTimes,
+					  const std::vector<QuantLib::Real>&                   settlementWeights,
+					  const QuantLib::Real                                 strike,
+					  const QuantLib::Real                                 callOrPut,
+			          bool                                                 permanent) : RealMCPayoff(properties,permanent) {
+        libraryObject_ = boost::shared_ptr<QuantLib::RealMCPayoff>(
+			new QuantLib::RealMCPayoff::AverageFutureOption( t, settlementTimes, settlementWeights, strike, callOrPut ));
+	}
+
+	RealMCAverageFutureCovariance::RealMCAverageFutureCovariance( 
+		                               const boost::shared_ptr<ObjectHandler::ValueObject>& properties,
+						               const std::vector<QuantLib::Time>&                   observationTimes,
+						               const std::vector<QuantLib::Time>&                   settlementTimesA,
+						               const std::vector<QuantLib::Real>&                   settlementWeightsA,
+					                   const QuantLib::Time                                 observationLagA,
+						               const std::vector<QuantLib::Time>&                   settlementTimesB,
+						               const std::vector<QuantLib::Real>&                   settlementWeightsB,
+					                   const QuantLib::Time                                 observationLagB,
+			                           bool                                                 useLogReturns,
+			                           bool                                                 calculateCorrelation,
+			                           bool                                                 permanent) : RealMCPayoff(properties,permanent) {
+        libraryObject_ = boost::shared_ptr<QuantLib::RealMCPayoff>(
+			new QuantLib::RealMCPayoff::AverageFutureCovariance( observationTimes, settlementTimesA, settlementWeightsA, observationLagA, settlementTimesB, settlementWeightsB, observationLagB, useLogReturns, calculateCorrelation ));
+	}
 
 
 }

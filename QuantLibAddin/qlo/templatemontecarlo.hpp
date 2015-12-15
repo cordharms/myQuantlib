@@ -101,17 +101,6 @@ namespace QuantLibAddin {
 			          bool permanent);
 	};
 
-	class RealMCAverageFutureOption : public RealMCPayoff {
-	public:
-		RealMCAverageFutureOption( const boost::shared_ptr<ObjectHandler::ValueObject>& properties,
-			                       const QuantLib::Time                                 t,
-						           const std::vector<QuantLib::Time>&                   settlementTimes,
-						           const std::vector<QuantLib::Real>&                   settlementWeights,
-					               const QuantLib::Real                                 strike,
-					               const QuantLib::Real                                 callOrPut,
-			                       bool                                                 permanent);
-	};
-
 	class RealMCAnnuity : public RealMCPayoff {
 	public:
 		RealMCAnnuity( const boost::shared_ptr<ObjectHandler::ValueObject>& properties,
@@ -185,6 +174,34 @@ namespace QuantLibAddin {
 			                          const QuantLib::Time                                 Term2,
 			                          bool permanent);
 	};
+
+
+	class RealMCAverageFutureOption : public RealMCPayoff {
+	public:
+		RealMCAverageFutureOption( const boost::shared_ptr<ObjectHandler::ValueObject>& properties,
+			                       const QuantLib::Time                                 t,
+						           const std::vector<QuantLib::Time>&                   settlementTimes,
+						           const std::vector<QuantLib::Real>&                   settlementWeights,
+					               const QuantLib::Real                                 strike,
+					               const QuantLib::Real                                 callOrPut,
+			                       bool                                                 permanent);
+	};
+
+	class RealMCAverageFutureCovariance : public RealMCPayoff {
+	public:
+		RealMCAverageFutureCovariance( const boost::shared_ptr<ObjectHandler::ValueObject>& properties,
+						               const std::vector<QuantLib::Time>&                   observationTimes,
+						               const std::vector<QuantLib::Time>&                   settlementTimesA,
+						               const std::vector<QuantLib::Real>&                   settlementWeightsA,
+					                   const QuantLib::Time                                 observationLagA,
+						               const std::vector<QuantLib::Time>&                   settlementTimesB,
+						               const std::vector<QuantLib::Real>&                   settlementWeightsB,
+					                   const QuantLib::Time                                 observationLagB,
+			                           bool                                                 useLogReturns,
+			                           bool                                                 calculateCorrelation,
+			                           bool                                                 permanent);
+	};
+
 
 
 

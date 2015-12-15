@@ -531,43 +531,7 @@
       </ParameterList>
     </Constructor>
 
-    <Constructor name='qlRealMCAverageFutureOption'>
-      <libraryFunction>RealMCAverageFutureOption</libraryFunction>
-      <SupportedPlatforms>
-        <SupportedPlatform name='Excel'/>
-        <SupportedPlatform name='Cpp'/>
-      </SupportedPlatforms>
-      <ParameterList>
-        <Parameters>
-          <Parameter name='ObservationTime' exampleValue ='1' default='1' >
-            <type>QuantLib::Time</type>
-            <tensorRank>scalar</tensorRank>
-            <description>observation time (t).</description>
-          </Parameter>
-          <Parameter name='SettlementTimes' >
-            <type>QuantLib::Time</type>
-            <tensorRank>vector</tensorRank>
-            <description>vector of settlement times.</description>
-          </Parameter>
-          <Parameter name='SettlementWeights' >
-            <type>QuantLib::Real</type>
-            <tensorRank>vector</tensorRank>
-            <description>vector of weights for each settlement.</description>
-          </Parameter>
-          <Parameter name='Strike' exampleValue ='1' default='1' >
-            <type>QuantLib::Real</type>
-            <tensorRank>scalar</tensorRank>
-            <description>option strike.</description>
-          </Parameter>
-          <Parameter name='CallOrPut' exampleValue ='2' default='2' >
-            <type>QuantLib::Real</type>
-            <tensorRank>scalar</tensorRank>
-            <description>call (+1) or Put (-1) option.</description>
-          </Parameter>
-        </Parameters>
-      </ParameterList>
-    </Constructor>
-
+    
     <Constructor name='qlRealMCAnnuity'>
       <libraryFunction>RealMCAnnuity</libraryFunction>
       <SupportedPlatforms>
@@ -785,6 +749,102 @@
             <type>QuantLib::Time</type>
             <tensorRank>scalar</tensorRank>
             <description>swap term in year fractions.</description>
+          </Parameter>
+        </Parameters>
+      </ParameterList>
+    </Constructor>
+
+
+    <Constructor name='qlRealMCAverageFutureOption'>
+      <libraryFunction>RealMCAverageFutureOption</libraryFunction>
+      <SupportedPlatforms>
+        <SupportedPlatform name='Excel'/>
+        <SupportedPlatform name='Cpp'/>
+      </SupportedPlatforms>
+      <ParameterList>
+        <Parameters>
+          <Parameter name='ObservationTime' exampleValue ='1' default='1' >
+            <type>QuantLib::Time</type>
+            <tensorRank>scalar</tensorRank>
+            <description>observation time (t).</description>
+          </Parameter>
+          <Parameter name='SettlementTimes' >
+            <type>QuantLib::Time</type>
+            <tensorRank>vector</tensorRank>
+            <description>vector of settlement times.</description>
+          </Parameter>
+          <Parameter name='SettlementWeights' >
+            <type>QuantLib::Real</type>
+            <tensorRank>vector</tensorRank>
+            <description>vector of weights for each settlement.</description>
+          </Parameter>
+          <Parameter name='Strike' exampleValue ='1' default='1' >
+            <type>QuantLib::Real</type>
+            <tensorRank>scalar</tensorRank>
+            <description>option strike.</description>
+          </Parameter>
+          <Parameter name='CallOrPut' exampleValue ='2' default='2' >
+            <type>QuantLib::Real</type>
+            <tensorRank>scalar</tensorRank>
+            <description>call (+1) or Put (-1) option.</description>
+          </Parameter>
+        </Parameters>
+      </ParameterList>
+    </Constructor>
+
+
+    <Constructor name='qlRealMCAverageFutureCovariance'>
+      <libraryFunction>RealMCAverageFutureCovariance</libraryFunction>
+      <SupportedPlatforms>
+        <SupportedPlatform name='Excel'/>
+        <SupportedPlatform name='Cpp'/>
+      </SupportedPlatforms>
+      <ParameterList>
+        <Parameters>
+          <Parameter name='ObservationTimes' >
+            <type>QuantLib::Time</type>
+            <tensorRank>vector</tensorRank>
+            <description>vector of observation times.</description>
+          </Parameter>
+          <Parameter name='SettlementTimesA' >
+            <type>QuantLib::Time</type>
+            <tensorRank>vector</tensorRank>
+            <description>vector of settlement times.</description>
+          </Parameter>
+          <Parameter name='SettlementWeightsA' >
+            <type>QuantLib::Real</type>
+            <tensorRank>vector</tensorRank>
+            <description>vector of weights for each settlement.</description>
+          </Parameter>
+          <Parameter name='ObservationLagA' >
+            <type>QuantLib::Time</type>
+            <tensorRank>scalar</tensorRank>
+            <description>Minimum observation lag (before roll over).</description>
+          </Parameter>
+          <Parameter name='SettlementTimesB' >
+            <type>QuantLib::Time</type>
+            <tensorRank>vector</tensorRank>
+            <description>vector of settlement times.</description>
+          </Parameter>
+          <Parameter name='SettlementWeightsB' >
+            <type>QuantLib::Real</type>
+            <tensorRank>vector</tensorRank>
+            <description>vector of weights for each settlement.</description>
+          </Parameter>
+          <Parameter name='ObservationLagB' >
+            <type>QuantLib::Time</type>
+            <tensorRank>scalar</tensorRank>
+            <description>Minimum observation lag (before roll over).</description>
+          </Parameter>
+          <Parameter name='UseLogReturns' default='false' example='false'>
+            <type>bool</type>
+            <tensorRank>scalar</tensorRank>
+            <description>Log or Normal returns.</description>
+          </Parameter>
+          <Parameter name='CalculateCorrelation' default='false' example='false'>
+            <type>bool</type>
+            <tensorRank>scalar</tensorRank>
+            <description>Calculate correlation instead of covariance.</description>
           </Parameter>
         </Parameters>
       </ParameterList>
