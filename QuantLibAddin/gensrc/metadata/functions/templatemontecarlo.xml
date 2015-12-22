@@ -841,10 +841,10 @@
             <tensorRank>scalar</tensorRank>
             <description>Log or Normal returns.</description>
           </Parameter>
-          <Parameter name='CalculateCorrelation' default='false' example='false'>
-            <type>bool</type>
+          <Parameter name='CalculatioType' default='0' example='0'>
+            <type>long</type>
             <tensorRank>scalar</tensorRank>
-            <description>Calculate correlation instead of covariance.</description>
+            <description>Covariance (0), correlation (1), spread variance (2).</description>
           </Parameter>
         </Parameters>
       </ParameterList>

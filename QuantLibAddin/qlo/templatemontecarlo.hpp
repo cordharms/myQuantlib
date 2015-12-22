@@ -198,7 +198,7 @@ namespace QuantLibAddin {
 						               const std::vector<QuantLib::Real>&                   settlementWeightsB,
 					                   const QuantLib::Time                                 observationLagB,
 			                           bool                                                 useLogReturns,
-			                           bool                                                 calculateCorrelation,
+			                           long                                                 calcType,
 			                           bool                                                 permanent);
 	};
 

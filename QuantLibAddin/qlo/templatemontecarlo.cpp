@@ -166,10 +166,10 @@ namespace QuantLibAddin {
 						               const std::vector<QuantLib::Real>&                   settlementWeightsB,
 					                   const QuantLib::Time                                 observationLagB,
 			                           bool                                                 useLogReturns,
-			                           bool                                                 calculateCorrelation,
+			                           long                                                 calcType,
 			                           bool                                                 permanent) : RealMCPayoff(properties,permanent) {
         libraryObject_ = boost::shared_ptr<QuantLib::RealMCPayoff>(
-			new QuantLib::RealMCPayoff::AverageFutureCovariance( observationTimes, settlementTimesA, settlementWeightsA, observationLagA, settlementTimesB, settlementWeightsB, observationLagB, useLogReturns, calculateCorrelation ));
+			new QuantLib::RealMCPayoff::AverageFutureCovariance( observationTimes, settlementTimesA, settlementWeightsA, observationLagA, settlementTimesB, settlementWeightsB, observationLagB, useLogReturns, calcType ));
 	}
 
 
