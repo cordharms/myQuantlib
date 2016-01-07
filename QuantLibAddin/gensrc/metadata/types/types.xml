@@ -295,6 +295,7 @@
     <DataType defaultSuperType='libraryClass'>QuantLib::RealMCCoupon</DataType>
     <DataType defaultSuperType='libraryClass'>QuantLib::RealMCLeg</DataType>
     <DataType defaultSuperType='libraryClass'>QuantLib::RealMCCancellableNote</DataType>
+    <DataType defaultSuperType='libraryClass'>QuantLib::RealAMCPricer</DataType>
 
     <DataType defaultSuperType='libraryClass'>QuantLib::HestonProcess</DataType>
     <DataType defaultSuperType='libraryClass'>QuantLib::HestonModel</DataType>
