@@ -1027,6 +1027,16 @@
             <tensorRank>scalar</tensorRank>
             <description>reference to MC simulation object.</description>
           </Parameter>
+          <Parameter name='CalculateRegression' exampleValue ='false' default='false'>
+            <type>bool</type>
+            <tensorRank>scalar</tensorRank>
+            <description>Exercise decision based on regression.</description>
+          </Parameter>
+          <Parameter name='MaxPolynDegree' exampleValue ='0' default='0'>
+            <type>QuantLib::Size</type>
+            <tensorRank>scalar</tensorRank>
+            <description>maximum degree of monomial for regression.</description>
+          </Parameter>
         </Parameters>
       </ParameterList>
     </Constructor>
@@ -1109,6 +1119,137 @@
       </ReturnValue>
     </Member>
 
+    
+  <!-- Regression operator and functions -->
+
+    <Constructor name='qlRealRegression'>
+      <libraryFunction>RealRegression</libraryFunction>
+      <SupportedPlatforms>
+        <SupportedPlatform name='Excel'/>
+        <SupportedPlatform name='Cpp'/>
+      </SupportedPlatforms>
+      <ParameterList>
+        <Parameters>
+          <Parameter name='Controls' >
+            <type>QuantLib::Time</type>
+            <tensorRank>matrix</tensorRank>
+            <description>matrix of control variables.</description>
+          </Parameter>
+          <Parameter name='Observations' >
+            <type>QuantLib::Real</type>
+            <tensorRank>vector</tensorRank>
+            <description>vector of observations.</description>
+          </Parameter>
+          <Parameter name='MaxDegree' >
+            <type>QuantLib::Size</type>
+            <tensorRank>scalar</tensorRank>
+            <description>maximum degree of monomial.</description>
+          </Parameter>
+        </Parameters>
+      </ParameterList>
+    </Constructor>
+
+    <Member name='qlRealRegressionMonomials' type='QuantLib::RealRegression' >
+      <description>Return monomial values based on explanatory variables.</description>
+      <libraryFunction>monomials</libraryFunction>
+      <SupportedPlatforms>
+        <!--SupportedPlatform name='Excel' calcInWizard='false'/-->
+        <SupportedPlatform name='Excel'/>
+        <!--SupportedPlatform name='Calc'/-->
+        <!--SupportedPlatform name='Cpp'/-->
+      </SupportedPlatforms>
+      <ParameterList>
+        <Parameters>
+          <Parameter name='X' >
+            <type>QuantLib::Real</type>
+            <tensorRank>vector</tensorRank>
+            <description>vector of explanatory variables.</description>
+          </Parameter>
+        </Parameters>          
+      </ParameterList>
+      <ReturnValue>
+        <type>QuantLib::Real</type>
+        <tensorRank>vector</tensorRank>
+      </ReturnValue>
+    </Member>
+
+    <Member name='qlRealRegressionValue' type='QuantLib::RealRegression' >
+      <description>Return regression value based on explanatory variables.</description>
+      <libraryFunction>value</libraryFunction>
+      <SupportedPlatforms>
+        <!--SupportedPlatform name='Excel' calcInWizard='false'/-->
+        <SupportedPlatform name='Excel'/>
+        <!--SupportedPlatform name='Calc'/-->
+        <!--SupportedPlatform name='Cpp'/-->
+      </SupportedPlatforms>
+      <ParameterList>
+        <Parameters>
+          <Parameter name='X' >
+            <type>QuantLib::Real</type>
+            <tensorRank>vector</tensorRank>
+            <description>vector of explanatory variables.</description>
+          </Parameter>
+        </Parameters>
+      </ParameterList>
+      <ReturnValue>
+        <type>QuantLib::Real</type>
+        <tensorRank>scalar</tensorRank>
+      </ReturnValue>
+    </Member>
+
+    <Member name='qlRealRegressionMaxDegree' type='QuantLib::RealRegression' >
+      <description>Return max degree of monomials.</description>
+      <libraryFunction>maxDegree</libraryFunction>
+      <SupportedPlatforms>
+        <!--SupportedPlatform name='Excel' calcInWizard='false'/-->
+        <SupportedPlatform name='Excel'/>
+        <!--SupportedPlatform name='Calc'/-->
+        <!--SupportedPlatform name='Cpp'/-->
+      </SupportedPlatforms>
+      <ParameterList>
+        <Parameters/>
+      </ParameterList>
+      <ReturnValue>
+        <type>QuantLib::Real</type>
+        <tensorRank>scalar</tensorRank>
+      </ReturnValue>
+    </Member>
+
+    <Member name='qlRealRegressionMultiIndex' type='QuantLib::RealRegression' >
+      <description>Return matrix of multi indeces.</description>
+      <libraryFunction>multiIndex</libraryFunction>
+      <SupportedPlatforms>
+        <!--SupportedPlatform name='Excel' calcInWizard='false'/-->
+        <SupportedPlatform name='Excel'/>
+        <!--SupportedPlatform name='Calc'/-->
+        <!--SupportedPlatform name='Cpp'/-->
+      </SupportedPlatforms>
+      <ParameterList>
+        <Parameters/>
+      </ParameterList>
+      <ReturnValue>
+        <type>QuantLib::Time</type>
+        <tensorRank>matrix</tensorRank>
+      </ReturnValue>
+    </Member>
+
+    <Member name='qlRealRegressionBeta' type='QuantLib::RealRegression' >
+      <description>Return regression coefficients.</description>
+      <libraryFunction>beta</libraryFunction>
+      <SupportedPlatforms>
+        <!--SupportedPlatform name='Excel' calcInWizard='false'/-->
+        <SupportedPlatform name='Excel'/>
+        <!--SupportedPlatform name='Calc'/-->
+        <!--SupportedPlatform name='Cpp'/-->
+      </SupportedPlatforms>
+      <ParameterList>
+        <Parameters/>
+      </ParameterList>
+      <ReturnValue>
+        <type>QuantLib::Real</type>
+        <tensorRank>vector</tensorRank>
+      </ReturnValue>
+    </Member>
 
 
 

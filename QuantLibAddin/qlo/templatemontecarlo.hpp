@@ -272,7 +272,18 @@ namespace QuantLibAddin {
 		RealAMCPricer (  const boost::shared_ptr<ObjectHandler::ValueObject>&            properties,
 			             const boost::shared_ptr<QuantLib::RealMC::CancellableNote>&     note,
                          const boost::shared_ptr<QuantLib::RealMCSimulation>&            simulation,
+						 const bool                                                      calculateRegression,
+						 const QuantLib::Size                                            maxPolynDegree,
 			             bool                                                            permanent);
+	};
+
+	class RealRegression : public ObjectHandler::LibraryObject<QuantLib::RealRegression> {
+	public:
+		RealRegression (  const boost::shared_ptr<ObjectHandler::ValueObject>&            properties,
+			              const std::vector< std::vector<QuantLib::Real> >&               controls,
+						  const std::vector<QuantLib::Real>                               observations,
+				          const QuantLib::Size                                            maxDegree,
+			              bool                                                            permanent);
 	};
 
 
