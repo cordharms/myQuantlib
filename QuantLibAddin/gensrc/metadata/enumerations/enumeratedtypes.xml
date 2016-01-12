@@ -2023,6 +2023,21 @@
       </EnumeratedTypes>
     </EnumeratedTypeGroup>
 
+    <EnumeratedTypeGroup type='QuantLib::FxFwdRateHelper::BootstrapType'>
+      <includeFile>oh/enumerations/typefactory.hpp</includeFile>
+      <constructor>false</constructor>
+      <EnumeratedTypes>
+        <EnumeratedType>
+          <string>Base</string>
+          <value>QuantLib::FxFwdRateHelper::BootstrapType(QuantLib::FxFwdRateHelper::Base)</value>
+        </EnumeratedType>
+        <EnumeratedType>
+          <string>Counter</string>
+          <value>QuantLib::FxFwdRateHelper::BootstrapType(QuantLib::FxFwdRateHelper::Counter)</value>
+        </EnumeratedType>
+      </EnumeratedTypes>
+    </EnumeratedTypeGroup>
+
 
   </EnumeratedTypeGroups>
 

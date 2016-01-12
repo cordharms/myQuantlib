@@ -308,6 +308,7 @@
 
     <DataType defaultSuperType='enumeration'>QuantLib::RealStochasticProcess::VolEvolv</DataType>
     <DataType defaultSuperType='enumeration'>QuantLib::VolatilityType</DataType>
+    <DataType defaultSuperType='enumeration'>QuantLib::FxFwdRateHelper::BootstrapType</DataType>
 
   </DataTypes>
 

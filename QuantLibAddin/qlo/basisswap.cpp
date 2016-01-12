@@ -169,6 +169,38 @@ namespace QuantLibAddin {
 			QuantLib::TenorOptionletVTS(baseVTS,baseIndex,targIndex,correlation));
 	}
 
+	FxFwdRateHelper::FxFwdRateHelper( const boost::shared_ptr<ObjectHandler::ValueObject>& properties,
+    						          const QuantLib::Currency                              baseCurrency,
+    						          const QuantLib::Currency                              counterCurrency,
+    						          const QuantLib::Rate                                  fxSpot,
+    						          const QuantLib::Natural                               spotLag,
+    		                          const QuantLib::Calendar                              spotLagCal,
+    						          const QuantLib::BusinessDayConvention                 spotLagConv,
+    						          const QuantLib::Period                                swapTerm,
+    						          const QuantLib::Handle<QuantLib::Quote>               points,
+    			                      const QuantLib::Real                                  unit,
+    					              const QuantLib::Handle<QuantLib::YieldTermStructure>  baseCcyDiscTermStructureHandle,
+    						          const QuantLib::Handle<QuantLib::YieldTermStructure>  cntrCcyDiscTermStructureHandle,
+    						          const QuantLib::FxFwdRateHelper::BootstrapType        bootstrapBaseOrCounter,
+					                  bool permanent) 
+	: RateHelper(properties, permanent) {
+        libraryObject_ = boost::shared_ptr<QuantLib::FxFwdRateHelper>(new
+            QuantLib::FxFwdRateHelper(baseCurrency,
+						              counterCurrency,
+						              fxSpot,
+						              spotLag,
+		                              spotLagCal,
+						              spotLagConv,
+						              swapTerm,
+			                          points,
+			                          unit,			             
+					                  baseCcyDiscTermStructureHandle,
+						              cntrCcyDiscTermStructureHandle,
+						              bootstrapBaseOrCounter
+					                  ));
+    }
+
+
 
 }
 
