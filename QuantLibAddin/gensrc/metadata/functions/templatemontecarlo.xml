@@ -867,6 +867,28 @@
       </ParameterList>
     </Constructor>
 
+    <Constructor name='qlRealMCMult'>
+      <libraryFunction>RealMCMult</libraryFunction>
+      <SupportedPlatforms>
+        <SupportedPlatform name='Excel'/>
+        <SupportedPlatform name='Cpp'/>
+      </SupportedPlatforms>
+      <ParameterList>
+        <Parameters>
+          <Parameter name='X' >
+            <type>QuantLib::RealMCPayoff</type>
+            <tensorRank>scalar</tensorRank>
+            <description>reference to payoff.</description>
+          </Parameter>
+          <Parameter name='Y' >
+            <type>QuantLib::RealMCPayoff</type>
+            <tensorRank>scalar</tensorRank>
+            <description>reference to payoff.</description>
+          </Parameter>
+        </Parameters>
+      </ParameterList>
+    </Constructor>
+
     <Constructor name='qlRealMCMax'>
       <libraryFunction>RealMCMax</libraryFunction>
       <SupportedPlatforms>
@@ -933,8 +955,8 @@
       </ParameterList>
     </Constructor>
 
-    <Constructor name='qlRealMCCoupon'>
-      <libraryFunction>RealMCCoupon</libraryFunction>
+    <Constructor name='qlRealMCCashFlow'>
+      <libraryFunction>RealMCCashFlow</libraryFunction>
       <SupportedPlatforms>
         <SupportedPlatform name='Excel'/>
         <SupportedPlatform name='Cpp'/>
@@ -949,12 +971,17 @@
           <Parameter name='StartTime' exampleValue ='1.0' default='1.0' >
             <type>QuantLib::Time</type>
             <tensorRank>scalar</tensorRank>
-            <description>time at which coupon starts.</description>
+            <description>time at which CashFlow starts.</description>
           </Parameter>
           <Parameter name='PayTime' exampleValue ='1.5' default='1.5' >
             <type>QuantLib::Time</type>
             <tensorRank>scalar</tensorRank>
-            <description>time at which coupon is paid.</description>
+            <description>time at which CashFlow is paid.</description>
+          </Parameter>
+          <Parameter name='ApplyZCBAdjuster' exampleValue ='false' default='false' >
+            <type>bool</type>
+            <tensorRank>scalar</tensorRank>
+            <description>Incorporate ZCB adjuster by multiplication with P(T,T).</description>
           </Parameter>
         </Parameters>
       </ParameterList>
@@ -968,10 +995,10 @@
       </SupportedPlatforms>
       <ParameterList>
         <Parameters>
-          <Parameter name='Coupons' >
-            <type>QuantLib::RealMCCoupon</type>
+          <Parameter name='CashFlows' >
+            <type>QuantLib::RealMCCashFlow</type>
             <tensorRank>vector</tensorRank>
-            <description>reference to coupons.</description>
+            <description>reference to CashFlows.</description>
           </Parameter>
         </Parameters>
       </ParameterList>
@@ -1003,7 +1030,7 @@
           <Parameter name='RegressionVariables' >
             <type>QuantLib::RealMCLeg</type>
             <tensorRank>vector</tensorRank>
-            <description>reference (vector) to regression var's as coupons.</description>
+            <description>reference (vector) to regression var's as CashFlows.</description>
           </Parameter>
         </Parameters>
       </ParameterList>
@@ -1027,10 +1054,10 @@
             <tensorRank>scalar</tensorRank>
             <description>reference to MC simulation object.</description>
           </Parameter>
-          <Parameter name='CalculateRegression' exampleValue ='false' default='false'>
-            <type>bool</type>
+          <Parameter name='RegressionFraction' exampleValue ='0.3' default='0.0'>
+            <type>QuantLib::Real</type>
             <tensorRank>scalar</tensorRank>
-            <description>Exercise decision based on regression.</description>
+            <description>Fraction of paths used for regression.</description>
           </Parameter>
           <Parameter name='MaxPolynDegree' exampleValue ='0' default='0'>
             <type>QuantLib::Size</type>

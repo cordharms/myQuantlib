@@ -153,7 +153,7 @@ namespace QuantLibAddin {
 	}
 
 
-	// MC swap stuff
+	// more MC stuff
 
 	RealMCFixedAmount::RealMCFixedAmount( const boost::shared_ptr<ObjectHandler::ValueObject>& properties,
 						                  const QuantLib::Real                                 amount,
@@ -183,6 +183,14 @@ namespace QuantLibAddin {
 			new QuantLib::RealMC::Axpy( a, x, y ));
 	}
 
+	RealMCMult::RealMCMult( const boost::shared_ptr<ObjectHandler::ValueObject>&    properties,
+						    const boost::shared_ptr<QuantLib::RealMCPayoff>&        x,
+						    const boost::shared_ptr<QuantLib::RealMCPayoff>&        y,
+			                bool                                                    permanent) : RealMCPayoff(properties,permanent) {
+        libraryObject_ = boost::shared_ptr<QuantLib::RealMCPayoff>(
+			new QuantLib::RealMC::Mult( x, y ));
+	}
+
 	RealMCMax::RealMCMax(  const boost::shared_ptr<ObjectHandler::ValueObject>&    properties,
 						   const boost::shared_ptr<QuantLib::RealMCPayoff>&        x,
 						   const boost::shared_ptr<QuantLib::RealMCPayoff>&        y,
@@ -207,22 +215,23 @@ namespace QuantLibAddin {
 			new QuantLib::RealMC::Pay( x, payTime ));
 	}
 
-	RealMCCoupon::RealMCCoupon( 
+	RealMCCashFlow::RealMCCashFlow( 
 		                   const boost::shared_ptr<ObjectHandler::ValueObject>&    properties,
 						   const boost::shared_ptr<QuantLib::RealMCPayoff>&        x,
 			               const QuantLib::Time                                    startTime,
 			               const QuantLib::Time                                    payTime,
+						   const bool                                              applyZCBAdjuster,
 			               bool                                                    permanent) : RealMCPayoff(properties,permanent) {
         libraryObject_ = boost::shared_ptr<QuantLib::RealMCPayoff>(
-			new QuantLib::RealMC::Coupon( x, startTime, payTime ));
+			new QuantLib::RealMC::CashFlow( x, startTime, payTime, applyZCBAdjuster ));
 	}
 
-    RealMCLeg::RealMCLeg(  const boost::shared_ptr<ObjectHandler::ValueObject>&                properties,
-						   const std::vector< boost::shared_ptr<QuantLib::RealMC::Coupon> >&   coupons,
-			               bool                                                                permanent)
+    RealMCLeg::RealMCLeg(  const boost::shared_ptr<ObjectHandler::ValueObject>&                  properties,
+						   const std::vector< boost::shared_ptr<QuantLib::RealMC::CashFlow> >&   cashflows,
+			               bool                                                                  permanent)
 						   : ObjectHandler::LibraryObject<QuantLib::RealMC::Leg>(properties,permanent) {
         libraryObject_ = boost::shared_ptr<QuantLib::RealMC::Leg>(
-			new QuantLib::RealMC::Leg( coupons ));
+			new QuantLib::RealMC::Leg( cashflows ));
 	}
 
     RealMCSwap::RealMCSwap(  const boost::shared_ptr<ObjectHandler::ValueObject>&                properties,
@@ -249,12 +258,12 @@ namespace QuantLibAddin {
 		                 const boost::shared_ptr<ObjectHandler::ValueObject>&            properties,
 			             const boost::shared_ptr<QuantLib::RealMC::CancellableNote>&     note,
                          const boost::shared_ptr<QuantLib::RealMCSimulation>&            simulation,
-						 const bool                                                      calculateRegression,
+						 const QuantLib::Real                                            regressionFraction,
 						 const QuantLib::Size                                            maxPolynDegree,
 			             bool                                                            permanent)
 						 : ObjectHandler::LibraryObject<QuantLib::RealAMCPricer>(properties,permanent) {
         libraryObject_ = boost::shared_ptr<QuantLib::RealAMCPricer>(
-			new QuantLib::RealAMCPricer( note, simulation, calculateRegression, maxPolynDegree ));
+			new QuantLib::RealAMCPricer( note, simulation, regressionFraction, maxPolynDegree ));
 	}
 
 	RealRegression::RealRegression (
