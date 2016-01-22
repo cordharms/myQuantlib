@@ -292,6 +292,11 @@
     <DataType defaultSuperType='libraryClass'>QuantLib::RealMCSimulation</DataType>
     <DataType defaultSuperType='libraryClass'>QuantLib::RealMCPayoff</DataType>
     <DataType defaultSuperType='libraryClass'>QuantLib::RealMCPayoffPricer</DataType>
+    <DataType defaultSuperType='libraryClass'>QuantLib::RealMCCashFlow</DataType>
+    <DataType defaultSuperType='libraryClass'>QuantLib::RealMCLeg</DataType>
+    <DataType defaultSuperType='libraryClass'>QuantLib::RealMCCancellableNote</DataType>
+    <DataType defaultSuperType='libraryClass'>QuantLib::RealAMCPricer</DataType>
+    <DataType defaultSuperType='libraryClass'>QuantLib::RealRegression</DataType>
 
     <DataType defaultSuperType='libraryClass'>QuantLib::HestonProcess</DataType>
     <DataType defaultSuperType='libraryClass'>QuantLib::HestonModel</DataType>

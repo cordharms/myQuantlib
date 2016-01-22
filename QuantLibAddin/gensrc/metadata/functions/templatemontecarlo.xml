@@ -12,6 +12,7 @@
     <include>qlo/schedule.hpp</include>    
     <include>qlo/templatemontecarlo.hpp</include>
     <include>qlo/swaption.hpp</include>
+    <include>qlo/indexes/swapindex.hpp</include>
     <include>ql/instruments/swaption.hpp</include>
   </serializationIncludes>
   <addinIncludes>
@@ -25,6 +26,7 @@
     <include>qlo/schedule.hpp</include>
     <include>qlo/templatemontecarlo.hpp</include>
     <include>qlo/swaption.hpp</include>
+    <include>qlo/indexes/swapindex.hpp</include>
     <include>ql/instruments/swaption.hpp</include>
   </addinIncludes>
   <copyright>
@@ -688,6 +690,34 @@
       </ParameterList>
     </Constructor>
 
+    <Constructor name='qlRealMCSwapRate2'>
+      <libraryFunction>RealMCSwapRate</libraryFunction>
+      <SupportedPlatforms>
+        <SupportedPlatform name='Excel'/>
+        <SupportedPlatform name='Cpp'/>
+      </SupportedPlatforms>
+      <ParameterList>
+        <Parameters>
+          <Parameter name='FixingTime' >
+            <type>QuantLib::Time</type>
+            <tensorRank>scalar</tensorRank>
+            <description>future swap rate fixing times.</description>
+          </Parameter>
+          <Parameter name='SwapIndex' >
+            <type>QuantLib::SwapIndex</type>
+            <tensorRank>scalar</tensorRank>
+            <description>reference to swap index.</description>
+          </Parameter>
+          <Parameter name='DiscountCurve'>
+            <type>QuantLib::YieldTermStructure</type>
+            <superType>libToHandle</superType>
+            <tensorRank>scalar</tensorRank>
+            <description>Discount curve.</description>
+          </Parameter>
+        </Parameters>
+      </ParameterList>
+    </Constructor>
+
 
     <Constructor name='qlRealMCModelCorrelation'>
       <libraryFunction>RealMCModelCorrelation</libraryFunction>
@@ -752,6 +782,501 @@
         </Parameters>
       </ParameterList>
     </Constructor>
+
+   <!-- MC swap stuff -->
+
+    <Constructor name='qlRealMCFixedAmount'>
+      <libraryFunction>RealMCFixedAmount</libraryFunction>
+      <SupportedPlatforms>
+        <SupportedPlatform name='Excel'/>
+        <SupportedPlatform name='Cpp'/>
+      </SupportedPlatforms>
+      <ParameterList>
+        <Parameters>
+          <Parameter name='Amount' exampleValue ='1.0' default='1.0' >
+            <type>QuantLib::Real</type>
+            <tensorRank>scalar</tensorRank>
+            <description>fixed amount.</description>
+          </Parameter>
+        </Parameters>
+      </ParameterList>
+    </Constructor>
+
+    <Constructor name='qlRealMCLiborRate'>
+      <libraryFunction>RealMCLiborRate</libraryFunction>
+      <SupportedPlatforms>
+        <SupportedPlatform name='Excel'/>
+        <SupportedPlatform name='Cpp'/>
+      </SupportedPlatforms>
+      <ParameterList>
+        <Parameters>
+          <Parameter name='FixingTime' exampleValue ='1.0' default='1.0' >
+            <type>QuantLib::Time</type>
+            <tensorRank>scalar</tensorRank>
+            <description>forward libor fixing time.</description>
+          </Parameter>
+          <Parameter name='StartTime' exampleValue ='1.0' default='1.0' >
+            <type>QuantLib::Time</type>
+            <tensorRank>scalar</tensorRank>
+            <description>period start time.</description>
+          </Parameter>
+          <Parameter name='EndTime' exampleValue ='1.5' default='1.5' >
+            <type>QuantLib::Time</type>
+            <tensorRank>scalar</tensorRank>
+            <description>period end time.</description>
+          </Parameter>
+          <Parameter name='IborIndex' exampleValue='Libor3M'>
+            <type>QuantLib::IborIndex</type>
+            <tensorRank>scalar</tensorRank>
+            <description>Forcasting Ibor index (for tenor basis).</description>
+          </Parameter>
+          <Parameter name='DiscountCurve'>
+            <type>QuantLib::YieldTermStructure</type>
+            <superType>libToHandle</superType>
+            <tensorRank>scalar</tensorRank>
+            <description>YieldTermStructure for discounting.</description>
+          </Parameter>
+        </Parameters>
+      </ParameterList>
+    </Constructor>
+
+    <Constructor name='qlRealMCAxpy'>
+      <libraryFunction>RealMCAxpy</libraryFunction>
+      <SupportedPlatforms>
+        <SupportedPlatform name='Excel'/>
+        <SupportedPlatform name='Cpp'/>
+      </SupportedPlatforms>
+      <ParameterList>
+        <Parameters>
+          <Parameter name='A' exampleValue ='1.0' default='1.0' >
+            <type>QuantLib::Real</type>
+            <tensorRank>scalar</tensorRank>
+            <description>multiplier</description>
+          </Parameter>
+          <Parameter name='X' >
+            <type>QuantLib::RealMCPayoff</type>
+            <tensorRank>scalar</tensorRank>
+            <description>reference to payoff.</description>
+          </Parameter>
+          <Parameter name='Y' >
+            <type>QuantLib::RealMCPayoff</type>
+            <tensorRank>scalar</tensorRank>
+            <description>reference to payoff.</description>
+          </Parameter>
+        </Parameters>
+      </ParameterList>
+    </Constructor>
+
+    <Constructor name='qlRealMCMult'>
+      <libraryFunction>RealMCMult</libraryFunction>
+      <SupportedPlatforms>
+        <SupportedPlatform name='Excel'/>
+        <SupportedPlatform name='Cpp'/>
+      </SupportedPlatforms>
+      <ParameterList>
+        <Parameters>
+          <Parameter name='X' >
+            <type>QuantLib::RealMCPayoff</type>
+            <tensorRank>scalar</tensorRank>
+            <description>reference to payoff.</description>
+          </Parameter>
+          <Parameter name='Y' >
+            <type>QuantLib::RealMCPayoff</type>
+            <tensorRank>scalar</tensorRank>
+            <description>reference to payoff.</description>
+          </Parameter>
+        </Parameters>
+      </ParameterList>
+    </Constructor>
+
+    <Constructor name='qlRealMCMax'>
+      <libraryFunction>RealMCMax</libraryFunction>
+      <SupportedPlatforms>
+        <SupportedPlatform name='Excel'/>
+        <SupportedPlatform name='Cpp'/>
+      </SupportedPlatforms>
+      <ParameterList>
+        <Parameters>
+          <Parameter name='X' >
+            <type>QuantLib::RealMCPayoff</type>
+            <tensorRank>scalar</tensorRank>
+            <description>reference to payoff.</description>
+          </Parameter>
+          <Parameter name='Y' >
+            <type>QuantLib::RealMCPayoff</type>
+            <tensorRank>scalar</tensorRank>
+            <description>reference to payoff.</description>
+          </Parameter>
+        </Parameters>
+      </ParameterList>
+    </Constructor>
+
+    <Constructor name='qlRealMCMin'>
+      <libraryFunction>RealMCMin</libraryFunction>
+      <SupportedPlatforms>
+        <SupportedPlatform name='Excel'/>
+        <SupportedPlatform name='Cpp'/>
+      </SupportedPlatforms>
+      <ParameterList>
+        <Parameters>
+          <Parameter name='X' >
+            <type>QuantLib::RealMCPayoff</type>
+            <tensorRank>scalar</tensorRank>
+            <description>reference to payoff.</description>
+          </Parameter>
+          <Parameter name='Y' >
+            <type>QuantLib::RealMCPayoff</type>
+            <tensorRank>scalar</tensorRank>
+            <description>reference to payoff.</description>
+          </Parameter>
+        </Parameters>
+      </ParameterList>
+    </Constructor>
+
+    <Constructor name='qlRealMCPay'>
+      <libraryFunction>RealMCPay</libraryFunction>
+      <SupportedPlatforms>
+        <SupportedPlatform name='Excel'/>
+        <SupportedPlatform name='Cpp'/>
+      </SupportedPlatforms>
+      <ParameterList>
+        <Parameters>
+          <Parameter name='X' >
+            <type>QuantLib::RealMCPayoff</type>
+            <tensorRank>scalar</tensorRank>
+            <description>reference to payoff.</description>
+          </Parameter>
+          <Parameter name='PayTime' exampleValue ='1.0' default='1.0' >
+            <type>QuantLib::Time</type>
+            <tensorRank>scalar</tensorRank>
+            <description>time at which payoff is paid.</description>
+          </Parameter>
+        </Parameters>
+      </ParameterList>
+    </Constructor>
+
+    <Constructor name='qlRealMCCashFlow'>
+      <libraryFunction>RealMCCashFlow</libraryFunction>
+      <SupportedPlatforms>
+        <SupportedPlatform name='Excel'/>
+        <SupportedPlatform name='Cpp'/>
+      </SupportedPlatforms>
+      <ParameterList>
+        <Parameters>
+          <Parameter name='X' >
+            <type>QuantLib::RealMCPayoff</type>
+            <tensorRank>scalar</tensorRank>
+            <description>reference to payoff.</description>
+          </Parameter>
+          <Parameter name='StartTime' exampleValue ='1.0' default='1.0' >
+            <type>QuantLib::Time</type>
+            <tensorRank>scalar</tensorRank>
+            <description>time at which CashFlow starts.</description>
+          </Parameter>
+          <Parameter name='PayTime' exampleValue ='1.5' default='1.5' >
+            <type>QuantLib::Time</type>
+            <tensorRank>scalar</tensorRank>
+            <description>time at which CashFlow is paid.</description>
+          </Parameter>
+          <Parameter name='ApplyZCBAdjuster' exampleValue ='false' default='false' >
+            <type>bool</type>
+            <tensorRank>scalar</tensorRank>
+            <description>Incorporate ZCB adjuster by multiplication with P(T,T).</description>
+          </Parameter>
+        </Parameters>
+      </ParameterList>
+    </Constructor>
+
+    <Constructor name='qlRealMCLeg'>
+      <libraryFunction>RealMCLeg</libraryFunction>
+      <SupportedPlatforms>
+        <SupportedPlatform name='Excel'/>
+        <SupportedPlatform name='Cpp'/>
+      </SupportedPlatforms>
+      <ParameterList>
+        <Parameters>
+          <Parameter name='CashFlows' >
+            <type>QuantLib::RealMCCashFlow</type>
+            <tensorRank>vector</tensorRank>
+            <description>reference to CashFlows.</description>
+          </Parameter>
+        </Parameters>
+      </ParameterList>
+    </Constructor>
+
+    <Constructor name='qlRealMCCancellableNote'>
+      <libraryFunction>RealMCCancellableNote</libraryFunction>
+      <SupportedPlatforms>
+        <SupportedPlatform name='Excel'/>
+        <SupportedPlatform name='Cpp'/>
+      </SupportedPlatforms>
+      <ParameterList>
+        <Parameters>
+          <Parameter name='Underlyings' >
+            <type>QuantLib::RealMCLeg</type>
+            <tensorRank>vector</tensorRank>
+            <description>reference (vector) to underlying legs.</description>
+          </Parameter>
+          <Parameter name='CallTimes' >
+            <type>QuantLib::Time</type>
+            <tensorRank>vector</tensorRank>
+            <description>vector of exercise times.</description>
+          </Parameter>
+          <Parameter name='EarlyRedemptions' >
+            <type>QuantLib::RealMCLeg</type>
+            <tensorRank>vector</tensorRank>
+            <description>reference (vector) to early redemptions or strikes.</description>
+          </Parameter>
+          <Parameter name='RegressionVariables' >
+            <type>QuantLib::RealMCLeg</type>
+            <tensorRank>vector</tensorRank>
+            <description>reference (vector) to regression var's as CashFlows.</description>
+          </Parameter>
+        </Parameters>
+      </ParameterList>
+    </Constructor>
+
+    <Constructor name='qlRealAMCPricer'>
+      <libraryFunction>RealAMCPricer</libraryFunction>
+      <SupportedPlatforms>
+        <SupportedPlatform name='Excel'/>
+        <SupportedPlatform name='Cpp'/>
+      </SupportedPlatforms>
+      <ParameterList>
+        <Parameters>
+          <Parameter name='Note' >
+            <type>QuantLib::RealMCCancellableNote</type>
+            <tensorRank>scalar</tensorRank>
+            <description>reference to note.</description>
+          </Parameter>
+          <Parameter name='Simulation' >
+            <type>QuantLib::RealMCSimulation</type>
+            <tensorRank>scalar</tensorRank>
+            <description>reference to MC simulation object.</description>
+          </Parameter>
+          <Parameter name='RegressionFraction' exampleValue ='0.3' default='0.0'>
+            <type>QuantLib::Real</type>
+            <tensorRank>scalar</tensorRank>
+            <description>Fraction of paths used for regression.</description>
+          </Parameter>
+          <Parameter name='MaxPolynDegree' exampleValue ='0' default='0'>
+            <type>QuantLib::Size</type>
+            <tensorRank>scalar</tensorRank>
+            <description>maximum degree of monomial for regression.</description>
+          </Parameter>
+        </Parameters>
+      </ParameterList>
+    </Constructor>
+
+    <Member name='qlRealAMCPricerCalculate' type='QuantLib::RealAMCPricer' >
+      <description>Perform AMC calculation.</description>
+      <libraryFunction>calculate</libraryFunction>
+      <SupportedPlatforms>
+        <!--SupportedPlatform name='Excel' calcInWizard='false'/-->
+        <SupportedPlatform name='Excel'/>
+        <!--SupportedPlatform name='Calc'/-->
+        <!--SupportedPlatform name='Cpp'/-->
+      </SupportedPlatforms>
+      <ParameterList>
+        <Parameters/>
+      </ParameterList>
+      <ReturnValue>
+        <type>void</type>
+        <tensorRank>scalar</tensorRank>
+      </ReturnValue>
+    </Member>
+
+    <Member name='qlRealAMCPricerData' type='QuantLib::RealAMCPricer' >
+      <description>Return calculated internal data.</description>
+      <libraryFunction>data</libraryFunction>
+      <SupportedPlatforms>
+        <!--SupportedPlatform name='Excel' calcInWizard='false'/-->
+        <SupportedPlatform name='Excel'/>
+        <!--SupportedPlatform name='Calc'/-->
+        <!--SupportedPlatform name='Cpp'/-->
+      </SupportedPlatforms>
+      <ParameterList>
+       <Parameters>
+        <Parameter name='Tag' >
+          <type>string</type>
+          <tensorRank>scalar</tensorRank>
+          <description>tag  (X, R, B, G, T).</description>
+        </Parameter>
+       </Parameters>
+      </ParameterList>
+      <ReturnValue>
+        <type>QuantLib::Time</type>
+        <tensorRank>matrix</tensorRank>
+      </ReturnValue>
+    </Member>
+
+    <Member name='qlRealAMCPricerNoteNPV' type='QuantLib::RealAMCPricer' >
+      <description>Return npv of callable note.</description>
+      <libraryFunction>noteNPV</libraryFunction>
+      <SupportedPlatforms>
+        <!--SupportedPlatform name='Excel' calcInWizard='false'/-->
+        <SupportedPlatform name='Excel'/>
+        <!--SupportedPlatform name='Calc'/-->
+        <!--SupportedPlatform name='Cpp'/-->
+      </SupportedPlatforms>
+      <ParameterList>
+        <Parameters/>
+      </ParameterList>
+      <ReturnValue>
+        <type>QuantLib::Real</type>
+        <tensorRank>scalar</tensorRank>
+      </ReturnValue>
+    </Member>
+
+    <Member name='qlRealAMCPricerUnderlyingNPV' type='QuantLib::RealAMCPricer' >
+      <description>Return npv of note w/o calls.</description>
+      <libraryFunction>underlyingNPV</libraryFunction>
+      <SupportedPlatforms>
+        <!--SupportedPlatform name='Excel' calcInWizard='false'/-->
+        <SupportedPlatform name='Excel'/>
+        <!--SupportedPlatform name='Calc'/-->
+        <!--SupportedPlatform name='Cpp'/-->
+      </SupportedPlatforms>
+      <ParameterList>
+        <Parameters/>
+      </ParameterList>
+      <ReturnValue>
+        <type>QuantLib::Real</type>
+        <tensorRank>scalar</tensorRank>
+      </ReturnValue>
+    </Member>
+
+    
+  <!-- Regression operator and functions -->
+
+    <Constructor name='qlRealRegression'>
+      <libraryFunction>RealRegression</libraryFunction>
+      <SupportedPlatforms>
+        <SupportedPlatform name='Excel'/>
+        <SupportedPlatform name='Cpp'/>
+      </SupportedPlatforms>
+      <ParameterList>
+        <Parameters>
+          <Parameter name='Controls' >
+            <type>QuantLib::Time</type>
+            <tensorRank>matrix</tensorRank>
+            <description>matrix of control variables.</description>
+          </Parameter>
+          <Parameter name='Observations' >
+            <type>QuantLib::Real</type>
+            <tensorRank>vector</tensorRank>
+            <description>vector of observations.</description>
+          </Parameter>
+          <Parameter name='MaxDegree' >
+            <type>QuantLib::Size</type>
+            <tensorRank>scalar</tensorRank>
+            <description>maximum degree of monomial.</description>
+          </Parameter>
+        </Parameters>
+      </ParameterList>
+    </Constructor>
+
+    <Member name='qlRealRegressionMonomials' type='QuantLib::RealRegression' >
+      <description>Return monomial values based on explanatory variables.</description>
+      <libraryFunction>monomials</libraryFunction>
+      <SupportedPlatforms>
+        <!--SupportedPlatform name='Excel' calcInWizard='false'/-->
+        <SupportedPlatform name='Excel'/>
+        <!--SupportedPlatform name='Calc'/-->
+        <!--SupportedPlatform name='Cpp'/-->
+      </SupportedPlatforms>
+      <ParameterList>
+        <Parameters>
+          <Parameter name='X' >
+            <type>QuantLib::Real</type>
+            <tensorRank>vector</tensorRank>
+            <description>vector of explanatory variables.</description>
+          </Parameter>
+        </Parameters>          
+      </ParameterList>
+      <ReturnValue>
+        <type>QuantLib::Real</type>
+        <tensorRank>vector</tensorRank>
+      </ReturnValue>
+    </Member>
+
+    <Member name='qlRealRegressionValue' type='QuantLib::RealRegression' >
+      <description>Return regression value based on explanatory variables.</description>
+      <libraryFunction>value</libraryFunction>
+      <SupportedPlatforms>
+        <!--SupportedPlatform name='Excel' calcInWizard='false'/-->
+        <SupportedPlatform name='Excel'/>
+        <!--SupportedPlatform name='Calc'/-->
+        <!--SupportedPlatform name='Cpp'/-->
+      </SupportedPlatforms>
+      <ParameterList>
+        <Parameters>
+          <Parameter name='X' >
+            <type>QuantLib::Real</type>
+            <tensorRank>vector</tensorRank>
+            <description>vector of explanatory variables.</description>
+          </Parameter>
+        </Parameters>
+      </ParameterList>
+      <ReturnValue>
+        <type>QuantLib::Real</type>
+        <tensorRank>scalar</tensorRank>
+      </ReturnValue>
+    </Member>
+
+    <Member name='qlRealRegressionMaxDegree' type='QuantLib::RealRegression' >
+      <description>Return max degree of monomials.</description>
+      <libraryFunction>maxDegree</libraryFunction>
+      <SupportedPlatforms>
+        <!--SupportedPlatform name='Excel' calcInWizard='false'/-->
+        <SupportedPlatform name='Excel'/>
+        <!--SupportedPlatform name='Calc'/-->
+        <!--SupportedPlatform name='Cpp'/-->
+      </SupportedPlatforms>
+      <ParameterList>
+        <Parameters/>
+      </ParameterList>
+      <ReturnValue>
+        <type>QuantLib::Real</type>
+        <tensorRank>scalar</tensorRank>
+      </ReturnValue>
+    </Member>
+
+    <Member name='qlRealRegressionMultiIndex' type='QuantLib::RealRegression' >
+      <description>Return matrix of multi indeces.</description>
+      <libraryFunction>multiIndex</libraryFunction>
+      <SupportedPlatforms>
+        <!--SupportedPlatform name='Excel' calcInWizard='false'/-->
+        <SupportedPlatform name='Excel'/>
+        <!--SupportedPlatform name='Calc'/-->
+        <!--SupportedPlatform name='Cpp'/-->
+      </SupportedPlatforms>
+      <ParameterList>
+        <Parameters/>
+      </ParameterList>
+      <ReturnValue>
+        <type>QuantLib::Time</type>
+        <tensorRank>matrix</tensorRank>
+      </ReturnValue>
+    </Member>
+
+    <Member name='qlRealRegressionBeta' type='QuantLib::RealRegression' >
+      <description>Return regression coefficients.</description>
+      <libraryFunction>beta</libraryFunction>
+      <SupportedPlatforms>
+        <!--SupportedPlatform name='Excel' calcInWizard='false'/-->
+        <SupportedPlatform name='Excel'/>
+        <!--SupportedPlatform name='Calc'/-->
+        <!--SupportedPlatform name='Cpp'/-->
+      </SupportedPlatforms>
+      <ParameterList>
+        <Parameters/>
+      </ParameterList>
+      <ReturnValue>
+        <type>QuantLib::Real</type>
+        <tensorRank>vector</tensorRank>
+      </ReturnValue>
+    </Member>
 
 
 
