@@ -12,6 +12,7 @@
 #include <ql/experimental/basisswap/basisswap.hpp>
 #include <ql/experimental/basisswap/basisswapengine.hpp>
 #include <ql/experimental/basisswap/basisswapratehelpers.hpp>
+#include <ql/experimental/basisswap/fxfwdratehelper.hpp>
 #include <ql/experimental/basisswap/spreadyieldtermstructure.hpp>
 #include <ql/experimental/template/basismodel/swaptioncfs.hpp>
 #include <ql/experimental/template/basismodel/tenorswaptionvts.hpp>
@@ -155,6 +156,24 @@ namespace QuantLibAddin {
                            bool                                                             permanent );
 
 	};
+
+    class FxFwdRateHelper : public RateHelper {
+          public:
+    		FxFwdRateHelper( const boost::shared_ptr<ObjectHandler::ValueObject>&  properties,
+    						 const QuantLib::Currency                              baseCurrency,
+    						 const QuantLib::Currency                              counterCurrency,
+    						 const QuantLib::Rate                                  fxSpot,
+    						 const QuantLib::Natural                               spotLag,
+    		                 const QuantLib::Calendar                              spotLagCal,
+    						 const QuantLib::BusinessDayConvention                 spotLagConv,
+    						 const QuantLib::Period                                swapTerm,
+    						 const QuantLib::Handle<QuantLib::Quote>               points,
+    			             const QuantLib::Real                                  unit,
+    					     const QuantLib::Handle<QuantLib::YieldTermStructure>  baseCcyDiscTermStructureHandle,
+    						 const QuantLib::Handle<QuantLib::YieldTermStructure>  cntrCcyDiscTermStructureHandle,
+    						 const QuantLib::FxFwdRateHelper::BootstrapType        bootstrapBaseOrCounter,
+    					     bool                                                  permanent);
+    	};
 
 }
 

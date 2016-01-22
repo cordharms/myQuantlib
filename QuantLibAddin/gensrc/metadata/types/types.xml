@@ -1,4 +1,3 @@
-
 <root>
 
   <DataTypes>
@@ -21,6 +20,7 @@
     <DataType defaultSuperType='enumeration'>QuantLib::GFunctionFactory::YieldCurveModel</DataType>
     <DataType defaultSuperType='enumeration'>QuantLib::Month</DataType>
     <DataType defaultSuperType='enumeration'>QuantLib::Option::Type</DataType>
+    <DataType defaultSuperType='enumeration'>QuantLib::Pillar::Choice</DataType>
     <DataType defaultSuperType='enumeration'>QuantLib::Position::Type</DataType>
     <DataType defaultSuperType='enumeration'>QuantLib::Replication::Type</DataType>
     <DataType defaultSuperType='enumeration'>QuantLib::SalvagingAlgorithm::Type</DataType>
@@ -95,6 +95,7 @@
     <DataType defaultSuperType='libraryClass'>QuantLib::FloatingRateCouponPricer</DataType>
     <DataType defaultSuperType='libraryClass'>QuantLib::ForwardRateAgreement</DataType>
     <DataType defaultSuperType='libraryClass'>QuantLib::FuturesRateHelper</DataType>
+    <DataType defaultSuperType='libraryClass'>QuantLib::FxSwapRateHelper</DataType>
     <DataType defaultSuperType='libraryClass'>QuantLib::GeneralizedBlackScholesProcess</DataType>
     <DataType defaultSuperType='libraryClass'>QuantLib::HistoricalForwardRatesAnalysis</DataType>
     <DataType defaultSuperType='libraryClass'>QuantLib::HistoricalRatesAnalysis</DataType>
@@ -173,7 +174,7 @@
     <DataType defaultSuperType='libraryClass'>QuantLib::Issuer</DataType>
     <DataType defaultSuperType='libraryClass'>QuantLib::DefaultEventSet</DataType>
     <DataType defaultSuperType='enumeration'>QuantLib::Seniority</DataType>
-    
+
     <DataType defaultSuperType='libraryQuote'>QuantLib::FuturesConvAdjustmentQuote</DataType>
     <DataType defaultSuperType='libraryQuote'>QuantLib::Quote</DataType>
     <DataType defaultSuperType='libraryQuote'>QuantLib::SimpleQuote</DataType>
@@ -291,6 +292,11 @@
     <DataType defaultSuperType='libraryClass'>QuantLib::RealMCSimulation</DataType>
     <DataType defaultSuperType='libraryClass'>QuantLib::RealMCPayoff</DataType>
     <DataType defaultSuperType='libraryClass'>QuantLib::RealMCPayoffPricer</DataType>
+    <DataType defaultSuperType='libraryClass'>QuantLib::RealMCCashFlow</DataType>
+    <DataType defaultSuperType='libraryClass'>QuantLib::RealMCLeg</DataType>
+    <DataType defaultSuperType='libraryClass'>QuantLib::RealMCCancellableNote</DataType>
+    <DataType defaultSuperType='libraryClass'>QuantLib::RealAMCPricer</DataType>
+    <DataType defaultSuperType='libraryClass'>QuantLib::RealRegression</DataType>
 
     <DataType defaultSuperType='libraryClass'>QuantLib::HestonProcess</DataType>
     <DataType defaultSuperType='libraryClass'>QuantLib::HestonModel</DataType>
@@ -312,6 +318,7 @@
 
     <DataType defaultSuperType='enumeration'>QuantLib::RealStochasticProcess::VolEvolv</DataType>
     <DataType defaultSuperType='enumeration'>QuantLib::VolatilityType</DataType>
+    <DataType defaultSuperType='enumeration'>QuantLib::FxFwdRateHelper::BootstrapType</DataType>
 
   </DataTypes>
 

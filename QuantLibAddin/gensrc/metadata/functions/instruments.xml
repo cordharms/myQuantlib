@@ -133,5 +133,29 @@
       </ReturnValue>
     </Member>
 
+    <Member name='qlInstrumentResultsVector' type='QuantLib::Instrument'>
+      <description>Returns the required result (if available) for the given Instrument object.</description>
+      <libraryFunction>result&lt; std::vector&lt;QuantLib::Real&gt; &gt;</libraryFunction>
+      <SupportedPlatforms>
+        <!--SupportedPlatform name='Excel' calcInWizard='false'/-->
+        <SupportedPlatform name='Excel'/>
+        <!--SupportedPlatform name='Cpp'/-->
+      </SupportedPlatforms>
+      <ParameterList>
+        <Parameters>
+          <Parameter name='ResultType' exampleValue='vega'>
+            <type>string</type>
+            <tensorRank>scalar</tensorRank>
+            <description>result type (e.g. 'vega').</description>
+          </Parameter>
+        </Parameters>
+      </ParameterList>
+      <ReturnValue>
+        <type>double</type>
+        <tensorRank>vector</tensorRank>
+      </ReturnValue>
+    </Member>
+
+
   </Functions>
 </Category>
