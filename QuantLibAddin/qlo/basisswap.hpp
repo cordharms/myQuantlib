@@ -9,14 +9,14 @@
 #define qla_basisswap_hpp
 
 #include <ql/types.hpp>
-#include <ql/experimental/basisswap/basisswap.hpp>
-#include <ql/experimental/basisswap/basisswapengine.hpp>
-#include <ql/experimental/basisswap/basisswapratehelpers.hpp>
-#include <ql/experimental/basisswap/fxfwdratehelper.hpp>
-#include <ql/experimental/basisswap/spreadyieldtermstructure.hpp>
-#include <ql/experimental/template/basismodel/swaptioncfs.hpp>
-#include <ql/experimental/template/basismodel/tenorswaptionvts.hpp>
-#include <ql/experimental/template/basismodel/tenoroptionletvts.hpp>
+#include <ql/experimental/basismodels/basisswap.hpp>
+#include <ql/experimental/basismodels/basisswapengine.hpp>
+#include <ql/experimental/basismodels/basisswapratehelpers.hpp>
+#include <ql/experimental/basismodels/fxfwdratehelper.hpp>
+#include <ql/experimental/basismodels/spreadyieldtermstructure.hpp>
+#include <ql/experimental/basismodels/swaptioncfs.hpp>
+#include <ql/experimental/basismodels/tenorswaptionvts.hpp>
+#include <ql/experimental/basismodels/tenoroptionletvts.hpp>
 #include <qlo/leg.hpp>
 #include <qlo/swap.hpp>
 #include <qlo/pricingengines.hpp>

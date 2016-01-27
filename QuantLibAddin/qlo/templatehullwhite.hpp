@@ -9,12 +9,10 @@
 #define qla_templatemodells_hpp
 
 #include <ql/types.hpp>
-//#include <ql/experimental/templatehullwhite/adtageo/adtageo.hpp>
-//#include <ql/experimental/template/auxilliaries/MinimADVariable2.hpp>
 
-#include <ql/experimental/template/hullwhite/hullwhitemodels.hpp>
-#include <ql/experimental/template/hullwhite/fixedratebondoption.hpp>
-#include <ql/experimental/template/hullwhite/bondoptionengine.hpp>
+#include <ql/experimental/templatemodels/hullwhite/hullwhitemodels.hpp>
+#include <ql/experimental/templatemodels/hullwhite/fixedratebondoption.hpp>
+#include <ql/experimental/templatemodels/hullwhite/bondoptionengine.hpp>
 #include <ql/instruments/bonds/fixedratebond.hpp>
 #include <ql/instruments/swaption.hpp>
 

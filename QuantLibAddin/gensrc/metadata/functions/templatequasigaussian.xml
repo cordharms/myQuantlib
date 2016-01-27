@@ -12,7 +12,7 @@
     <include>qlo/schedule.hpp</include>    
     <include>qlo/templatequasigaussian.hpp</include>
     <include>qlo/templatemontecarlo.hpp</include>
-    <include>ql/experimental/template/qgaussian/quasigaussianmodels.hpp</include>
+    <include>ql/experimental/templatemodels/qgaussian/quasigaussianmodels.hpp</include>
   </serializationIncludes>
   <addinIncludes>
     <include>qlo/handleimpl.hpp</include>
@@ -25,7 +25,7 @@
     <include>qlo/schedule.hpp</include>
     <include>qlo/templatequasigaussian.hpp</include>
     <include>qlo/templatemontecarlo.hpp</include>
-    <include>ql/experimental/template/qgaussian/quasigaussianmodels.hpp</include>
+    <include>ql/experimental/templatemodels/qgaussian/quasigaussianmodels.hpp</include>
   </addinIncludes>
   <copyright>
     Copyright (C) 2015, Sebastian Schlenkrich

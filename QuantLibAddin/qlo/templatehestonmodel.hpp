@@ -20,8 +20,8 @@
 #include <ql/models/equity/hestonmodel.hpp>
 #include <ql/pricingengines/vanilla/analytichestonengine.hpp>
 #include <ql/pricingengines/vanilla/analytichestonengine.hpp>
-#include <ql/experimental/template/stochvol/hestonmodels.hpp>
-#include <ql/experimental/template/stochvol/stochvolcalibrator.hpp>
+#include <ql/experimental/templatemodels/stochvol/stochvolmodels.hpp>
+#include <ql/experimental/templatemodels/stochvol/stochvolcalibrator.hpp>
 
 // #include <qlo/templatequasigaussian.hpp>
 

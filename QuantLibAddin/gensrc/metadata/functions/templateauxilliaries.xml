@@ -4,11 +4,11 @@
   <xlFunctionWizardCategory>QuantLib - Math</xlFunctionWizardCategory>
   <serializationIncludes>
     <include>ql/types.hpp</include>
-    <include>ql/experimental/template/auxilliaries/templateauxilliaries.hpp</include>
+    <include>ql/experimental/templatemodels/auxilliaries/auxilliariesT.hpp</include>
   </serializationIncludes>
   <addinIncludes>
     <include>ql/types.hpp</include>
-    <include>ql/experimental/template/auxilliaries/templateauxilliaries.hpp</include>
+    <include>ql/experimental/templatemodels/auxilliaries/auxilliariesT.hpp</include>
   </addinIncludes>
   <copyright>
     Copyright (C) 2014 Sebastian Schlenkrich

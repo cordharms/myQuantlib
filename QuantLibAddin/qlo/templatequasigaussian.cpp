@@ -6,7 +6,7 @@
 */
 
 
-#include <ql/experimental/template/basismodel/swaptioncfs.hpp>
+#include <ql/experimental/basismodels/swaptioncfs.hpp>
 
 #include <qlo/templatequasigaussian.hpp>
 

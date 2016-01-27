@@ -11,7 +11,7 @@
     <include>qlo/swaption.hpp</include>
     <include>qlo/schedule.hpp</include>    
     <include>qlo/templatehullwhite.hpp</include>
-    <include>ql/experimental/template/hullwhite/hullwhitemodels.hpp</include>
+    <include>ql/experimental/templatemodels/hullwhite/hullwhitemodels.hpp</include>
   </serializationIncludes>
   <addinIncludes>
     <include>qlo/handleimpl.hpp</include>
@@ -23,7 +23,7 @@
     <include>qlo/swaption.hpp</include>
     <include>qlo/schedule.hpp</include>
     <include>qlo/templatehullwhite.hpp</include>
-    <include>ql/experimental/template/hullwhite/hullwhitemodels.hpp</include>
+    <include>ql/experimental/templatemodels/hullwhite/hullwhitemodels.hpp</include>
   </addinIncludes>
   <copyright>
     Copyright (C) 2014, Sebastian Schlenkrich

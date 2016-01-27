@@ -15,8 +15,8 @@
 #include <qlo/templatehestonmodel.hpp>
 
 #include <ql/types.hpp>
-#include <ql/experimental/template/qgaussian/quasigaussianmodels.hpp>
-#include <ql/experimental/template/qgaussian/qgaussiancalibrator.hpp>
+#include <ql/experimental/templatemodels/qgaussian/quasigaussianmodels.hpp>
+#include <ql/experimental/templatemodels/qgaussian/qgaussiancalibrator.hpp>
 
 
 

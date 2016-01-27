@@ -79,9 +79,6 @@
     <Filter Include="Experimental\SabrSwaptionCube">
       <UniqueIdentifier>{1997d06e-5dc1-4553-bbd3-1013e89f3214}</UniqueIdentifier>
     </Filter>
-    <Filter Include="Experimental\BasisSwap">
-      <UniqueIdentifier>{3697884d-2b7a-402d-9ebd-c7837432c668}</UniqueIdentifier>
-    </Filter>
     <Filter Include="Experimental\Template">
       <UniqueIdentifier>{4ec32958-3b39-49c8-a8e5-25630c8486b7}</UniqueIdentifier>
     </Filter>
@@ -99,6 +96,9 @@
     </Filter>
     <Filter Include="Experimental\Template\Commodity">
       <UniqueIdentifier>{4c20b5bc-5792-44f8-bdc7-39b62563c947}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Experimental\BasisModels">
+      <UniqueIdentifier>{3697884d-2b7a-402d-9ebd-c7837432c668}</UniqueIdentifier>
     </Filter>
   </ItemGroup>
   <ItemGroup>
@@ -877,7 +877,7 @@
       <Filter>Experimental\SabrSwaptionCube</Filter>
     </ClCompile>
     <ClCompile Include="qlo\basisswap.cpp">
-      <Filter>Experimental\BasisSwap</Filter>
+      <Filter>Experimental\BasisModels</Filter>
     </ClCompile>
     <ClCompile Include="qlo\valueobjects\vo_basisswap.cpp">
       <Filter>valueobjects</Filter>
@@ -1847,7 +1847,7 @@
       <Filter>Experimental\SabrSwaptionCube</Filter>
     </ClInclude>
     <ClInclude Include="qlo\basisswap.hpp">
-      <Filter>Experimental\BasisSwap</Filter>
+      <Filter>Experimental\BasisModels</Filter>
     </ClInclude>
     <ClInclude Include="qlo\valueobjects\vo_basisswap.hpp">
       <Filter>valueobjects</Filter>

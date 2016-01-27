@@ -12,8 +12,8 @@
 #include <qlo/templatehestonmodel.hpp>
 
 #include <ql/types.hpp>
-#include <ql/experimental/template/commodity/indextermstructure.hpp>
-#include <ql/experimental/template/commodity/commoditymodels.hpp>
+#include <ql/experimental/templatemodels/commodity/indextermstructure.hpp>
+#include <ql/experimental/templatemodels/commodity/commoditymodels.hpp>
 
 
 namespace QuantLib {
