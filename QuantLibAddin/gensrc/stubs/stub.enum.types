@@ -30,9 +30,9 @@
 #include <ql/default.hpp> // RL ADD 2010-07-15
 #include <ql/experimental/credit/defaulttype.hpp>
 
-#include <ql/experimental/template/templatestochasticprocess.hpp>
+#include <ql/experimental/templatemodels/stochasticprocessT.hpp>
 #include <ql/termstructures/volatility/volatilitytype.hpp>
-#include <ql/experimental/basisswap/fxfwdratehelper.hpp>
+#include <ql/experimental/basismodels/fxfwdratehelper.hpp>
 
 
 #include <oh/enumerations/typefactory.hpp>

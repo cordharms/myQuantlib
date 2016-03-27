@@ -40,6 +40,30 @@ namespace QuantLibAddin {
 			new QuantLib::RealQuasiGaussianModel( hYTS, d, times, lambda, alpha, b, eta, delta, chi, Gamma, theta, volEvolv, procLimit, useSwapRateScaling ));
     }
 
+	RealQuasiGaussianModel::RealQuasiGaussianModel(
+						   const boost::shared_ptr<ObjectHandler::ValueObject>& properties,
+						         const QuantLib::Handle<QuantLib::YieldTermStructure>& hYTS,
+		                         // number of yield curve factors (excluding stoch. vol)
+		                         size_t                                             d,       // (d+1)-dimensional Brownian motion for [x(t), z(t)]^T
+		                         // time-dependent parameters, abcd parametrisation
+		                         const std::vector< std::vector<QuantLib::Real> >&  lambda,  // volatility
+		                         const std::vector< std::vector<QuantLib::Real> >&  alpha,   // shift
+		                         const std::vector< std::vector<QuantLib::Real> >&  b,       // f-weighting
+		                         const std::vector<QuantLib::Real>&                 eta,     // vol-of-vol
+		                         // time-homogeneous parameters
+		                         const std::vector<QuantLib::Real>&                 delta,   // maturity of benchmark rates f(t,t+delta_i) 		
+		                         const std::vector<QuantLib::Real>&                 chi,     // mean reversions
+		                         const std::vector< std::vector<QuantLib::Real> >&  Gamma,   // (benchmark rate) correlation matrix
+		                         // stochastic volatility process parameters
+		                         QuantLib::Real                                     theta,   // mean reversion speed
+ 				                 const QuantLib::RealStochasticProcess::VolEvolv    volEvolv,
+		                         const std::vector<QuantLib::Real>&                 procLimit,  // stochastic process limits
+						         bool permanent) : RealStochasticProcess(properties,permanent) {
+
+        libraryObject_ = boost::shared_ptr<QuantLib::RealStochasticProcess>(
+			new QuantLib::RealQuasiGaussianModelAbcd( hYTS, d, lambda, alpha, b, eta, delta, chi, Gamma, theta, volEvolv, procLimit ));
+    }
+
 	RealQGSwaptionModel::RealQGSwaptionModel(
 		                    const boost::shared_ptr<ObjectHandler::ValueObject>&         properties,
 						    const boost::shared_ptr<QuantLib::RealQuasiGaussianModel>&   model,

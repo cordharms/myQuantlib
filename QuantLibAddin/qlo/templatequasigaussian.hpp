@@ -35,7 +35,9 @@ namespace QuantLibAddin {
     class RealQuasiGaussianModel : public RealStochasticProcess {
       public:
 		  RealQuasiGaussianModel(const boost::shared_ptr<ObjectHandler::ValueObject>& properties, bool permanent) : RealStochasticProcess(properties,permanent) {}
-          RealQuasiGaussianModel(const boost::shared_ptr<ObjectHandler::ValueObject>& properties,
+
+		  // using piece-wise constant parameters
+		  RealQuasiGaussianModel(const boost::shared_ptr<ObjectHandler::ValueObject>& properties,
 							     const QuantLib::Handle<QuantLib::YieldTermStructure>& hYTS,
 		                         // number of yield curve factors (excluding stoch. vol)
 		                         size_t                                             d,       // (d+1)-dimensional Brownian motion for [x(t), z(t)]^T
@@ -55,6 +57,26 @@ namespace QuantLibAddin {
 				                 const QuantLib::RealStochasticProcess::VolEvolv    volEvolv,
 		                         const std::vector<QuantLib::Real>&                 procLimit,  // stochastic process limits
 								 const bool                                         useSwapRateScaling,  // re-scale alpha and b to match swap dynamics
+							     bool permanent);
+
+		  // using abcd parametrisation
+		  RealQuasiGaussianModel(const boost::shared_ptr<ObjectHandler::ValueObject>& properties,
+							     const QuantLib::Handle<QuantLib::YieldTermStructure>& hYTS,
+		                         // number of yield curve factors (excluding stoch. vol)
+		                         size_t                                             d,       // (d+1)-dimensional Brownian motion for [x(t), z(t)]^T
+		                         // time-dependent parameters, abcd parametrisation
+		                         const std::vector< std::vector<QuantLib::Real> >&  lambda,  // volatility
+		                         const std::vector< std::vector<QuantLib::Real> >&  alpha,   // shift
+		                         const std::vector< std::vector<QuantLib::Real> >&  b,       // f-weighting
+		                         const std::vector<QuantLib::Real>&                 eta,     // vol-of-vol
+		                         // time-homogeneous parameters
+		                         const std::vector<QuantLib::Real>&                 delta,   // maturity of benchmark rates f(t,t+delta_i) 		
+		                         const std::vector<QuantLib::Real>&                 chi,     // mean reversions
+		                         const std::vector< std::vector<QuantLib::Real> >&  Gamma,   // (benchmark rate) correlation matrix
+		                         // stochastic volatility process parameters
+		                         QuantLib::Real                                     theta,   // mean reversion speed
+				                 const QuantLib::RealStochasticProcess::VolEvolv    volEvolv,
+		                         const std::vector<QuantLib::Real>&                 procLimit,  // stochastic process limits
 							     bool permanent);
 
 		  // model from calibration

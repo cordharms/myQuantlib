@@ -117,6 +117,79 @@
       </ParameterList>
     </Constructor>
 
+    <Constructor name='qlRealQuasiGaussianModelAbcd'>
+      <libraryFunction>RealQuasiGaussianModel</libraryFunction>
+      <SupportedPlatforms>
+        <SupportedPlatform name='Excel'/>
+        <SupportedPlatform name='Cpp'/>
+      </SupportedPlatforms>
+      <ParameterList>
+        <Parameters>
+          <Parameter name='DiscountCurve'>
+            <type>QuantLib::YieldTermStructure</type>
+            <superType>libToHandle</superType>
+            <tensorRank>scalar</tensorRank>
+            <description>YieldTermStructure for discounting.</description>
+          </Parameter>
+          <Parameter name='D' exampleValue ='4' default='4'>
+            <type>QuantLib::Size</type>
+            <tensorRank>scalar</tensorRank>
+            <description>number risk factors for yield curve (excl. stoch. vol).</description>
+          </Parameter>
+          <Parameter name='Lambda' exampleValue ='0.05, 0.05, ...' default='0.0'>
+            <type>QuantLib::Time</type>
+            <tensorRank>matrix</tensorRank>
+            <description>volatility (abcd,d).</description>
+          </Parameter>
+          <Parameter name='Alpha' exampleValue ='0.05, 0.05, ...' default='0.0'>
+            <type>QuantLib::Time</type>
+            <tensorRank>matrix</tensorRank>
+            <description>shift (abcd,d).</description>
+          </Parameter>
+          <Parameter name='B' exampleValue ='0.05, 0.05, ...' default='0.0'>
+            <type>QuantLib::Time</type>
+            <tensorRank>matrix</tensorRank>
+            <description>scaling (abcd,d).</description>
+          </Parameter>
+          <Parameter name='Eta' exampleValue ='0.05, 0.05, ...' default='0.0'>
+            <type>QuantLib::Real</type>
+            <tensorRank>vector</tensorRank>
+            <description>vol-of-vol (abcd).</description>
+          </Parameter>
+          <Parameter name='Delta' exampleValue ='0.5, 2.0, 10.0, 30.0 ...' default='0.0'>
+            <type>QuantLib::Real</type>
+            <tensorRank>vector</tensorRank>
+            <description>maturity of benchmark rates (d).</description>
+          </Parameter>
+          <Parameter name='Chi' exampleValue ='0.015, 0.15, 0.30, 1.20 ...' default='0.1'>
+            <type>QuantLib::Real</type>
+            <tensorRank>vector</tensorRank>
+            <description>mean reversion speads (d).</description>
+          </Parameter>
+          <Parameter name='Gamma' exampleValue ='1.0, 0.7, ...' default='1.0'>
+            <type>QuantLib::Time</type>
+            <tensorRank>matrix</tensorRank>
+            <description>benchmark rate correlation matrix (d,d).</description>
+          </Parameter>
+          <Parameter name='Theta' exampleValue ='0.1' default='0.1'>
+            <type>QuantLib::Real</type>
+            <tensorRank>scalar</tensorRank>
+            <description>stoch vol mean reversion speads.</description>
+          </Parameter>
+          <Parameter name='VolEvolvType' >
+            <type>QuantLib::RealStochasticProcess::VolEvolv</type>
+            <tensorRank>scalar</tensorRank>
+            <description>FullTruncation or LogNormalApproximation.</description>
+          </Parameter>
+          <Parameter name='ProcLimits' exampleValue ='0.0, 0.0, ...' default='0.0'>
+            <type>QuantLib::Real</type>
+            <tensorRank>vector</tensorRank>
+            <description>limits of simulated process (z-,y-,x-)limit.</description>
+          </Parameter>
+        </Parameters>
+      </ParameterList>
+    </Constructor>
+
     <!-- Attribute inspectors for RealQuasiGaussianModel -->
 
     <Member name='qlRealQuasiGaussianModelTimes' type='QuantLib::RealQuasiGaussianModel' >
