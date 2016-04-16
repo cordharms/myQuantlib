@@ -237,4 +237,41 @@ namespace QuantLibAddin {
         return deltaMatrix;
     }
 
+    DeltaVolQuote::DeltaVolQuote(
+		              const boost::shared_ptr<ObjectHandler::ValueObject>& p,
+			          const QuantLib::Real                                 delta,
+                      const QuantLib::Handle<QuantLib::Quote>&             vol,
+                      const QuantLib::Time                                 maturity,
+                      const QuantLib::DeltaVolQuote::DeltaType             deltaType,
+                      bool                                                 permanent) : Quote(p, permanent) {
+        libraryObject_ = shared_ptr<QuantLib::DeltaVolQuote>(new
+            QuantLib::DeltaVolQuote(delta, vol, maturity, deltaType));
+    }
+
+    DeltaVolQuote::DeltaVolQuote(
+		              const boost::shared_ptr<ObjectHandler::ValueObject>& p,
+                      const QuantLib::Handle<QuantLib::Quote>&             vol,
+                      const QuantLib::DeltaVolQuote::DeltaType             deltaType,
+                      const QuantLib::Time                                 maturity,
+                      const QuantLib::DeltaVolQuote::AtmType               atmType,
+                      bool                                                 permanent) : Quote(p, permanent) {
+        libraryObject_ = shared_ptr<QuantLib::DeltaVolQuote>(new
+            QuantLib::DeltaVolQuote(vol, deltaType, maturity, atmType));
+    }
+
+	BlackDeltaCalculator::BlackDeltaCalculator(
+		              const boost::shared_ptr<ObjectHandler::ValueObject>& p,
+			          const QuantLib::Option::Type                         ot,
+                      const QuantLib::DeltaVolQuote::DeltaType             dt,
+                      const QuantLib::Real                                 spot,
+                      const QuantLib::DiscountFactor                       dDiscount,   // domestic discount
+                      const QuantLib::DiscountFactor                       fDiscount,   // foreign discount
+                      const QuantLib::Real                                 stdDev,
+                      bool                                                 permanent)
+					  : ObjectHandler::LibraryObject<QuantLib::BlackDeltaCalculator>(p,permanent) {
+        libraryObject_ = shared_ptr<QuantLib::BlackDeltaCalculator>(new
+            QuantLib::BlackDeltaCalculator(ot, dt, spot, dDiscount, fDiscount, stdDev));
+    }
+
+
 }

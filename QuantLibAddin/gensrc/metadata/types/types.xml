@@ -320,6 +320,12 @@
     <DataType defaultSuperType='enumeration'>QuantLib::VolatilityType</DataType>
     <DataType defaultSuperType='enumeration'>QuantLib::FxFwdRateHelper::BootstrapType</DataType>
 
+    <DataType defaultSuperType='enumeration'>QuantLib::DeltaVolQuote::DeltaType</DataType>
+    <DataType defaultSuperType='enumeration'>QuantLib::DeltaVolQuote::AtmType</DataType>
+
+    <DataType defaultSuperType='libraryClass'>QuantLib::BlackDeltaCalculator</DataType>
+
+
   </DataTypes>
 
 </root>

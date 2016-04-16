@@ -33,7 +33,8 @@
 #include <ql/experimental/templatemodels/stochasticprocessT.hpp>
 #include <ql/termstructures/volatility/volatilitytype.hpp>
 #include <ql/experimental/basismodels/fxfwdratehelper.hpp>
-
+#include <ql/experimental/basismodels/fxfwdratehelper.hpp>
+#include <ql/experimental/fx/deltavolquote.hpp>
 
 #include <oh/enumerations/typefactory.hpp>
 

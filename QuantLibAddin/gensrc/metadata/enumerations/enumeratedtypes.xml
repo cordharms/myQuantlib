@@ -2038,6 +2038,63 @@
       </EnumeratedTypes>
     </EnumeratedTypeGroup>
 
+    <EnumeratedTypeGroup type='QuantLib::DeltaVolQuote::DeltaType'>
+      <includeFile>oh/enumerations/typefactory.hpp</includeFile>
+      <constructor>false</constructor>
+      <EnumeratedTypes>
+        <EnumeratedType>
+          <string>Spot</string>
+          <value>QuantLib::DeltaVolQuote::DeltaType(QuantLib::DeltaVolQuote::Spot)</value>
+        </EnumeratedType>
+        <EnumeratedType>
+          <string>Fwd</string>
+          <value>QuantLib::DeltaVolQuote::DeltaType(QuantLib::DeltaVolQuote::Fwd)</value>
+        </EnumeratedType>
+        <EnumeratedType>
+          <string>PaSpot</string>
+          <value>QuantLib::DeltaVolQuote::DeltaType(QuantLib::DeltaVolQuote::PaSpot)</value>
+        </EnumeratedType>
+        <EnumeratedType>
+          <string>PaFwd</string>
+          <value>QuantLib::DeltaVolQuote::DeltaType(QuantLib::DeltaVolQuote::PaFwd)</value>
+        </EnumeratedType>
+      </EnumeratedTypes>
+    </EnumeratedTypeGroup>
+
+    <EnumeratedTypeGroup type='QuantLib::DeltaVolQuote::AtmType'>
+      <includeFile>oh/enumerations/typefactory.hpp</includeFile>
+      <constructor>false</constructor>
+      <EnumeratedTypes>
+        <EnumeratedType>
+          <string>AtmNull</string>
+          <value>QuantLib::DeltaVolQuote::AtmType(QuantLib::DeltaVolQuote::AtmNull)</value>
+        </EnumeratedType>
+        <EnumeratedType>
+          <string>AtmSpot</string>
+          <value>QuantLib::DeltaVolQuote::AtmType(QuantLib::DeltaVolQuote::AtmSpot)</value>
+        </EnumeratedType>
+        <EnumeratedType>
+          <string>AtmFwd</string>
+          <value>QuantLib::DeltaVolQuote::AtmType(QuantLib::DeltaVolQuote::AtmFwd)</value>
+        </EnumeratedType>
+        <EnumeratedType>
+          <string>AtmDeltaNeutral</string>
+          <value>QuantLib::DeltaVolQuote::AtmType(QuantLib::DeltaVolQuote::AtmDeltaNeutral)</value>
+        </EnumeratedType>
+        <EnumeratedType>
+          <string>AtmVegaMax</string>
+          <value>QuantLib::DeltaVolQuote::AtmType(QuantLib::DeltaVolQuote::AtmVegaMax)</value>
+        </EnumeratedType>
+        <EnumeratedType>
+          <string>AtmGammaMax</string>
+          <value>QuantLib::DeltaVolQuote::AtmType(QuantLib::DeltaVolQuote::AtmGammaMax)</value>
+        </EnumeratedType>
+        <EnumeratedType>
+          <string>AtmPutCall50</string>
+          <value>QuantLib::DeltaVolQuote::AtmType(QuantLib::DeltaVolQuote::AtmPutCall50)</value>
+        </EnumeratedType>
+      </EnumeratedTypes>
+    </EnumeratedTypeGroup>
 
   </EnumeratedTypeGroups>
 

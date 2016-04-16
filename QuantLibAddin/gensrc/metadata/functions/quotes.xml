@@ -640,5 +640,186 @@
       </ParameterList>
     </Constructor>
 
+    
+    <!-- FX Delta stuff -->
+
+    <Constructor name='qlDeltaVolQuote'>
+      <libraryFunction>DeltaVolQuote</libraryFunction>
+      <SupportedPlatforms>
+        <!--SupportedPlatform name='Excel' calcInWizard='false'/-->
+        <SupportedPlatform name='Excel'/>
+        <SupportedPlatform name='Cpp'/>
+      </SupportedPlatforms>
+      <ParameterList>
+        <Parameters>
+          <Parameter name='Delta'>
+           <type>QuantLib::Real</type>
+           <tensorRank>scalar</tensorRank>
+           <description>Option delta.</description>
+          </Parameter>
+          <Parameter name='Volatility'>
+            <type>QuantLib::Quote</type>
+            <superType>libToHandle</superType>
+            <tensorRank>scalar</tensorRank>
+            <description>Volatility quote.</description>
+          </Parameter>
+          <Parameter name='Maturity'>
+            <type>QuantLib::Time</type>
+            <tensorRank>scalar</tensorRank>
+            <description>Time to maturity in years.</description>
+          </Parameter>
+          <Parameter name='DeltaType'>
+            <type>QuantLib::DeltaVolQuote::DeltaType</type>
+            <tensorRank>scalar</tensorRank>
+            <description>Delta quotation type.</description>
+          </Parameter>
+        </Parameters>
+      </ParameterList>
+    </Constructor>
+
+    <Constructor name='qlDeltaVolQuoteATM'>
+      <libraryFunction>DeltaVolQuote</libraryFunction>
+      <SupportedPlatforms>
+        <!--SupportedPlatform name='Excel' calcInWizard='false'/-->
+        <SupportedPlatform name='Excel'/>
+        <SupportedPlatform name='Cpp'/>
+      </SupportedPlatforms>
+      <ParameterList>
+        <Parameters>
+          <Parameter name='Volatility'>
+            <type>QuantLib::Quote</type>
+            <superType>libToHandle</superType>
+            <tensorRank>scalar</tensorRank>
+            <description>Volatility quote.</description>
+          </Parameter>
+          <Parameter name='DeltaType'>
+            <type>QuantLib::DeltaVolQuote::DeltaType</type>
+            <tensorRank>scalar</tensorRank>
+            <description>Delta quotation type.</description>
+          </Parameter>
+          <Parameter name='Maturity'>
+            <type>QuantLib::Time</type>
+            <tensorRank>scalar</tensorRank>
+            <description>Time to maturity in years.</description>
+          </Parameter>
+          <Parameter name='AtmType'>
+            <type>QuantLib::DeltaVolQuote::AtmType</type>
+            <tensorRank>scalar</tensorRank>
+            <description>ATM quotation type.</description>
+          </Parameter>
+        </Parameters>
+      </ParameterList>
+    </Constructor>
+
+    <Constructor name='qlBlackDeltaCalculator'>
+      <libraryFunction>BlackDeltaCalculator</libraryFunction>
+      <SupportedPlatforms>
+        <!--SupportedPlatform name='Excel' calcInWizard='false'/-->
+        <SupportedPlatform name='Excel'/>
+        <SupportedPlatform name='Cpp'/>
+      </SupportedPlatforms>
+      <ParameterList>
+        <Parameters>
+          <Parameter name='OptionType'>
+            <type>QuantLib::Option::Type</type>
+            <tensorRank>scalar</tensorRank>
+            <description>Put or Call option.</description>
+          </Parameter>
+          <Parameter name='DeltaType'>
+            <type>QuantLib::DeltaVolQuote::DeltaType</type>
+            <tensorRank>scalar</tensorRank>
+            <description>Delta quotation type.</description>
+          </Parameter>
+          <Parameter name='SpotFx'>
+            <type>QuantLib::Real</type>
+            <tensorRank>scalar</tensorRank>
+            <description>Spot FX price.</description>
+          </Parameter>
+          <Parameter name='DomDiscount'>
+            <type>QuantLib::DiscountFactor</type>
+            <tensorRank>scalar</tensorRank>
+            <description>Domestic discount factor.</description>
+          </Parameter>
+          <Parameter name='ForDiscount'>
+            <type>QuantLib::DiscountFactor</type>
+            <tensorRank>scalar</tensorRank>
+            <description>Foreign discount factor.</description>
+          </Parameter>
+          <Parameter name='StdDev'>
+            <type>QuantLib::Real</type>
+            <tensorRank>scalar</tensorRank>
+            <description>Standard deviation.</description>
+          </Parameter>
+        </Parameters>
+      </ParameterList>
+    </Constructor>
+
+    <Member name='qlBlackDeltaCalculatorDeltaFromStrike' type='QuantLib::BlackDeltaCalculator'>
+      <description>Return option delta for a given strike</description>
+      <libraryFunction>deltaFromStrike</libraryFunction>
+      <SupportedPlatforms>
+        <SupportedPlatform name='Excel'/>
+        <SupportedPlatform name='Cpp'/>
+      </SupportedPlatforms>
+      <ParameterList>
+        <Parameters>
+          <Parameter name='Strike'>
+            <type>QuantLib::Real</type>
+            <tensorRank>scalar</tensorRank>
+            <description>Absolute strike value.</description>
+          </Parameter>
+        </Parameters>  
+      </ParameterList>
+      <ReturnValue>
+        <type>QuantLib::Real</type>
+        <tensorRank>scalar</tensorRank>
+      </ReturnValue>
+    </Member>
+
+    <Member name='qlBlackDeltaCalculatorStrikeFromDelta' type='QuantLib::BlackDeltaCalculator'>
+      <description>Return option strike for a given delta</description>
+      <libraryFunction>strikeFromDelta</libraryFunction>
+      <SupportedPlatforms>
+        <SupportedPlatform name='Excel'/>
+        <SupportedPlatform name='Cpp'/>
+      </SupportedPlatforms>
+      <ParameterList>
+        <Parameters>
+          <Parameter name='Delta'>
+            <type>QuantLib::Real</type>
+            <tensorRank>scalar</tensorRank>
+            <description>Option delta.</description>
+          </Parameter>
+        </Parameters>
+      </ParameterList>
+      <ReturnValue>
+        <type>QuantLib::Real</type>
+        <tensorRank>scalar</tensorRank>
+      </ReturnValue>
+    </Member>
+
+    <Member name='qlBlackDeltaCalculatorAtmStrike' type='QuantLib::BlackDeltaCalculator'>
+      <description>Return ATM strike for a given ATM convention</description>
+      <libraryFunction>atmStrike</libraryFunction>
+      <SupportedPlatforms>
+        <SupportedPlatform name='Excel'/>
+        <SupportedPlatform name='Cpp'/>
+      </SupportedPlatforms>
+      <ParameterList>
+        <Parameters>
+          <Parameter name='AtmType'>
+            <type>QuantLib::DeltaVolQuote::AtmType</type>
+            <tensorRank>scalar</tensorRank>
+            <description>ATM quotation type.</description>
+          </Parameter>
+        </Parameters>
+      </ParameterList>
+      <ReturnValue>
+        <type>QuantLib::Real</type>
+        <tensorRank>scalar</tensorRank>
+      </ReturnValue>
+    </Member>
+
+
   </Functions>
 </Category>

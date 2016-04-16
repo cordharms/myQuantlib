@@ -28,6 +28,8 @@
 #include <ql/option.hpp>
 #include <ql/types.hpp>
 #include <ql/experimental/risk/sensitivityanalysis.hpp>
+#include <ql/experimental/fx/deltavolquote.hpp>
+#include <ql/experimental/fx/blackdeltacalculator.hpp>
 
 namespace QuantLib {
     class Index;
@@ -156,6 +158,44 @@ namespace QuantLibAddin {
                          const std::vector<QuantLib::Handle<QuantLib::Quote> >& parameters,
                          QuantLib::Real shift,
                          QuantLib::SensitivityAnalysis type);
+
+
+    class DeltaVolQuote : public Quote {
+      public:
+        DeltaVolQuote(const boost::shared_ptr<ObjectHandler::ValueObject>& p,
+			          const QuantLib::Real                                 delta,
+                      const QuantLib::Handle<QuantLib::Quote>&             vol,
+                      const QuantLib::Time                                 maturity,
+                      const QuantLib::DeltaVolQuote::DeltaType             deltaType,
+                      bool                                                 permanent);
+        DeltaVolQuote(const boost::shared_ptr<ObjectHandler::ValueObject>& p,
+                      const QuantLib::Handle<QuantLib::Quote>&             vol,
+                      const QuantLib::DeltaVolQuote::DeltaType             deltaType,
+                      const QuantLib::Time                                 maturity,
+                      const QuantLib::DeltaVolQuote::AtmType               atmType,
+                      bool                                                 permanent);
+    };
+
+
+
+    class BlackDeltaCalculator : public ObjectHandler::LibraryObject<QuantLib::BlackDeltaCalculator> { 
+      public:
+		  BlackDeltaCalculator(const boost::shared_ptr<ObjectHandler::ValueObject>& p,
+			                   const QuantLib::Option::Type                         ot,
+                               const QuantLib::DeltaVolQuote::DeltaType             dt,
+                               const QuantLib::Real                                 spot,
+                               const QuantLib::DiscountFactor                       dDiscount,   // domestic discount
+                               const QuantLib::DiscountFactor                       fDiscount,   // foreign discount
+                               const QuantLib::Real                                 stdDev,
+                               bool                                                 permanent);
+	};
+
+
 }
+
+
+
+
+
 
 #endif
