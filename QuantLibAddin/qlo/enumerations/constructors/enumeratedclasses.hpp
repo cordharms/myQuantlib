@@ -35,6 +35,8 @@
 #include <ql/pricingengines/all.hpp>
 #include <ql/cashflows/cmscoupon.hpp>
 #include <ql/cashflows/couponpricer.hpp>
+#include <ql/experimental/barrieroption/analyticdoublebarrierengine.hpp>
+#include <ql/experimental/barrieroption/analyticdoublebarrierbinaryengine.hpp>
 
 namespace QuantLibAddin {
 
@@ -106,6 +108,10 @@ namespace QuantLibAddin {
     //    const boost::shared_ptr<QuantLib::GeneralizedBlackScholesProcess>& process);
     //boost::shared_ptr<QuantLib::PricingEngine> QFE_Engine(
     //    const boost::shared_ptr<QuantLib::GeneralizedBlackScholesProcess>& process);
+	boost::shared_ptr<QuantLib::PricingEngine> ADB_Engine(
+    const boost::shared_ptr<QuantLib::GeneralizedBlackScholesProcess>& process);
+	boost::shared_ptr<QuantLib::PricingEngine> ADBB_Engine(
+    const boost::shared_ptr<QuantLib::GeneralizedBlackScholesProcess>& process);
 
     /* *** PricingEngines - with timesteps *** */
     boost::shared_ptr<QuantLib::PricingEngine> AEQPB_Engine(

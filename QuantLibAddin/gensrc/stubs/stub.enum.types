@@ -35,6 +35,7 @@
 #include <ql/experimental/basismodels/fxfwdratehelper.hpp>
 #include <ql/experimental/basismodels/fxfwdratehelper.hpp>
 #include <ql/experimental/fx/deltavolquote.hpp>
+#include <ql/experimental/barrieroption/doublebarriertype.hpp>
 
 #include <oh/enumerations/typefactory.hpp>
 

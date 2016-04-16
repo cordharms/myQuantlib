@@ -23,6 +23,7 @@
 #include <qlo/baseinstruments.hpp>
 
 #include <ql/instruments/barriertype.hpp>
+#include <ql/experimental/barrieroption/doublebarriertype.hpp>
 #include <ql/types.hpp>
 
 namespace QuantLib {
@@ -42,6 +43,19 @@ namespace QuantLibAddin {
             const boost::shared_ptr<QuantLib::StrikedTypePayoff>& payoff,
             const boost::shared_ptr<QuantLib::Exercise>& exercise,
             bool permanent);
+    };
+
+    class DoubleBarrierOption : public OneAssetOption {
+    public:
+        DoubleBarrierOption(
+            const boost::shared_ptr<ObjectHandler::ValueObject>&  properties,
+            QuantLib::DoubleBarrier::Type                         barrierType,
+            QuantLib::Real                                        barrier_lo,
+            QuantLib::Real                                        barrier_hi,
+            QuantLib::Real                                        rebate,
+            const boost::shared_ptr<QuantLib::StrikedTypePayoff>& payoff,
+            const boost::shared_ptr<QuantLib::Exercise>&          exercise,
+            bool                                                  permanent);
     };
 
 }

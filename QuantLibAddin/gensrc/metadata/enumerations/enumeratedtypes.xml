@@ -2096,6 +2096,30 @@
       </EnumeratedTypes>
     </EnumeratedTypeGroup>
 
+    <EnumeratedTypeGroup type='QuantLib::DoubleBarrier::Type'>
+      <includeFile>oh/enumerations/typefactory.hpp</includeFile>
+      <constructor>false</constructor>
+      <EnumeratedTypes>
+        <EnumeratedType>
+          <string>KnockIn</string>
+          <value>QuantLib::DoubleBarrier::Type(QuantLib::DoubleBarrier::KnockIn)</value>
+        </EnumeratedType>
+        <EnumeratedType>
+          <string>KnockOut</string>
+          <value>QuantLib::DoubleBarrier::Type(QuantLib::DoubleBarrier::KnockOut)</value>
+        </EnumeratedType>
+        <EnumeratedType>
+          <string>KIKO</string>
+          <value>QuantLib::DoubleBarrier::Type(QuantLib::DoubleBarrier::KIKO)</value>
+        </EnumeratedType>
+        <EnumeratedType>
+          <string>KOKI</string>
+          <value>QuantLib::DoubleBarrier::Type(QuantLib::DoubleBarrier::KOKI)</value>
+        </EnumeratedType>
+      </EnumeratedTypes>
+    </EnumeratedTypeGroup>
+
+
   </EnumeratedTypeGroups>
 
 </root>

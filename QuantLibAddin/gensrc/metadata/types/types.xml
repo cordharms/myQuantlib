@@ -322,8 +322,10 @@
 
     <DataType defaultSuperType='enumeration'>QuantLib::DeltaVolQuote::DeltaType</DataType>
     <DataType defaultSuperType='enumeration'>QuantLib::DeltaVolQuote::AtmType</DataType>
+    <DataType defaultSuperType='enumeration'>QuantLib::DoubleBarrier::Type</DataType>
 
     <DataType defaultSuperType='libraryClass'>QuantLib::BlackDeltaCalculator</DataType>
+    <DataType defaultSuperType='libraryClass'>QuantLib::DoubleBarrierOption</DataType>
 
 
   </DataTypes>

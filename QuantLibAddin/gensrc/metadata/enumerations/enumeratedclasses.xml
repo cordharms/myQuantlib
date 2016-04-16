@@ -254,6 +254,17 @@
           <value>QFE_Engine</value>
           <libraryClass>QuantLib::QuantoForwardEngine</libraryClass>
         </EnumeratedClass>-->
+        <EnumeratedClass>
+          <string>ADB</string>
+          <value>ADB_Engine</value>
+          <libraryClass>QuantLib::AnalyticDoubleBarrierEngine</libraryClass>
+        </EnumeratedClass>
+        <EnumeratedClass>
+          <string>ADBB</string>
+          <value>ADBB_Engine</value>
+          <libraryClass>QuantLib::AnalyticDoubleBarrierBinaryEngine</libraryClass>
+        </EnumeratedClass>
+
       </EnumeratedClasses>
     </EnumeratedClassGroup>
 

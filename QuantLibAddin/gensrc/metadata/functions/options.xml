@@ -477,5 +477,50 @@
       </ReturnValue>
     </Member>
 
+    <Constructor name='qlDoubleBarrierOption'>
+      <libraryFunction>DoubleBarrierOption</libraryFunction>
+      <SupportedPlatforms>
+        <!--SupportedPlatform name='Excel' calcInWizard='false'/-->
+        <SupportedPlatform name='Excel'/>
+        <SupportedPlatform name='Cpp'/>
+      </SupportedPlatforms>
+      <ParameterList>
+        <Parameters>
+          <Parameter name='DoubleBarrier'>
+            <type>QuantLib::DoubleBarrier::Type</type>
+            <tensorRank>scalar</tensorRank>
+            <description>barrier type.</description>
+          </Parameter>
+          <Parameter name='BarrierLow' exampleValue ='1.0'>
+            <type>QuantLib::Real</type>
+            <tensorRank>scalar</tensorRank>
+            <description>barrier.</description>
+          </Parameter>
+          <Parameter name='BarrierHigh' exampleValue ='1.0'>
+            <type>QuantLib::Real</type>
+            <tensorRank>scalar</tensorRank>
+            <description>barrier.</description>
+          </Parameter>
+          <Parameter name='Rebate' exampleValue ='1.0'>
+            <type>QuantLib::Real</type>
+            <tensorRank>scalar</tensorRank>
+            <description>rebate.</description>
+          </Parameter>
+          <Parameter name='Payoff'>
+            <type>QuantLib::StrikedTypePayoff</type>
+            <tensorRank>scalar</tensorRank>
+            <description>StrikedTypePayoff object ID.</description>
+          </Parameter>
+          <Parameter name='Exercise'>
+            <type>QuantLib::Exercise</type>
+            <tensorRank>scalar</tensorRank>
+            <description>Exercise object ID.</description>
+          </Parameter>
+        </Parameters>
+      </ParameterList>
+    </Constructor>
+
+
+
   </Functions>
 </Category>

@@ -23,6 +23,8 @@
 
 #include <qlo/barrieroption.hpp>
 #include <ql/instruments/barrieroption.hpp>
+#include <ql/experimental/barrieroption/doublebarrieroption.hpp>
+
 
 namespace QuantLibAddin {
 
@@ -41,6 +43,21 @@ namespace QuantLibAddin {
                                     rebate,
                                     payoff, 
                                     exercise));
+    }
+
+    DoubleBarrierOption::DoubleBarrierOption(
+            const boost::shared_ptr<ObjectHandler::ValueObject>&  properties,
+            QuantLib::DoubleBarrier::Type                         barrierType,
+            QuantLib::Real                                        barrier_lo,
+            QuantLib::Real                                        barrier_hi,
+            QuantLib::Real                                        rebate,
+            const boost::shared_ptr<QuantLib::StrikedTypePayoff>& payoff,
+            const boost::shared_ptr<QuantLib::Exercise>&          exercise,
+            bool                                                  permanent)
+			: OneAssetOption(properties, permanent) {
+
+        libraryObject_ = boost::shared_ptr<QuantLib::Instrument>(new
+            QuantLib::DoubleBarrierOption(barrierType, barrier_lo, barrier_hi, rebate, payoff, exercise));
     }
 
 }

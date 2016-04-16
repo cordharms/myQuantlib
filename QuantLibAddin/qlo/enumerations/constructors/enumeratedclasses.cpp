@@ -197,6 +197,16 @@ namespace QuantLibAddin {
     //        new QuantLib::QuantoEngine<QuantLib::ForwardVanillaOption::arguments,
     //            QuantLib::ForwardVanillaOption::results>(forwardEngine));
     //}
+    boost::shared_ptr<QuantLib::PricingEngine> ADB_Engine(
+        const boost::shared_ptr<QuantLib::GeneralizedBlackScholesProcess>& process) {
+        return boost::shared_ptr<QuantLib::PricingEngine> (
+            new QuantLib::AnalyticDoubleBarrierEngine(process));
+    }
+    boost::shared_ptr<QuantLib::PricingEngine> ADBB_Engine(
+        const boost::shared_ptr<QuantLib::GeneralizedBlackScholesProcess>& process) {
+        return boost::shared_ptr<QuantLib::PricingEngine> (
+            new QuantLib::AnalyticDoubleBarrierBinaryEngine(process));
+    }
 
     /* *** PricingEngines - with timesteps *** */
     boost::shared_ptr<QuantLib::PricingEngine> AEQPB_Engine(
