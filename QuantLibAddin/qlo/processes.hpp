@@ -23,6 +23,7 @@
 #include <oh/libraryobject.hpp>
 
 #include <ql/types.hpp>
+#include <ql/termstructures/yieldtermstructure.hpp>
 #include <ql/processes/blackscholesprocess.hpp>
 #include <ql/termstructures/volatility/equityfx/blackconstantvol.hpp>
 #include <ql/termstructures/volatility/equityfx/blackvariancesurface.hpp>
@@ -39,14 +40,24 @@ namespace QuantLibAddin {
     class GeneralizedBlackScholesProcess : public ObjectHandler::LibraryObject<QuantLib::GeneralizedBlackScholesProcess> {
       public:
         GeneralizedBlackScholesProcess(
-            const boost::shared_ptr<ObjectHandler::ValueObject>& properties,
-            const boost::shared_ptr<QuantLib::BlackVolTermStructure>& blackVolTermStructureP,
-            QuantLib::Real underlying,
-            const QuantLib::DayCounter& dayCounter,
-            const QuantLib::Date& settlementDate,
-            QuantLib::Real riskFreeRate,
-            QuantLib::Spread dividendYield,
-            bool permanent);
+            const boost::shared_ptr<ObjectHandler::ValueObject>&       properties,
+            const boost::shared_ptr<QuantLib::BlackVolTermStructure>&  blackVolTermStructureP,
+            QuantLib::Real                                             underlying,
+            const QuantLib::DayCounter&                                dayCounter,
+            const QuantLib::Date&                                      settlementDate,
+            QuantLib::Real                                             riskFreeRate,
+            QuantLib::Spread                                           dividendYield,
+            bool                                                       permanent);
+
+        GeneralizedBlackScholesProcess(
+            const boost::shared_ptr<ObjectHandler::ValueObject>&       properties,
+            const boost::shared_ptr<QuantLib::BlackVolTermStructure>&  blackVolTermStructureP,
+            QuantLib::Real                                             underlying,
+            const QuantLib::DayCounter&                                dayCounter,
+            const QuantLib::Date&                                      settlementDate,
+			const QuantLib::Handle<QuantLib::YieldTermStructure>&      riskfreeYTS,
+			const QuantLib::Handle<QuantLib::YieldTermStructure>&      dividendYTS,
+            bool                                                       permanent);
     };
 
 }

@@ -61,5 +61,53 @@
       </ParameterList>
     </Constructor>
 
+    <Constructor name='qlGeneralizedBlackScholesProcess2'>
+      <libraryFunction>GeneralizedBlackScholesProcess</libraryFunction>
+      <SupportedPlatforms>
+        <!--SupportedPlatform name='Excel' calcInWizard='false'/-->
+        <SupportedPlatform name='Excel'/>
+        <SupportedPlatform name='C'/>
+        <SupportedPlatform name='Calc'/>
+        <SupportedPlatform name='Guile'/>
+        <SupportedPlatform name='Cpp'/>
+      </SupportedPlatforms>
+      <ParameterList>
+        <Parameters>
+          <Parameter name='BlackVolID'>
+            <type>QuantLib::BlackVolTermStructure</type>
+            <tensorRank>scalar</tensorRank>
+            <description>Black Vol Term Structure.</description>
+          </Parameter>
+          <Parameter name='Underlying'>
+            <type>double</type>
+            <tensorRank>scalar</tensorRank>
+            <description>underlying.</description>
+          </Parameter>
+          <Parameter name='DayCounter' default='"Actual/365 (Fixed)"'>
+            <type>QuantLib::DayCounter</type>
+            <tensorRank>scalar</tensorRank>
+            <description>DayCounter ID.</description>
+          </Parameter>
+          <Parameter name='SettlementDate'>
+            <type>QuantLib::Date</type>
+            <tensorRank>scalar</tensorRank>
+            <description>settlement date.</description>
+          </Parameter>
+          <Parameter name='RiskFreeYTS'>
+            <type>QuantLib::YieldTermStructure</type>
+            <superType>libToHandle</superType>
+            <tensorRank>scalar</tensorRank>
+            <description>YieldTermStructure for discounting.</description>
+          </Parameter>
+          <Parameter name='DividendYTS'>
+            <type>QuantLib::YieldTermStructure</type>
+            <superType>libToHandle</superType>
+            <tensorRank>scalar</tensorRank>
+            <description>YieldTermStructure for discounting.</description>
+          </Parameter>
+        </Parameters>
+      </ParameterList>
+    </Constructor>
+
   </Functions>
 </Category>

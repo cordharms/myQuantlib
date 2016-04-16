@@ -99,6 +99,22 @@ namespace QuantLibAddin {
             const QuantLib::Time& time,
             bool permanent);
     };
+
+    class SmiledSurface : public BlackVolTermStructure {
+      public:
+        SmiledSurface(
+            const boost::shared_ptr<ObjectHandler::ValueObject>&          properties,
+            const std::vector<boost::shared_ptr<QuantLib::SmileSection>>& smiles,
+            const QuantLib::Date&                                         referenceDate,
+            const QuantLib::Calendar&                                     cal,
+			const QuantLib::BusinessDayConvention&                        bdc,
+            const QuantLib::DayCounter&                                   dayCounter,
+            bool permanent);
+    };
+
+
+
+
 }
 
 #endif

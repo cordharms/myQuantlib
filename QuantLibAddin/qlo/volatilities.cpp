@@ -29,6 +29,8 @@
 #include <ql/termstructures/volatility/equityfx/blackvariancesurface.hpp>
 #include <ql/experimental/volatility/abcdatmvolcurve.hpp>
 #include <ql/experimental/volatility/sabrvolsurface.hpp>
+#include <ql/experimental/volatility/smiledsurface.hpp>
+
 
 namespace QuantLibAddin {
 
@@ -119,4 +121,18 @@ namespace QuantLibAddin {
             bool permanent) : SmileSection(properties, permanent) {
              libraryObject_ = sabrVol->smileSectionImpl(time);
     }
+
+	SmiledSurface::SmiledSurface(
+            const boost::shared_ptr<ObjectHandler::ValueObject>&          properties,
+            const std::vector<boost::shared_ptr<QuantLib::SmileSection>>& smiles,
+            const QuantLib::Date&                                         referenceDate,
+            const QuantLib::Calendar&                                     cal,
+			const QuantLib::BusinessDayConvention&                        bdc,
+            const QuantLib::DayCounter&                                   dayCounter,
+            bool permanent) : BlackVolTermStructure(properties, permanent) {
+        libraryObject_ = boost::shared_ptr<QuantLib::SmiledSurface>(new
+                QuantLib::SmiledSurface(smiles, referenceDate, cal, bdc, dayCounter));
+	}
+
+
 }
