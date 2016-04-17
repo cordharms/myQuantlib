@@ -45,6 +45,7 @@ namespace QuantLib {
     class DiscountingBondEngine;
     class DiscountingSwapEngine;
     class GeneralizedBlackScholesProcess;
+	class DeltaVolQuote;
 
     template <class T>
     class Handle;
@@ -205,6 +206,39 @@ namespace QuantLibAddin {
             const QuantLib::Handle<QuantLib::YieldTermStructure>& discountCurve,
             bool permanent);
     };
+
+    class VannaVolgaBarrierEngine : public PricingEngine {
+      public:
+          VannaVolgaBarrierEngine(
+            const boost::shared_ptr<ObjectHandler::ValueObject>&   properties,
+            const QuantLib::Handle<QuantLib::DeltaVolQuote>&       atmVol,
+            const QuantLib::Handle<QuantLib::DeltaVolQuote>&       vol25Put,
+            const QuantLib::Handle<QuantLib::DeltaVolQuote>&       vol25Call,
+            const QuantLib::Handle<QuantLib::Quote>&               spotFX,
+            const QuantLib::Handle<QuantLib::YieldTermStructure>&  domesticTS,
+            const QuantLib::Handle<QuantLib::YieldTermStructure>&  foreignTS,
+            const bool                                             adaptVanDelta,
+            const QuantLib::Real                                   bsPriceWithSmile,
+			bool permanent);
+    };
+
+    class VannaVolgaDoubleBarrierEngine : public PricingEngine {
+      public:
+          VannaVolgaDoubleBarrierEngine(
+            const boost::shared_ptr<ObjectHandler::ValueObject>&   properties,
+            const QuantLib::Handle<QuantLib::DeltaVolQuote>&       atmVol,
+            const QuantLib::Handle<QuantLib::DeltaVolQuote>&       vol25Put,
+            const QuantLib::Handle<QuantLib::DeltaVolQuote>&       vol25Call,
+            const QuantLib::Handle<QuantLib::Quote>&               spotFX,
+            const QuantLib::Handle<QuantLib::YieldTermStructure>&  domesticTS,
+            const QuantLib::Handle<QuantLib::YieldTermStructure>&  foreignTS,
+            const bool                                             adaptVanDelta,
+            const QuantLib::Real                                   bsPriceWithSmile,
+			const int                                              series,
+			bool permanent);
+    };
+
+
 }
 
 #endif

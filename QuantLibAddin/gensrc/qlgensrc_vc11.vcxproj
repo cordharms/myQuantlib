@@ -113,7 +113,9 @@
     <None Include="metadata\addins\loop.xml" />
     <None Include="metadata\addins\serialization.xml" />
     <None Include="metadata\addins\valueobjects.xml" />
-    <None Include="metadata\enumerations\enumeratedclasses.xml" />
+    <None Include="metadata\enumerations\enumeratedclasses.xml">
+      <SubType>Designer</SubType>
+    </None>
     <None Include="metadata\enumerations\enumeratedpairs.xml" />
     <None Include="metadata\enumerations\enumeratedtypes.xml" />
     <None Include="metadata\functions\assetswap.xml" />
