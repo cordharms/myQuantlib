@@ -55,6 +55,9 @@ namespace QuantLibAddin {
             const boost::shared_ptr<QuantLib::Swap>& swap,
             QuantLib::Size i,
             bool permanent);
+        Leg(const boost::shared_ptr<ObjectHandler::ValueObject>&         properties,
+            const std::vector<boost::shared_ptr<QuantLib::CashFlow> > &  cashflows,
+            bool permanent);
         void setCouponPricers(
             const std::vector<boost::shared_ptr<QuantLibAddin::FloatingRateCouponPricer> >&);
         std::vector<std::vector<ObjectHandler::property_t> > flowAnalysis(

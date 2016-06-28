@@ -104,6 +104,18 @@ namespace QuantLibAddin {
         *libraryObject_ = swap->leg(i);
     }
 
+	Leg::Leg(const boost::shared_ptr<ObjectHandler::ValueObject>&         properties,
+             const std::vector<boost::shared_ptr<QuantLib::CashFlow> > &  cashflows,
+             bool permanent)
+			 : ObjectHandler::LibraryObject<QuantLib::Leg>(properties, permanent) {
+        libraryObject_ = shared_ptr<QuantLib::Leg>(new QuantLib::Leg());
+		for (QuantLib::Size k=0; k<cashflows.size(); ++k) {
+		    libraryObject_->push_back(cashflows[k]);
+		}
+	}
+
+
+
     void Leg::setCouponPricers(
                 const vector<shared_ptr<FloatingRateCouponPricer> >& pricers) {
         vector<std::string> ids;

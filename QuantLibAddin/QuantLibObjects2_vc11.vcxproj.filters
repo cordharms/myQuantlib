@@ -948,6 +948,9 @@
     <ClCompile Include="qlo\serialization\register\serialization_templatecommodity.cpp">
       <Filter>serialization\register</Filter>
     </ClCompile>
+    <ClCompile Include="qlo\coupons.cpp">
+      <Filter>CashFlows</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="qlo\enumerations\register\register_all.hpp">
@@ -1917,6 +1920,9 @@
     </ClInclude>
     <ClInclude Include="qlo\serialization\register\serialization_templatecommodity.hpp">
       <Filter>serialization\register</Filter>
+    </ClInclude>
+    <ClInclude Include="qlo\coupons.hpp">
+      <Filter>CashFlows</Filter>
     </ClInclude>
   </ItemGroup>
 </Project>

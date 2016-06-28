@@ -330,6 +330,8 @@
     <DataType defaultSuperType='libraryClass'>QuantLib::VannaVolgaBarrierEngine</DataType>
     <DataType defaultSuperType='libraryClass'>QuantLib::VannaVolgaDoubleBarrierEngine</DataType>
 
+    <DataType defaultSuperType='libraryClass'>QuantLib::CashFlow</DataType>
+
 
   </DataTypes>
 

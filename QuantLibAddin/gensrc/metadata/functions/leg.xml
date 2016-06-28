@@ -4,17 +4,21 @@
   <xlFunctionWizardCategory>QuantLib - Financial</xlFunctionWizardCategory>
   <serializationIncludes>
     <include>qlo/couponvectors.hpp</include>
+    <include>qlo/coupons.hpp</include>
     <include>qlo/capfloor.hpp</include>
     <include>qlo/swap.hpp</include>
+    <include>qlo/indexes/swapindex.hpp</include>
 
     <include>ql/instruments/swap.hpp</include>
   </serializationIncludes>
   <addinIncludes>
     <include>qlo/couponvectors.hpp</include>
     <include>qlo/conundrumpricer.hpp</include>
+    <include>qlo/coupons.hpp</include>
     <include>qlo/termstructures.hpp</include>
     <include>qlo/capfloor.hpp</include>
     <include>qlo/swap.hpp</include>
+    <include>qlo/indexes/swapindex.hpp</include>
 
     <include>ql/termstructures/yieldtermstructure.hpp</include>
     <include>ql/instruments/swap.hpp</include>
@@ -1519,6 +1523,28 @@
       </ParameterList>
     </Constructor>
 
+
+    <Constructor name='qlLegFromCashFlows'>
+      <libraryFunction>Leg</libraryFunction>
+      <SupportedPlatforms>
+        <!--SupportedPlatform name='Excel' calcInWizard='false'/-->
+        <SupportedPlatform name='Excel'/>
+        <SupportedPlatform name='Cpp'/>
+        <SupportedPlatform name='Calc'/>
+      </SupportedPlatforms>
+      <ParameterList>
+        <Parameters>
+          <Parameter name='CashFlows' >
+            <type>QuantLib::CashFlow</type>
+            <tensorRank>vector</tensorRank>
+            <description>vector of cash flows.</description>
+          </Parameter>
+        </Parameters>
+      </ParameterList>
+    </Constructor>
+
+
+
     <!-- InterestRate interface and constructor -->
 
     <Member name='qlInterestRateRate' type='QuantLib::InterestRate' superType='libraryClass'>
@@ -1815,6 +1841,64 @@
         </Parameters>
       </ParameterList>
     </Constructor>
+
+    <!-- individual coupons -->
+    
+    <Constructor name='qlCmsCoupon'>
+      <libraryFunction>CmsCoupon</libraryFunction>
+      <SupportedPlatforms>
+        <!--SupportedPlatform name='Excel' calcInWizard='false'/-->
+        <SupportedPlatform name='Excel'/>
+        <SupportedPlatform name='Cpp'/>
+        <SupportedPlatform name='Calc'/>
+      </SupportedPlatforms>
+      <ParameterList>
+        <Parameters>
+          <Parameter name='PayDate' >
+            <type>QuantLib::Date</type>
+            <tensorRank>scalar</tensorRank>
+            <description>coupon payment date.</description>
+          </Parameter>
+          <Parameter name='Nominal' exampleValue='1'>
+            <type>QuantLib::Real</type>
+            <tensorRank>scalar</tensorRank>
+            <description>rate.</description>
+          </Parameter>
+          <Parameter name='StartDate' >
+            <type>QuantLib::Date</type>
+            <tensorRank>scalar</tensorRank>
+            <description>coupon accrual period start date.</description>
+          </Parameter>
+          <Parameter name='EndDate' >
+            <type>QuantLib::Date</type>
+            <tensorRank>scalar</tensorRank>
+            <description>coupon accrual period end date.</description>
+          </Parameter>
+          <Parameter name='FixingDays' exampleValue='2'>
+            <type>QuantLib::Natural</type>
+            <tensorRank>scalar</tensorRank>
+            <description>number of days for fixing offset.</description>
+          </Parameter>
+          <Parameter name='SwapIndex'>
+            <type>QuantLib::SwapIndex</type>
+            <tensorRank>scalar</tensorRank>
+            <description>underlying SwapIndex object ID.</description>
+          </Parameter>
+          <Parameter name='DayCounter' exampleValue='"Actual/360"'>
+            <type>QuantLib::DayCounter</type>
+            <tensorRank>scalar</tensorRank>
+            <description>DayCounter for accrual calculation.</description>
+          </Parameter>
+          <Parameter name='IsInArrears' default='false'>
+            <type>bool</type>
+            <tensorRank>scalar</tensorRank>
+            <description>TRUE if the fixing is in arrears.</description>
+          </Parameter>
+        </Parameters>
+      </ParameterList>
+    </Constructor>
+
+
 
   </Functions>
 
