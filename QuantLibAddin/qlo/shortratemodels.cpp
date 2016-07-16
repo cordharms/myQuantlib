@@ -26,6 +26,10 @@
 
 #include <ql/models/shortrate/onefactormodels/vasicek.hpp>
 #include <ql/models/shortrate/onefactormodels/hullwhite.hpp>
+#include <ql/models/shortrate/twofactormodels/g2.hpp>
+#include <ql/models/shortrate/calibrationhelpers/swaptionhelper.hpp>
+#include <ql/indexes/iborindex.hpp>
+
 
 namespace QuantLibAddin {
 
@@ -50,6 +54,40 @@ namespace QuantLibAddin {
         libraryObject_ = boost::shared_ptr<QuantLib::AffineModel>(new
             QuantLib::HullWhite(hYTS, a, sigma));
     }
+
+    G2::G2(const boost::shared_ptr<ObjectHandler::ValueObject>&  properties,
+		   const QuantLib::Handle<QuantLib::YieldTermStructure>& termStructure,
+           QuantLib::Real                                        a,
+           QuantLib::Real                                        sigma,
+           QuantLib::Real                                        b,
+           QuantLib::Real                                        eta,
+           QuantLib::Real                                        rho,
+		   bool                                                  permanent)
+		   : AffineModel(properties, permanent) {
+        libraryObject_ = boost::shared_ptr<QuantLib::AffineModel>(new
+            QuantLib::G2(termStructure, a, sigma,b,eta,rho));
+	}
+
+    SwaptionHelper::SwaptionHelper(
+		               const boost::shared_ptr<ObjectHandler::ValueObject>&  properties,
+			           const QuantLib::Period&                               maturity,
+                       const QuantLib::Period&                               length,
+                       const QuantLib::Handle<QuantLib::Quote>&              volatility,
+                       const boost::shared_ptr<QuantLib::IborIndex>&         index,
+                       const QuantLib::Period&                               fixedLegTenor,
+                       const QuantLib::DayCounter&                           fixedLegDayCounter,
+                       const QuantLib::DayCounter&                           floatingLegDayCounter,
+                       const QuantLib::Handle<QuantLib::YieldTermStructure>&   termStructure,
+                       const QuantLib::CalibrationHelper::CalibrationErrorType errorType,
+                       const QuantLib::Real                                    strike,
+                       const QuantLib::Real                                    nominal,
+                       const QuantLib::Real                                    shift,
+		               bool                                                    permanent)
+					   : CalibrationHelper(properties,permanent) {
+        libraryObject_ = boost::shared_ptr<QuantLib::CalibrationHelper>(new
+            QuantLib::SwaptionHelper(maturity,length,volatility,index,fixedLegTenor,fixedLegDayCounter,floatingLegDayCounter,termStructure,errorType,strike,nominal,shift));
+	}
+
 
 }
 

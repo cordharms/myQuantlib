@@ -332,6 +332,10 @@
 
     <DataType defaultSuperType='libraryClass'>QuantLib::CashFlow</DataType>
 
+    <DataType defaultSuperType='libraryClass'>QuantLib::G2</DataType>
+    <DataType defaultSuperType='libraryClass'>QuantLib::Swaptionhelper</DataType>
+    <DataType defaultSuperType='enumeration'>QuantLib::CalibrationHelper::CalibrationErrorType</DataType>
+
 
   </DataTypes>
 

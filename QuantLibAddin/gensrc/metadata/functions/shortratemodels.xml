@@ -4,15 +4,23 @@
   <xlFunctionWizardCategory>QuantLib - Financial</xlFunctionWizardCategory>
   <serializationIncludes>
     <include>qlo/shortratemodels.hpp</include>
+    <include>qlo/indexes/iborindex.hpp</include>
     <include>ql/models/shortrate/onefactormodels/vasicek.hpp</include>
     <include>ql/models/shortrate/onefactormodels/hullwhite.hpp</include>
+    <include>ql/models/shortrate/twofactormodels/g2.hpp</include>
     <include>ql/termstructures/yieldtermstructure.hpp</include>
+    <include>ql/indexes/iborindex.hpp</include>
+    <include>ql/models/shortrate/calibrationhelpers/swaptionhelper.hpp</include>
   </serializationIncludes>
   <addinIncludes>
     <include>qlo/shortratemodels.hpp</include>
+    <include>qlo/indexes/iborindex.hpp</include>
     <include>ql/models/shortrate/onefactormodels/vasicek.hpp</include>
     <include>ql/models/shortrate/onefactormodels/hullwhite.hpp</include>
+    <include>ql/models/shortrate/twofactormodels/g2.hpp</include>
     <include>ql/termstructures/yieldtermstructure.hpp</include>
+    <include>ql/indexes/iborindex.hpp</include>
+    <include>ql/models/shortrate/calibrationhelpers/swaptionhelper.hpp</include>
   </addinIncludes>
   <copyright>
     Copyright (C) 2006 Ferdinando Ametrano
@@ -129,6 +137,129 @@
         <tensorRank>scalar</tensorRank>
       </ReturnValue>
     </Procedure>
+
+    <Constructor name='qlGTwo'>
+      <libraryFunction>G2</libraryFunction>
+      <SupportedPlatforms>
+        <!--SupportedPlatform name='Excel' calcInWizard='false'/-->
+        <SupportedPlatform name='Excel'/>
+        <SupportedPlatform name='Cpp'/>
+        <SupportedPlatform name='Calc'/>
+      </SupportedPlatforms>
+      <ParameterList>
+        <Parameters>
+          <Parameter name='YieldCurve'   exampleValue ='EURYC'>
+            <type>QuantLib::YieldTermStructure</type>
+            <superType>libToHandle</superType>
+            <tensorRank>scalar</tensorRank>
+            <description>YieldTermStructure object ID.</description>
+          </Parameter>
+          <Parameter name='A' exampleValue ='0.03'>
+            <type>double</type>
+            <tensorRank>scalar</tensorRank>
+            <description>first mean reversion.</description>
+          </Parameter>
+          <Parameter name='Sigma' exampleValue ='0.01'>
+            <type>double</type>
+            <tensorRank>scalar</tensorRank>
+            <description>first volatility.</description>
+          </Parameter>
+          <Parameter name='B' exampleValue ='0.3'>
+            <type>double</type>
+            <tensorRank>scalar</tensorRank>
+            <description>second mean reversion.</description>
+          </Parameter>
+          <Parameter name='Eta' exampleValue ='0.01'>
+            <type>double</type>
+            <tensorRank>scalar</tensorRank>
+            <description>second volatility.</description>
+          </Parameter>
+          <Parameter name='Rho' exampleValue ='-0.75'>
+            <type>double</type>
+            <tensorRank>scalar</tensorRank>
+            <description>correlation.</description>
+          </Parameter>
+        </Parameters>
+      </ParameterList>
+    </Constructor>
+
+    <Constructor name='qlSwaptionHelper'>
+      <libraryFunction>SwaptionHelper</libraryFunction>
+      <SupportedPlatforms>
+        <!--SupportedPlatform name='Excel' calcInWizard='false'/-->
+        <SupportedPlatform name='Excel'/>
+        <!--SupportedPlatform name='Cpp'/-->
+        <!--SupportedPlatform name='Calc'/-->
+      </SupportedPlatforms>
+      <ParameterList>
+        <Parameters>
+          <Parameter name='ExerciseTenor' exampleValue='10Y'>
+            <type>QuantLib::Period</type>
+            <tensorRank>scalar</tensorRank>
+            <description>Option exercise period.</description>
+          </Parameter>
+          <Parameter name='SwapTenor' exampleValue='5Y'>
+            <type>QuantLib::Period</type>
+            <tensorRank>scalar</tensorRank>
+            <description>Underlying swap term period.</description>
+          </Parameter>
+          <Parameter name='Volatility' >
+            <type>QuantLib::Quote</type>
+            <superType>libToHandle</superType>
+            <tensorRank>scalar</tensorRank>
+            <description>shifted Black volatility quote.</description>
+          </Parameter>
+          <Parameter name='IborIndex' exampleValue='Euribor3M'>
+            <type>QuantLib::IborIndex</type>
+            <tensorRank>scalar</tensorRank>
+            <description>IborIndex object ID.</description>
+          </Parameter>
+          <Parameter name='FixedLegTenor' exampleValue='5Y'>
+            <type>QuantLib::Period</type>
+            <tensorRank>scalar</tensorRank>
+            <description>Underlying swap fixed leg period.</description>
+          </Parameter>
+          <Parameter name='FixedLegDayCounter' default='"30/360"'>
+            <type>QuantLib::DayCounter</type>
+            <tensorRank>scalar</tensorRank>
+            <description>Fixed leg DayCounter ID.</description>
+          </Parameter>
+          <Parameter name='FloatLegDayCounter' default='"30/360"'>
+            <type>QuantLib::DayCounter</type>
+            <tensorRank>scalar</tensorRank>
+            <description>Float leg DayCounter ID.</description>
+          </Parameter>
+          <Parameter name='YieldCurve'   exampleValue ='EURYC'>
+            <type>QuantLib::YieldTermStructure</type>
+            <superType>libToHandle</superType>
+            <tensorRank>scalar</tensorRank>
+            <description>YieldTermStructure object ID.</description>
+          </Parameter>
+          <Parameter name='CalibrationErrorType'   exampleValue ='RelativePriceError'>
+            <type>QuantLib::CalibrationHelper::CalibrationErrorType</type>
+            <tensorRank>scalar</tensorRank>
+            <description>Calibration error type.</description>
+          </Parameter>
+          <Parameter name='Strike' default='QuantLib::Null&lt;QuantLib::Rate&gt;()'>
+            <type>QuantLib::Real</type>
+            <tensorRank>scalar</tensorRank>
+            <description>Swaption strike.</description>
+          </Parameter>
+          <Parameter name='Nominal' default='10000'>
+            <type>QuantLib::Real</type>
+            <tensorRank>scalar</tensorRank>
+            <description>Notional value.</description>
+          </Parameter>
+          <Parameter name='Shift' default='0'>
+            <type>QuantLib::Real</type>
+            <tensorRank>scalar</tensorRank>
+            <description>Shift for shifted Black volatility.</description>
+          </Parameter>
+        </Parameters>
+      </ParameterList>
+    </Constructor>
+
+
 
   </Functions>
 </Category>

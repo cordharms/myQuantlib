@@ -2119,6 +2119,25 @@
       </EnumeratedTypes>
     </EnumeratedTypeGroup>
 
+    <EnumeratedTypeGroup type='QuantLib::CalibrationHelper::CalibrationErrorType'>
+      <includeFile>oh/enumerations/typefactory.hpp</includeFile>
+      <constructor>false</constructor>
+      <EnumeratedTypes>
+        <EnumeratedType>
+          <string>RelativePriceError</string>
+          <value>QuantLib::CalibrationHelper::CalibrationErrorType(QuantLib::CalibrationHelper::RelativePriceError)</value>
+        </EnumeratedType>
+        <EnumeratedType>
+          <string>PriceError</string>
+          <value>QuantLib::CalibrationHelper::CalibrationErrorType(QuantLib::CalibrationHelper::PriceError)</value>
+        </EnumeratedType>
+        <EnumeratedType>
+          <string>ImpliedVolError</string>
+          <value>QuantLib::CalibrationHelper::CalibrationErrorType(QuantLib::CalibrationHelper::ImpliedVolError)</value>
+        </EnumeratedType>
+      </EnumeratedTypes>
+    </EnumeratedTypeGroup>
+
 
   </EnumeratedTypeGroups>
 

@@ -37,6 +37,8 @@
 #include <ql/experimental/fx/deltavolquote.hpp>
 #include <ql/experimental/barrieroption/doublebarriertype.hpp>
 
+#include <ql/models/calibrationhelper.hpp>
+
 #include <oh/enumerations/typefactory.hpp>
 
 namespace QuantLibAddin {

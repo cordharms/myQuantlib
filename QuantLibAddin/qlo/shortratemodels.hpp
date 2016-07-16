@@ -25,11 +25,14 @@
 
 #include <ql/types.hpp>
 
+#include <ql/models/calibrationhelper.hpp>
+
+
 namespace QuantLib {
     template <class T>
     class Handle;
-
     class AffineModel;
+	class IborIndex;
 }
 
 namespace QuantLibAddin {
@@ -54,6 +57,39 @@ namespace QuantLibAddin {
                   QuantLib::Real sigma,
                   bool permanent);
     };
+
+    class G2 : public AffineModel {
+	public:
+        G2(const boost::shared_ptr<ObjectHandler::ValueObject>&  properties,
+		   const QuantLib::Handle<QuantLib::YieldTermStructure>& termStructure,
+           QuantLib::Real                                        a,
+           QuantLib::Real                                        sigma,
+           QuantLib::Real                                        b,
+           QuantLib::Real                                        eta,
+           QuantLib::Real                                        rho,
+		   bool                                                  permanent);
+	};
+
+	OH_LIB_CLASS(CalibrationHelper, QuantLib::CalibrationHelper);
+
+    class SwaptionHelper : public CalibrationHelper {
+    public:
+        SwaptionHelper(const boost::shared_ptr<ObjectHandler::ValueObject>&  properties,
+			           const QuantLib::Period&                               maturity,
+                       const QuantLib::Period&                               length,
+                       const QuantLib::Handle<QuantLib::Quote>&              volatility,
+                       const boost::shared_ptr<QuantLib::IborIndex>&         index,
+                       const QuantLib::Period&                               fixedLegTenor,
+                       const QuantLib::DayCounter&                           fixedLegDayCounter,
+                       const QuantLib::DayCounter&                           floatingLegDayCounter,
+                       const QuantLib::Handle<QuantLib::YieldTermStructure>&   termStructure,
+                       const QuantLib::CalibrationHelper::CalibrationErrorType errorType,
+                       const QuantLib::Real                                    strike,
+                       const QuantLib::Real                                    nominal,
+                       const QuantLib::Real                                    shift,
+		               bool                                                    permanent);
+	};
+
 
 }
 
