@@ -156,7 +156,9 @@
     <None Include="metadata\functions\schedule.xml" />
     <None Include="metadata\functions\sequencestatistics.xml" />
     <None Include="metadata\functions\settings.xml" />
-    <None Include="metadata\functions\shortratemodels.xml" />
+    <None Include="metadata\functions\shortratemodels.xml">
+      <SubType>Designer</SubType>
+    </None>
     <None Include="metadata\functions\smilesection.xml" />
     <None Include="metadata\functions\statistics.xml" />
     <None Include="metadata\functions\swap.xml" />
@@ -190,7 +192,9 @@
     <None Include="metadata\rules\serialization.xml" />
     <None Include="metadata\rules\valueobjects.xml" />
     <None Include="metadata\types\supertypes.xml" />
-    <None Include="metadata\types\types.xml" />
+    <None Include="metadata\types\types.xml">
+      <SubType>Designer</SubType>
+    </None>
     <None Include="code\codedict.py" />
     <None Include="config\categories.xml">
       <SubType>Designer</SubType>

@@ -259,6 +259,40 @@
       </ParameterList>
     </Constructor>
 
+    <Member name='qlGTwoDiscountBond' type='QuantLib::G2' >
+      <description>Returns P(t,T;x).</description>
+      <libraryFunction>discountBond</libraryFunction>
+      <SupportedPlatforms>
+        <!--SupportedPlatform name='Excel' calcInWizard='false'/-->
+        <SupportedPlatform name='Excel'/>
+        <!--SupportedPlatform name='Calc'/-->
+        <!--SupportedPlatform name='Cpp'/-->
+      </SupportedPlatforms>
+      <ParameterList>
+        <Parameters>
+          <Parameter name='ObservationTime' exampleValue ='1.0' default='1.0'>
+            <type>QuantLib::Time</type>
+            <tensorRank>scalar</tensorRank>
+            <description>observation time.</description>
+          </Parameter>
+          <Parameter name='MaturityTime' exampleValue ='2.0' default='2.0'>
+            <type>QuantLib::Time</type>
+            <tensorRank>scalar</tensorRank>
+            <description>maturity time.</description>
+          </Parameter>
+          <Parameter name='State' >
+            <type>QuantLib::Array</type>
+            <tensorRank>vector</tensorRank>
+            <description>vector of state variables.</description>
+          </Parameter>
+        </Parameters>
+      </ParameterList>
+      <ReturnValue>
+        <type>QuantLib::Real</type>
+        <tensorRank>scalar</tensorRank>
+      </ReturnValue>
+    </Member>
+
 
 
   </Functions>
