@@ -28,6 +28,7 @@ namespace QuantLib {
     class EndCriteria;
     class OptimizationMethod;
     class LineSearch;
+	class Constraint;
 }
 
 namespace QuantLibAddin {
@@ -102,6 +103,15 @@ namespace QuantLibAddin {
             const boost::shared_ptr<QuantLib::LineSearch>&,
             bool permanent);
     };
+
+	OH_LIB_CLASS(Constraint, QuantLib::Constraint);
+
+	class NoConstraint : public Constraint {
+	public:
+        NoConstraint(
+            const boost::shared_ptr<ObjectHandler::ValueObject>& properties,
+            bool permanent);
+	};
 
 }
 

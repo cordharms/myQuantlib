@@ -312,6 +312,18 @@
       </ParameterList>
     </Constructor>
 
+    <Constructor name='qlNoConstraint'>
+      <libraryFunction>NoConstraint</libraryFunction>
+      <SupportedPlatforms>
+        <!--SupportedPlatform name='Excel' calcInWizard='false'/-->
+        <SupportedPlatform name='Excel'/>
+        <SupportedPlatform name='Cpp'/>
+      </SupportedPlatforms>
+      <ParameterList>
+        <Parameters>
+        </Parameters>
+      </ParameterList>
+    </Constructor>
   </Functions>
 
 </Category>

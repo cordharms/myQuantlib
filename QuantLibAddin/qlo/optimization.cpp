@@ -28,6 +28,8 @@
 #include <ql/math/optimization/levenbergmarquardt.hpp>
 #include <ql/math/optimization/simplex.hpp>
 #include <ql/math/optimization/steepestdescent.hpp>
+#include <ql/math/optimization/constraint.hpp>
+
 
 namespace QuantLibAddin {
 
@@ -91,6 +93,15 @@ namespace QuantLibAddin {
         libraryObject_ = boost::shared_ptr<QuantLib::OptimizationMethod>(new
             QuantLib::SteepestDescent(lineSearch));
     }
-      
+
+	NoConstraint::NoConstraint(
+            const boost::shared_ptr<ObjectHandler::ValueObject>& properties,
+            bool permanent)
+			: Constraint(properties, permanent) {
+        libraryObject_ = boost::shared_ptr<QuantLib::Constraint>(new
+            QuantLib::NoConstraint());
+	}
+
+
 }
 

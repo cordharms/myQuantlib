@@ -35,6 +35,9 @@ namespace QuantLib {
     class AffineModel;
 	class IborIndex;
 	class G2;
+	class CalibrationHelper;
+	class OptimizationMethod;
+	class EndCriteria;
 }
 
 namespace QuantLibAddin {
@@ -70,6 +73,11 @@ namespace QuantLibAddin {
            QuantLib::Real                                        eta,
            QuantLib::Real                                        rho,
 		   bool                                                  permanent);
+		void calibrate(const std::vector<boost::shared_ptr<QuantLib::CalibrationHelper> >& instruments,
+					   const boost::shared_ptr<QuantLib::OptimizationMethod>&              method,
+					   const boost::shared_ptr<QuantLib::EndCriteria>&                     endCriteria,
+                       const std::vector<QuantLib::Real>&                                  weights,
+                       const std::vector<bool>&                                            fixParameters);
 	};
 
     class G2SwaptionEngine : public PricingEngine {

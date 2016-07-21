@@ -5,6 +5,7 @@
   <serializationIncludes>
     <include>qlo/shortratemodels.hpp</include>
     <include>qlo/indexes/iborindex.hpp</include>
+    <include>qlo/optimization.hpp</include>
     <include>ql/models/shortrate/onefactormodels/vasicek.hpp</include>
     <include>ql/models/shortrate/onefactormodels/hullwhite.hpp</include>
     <include>ql/models/shortrate/twofactormodels/g2.hpp</include>
@@ -15,6 +16,7 @@
   <addinIncludes>
     <include>qlo/shortratemodels.hpp</include>
     <include>qlo/indexes/iborindex.hpp</include>
+    <include>qlo/optimization.hpp</include>
     <include>ql/models/shortrate/onefactormodels/vasicek.hpp</include>
     <include>ql/models/shortrate/onefactormodels/hullwhite.hpp</include>
     <include>ql/models/shortrate/twofactormodels/g2.hpp</include>
@@ -318,6 +320,50 @@
       </ParameterList>
       <ReturnValue>
         <type>QuantLib::Real</type>
+        <tensorRank>scalar</tensorRank>
+      </ReturnValue>
+    </Member>
+
+    <Member name='qlGTwoCalibrate' type='QuantLibAddin::G2' >
+      <description>Calibrate model to (shifted) log vols.</description>
+      <libraryFunction>calibrate</libraryFunction>
+      <SupportedPlatforms>
+        <!--SupportedPlatform name='Excel' calcInWizard='false'/-->
+        <SupportedPlatform name='Excel'/>
+        <!--SupportedPlatform name='Calc'/-->
+        <!--SupportedPlatform name='Cpp'/-->
+      </SupportedPlatforms>
+      <ParameterList>
+        <Parameters>
+          <Parameter name='CalibHelpers' >
+            <type>QuantLib::CalibrationHelper</type>
+            <tensorRank>vector</tensorRank>
+            <description>reference to calibration helpers.</description>
+          </Parameter>
+          <Parameter name='OptimizationMethod' >
+            <type>QuantLib::OptimizationMethod</type>
+            <tensorRank>scalar</tensorRank>
+            <description>reference to optimization method (e.g. Levenberg Marquart).</description>
+          </Parameter>
+          <Parameter name='EndCriteria' >
+            <type>QuantLib::EndCriteria</type>
+            <tensorRank>scalar</tensorRank>
+            <description>reference to end criteria.</description>
+          </Parameter>
+          <Parameter name='Weights' >
+            <type>QuantLib::Real</type>
+            <tensorRank>vector</tensorRank>
+            <description>calibration weights for calibration helpers.</description>
+          </Parameter>
+          <Parameter name='FixParameters' >
+            <type>bool</type>
+            <tensorRank>vector</tensorRank>
+            <description>flags if (a,sigma,b,eta,rho) is fixed in calibration.</description>
+          </Parameter>
+        </Parameters>
+      </ParameterList>
+      <ReturnValue>
+        <type>void</type>
         <tensorRank>scalar</tensorRank>
       </ReturnValue>
     </Member>

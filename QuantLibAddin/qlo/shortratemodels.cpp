@@ -22,6 +22,8 @@
 #include <qlo/config.hpp>
 #endif
 
+#include <boost/pointer_cast.hpp>
+
 #include <qlo/shortratemodels.hpp>
 
 #include <ql/models/shortrate/onefactormodels/vasicek.hpp>
@@ -68,6 +70,16 @@ namespace QuantLibAddin {
         libraryObject_ = boost::shared_ptr<QuantLib::AffineModel>(new
             QuantLib::G2(termStructure, a, sigma,b,eta,rho));
 	}
+
+    void G2::calibrate(const std::vector<boost::shared_ptr<QuantLib::CalibrationHelper> >& instruments,
+					   const boost::shared_ptr<QuantLib::OptimizationMethod>&              method,		               
+					   const boost::shared_ptr<QuantLib::EndCriteria>&                     endCriteria,
+                       const std::vector<QuantLib::Real>&                                  weights,
+                       const std::vector<bool>&                                            fixParameters) {
+        boost::shared_ptr<QuantLib::G2> model = boost::dynamic_pointer_cast<QuantLib::G2>(libraryObject_);
+		model->calibrate(instruments,*method,*endCriteria,QuantLib::NoConstraint(),weights,fixParameters);
+	}
+
 
     G2SwaptionEngine::G2SwaptionEngine(
 		                 const boost::shared_ptr<ObjectHandler::ValueObject>&  properties,
