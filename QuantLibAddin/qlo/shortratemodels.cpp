@@ -29,6 +29,7 @@
 #include <ql/models/shortrate/twofactormodels/g2.hpp>
 #include <ql/models/shortrate/calibrationhelpers/swaptionhelper.hpp>
 #include <ql/indexes/iborindex.hpp>
+#include <ql/pricingengines/swaption/g2swaptionengine.hpp>
 
 
 namespace QuantLibAddin {
@@ -66,6 +67,17 @@ namespace QuantLibAddin {
 		   : AffineModel(properties, permanent) {
         libraryObject_ = boost::shared_ptr<QuantLib::AffineModel>(new
             QuantLib::G2(termStructure, a, sigma,b,eta,rho));
+	}
+
+    G2SwaptionEngine::G2SwaptionEngine(
+		                 const boost::shared_ptr<ObjectHandler::ValueObject>&  properties,
+			             const boost::shared_ptr<QuantLib::G2>&                model,
+                         QuantLib::Real                                        range,
+                         QuantLib::Size                                        intervals,
+		                 bool                                                  permanent)
+						 : PricingEngine(properties,permanent) {
+        libraryObject_ = boost::shared_ptr<QuantLib::PricingEngine>(new
+            QuantLib::G2SwaptionEngine(model,range,intervals));
 	}
 
     SwaptionHelper::SwaptionHelper(

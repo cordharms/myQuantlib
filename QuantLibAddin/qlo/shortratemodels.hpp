@@ -22,6 +22,7 @@
 #define qla_shortratemodels_hpp
 
 #include <qlo/termstructures.hpp>
+#include <qlo/pricingengines.hpp>
 
 #include <ql/types.hpp>
 
@@ -33,6 +34,7 @@ namespace QuantLib {
     class Handle;
     class AffineModel;
 	class IborIndex;
+	class G2;
 }
 
 namespace QuantLibAddin {
@@ -68,6 +70,15 @@ namespace QuantLibAddin {
            QuantLib::Real                                        eta,
            QuantLib::Real                                        rho,
 		   bool                                                  permanent);
+	};
+
+    class G2SwaptionEngine : public PricingEngine {
+	public:
+        G2SwaptionEngine(const boost::shared_ptr<ObjectHandler::ValueObject>&  properties,
+			             const boost::shared_ptr<QuantLib::G2>&                model,
+                         QuantLib::Real                                        range,
+                         QuantLib::Size                                        intervals,
+		                 bool                                                  permanent);
 	};
 
 	OH_LIB_CLASS(CalibrationHelper, QuantLib::CalibrationHelper);

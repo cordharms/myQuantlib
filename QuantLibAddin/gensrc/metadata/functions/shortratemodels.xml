@@ -183,6 +183,35 @@
       </ParameterList>
     </Constructor>
 
+    <Constructor name='qlGTwoSwaptionEngine'>
+      <libraryFunction>G2SwaptionEngine</libraryFunction>
+      <SupportedPlatforms>
+        <!--SupportedPlatform name='Excel' calcInWizard='false'/-->
+        <SupportedPlatform name='Excel'/>
+        <SupportedPlatform name='Cpp'/>
+        <SupportedPlatform name='Calc'/>
+      </SupportedPlatforms>
+      <ParameterList>
+        <Parameters>
+          <Parameter name='Model' >
+            <type>QuantLib::G2</type>
+            <tensorRank>scalar</tensorRank>
+            <description>G2 model object ID.</description>
+          </Parameter>
+          <Parameter name='Range' exampleValue ='0.1'>
+            <type>QuantLib::Real</type>
+            <tensorRank>scalar</tensorRank>
+            <description>range for integration.</description>
+          </Parameter>
+          <Parameter name='Intervalls' exampleValue ='100'>
+            <type>QuantLib::Size</type>
+            <tensorRank>scalar</tensorRank>
+            <description>number of integration intervalls.</description>
+          </Parameter>
+        </Parameters>
+      </ParameterList>
+    </Constructor>
+
     <Constructor name='qlSwaptionHelper'>
       <libraryFunction>SwaptionHelper</libraryFunction>
       <SupportedPlatforms>
