@@ -77,6 +77,9 @@ namespace QuantLibAddin {
                        const std::vector<QuantLib::Real>&                                  weights,
                        const std::vector<bool>&                                            fixParameters) {
         boost::shared_ptr<QuantLib::G2> model = boost::dynamic_pointer_cast<QuantLib::G2>(libraryObject_);
+		for (QuantLib::Size k=0; k<instruments.size(); ++k){
+			instruments[k]->setPricingEngine(boost::shared_ptr<QuantLib::PricingEngine>(new QuantLib::G2SwaptionEngine(model, 6.0, 16)));
+		}
 		model->calibrate(instruments,*method,*endCriteria,QuantLib::NoConstraint(),weights,fixParameters);
 	}
 
