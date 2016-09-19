@@ -86,8 +86,8 @@ namespace QuantLibAddin {
                                                vols,
                                                dayCounter,
 											   true, // flat extrapolation
-											   std::vector<std::vector<QuantLib::Real> >(), // shifts
-											   volatilityType 
+											   volatilityType, 
+											   std::vector<std::vector<QuantLib::Real> >() // shifts
 											   ));
     }
 

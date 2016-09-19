@@ -180,15 +180,15 @@
             <tensorRank>scalar</tensorRank>
             <description>Maximum volatility, no higher solution.</description>
           </Parameter>
-          <Parameter name='Displacement' default='0.0'>
-            <type>QuantLib::Real</type>
-            <tensorRank>scalar</tensorRank>
-            <description>displacement in a displaced diffusion model.</description>
-          </Parameter>
           <Parameter name='VolType' default='"ShiftedLogNormal"'>
             <type>QuantLib::VolatilityType</type>
             <tensorRank>scalar</tensorRank>
             <description>Type of implied volatility (Normal, ShiftedLognormal).</description>
+          </Parameter>
+          <Parameter name='Displacement' default='0.0'>
+            <type>QuantLib::Real</type>
+            <tensorRank>scalar</tensorRank>
+            <description>displacement in a displaced diffusion model.</description>
           </Parameter>
         </Parameters>
       </ParameterList>

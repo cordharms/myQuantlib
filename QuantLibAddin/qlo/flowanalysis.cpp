@@ -108,7 +108,7 @@ namespace QuantLibAddin {
 
     void AnalysisGenerator::visit(QuantLib::CashFlow& c) {
         vector<property_t> cf(numberOfColumns_, std::string("#N/A"));
-        cf[PAYMENT_DATE]=c.date().serialNumber();
+        cf[PAYMENT_DATE]=(QuantLib::BigInteger)c.date().serialNumber();
         try {
             cf[AMOUNT]=c.amount();
         } catch(...) {}
@@ -118,8 +118,8 @@ namespace QuantLibAddin {
     void AnalysisGenerator::visit(QuantLib::Coupon& c) {
         visit(static_cast<QuantLib::CashFlow&>(c));
         flows_.back()[NOMINAL]=c.nominal();
-        flows_.back()[ACCRUAL_START_DATE]=c.accrualStartDate().serialNumber();
-        flows_.back()[ACCRUAL_END_DATE]=c.accrualEndDate().serialNumber();
+        flows_.back()[ACCRUAL_START_DATE]=(QuantLib::BigInteger)c.accrualStartDate().serialNumber();
+        flows_.back()[ACCRUAL_END_DATE]=(QuantLib::BigInteger)c.accrualEndDate().serialNumber();
         flows_.back()[ACCRUAL_DAYS]=(long)c.accrualDays();
         flows_.back()[DAY_COUNTER]=c.dayCounter().name();
         flows_.back()[ACCRUAL_PERIOD]=c.accrualPeriod();
@@ -131,7 +131,7 @@ namespace QuantLibAddin {
     void AnalysisGenerator::visit(QuantLib::FloatingRateCoupon& c) {
         visit(static_cast<QuantLib::Coupon&>(c));
         flows_.back()[FIXING_DAYS]=(long)c.fixingDays();
-        flows_.back()[FIXING_DATES]=c.fixingDate().serialNumber();
+        flows_.back()[FIXING_DATES]=(QuantLib::BigInteger)c.fixingDate().serialNumber();
         flows_.back()[INDEX]=c.index()->name();
         flows_.back()[FLOOR]=std::string("#N/A");
         flows_.back()[GEARING]=c.gearing();
@@ -148,7 +148,7 @@ namespace QuantLibAddin {
     void AnalysisGenerator::visit(QuantLib::CappedFlooredCoupon& c) {
         visit(static_cast<QuantLib::Coupon&>(c));
         flows_.back()[FIXING_DAYS]=(long)c.fixingDays();
-        flows_.back()[FIXING_DATES]=c.fixingDate().serialNumber();
+        flows_.back()[FIXING_DATES]=(QuantLib::BigInteger)c.fixingDate().serialNumber();
         flows_.back()[INDEX]=c.index()->name();
         if (c.floor() != QuantLib::Null<QuantLib::Rate>())
             flows_.back()[FLOOR]=c.floor();
@@ -171,7 +171,7 @@ namespace QuantLibAddin {
     void AnalysisGenerator::visit(QuantLib::DigitalCoupon& c) {
         visit(static_cast<QuantLib::Coupon&>(c));
         flows_.back()[FIXING_DAYS]=(long)c.fixingDays();
-        flows_.back()[FIXING_DATES]=c.fixingDate().serialNumber();
+        flows_.back()[FIXING_DATES]=(QuantLib::BigInteger)c.fixingDate().serialNumber();
         flows_.back()[INDEX]=c.index()->name();
         if (c.hasPut())
             flows_.back()[FLOOR]=c.putStrike();
