@@ -197,3 +197,5 @@ QuantLibAddin/Docs/doxywarnings.txt
 QuantLibXL/Docs/*.chm
 QuantLibXL/Docs/doxywarnings.txt
 
+# Boost include template for VS
+Microsoft.Cpp.Win32.Boost.props
