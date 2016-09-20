@@ -145,6 +145,8 @@ testCaseCollection.xml
 *.pch
 *.idb
 *.ipch
+*.db
+*.opendb
 
 # Outputs
 QuantLib/Examples/BasketLosses/BasketLosses
