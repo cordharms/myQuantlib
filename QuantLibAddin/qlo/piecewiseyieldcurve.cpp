@@ -28,6 +28,7 @@
 #include <ql/termstructures/yield/piecewiseyieldcurve.hpp>
 #include <ql/math/interpolations/forwardflatinterpolation.hpp>
 #include <ql/math/interpolations/backwardflatinterpolation.hpp>
+#include <ql/math/interpolations/loginterpolation.hpp>
 
 namespace QuantLibAddin {
 
@@ -66,6 +67,29 @@ namespace QuantLibAddin {
 
 		pair_ = InterpolatedYieldCurvePair(traits, interpolator);
     }
+
+	PiecewiseYieldCurve::PiecewiseYieldCurve(
+		const boost::shared_ptr<ObjectHandler::ValueObject>& properties,
+		QuantLib::Natural nDays,
+		const QuantLib::Calendar& calendar,
+		const std::vector<boost::shared_ptr<QuantLib::RateHelper> >& qlrhs,
+		const QuantLib::DayCounter& dayCounter,
+		const std::vector<QuantLib::Handle<QuantLib::Quote> >& jumps,
+		const std::vector<QuantLib::Date>& jumpDates,
+		QuantLib::Real accuracy,
+		const std::string& traitsID,
+		const std::string& interpolatorID,
+		const QuantLib::Size interpolationSplitIdx,
+		bool permanent) :YieldTermStructure(properties, permanent) {
+		// this constructor implements mixed interpolations without factory
+		// initially we implement log interpolation linear + cubic on discount factors
+		QuantLib::LogMixedLinearCubic interpolator(interpolationSplitIdx, QuantLib::MixedInterpolation::SplitRanges, QuantLib::CubicInterpolation::Spline);
+		libraryObject_ = boost::shared_ptr<QuantLib::YieldTermStructure>(new
+			QuantLib::PiecewiseYieldCurve<QuantLib::Discount, QuantLib::LogMixedLinearCubic>
+			    (nDays, calendar, qlrhs, dayCounter, jumps, jumpDates, accuracy, interpolator));
+
+	}
+
 
     // Before implementing the member functions it is necessary to provide some logic to wrap
     // the underlying QuantLib template class PiecewiseYieldCurve<Traits, Interpolator>.
