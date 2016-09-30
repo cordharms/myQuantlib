@@ -100,7 +100,7 @@ namespace QuantLibAddin {
             bool permanent);
     };
 
-    class BachelierBlackSwaptionEngine : public BlackSwaptionEngine {
+    class BachelierBlackSwaptionEngine : public PricingEngine {
       public:
           BachelierBlackSwaptionEngine(
             const boost::shared_ptr<ObjectHandler::ValueObject>& properties,
