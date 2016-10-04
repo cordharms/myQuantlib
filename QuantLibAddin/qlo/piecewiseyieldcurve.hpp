@@ -43,7 +43,23 @@ namespace QuantLibAddin {
             const std::string& traitsID,
             const std::string& interpolatorID,
             bool permanent);
-        const std::vector<QuantLib::Time>& times() const;
+
+		PiecewiseYieldCurve(
+			const boost::shared_ptr<ObjectHandler::ValueObject>& properties,
+			QuantLib::Natural nDays,
+			const QuantLib::Calendar& calendar,
+			const std::vector<boost::shared_ptr<QuantLib::RateHelper> >& qlrhs,
+			const QuantLib::DayCounter& dayCounter,
+			const std::vector<QuantLib::Handle<QuantLib::Quote> >& jumps,
+			const std::vector<QuantLib::Date>& jumpDates,
+			QuantLib::Real accuracy,
+			const std::string& traitsID,
+			const std::string& interpolatorID,
+			const QuantLib::Size interpolationSplitIdx,
+			bool permanent);
+
+		
+		const std::vector<QuantLib::Time>& times() const;
 
         const std::vector<QuantLib::Date>& dates() const;
 
