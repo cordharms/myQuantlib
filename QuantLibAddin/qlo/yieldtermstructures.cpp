@@ -37,6 +37,10 @@
 #include <ql/math/interpolations/cubicinterpolation.hpp>
 #include <ql/math/interpolations/forwardflatinterpolation.hpp>
 #include <ql/math/interpolations/backwardflatinterpolation.hpp>
+#include <ql/math/array.hpp>
+
+#include <ql/termstructures/yield/fittedbonddiscountcurve.hpp>
+#include <ql/termstructures/yield/nonlinearfittingmethods.hpp>
 
 #include <boost/algorithm/string/case_conv.hpp>
 
@@ -620,5 +624,54 @@ namespace QuantLibAddin {
 
         return out;
     }
+
+
+	FittedBondDiscountCurve::FittedBondDiscountCurve(
+		    const boost::shared_ptr<ObjectHandler::ValueObject>&         properties,
+			const QuantLib::Natural                                      settlementDays,
+			const QuantLib::Calendar&                                    calendar,
+			const std::vector<boost::shared_ptr<QuantLib::BondHelper> >& bondHelpers,
+			const QuantLib::DayCounter&                                  dayCounter,
+			const std::string&                                           fittingMethodID,
+		    const std::vector<QuantLib::Real>&                           weights,
+			const boost::shared_ptr<QuantLib::OptimizationMethod>&       optimizationMethod,
+			const QuantLib::Real                                         accuracy,
+			const QuantLib::Size                                         maxEvaluations,
+		    const std::vector<QuantLib::Real>&                           guess,
+			const QuantLib::Real                                         simplexLambda,
+			const QuantLib::Size                                         maxStationaryStateIterations,
+		    const QuantLib::Handle<QuantLib::YieldTermStructure>&        baseCurve,
+		    const std::vector<QuantLib::Time>&                           knots,
+		    bool                                                         permanent) : YieldTermStructure(properties, permanent) {
+		QuantLib::Array weightsArray(weights.size()), guessArray(guess.size());
+		for (QuantLib::Size k = 0; k < weights.size(); ++k) weightsArray[k] = weights[k];
+		for (QuantLib::Size k = 0; k < guess.size(); ++k) guessArray[k] = guess[k];
+		std::string methodID = to_upper_copy(fittingMethodID);
+		boost::shared_ptr<QuantLib::FittedBondDiscountCurve::FittingMethod> method;
+		if (methodID == "EXPONENTIALSPLINES") {
+			method = shared_ptr<QuantLib::FittedBondDiscountCurve::FittingMethod>(new QuantLib::ExponentialSplinesFitting(true, weightsArray, optimizationMethod));
+		}
+		else if (methodID == "NELSONSIEGEL") {
+			method = shared_ptr<QuantLib::FittedBondDiscountCurve::FittingMethod>(new QuantLib::NelsonSiegelFitting(weightsArray, optimizationMethod));
+		}
+		else if (methodID == "SVENSSON") {
+			method = shared_ptr<QuantLib::FittedBondDiscountCurve::FittingMethod>(new QuantLib::SvenssonFitting(weightsArray, optimizationMethod));
+		}
+		else if (methodID == "CUBICBSPLINES") {
+			method = shared_ptr<QuantLib::FittedBondDiscountCurve::FittingMethod>(new QuantLib::CubicBSplinesFitting(knots, true, weightsArray, optimizationMethod));
+		}
+		else {
+			OH_FAIL("Unknown value for fittingMethodID");
+		}
+		if (!baseCurve.empty()) { // assume spread fitting
+			method = shared_ptr<QuantLib::FittedBondDiscountCurve::FittingMethod>(new QuantLib::SpreadFittingMethod(method, baseCurve));
+		}
+		libraryObject_ = shared_ptr<QuantLib::Extrapolator>(new
+			QuantLib::FittedBondDiscountCurve(settlementDays, calendar, bondHelpers, dayCounter, *method, accuracy, maxEvaluations, guessArray, simplexLambda, maxStationaryStateIterations));
+	}
+
+
+
+
 
 }

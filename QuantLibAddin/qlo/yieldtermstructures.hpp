@@ -24,10 +24,14 @@
 #define qla_yieldtermstructures_hpp
 
 #include <qlo/termstructures.hpp>
+#include <qlo/optimization.hpp>
+
 
 #include <ql/time/frequency.hpp>
 #include <ql/compounding.hpp>
 #include <ql/types.hpp>
+#include <ql/math/optimization/method.hpp>
+#include <ql/termstructures/yield/bondhelpers.hpp>
 
 namespace QuantLib {
     class Calendar;
@@ -42,6 +46,7 @@ namespace QuantLib {
 
     template <class T>
     class Handle;
+
 }
 
 namespace QuantLibAddin {
@@ -160,6 +165,29 @@ namespace QuantLibAddin {
     // Stream operator to write a InterpolatedYieldCurvePair to a stream - for logging / error handling.
     std::ostream &operator<<(std::ostream &out,
                              InterpolatedYieldCurvePair tokenPair);
+
+	class FittedBondDiscountCurve : public YieldTermStructure {
+	public:
+		FittedBondDiscountCurve(
+			const boost::shared_ptr<ObjectHandler::ValueObject>&         properties,
+			const QuantLib::Natural                                      settlementDays,
+			const QuantLib::Calendar&                                    calendar,
+			const std::vector<boost::shared_ptr<QuantLib::BondHelper> >& bondHelpers,
+			const QuantLib::DayCounter&                                  dayCounter,
+			const std::string&                                           fittingMethodID,
+			const std::vector<QuantLib::Real>&                           weights,              // QuantLib::Array(),
+			const boost::shared_ptr<QuantLib::OptimizationMethod>&       optimizationMethod,   // boost::shared_ptr<QuantLib::OptimizationMethod>(),
+			const QuantLib::Real                                         accuracy,             // 1.0e-10,
+			const QuantLib::Size                                         maxEvaluations,       // 10000,
+			const std::vector<QuantLib::Real>&                           guess,                // QuantLib::Array(),
+			const QuantLib::Real                                         simplexLambda,        // 1.0 (legacy),
+			const QuantLib::Size                                         maxStationaryStateIterations, // 100,
+			const QuantLib::Handle<QuantLib::YieldTermStructure>&        baseCurve,            // QuantLib::Handle<QuantLib::YieldTermStructure>(),
+			const std::vector<QuantLib::Time>&                           knots,
+			bool                                                         permanent);
+	};
+
+
 }
 
 #endif

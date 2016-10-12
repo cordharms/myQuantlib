@@ -642,5 +642,91 @@
       </ReturnValue>
     </Member>
 
+    <Constructor name='qlFittedBondDiscountCurve'>
+      <libraryFunction>FittedBondDiscountCurve</libraryFunction>
+      <SupportedPlatforms>
+        <!--SupportedPlatform name='Excel' calcInWizard='false'/-->
+        <SupportedPlatform name='Excel'/>
+        <SupportedPlatform name='Calc'/>
+        <SupportedPlatform name='Cpp'/>
+      </SupportedPlatforms>
+      <ParameterList>
+        <Parameters>
+          <Parameter name='NDays' default='0'>
+            <type>QuantLib::Natural</type>
+            <tensorRank>scalar</tensorRank>
+            <description>number of days to advance from EvaluationDate (usually zero or two): it fixes the date at which the discount factor = 1.0.</description>
+          </Parameter>
+          <Parameter name='Calendar'>
+            <type>QuantLib::Calendar</type>
+            <tensorRank>scalar</tensorRank>
+            <description>holiday calendar (e.g. TARGET) to advance from global EvaluationDate.</description>
+          </Parameter>
+          <Parameter name='BondHelpers'>
+            <type>QuantLib::BondHelper</type>
+            <tensorRank>vector</tensorRank>
+            <description>vector of rate-helpers.</description>
+          </Parameter>
+          <Parameter name='DayCounter' default='"Actual/365 (Fixed)"'>
+            <type>QuantLib::DayCounter</type>
+            <tensorRank>scalar</tensorRank>
+            <description>DayCounter ID.</description>
+          </Parameter>
+          <Parameter name='FittingMethodID' default='"NelsonSiegel"'>
+            <type>string</type>
+            <tensorRank>scalar</tensorRank>
+            <description>ExponentialSplines, NelsonSiegel, Svensson.</description>
+          </Parameter>
+          <Parameter name='Weights' exampleValue ='1.0,...'>
+            <type>QuantLib::Real</type>
+            <tensorRank>vector</tensorRank>
+            <description>Optimization weights for bondHelpers</description>
+          </Parameter>
+          <Parameter name='OptimizationMethod' >
+            <type>QuantLib::OptimizationMethod</type>
+            <tensorRank>scalar</tensorRank>
+            <description>reference to optimization method (e.g. Levenberg Marquart).</description>
+          </Parameter>
+          <Parameter name='Accuracy' default='1.0e-10'>
+            <type>QuantLib::Real</type>
+            <tensorRank>scalar</tensorRank>
+            <description>Optimization accuracy.</description>
+          </Parameter>
+          <Parameter name='MaxEvaluations' default='10000'>
+            <type>QuantLib::Size</type>
+            <tensorRank>scalar</tensorRank>
+            <description>Number of cost function evaluations.</description>
+          </Parameter>
+          <Parameter name='Guess' >
+            <type>QuantLib::Real</type>
+            <tensorRank>vector</tensorRank>
+            <description>Initial parameter guess for optimization.</description>
+          </Parameter>
+          <Parameter name='SimplexLambda' default='1.0'>
+            <type>QuantLib::Real</type>
+            <tensorRank>scalar</tensorRank>
+            <description>Legacy. Only applied if no OptimizationMethod specified.</description>
+          </Parameter>
+          <Parameter name='MaxStationaryIterations' default='100'>
+            <type>QuantLib::Size</type>
+            <tensorRank>scalar</tensorRank>
+            <description>Number of iterations around local minimum.</description>
+          </Parameter>
+          <Parameter name='BaseDiscCurve' default='""'>
+            <type>QuantLib::YieldTermStructure</type>
+            <superType>libToHandle</superType>
+            <tensorRank>scalar</tensorRank>
+            <description>Base curve object ID. Assume exponential zero rate spread calibration.</description>
+          </Parameter>
+          <Parameter name='CubicBSplineKnots' >
+            <type>QuantLib::Time</type>
+            <tensorRank>vector</tensorRank>
+            <description>Knot vector (in year fraction) for B splines.</description>
+          </Parameter>
+        </Parameters>
+      </ParameterList>
+    </Constructor>
+
   </Functions>
 </Category>
+

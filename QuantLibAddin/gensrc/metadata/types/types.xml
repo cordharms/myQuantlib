@@ -340,6 +340,7 @@
     <DataType defaultSuperType='libraryClass'>QuantLib::Constraint</DataType>
     <DataType defaultSuperType='libraryClass'>QuantLib::NoConstraint</DataType>
 
+    <DataType defaultSuperType='libraryClass'>QuantLib::BondHelper</DataType>
 
   </DataTypes>
 
