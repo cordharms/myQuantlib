@@ -212,6 +212,9 @@
   </ItemGroup>
   <ItemGroup>
     <Xml Include="metadata\functions\basisswap.xml" />
+    <Xml Include="metadata\functions\inflation.xml">
+      <SubType>Designer</SubType>
+    </Xml>
     <Xml Include="metadata\functions\sabrswaptioncube.xml" />
     <Xml Include="metadata\functions\templateauxilliaries.xml">
       <SubType>Designer</SubType>

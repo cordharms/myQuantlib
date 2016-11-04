@@ -1,0 +1,221 @@
+<Category name='inflation'>
+  <description>functions and methods for inflation modelling.</description>
+  <displayName>Inflation Functions</displayName>
+  <xlFunctionWizardCategory>QuantLib - Financial</xlFunctionWizardCategory>
+  <serializationIncludes>
+    <include>qlo/inflation.hpp</include>
+  </serializationIncludes>
+  <addinIncludes>
+    <include>qlo/inflation.hpp</include>
+  </addinIncludes>
+  <copyright>
+    Copyright (C) 2016, Sebastian Schlenkrich
+  </copyright>
+  <Functions>
+
+    <Constructor name='qlFRHICP'>
+      <libraryFunction>FRHICP</libraryFunction>
+      <SupportedPlatforms>
+        <SupportedPlatform name='Excel'/>
+        <SupportedPlatform name='Cpp'/>
+      </SupportedPlatforms>
+      <ParameterList>
+        <Parameters>
+          <Parameter name='Interpolate'>
+            <type>bool</type>
+            <tensorRank>scalar</tensorRank>
+            <description>TRUE for interpolated index.</description>
+          </Parameter>
+          <Parameter name='ZeroInflationTermStructure' default='""'>
+            <type>QuantLib::ZeroInflationTermStructure</type>
+            <superType>libToHandle</superType>
+            <tensorRank>scalar</tensorRank>
+            <description>zero inflation term structure object ID.</description>
+          </Parameter>
+        </Parameters>
+      </ParameterList>
+    </Constructor>
+
+    <Constructor name='qlZeroCouponInflationSwapHelper'>
+      <libraryFunction>ZeroCouponInflationSwapHelper</libraryFunction>
+      <SupportedPlatforms>
+        <SupportedPlatform name='Excel'/>
+        <SupportedPlatform name='Cpp'/>
+      </SupportedPlatforms>
+      <ParameterList>
+        <Parameters>
+          <Parameter name='Rate' exampleValue='0.042322'>
+            <type>QuantLib::Quote</type>
+            <superType>libToHandle</superType>
+            <tensorRank>scalar</tensorRank>
+            <description>quote.</description>
+          </Parameter>
+          <Parameter name='SwapObsLag' exampleValue='"1M"'>
+            <type>QuantLib::Period</type>
+            <tensorRank>scalar</tensorRank>
+            <description>observation lag for inflation fixing in swap.</description>
+          </Parameter>
+          <Parameter name='Maturity' exampleValue='"10Y"'>
+            <type>QuantLib::Date</type>
+            <tensorRank>scalar</tensorRank>
+            <description>swap maturity date.</description>
+          </Parameter>
+          <Parameter name='Calendar' exampleValue='TARGET'>
+            <type>QuantLib::Calendar</type>
+            <tensorRank>scalar</tensorRank>
+            <description>holiday calendar (e.g. TARGET).</description>
+          </Parameter>
+          <Parameter name='PaymentConvention' exampleValue='Following'>
+            <type>QuantLib::BusinessDayConvention</type>
+            <tensorRank>scalar</tensorRank>
+            <description>payment convention (e.g. Unadjusted).</description>
+          </Parameter>
+          <Parameter name='DayCountConv' exampleValue='30/360 (Bond Basis)'>
+            <type>QuantLib::DayCounter</type>
+            <tensorRank>scalar</tensorRank>
+            <description>day counter (e.g. Actual/360).</description>
+          </Parameter>
+          <Parameter name='ZeroInflIndex' exampleValue='France HICP'>
+            <type>QuantLib::ZeroInflationIndex</type>
+            <tensorRank>scalar</tensorRank>
+            <description>floating leg IborIndex object ID.</description>
+          </Parameter>
+        </Parameters>
+      </ParameterList>
+    </Constructor>
+
+    <Constructor name='qlInterpolatedZeroInflationCurve'>
+      <libraryFunction>InterpolatedZeroInflationCurve</libraryFunction>
+      <SupportedPlatforms>
+        <SupportedPlatform name='Excel'/>
+        <SupportedPlatform name='Cpp'/>
+      </SupportedPlatforms>
+      <ParameterList>
+        <Parameters>
+          <Parameter name='ReferenceDate' exampleValue='"0d"'>
+            <type>QuantLib::Date</type>
+            <tensorRank>scalar</tensorRank>
+            <description>TS reference date.</description>
+          </Parameter>
+          <Parameter name='Calendar' exampleValue='TARGET'>
+            <type>QuantLib::Calendar</type>
+            <tensorRank>scalar</tensorRank>
+            <description>holiday calendar (e.g. TARGET).</description>
+          </Parameter>
+          <Parameter name='DayCountConv' exampleValue='Act/Act'>
+            <type>QuantLib::DayCounter</type>
+            <tensorRank>scalar</tensorRank>
+            <description>day counter (e.g. Actual/360).</description>
+          </Parameter>
+          <Parameter name='Lag' exampleValue='"1M"'>
+            <type>QuantLib::Period</type>
+            <tensorRank>scalar</tensorRank>
+            <description>observation lag.</description>
+          </Parameter>
+          <Parameter name='Frequency' exampleValue='"annual"'>
+            <type>QuantLib::Frequency</type>
+            <tensorRank>scalar</tensorRank>
+            <description>compounding frequency.</description>
+          </Parameter>
+          <Parameter name='IndexIsInterpolated'>
+            <type>bool</type>
+            <tensorRank>scalar</tensorRank>
+            <description>TRUE for interpolated index.</description>
+          </Parameter>
+          <Parameter name='DicountCurve'>
+            <type>QuantLib::YieldTermStructure</type>
+            <superType>libToHandle</superType>
+            <tensorRank>scalar</tensorRank>
+            <description>discounting yield term structure object ID.</description>
+          </Parameter>
+          <Parameter name='Dates'>
+            <type>QuantLib::Date</type>
+            <tensorRank>vector</tensorRank>
+            <description>dates.</description>
+          </Parameter>
+          <Parameter name='Rates'>
+            <type>QuantLib::Rate</type>
+            <tensorRank>vector</tensorRank>
+            <description>zero rates.</description>
+          </Parameter>
+          <Parameter name='Interpolation'>
+            <type>string</type>
+            <tensorRank>scalar</tensorRank>
+            <description>zero rate interpolation (currently only linear).</description>
+          </Parameter>
+        </Parameters>
+      </ParameterList>
+    </Constructor>
+
+    <Constructor name='qlPiecewiseZeroInflationCurve'>
+      <libraryFunction>PiecewiseZeroInflationCurve</libraryFunction>
+      <SupportedPlatforms>
+        <SupportedPlatform name='Excel'/>
+        <SupportedPlatform name='Cpp'/>
+      </SupportedPlatforms>
+      <ParameterList>
+        <Parameters>
+          <Parameter name='ReferenceDate' exampleValue='"0d"'>
+            <type>QuantLib::Date</type>
+            <tensorRank>scalar</tensorRank>
+            <description>TS reference date.</description>
+          </Parameter>
+          <Parameter name='Calendar' exampleValue='TARGET'>
+            <type>QuantLib::Calendar</type>
+            <tensorRank>scalar</tensorRank>
+            <description>holiday calendar (e.g. TARGET).</description>
+          </Parameter>
+          <Parameter name='DayCountConv' exampleValue='Act/Act'>
+            <type>QuantLib::DayCounter</type>
+            <tensorRank>scalar</tensorRank>
+            <description>day counter (e.g. Actual/360).</description>
+          </Parameter>
+          <Parameter name='Lag' exampleValue='"1M"'>
+            <type>QuantLib::Period</type>
+            <tensorRank>scalar</tensorRank>
+            <description>observation lag.</description>
+          </Parameter>
+          <Parameter name='Frequency' exampleValue='"annual"'>
+            <type>QuantLib::Frequency</type>
+            <tensorRank>scalar</tensorRank>
+            <description>compounding frequency.</description>
+          </Parameter>
+          <Parameter name='IndexIsInterpolated'>
+            <type>bool</type>
+            <tensorRank>scalar</tensorRank>
+            <description>TRUE for interpolated index.</description>
+          </Parameter>
+          <Parameter name='BaseZeroRates'>
+            <type>QuantLib::Rate</type>
+            <tensorRank>scalar</tensorRank>
+            <description>base zero rates.</description>
+          </Parameter>
+          <Parameter name='DicountCurve'>
+            <type>QuantLib::YieldTermStructure</type>
+            <superType>libToHandle</superType>
+            <tensorRank>scalar</tensorRank>
+            <description>discounting yield term structure object ID.</description>
+          </Parameter>
+          <Parameter name='Helpers'>
+            <type>QuantLib::ZeroCouponInflationSwapHelper</type>
+            <tensorRank>vector</tensorRank>
+            <description>Bootstrap helper IDs.</description>
+          </Parameter>
+          <Parameter name='Accuracy' default='1.0e-12'>
+            <type>QuantLib::Real</type>
+            <tensorRank>scalar</tensorRank>
+            <description>accuracy.</description>
+          </Parameter>
+          <Parameter name='Interpolation' default='"linear"'>
+            <type>string</type>
+            <tensorRank>scalar</tensorRank>
+            <description>zero rate interpolation (currently only linear).</description>
+          </Parameter>
+        </Parameters>
+      </ParameterList>
+    </Constructor>
+
+
+
+  </Functions>
+</Category>

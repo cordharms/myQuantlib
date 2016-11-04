@@ -547,8 +547,10 @@
     <ClCompile Include="qlo\enumerations\constructors\enumeratedclasses.cpp" />
     <ClCompile Include="qlo\enumerations\constructors\enumeratedpairs.cpp" />
     <ClCompile Include="qlo\enumerations\factories\calendarfactory.cpp" />
+    <ClCompile Include="qlo\inflation.cpp" />
     <ClCompile Include="qlo\sabrswaptioncube.cpp" />
     <ClCompile Include="qlo\serialization\create\create_basisswap.cpp" />
+    <ClCompile Include="qlo\serialization\create\create_inflation.cpp" />
     <ClCompile Include="qlo\serialization\create\create_sabrswaptioncube.cpp" />
     <ClCompile Include="qlo\serialization\create\create_templatecommodity.cpp" />
     <ClCompile Include="qlo\serialization\create\create_templatehestonmodel.cpp" />
@@ -556,6 +558,7 @@
     <ClCompile Include="qlo\serialization\create\create_templatemontecarlo.cpp" />
     <ClCompile Include="qlo\serialization\create\create_templatequasigaussian.cpp" />
     <ClCompile Include="qlo\serialization\register\serialization_basisswap.cpp" />
+    <ClCompile Include="qlo\serialization\register\serialization_inflation.cpp" />
     <ClCompile Include="qlo\serialization\register\serialization_sabrswaptioncube.cpp" />
     <ClCompile Include="qlo\serialization\register\serialization_templatecommodity.cpp" />
     <ClCompile Include="qlo\serialization\register\serialization_templatehestonmodel.cpp" />
@@ -592,6 +595,7 @@
     <ClCompile Include="qlo\valueobjects\vo_exercise.cpp" />
     <ClCompile Include="qlo\valueobjects\vo_forwardrateagreement.cpp" />
     <ClCompile Include="qlo\valueobjects\vo_index.cpp" />
+    <ClCompile Include="qlo\valueobjects\vo_inflation.cpp" />
     <ClCompile Include="qlo\valueobjects\vo_interpolation.cpp" />
     <ClCompile Include="qlo\valueobjects\vo_latentmodels.cpp" />
     <ClCompile Include="qlo\valueobjects\vo_leg.cpp" />
@@ -842,8 +846,10 @@
     <ClInclude Include="qlo\enumerations\factories\payoffsfactory.hpp" />
     <ClInclude Include="qlo\enumerations\factories\pricingenginesfactory.hpp" />
     <ClInclude Include="qlo\enumerations\factories\termstructuresfactory.hpp" />
+    <ClInclude Include="qlo\inflation.hpp" />
     <ClInclude Include="qlo\sabrswaptioncube.hpp" />
     <ClInclude Include="qlo\serialization\create\create_basisswap.hpp" />
+    <ClInclude Include="qlo\serialization\create\create_inflation.hpp" />
     <ClInclude Include="qlo\serialization\create\create_sabrswaptioncube.hpp" />
     <ClInclude Include="qlo\serialization\create\create_templatecommodity.hpp" />
     <ClInclude Include="qlo\serialization\create\create_templatehestonmodel.hpp" />
@@ -851,6 +857,7 @@
     <ClInclude Include="qlo\serialization\create\create_templatemontecarlo.hpp" />
     <ClInclude Include="qlo\serialization\create\create_templatequasigaussian.hpp" />
     <ClInclude Include="qlo\serialization\register\serialization_basisswap.hpp" />
+    <ClInclude Include="qlo\serialization\register\serialization_inflation.hpp" />
     <ClInclude Include="qlo\serialization\register\serialization_sabrswaptioncube.hpp" />
     <ClInclude Include="qlo\serialization\register\serialization_templatecommodity.hpp" />
     <ClInclude Include="qlo\serialization\register\serialization_templatehestonmodel.hpp" />
@@ -889,6 +896,7 @@
     <ClInclude Include="qlo\valueobjects\vo_forwardrateagreement.hpp" />
     <ClInclude Include="qlo\valueobjects\vo_group.hpp" />
     <ClInclude Include="qlo\valueobjects\vo_index.hpp" />
+    <ClInclude Include="qlo\valueobjects\vo_inflation.hpp" />
     <ClInclude Include="qlo\valueobjects\vo_interpolation.hpp" />
     <ClInclude Include="qlo\valueobjects\vo_latentmodels.hpp" />
     <ClInclude Include="qlo\valueobjects\vo_leg.hpp" />

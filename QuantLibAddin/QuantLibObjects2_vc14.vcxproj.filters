@@ -100,6 +100,9 @@
     <Filter Include="Experimental\BasisModels">
       <UniqueIdentifier>{3697884d-2b7a-402d-9ebd-c7837432c668}</UniqueIdentifier>
     </Filter>
+    <Filter Include="Experimental\Inflation">
+      <UniqueIdentifier>{ec087a92-ce96-4940-b2d9-3bac408be003}</UniqueIdentifier>
+    </Filter>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="qlo\enumerations\register\register_all.cpp">
@@ -950,6 +953,18 @@
     </ClCompile>
     <ClCompile Include="qlo\coupons.cpp">
       <Filter>CashFlows</Filter>
+    </ClCompile>
+    <ClCompile Include="qlo\inflation.cpp">
+      <Filter>Experimental\Inflation</Filter>
+    </ClCompile>
+    <ClCompile Include="qlo\serialization\create\create_inflation.cpp">
+      <Filter>serialization\create</Filter>
+    </ClCompile>
+    <ClCompile Include="qlo\serialization\register\serialization_inflation.cpp">
+      <Filter>serialization\register</Filter>
+    </ClCompile>
+    <ClCompile Include="qlo\valueobjects\vo_inflation.cpp">
+      <Filter>valueobjects</Filter>
     </ClCompile>
   </ItemGroup>
   <ItemGroup>
@@ -1923,6 +1938,18 @@
     </ClInclude>
     <ClInclude Include="qlo\coupons.hpp">
       <Filter>CashFlows</Filter>
+    </ClInclude>
+    <ClInclude Include="qlo\inflation.hpp">
+      <Filter>Experimental\Inflation</Filter>
+    </ClInclude>
+    <ClInclude Include="qlo\serialization\create\create_inflation.hpp">
+      <Filter>serialization\create</Filter>
+    </ClInclude>
+    <ClInclude Include="qlo\serialization\register\serialization_inflation.hpp">
+      <Filter>serialization\register</Filter>
+    </ClInclude>
+    <ClInclude Include="qlo\valueobjects\vo_inflation.hpp">
+      <Filter>valueobjects</Filter>
     </ClInclude>
   </ItemGroup>
 </Project>

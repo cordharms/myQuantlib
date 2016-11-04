@@ -67,6 +67,7 @@
     <categoryName>credit</categoryName> <!--RL ADD 2010-07-22-->
     <categoryName>sabrswaptioncube</categoryName>
     <categoryName>basisswap</categoryName>
+    <categoryName>inflation</categoryName>
     <categoryName>templatehullwhite</categoryName>
     <categoryName>templateauxilliaries</categoryName>
     <categoryName>templatequasigaussian</categoryName>

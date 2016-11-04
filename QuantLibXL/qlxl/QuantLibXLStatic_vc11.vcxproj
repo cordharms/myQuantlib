@@ -715,6 +715,7 @@
   </ItemDefinitionGroup>
   <ItemGroup>
     <ClCompile Include="functions\basisswap.cpp" />
+    <ClCompile Include="functions\inflation.cpp" />
     <ClCompile Include="functions\sabrswaptioncube.cpp" />
     <ClCompile Include="functions\templateauxilliaries.cpp" />
     <ClCompile Include="functions\templatecommodity.cpp" />
@@ -753,6 +754,7 @@
     <ClCompile Include="register\register_forwardrateagreement.cpp" />
     <ClCompile Include="register\register_handles.cpp" />
     <ClCompile Include="register\register_index.cpp" />
+    <ClCompile Include="register\register_inflation.cpp" />
     <ClCompile Include="register\register_instruments.cpp" />
     <ClCompile Include="register\register_interpolation.cpp" />
     <ClCompile Include="register\register_latentmodels.cpp" />

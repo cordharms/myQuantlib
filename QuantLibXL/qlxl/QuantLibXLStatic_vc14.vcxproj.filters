@@ -458,6 +458,12 @@
     <ClCompile Include="functions\templatecommodity.cpp">
       <Filter>functions</Filter>
     </ClCompile>
+    <ClCompile Include="functions\inflation.cpp">
+      <Filter>functions</Filter>
+    </ClCompile>
+    <ClCompile Include="register\register_inflation.cpp">
+      <Filter>register</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="register\register_all.hpp">
