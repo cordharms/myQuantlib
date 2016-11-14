@@ -27,6 +27,7 @@
 
 #include <ql/indexes/inflationindex.hpp>
 #include <ql/termstructures/inflation/inflationhelpers.hpp>
+#include <ql/termstructures/inflation/seasonality.hpp>
 
 namespace QuantLib {
 }
@@ -89,7 +90,9 @@ namespace QuantLibAddin {
 			bool                                                    permanent);
 	};
 
-	OH_LIB_CLASS(ZeroInflationTermStructure, QuantLib::ZeroInflationTermStructure);
+	OH_OBJ_CLASS(ZeroInflationTermStructure, InflationTermStructure);
+
+	//OH_LIB_CLASS(ZeroInflationTermStructure, QuantLib::ZeroInflationTermStructure);
 
 	class InterpolatedZeroInflationCurve : public ZeroInflationTermStructure {
 	public:
@@ -124,6 +127,18 @@ namespace QuantLibAddin {
 			const QuantLib::Real                                    accuracy,
 			const std::string&                                      interpolatorString, // not used, default linear interpolation
 			bool                                                    permanent);
+	};
+
+	OH_LIB_CLASS(Seasonality, QuantLib::Seasonality);
+
+	class MultiplicativePriceSeasonality : public Seasonality {
+	public:
+		MultiplicativePriceSeasonality(
+			const boost::shared_ptr<ObjectHandler::ValueObject>&    properties,
+			const QuantLib::Date&                                   seasonalityBaseDate,
+			const QuantLib::Frequency                               frequency,
+			const std::vector<QuantLib::Rate>                       seasonalityFactors,
+		    bool                                                    permanent);
 	};
 
 

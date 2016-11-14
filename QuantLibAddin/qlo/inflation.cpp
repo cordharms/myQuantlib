@@ -125,4 +125,16 @@ namespace QuantLibAddin {
 			new QuantLib::PiecewiseZeroInflationCurve<QuantLib::Linear>(referenceDate, calendar, dayCounter, lag, frequency, indexIsInterpolated, baseZeroRate, nominalTS, helpers, accuracy));
 	}
 
+	MultiplicativePriceSeasonality::MultiplicativePriceSeasonality(
+		const boost::shared_ptr<ObjectHandler::ValueObject>&    properties,
+		const QuantLib::Date&                                   seasonalityBaseDate,
+		const QuantLib::Frequency                               frequency,
+		const std::vector<QuantLib::Rate>                       seasonalityFactors,
+		bool                                                    permanent)
+		: Seasonality(properties, permanent) {
+		libraryObject_ = boost::shared_ptr<QuantLib::MultiplicativePriceSeasonality>(
+			new QuantLib::MultiplicativePriceSeasonality(seasonalityBaseDate, frequency, seasonalityFactors));
+	}
+
+
 }

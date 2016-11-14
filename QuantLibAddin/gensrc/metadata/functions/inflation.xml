@@ -13,6 +13,29 @@
   </copyright>
   <Functions>
 
+    <Constructor name='qlEUHICP'>
+      <libraryFunction>EUHICP</libraryFunction>
+      <SupportedPlatforms>
+        <SupportedPlatform name='Excel'/>
+        <SupportedPlatform name='Cpp'/>
+      </SupportedPlatforms>
+      <ParameterList>
+        <Parameters>
+          <Parameter name='Interpolate'>
+            <type>bool</type>
+            <tensorRank>scalar</tensorRank>
+            <description>TRUE for interpolated index.</description>
+          </Parameter>
+          <Parameter name='ZeroInflationTermStructure' default='""'>
+            <type>QuantLib::ZeroInflationTermStructure</type>
+            <superType>libToHandle</superType>
+            <tensorRank>scalar</tensorRank>
+            <description>zero inflation term structure object ID.</description>
+          </Parameter>
+        </Parameters>
+      </ParameterList>
+    </Constructor>
+
     <Constructor name='qlFRHICP'>
       <libraryFunction>FRHICP</libraryFunction>
       <SupportedPlatforms>
@@ -215,6 +238,112 @@
       </ParameterList>
     </Constructor>
 
+    <Constructor name='qlMPSeasonality'>
+      <libraryFunction>MultiplicativePriceSeasonality</libraryFunction>
+      <SupportedPlatforms>
+        <SupportedPlatform name='Excel'/>
+        <SupportedPlatform name='Cpp'/>
+      </SupportedPlatforms>
+      <ParameterList>
+        <Parameters>
+          <Parameter name='BaseDate' exampleValue='"0d"'>
+            <type>QuantLib::Date</type>
+            <tensorRank>scalar</tensorRank>
+            <description>seasonality base date.</description>
+          </Parameter>
+          <Parameter name='Frequency' exampleValue='"monthly"'>
+            <type>QuantLib::Frequency</type>
+            <tensorRank>scalar</tensorRank>
+            <description>period for which a factor holds.</description>
+          </Parameter>
+          <Parameter name='Factors' >
+            <type>QuantLib::Rate</type>
+            <tensorRank>vector</tensorRank>
+            <description>seasonality factors.</description>
+          </Parameter>
+        </Parameters>
+      </ParameterList>
+    </Constructor>
+
+
+    <Member name='qlZITSZeroRate' type='QuantLib::ZeroInflationTermStructure'>
+      <description>returns zero inflation rate.</description>
+      <libraryFunction>zeroRate</libraryFunction>
+      <SupportedPlatforms>
+        <!--SupportedPlatform name='Excel' calcInWizard='false'/-->
+        <SupportedPlatform name='Excel'/>
+        <!--SupportedPlatform name='Cpp'/-->
+      </SupportedPlatforms>
+      <ParameterList>
+        <Parameters>
+          <Parameter name='Date'>
+            <type>QuantLib::Date</type>
+            <tensorRank>scalar</tensorRank>
+            <description>maturity date.</description>
+          </Parameter>
+          <Parameter name='InstObsLag' exampleValue='"-1d"'>
+            <type>QuantLib::Period</type>
+            <tensorRank>scalar</tensorRank>
+            <description>observation lag.</description>
+          </Parameter>
+          <Parameter name='ForceLinearInterpolation' default='false'>
+            <type>bool</type>
+            <tensorRank>scalar</tensorRank>
+            <description>TRUE for linear interpolation.</description>
+          </Parameter>
+          <Parameter name='Extrapolate' default='false'>
+            <type>bool</type>
+            <tensorRank>scalar</tensorRank>
+            <description>allow extrapolation.</description>
+          </Parameter>
+        </Parameters>
+      </ParameterList>
+      <ReturnValue>
+        <type>double</type>
+        <tensorRank>scalar</tensorRank>
+      </ReturnValue>
+    </Member>
+
+    <Member name='qlInflationTSBaseDate' type='QuantLib::InflationTermStructure'>
+      <description>returns true base date.</description>
+      <libraryFunction>baseDate</libraryFunction>
+      <SupportedPlatforms>
+        <!--SupportedPlatform name='Excel' calcInWizard='false'/-->
+        <SupportedPlatform name='Excel'/>
+        <!--SupportedPlatform name='Cpp'/-->
+      </SupportedPlatforms>
+      <ParameterList>
+        <Parameters>
+        </Parameters>
+      </ParameterList>
+      <ReturnValue>
+        <type>QuantLib::Date</type>
+        <tensorRank>scalar</tensorRank>
+      </ReturnValue>
+    </Member>
+
+    <Member name='qlInflationTSSetSeasonality' type='QuantLib::InflationTermStructure'>
+      <description>apply seasonality.</description>
+      <libraryFunction>setSeasonality</libraryFunction>
+      <SupportedPlatforms>
+        <!--SupportedPlatform name='Excel' calcInWizard='false'/-->
+        <SupportedPlatform name='Excel'/>
+        <!--SupportedPlatform name='Cpp'/-->
+      </SupportedPlatforms>
+      <ParameterList>
+        <Parameters>
+          <Parameter name='Seasonality'>
+            <type>QuantLib::Seasonality</type>
+            <tensorRank>scalar</tensorRank>
+            <description>Seasonality ID.</description>
+          </Parameter>
+        </Parameters>
+      </ParameterList>
+      <ReturnValue>
+        <type>void</type>
+        <tensorRank>scalar</tensorRank>
+      </ReturnValue>
+    </Member>
 
 
   </Functions>

@@ -342,9 +342,11 @@
 
     <DataType defaultSuperType='libraryClass'>QuantLib::BondHelper</DataType>
 
+    <DataType defaultSuperType='libraryClass'>QuantLib::InflationTermStructure</DataType>
     <DataType defaultSuperType='libraryClass'>QuantLib::ZeroInflationTermStructure</DataType>
     <DataType defaultSuperType='libraryClass'>QuantLib::ZeroInflationIndex</DataType>
     <DataType defaultSuperType='libraryClass'>QuantLib::ZeroCouponInflationSwapHelper</DataType>
+    <DataType defaultSuperType='libraryClass'>QuantLib::Seasonality</DataType>
 
 
   </DataTypes>
