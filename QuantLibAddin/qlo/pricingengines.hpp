@@ -134,7 +134,7 @@ namespace QuantLibAddin {
             bool permanent);
     };
 
-    class BachelierBlackCapFloorEngine : public BlackCapFloorEngine {
+    class BachelierBlackCapFloorEngine : public PricingEngine {
       public:
         BachelierBlackCapFloorEngine(
             const boost::shared_ptr<ObjectHandler::ValueObject>& properties,
