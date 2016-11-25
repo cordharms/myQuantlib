@@ -103,6 +103,32 @@ namespace QuantLibAddin {
 			new QuantLib::RealMCPayoff::VanillaOption( t, T, strike, callOrPut ));
 	}
 
+	RealMCCache::RealMCCache(
+		        const boost::shared_ptr<ObjectHandler::ValueObject>&    properties,
+		        const boost::shared_ptr<QuantLib::RealMCPayoff>&        x,
+		        bool                                                    permanent) : RealMCPayoff(properties, permanent) {
+		libraryObject_ = boost::shared_ptr<QuantLib::RealMCPayoff>( new QuantLib::RealMCPayoff::Cache(x));
+	}
+
+	RealMCLogical::RealMCLogical(const boost::shared_ptr<ObjectHandler::ValueObject>&    properties,
+		const boost::shared_ptr<QuantLib::RealMCPayoff>&        x,
+		const boost::shared_ptr<QuantLib::RealMCPayoff>&        y,
+		const std::string&                                      op,
+		bool                                                    permanent) : RealMCPayoff(properties, permanent) {
+		libraryObject_ = boost::shared_ptr<QuantLib::RealMCPayoff>(
+			new QuantLib::RealMCPayoff::Logical(x, y, op));
+	}
+
+	RealMCIfThenElse::RealMCIfThenElse(const boost::shared_ptr<ObjectHandler::ValueObject>&    properties,
+		const boost::shared_ptr<QuantLib::RealMCPayoff>&        x,
+		const boost::shared_ptr<QuantLib::RealMCPayoff>&        y,
+		const boost::shared_ptr<QuantLib::RealMCPayoff>&        z,
+		bool                                                    permanent) : RealMCPayoff(properties, permanent) {
+		libraryObject_ = boost::shared_ptr<QuantLib::RealMCPayoff>(
+			new QuantLib::RealMCPayoff::IfThenElse(x, y, z));
+	}
+
+
 	// particular rates payoffs
 
 	RealMCGeneralSwaption::RealMCGeneralSwaption( const boost::shared_ptr<ObjectHandler::ValueObject>& properties,

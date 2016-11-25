@@ -125,6 +125,31 @@ namespace QuantLibAddin {
 			          bool permanent);
 	};
 
+	class RealMCCache : public RealMCPayoff {
+	public:
+		RealMCCache(const boost::shared_ptr<ObjectHandler::ValueObject>&    properties,
+			        const boost::shared_ptr<QuantLib::RealMCPayoff>&        x,
+			        bool                                                    permanent);
+	};
+
+	class RealMCLogical : public RealMCPayoff {
+	public:
+		RealMCLogical(const boost::shared_ptr<ObjectHandler::ValueObject>&    properties,
+			          const boost::shared_ptr<QuantLib::RealMCPayoff>&        x,
+			          const boost::shared_ptr<QuantLib::RealMCPayoff>&        y,
+			          const std::string&                                      op,
+			          bool                                                    permanent);
+	};
+
+	class RealMCIfThenElse : public RealMCPayoff {
+	public:
+		RealMCIfThenElse(const boost::shared_ptr<ObjectHandler::ValueObject>&    properties,
+			const boost::shared_ptr<QuantLib::RealMCPayoff>&        x,
+			const boost::shared_ptr<QuantLib::RealMCPayoff>&        y,
+			const boost::shared_ptr<QuantLib::RealMCPayoff>&        z,
+			bool                                                    permanent);
+	};
+
 	// particular rates payoffs
 
 	class RealMCGeneralSwaption : public RealMCPayoff {

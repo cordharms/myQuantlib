@@ -956,6 +956,79 @@
       </ParameterList>
     </Constructor>
 
+    <Constructor name='qlRealMCCache'>
+      <libraryFunction>RealMCCache</libraryFunction>
+      <SupportedPlatforms>
+        <SupportedPlatform name='Excel'/>
+        <SupportedPlatform name='Cpp'/>
+      </SupportedPlatforms>
+      <ParameterList>
+        <Parameters>
+          <Parameter name='X' >
+            <type>QuantLib::RealMCPayoff</type>
+            <tensorRank>scalar</tensorRank>
+            <description>reference to payoff.</description>
+          </Parameter>
+        </Parameters>
+      </ParameterList>
+    </Constructor>
+
+    <Constructor name='qlRealMCLogical'>
+      <libraryFunction>RealMCLogical</libraryFunction>
+      <SupportedPlatforms>
+        <SupportedPlatform name='Excel'/>
+        <SupportedPlatform name='Cpp'/>
+      </SupportedPlatforms>
+      <ParameterList>
+        <Parameters>
+          <Parameter name='X' >
+            <type>QuantLib::RealMCPayoff</type>
+            <tensorRank>scalar</tensorRank>
+            <description>reference to payoff.</description>
+          </Parameter>
+          <Parameter name='Y' >
+            <type>QuantLib::RealMCPayoff</type>
+            <tensorRank>scalar</tensorRank>
+            <description>reference to payoff.</description>
+          </Parameter>
+          <Parameter name='Op' >
+            <type>string</type>
+            <tensorRank>scalar</tensorRank>
+            <description>operator symbol or string.</description>
+          </Parameter>
+        </Parameters>
+      </ParameterList>
+    </Constructor>
+
+    <Constructor name='qlRealMCIfThenElse'>
+      <libraryFunction>RealMCIfThenElse</libraryFunction>
+      <SupportedPlatforms>
+        <SupportedPlatform name='Excel'/>
+        <SupportedPlatform name='Cpp'/>
+      </SupportedPlatforms>
+      <ParameterList>
+        <Parameters>
+          <Parameter name='X' >
+            <type>QuantLib::RealMCPayoff</type>
+            <tensorRank>scalar</tensorRank>
+            <description>reference to 'if' payoff.</description>
+          </Parameter>
+          <Parameter name='Y' >
+            <type>QuantLib::RealMCPayoff</type>
+            <tensorRank>scalar</tensorRank>
+            <description>reference to 'then' payoff.</description>
+          </Parameter>
+          <Parameter name='Z' >
+            <type>QuantLib::RealMCPayoff</type>
+            <tensorRank>scalar</tensorRank>
+            <description>reference to 'else' payoff.</description>
+          </Parameter>
+        </Parameters>
+      </ParameterList>
+    </Constructor>
+
+
+
     <Constructor name='qlRealMCCashFlow'>
       <libraryFunction>RealMCCashFlow</libraryFunction>
       <SupportedPlatforms>
