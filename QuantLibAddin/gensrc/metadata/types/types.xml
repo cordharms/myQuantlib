@@ -297,6 +297,7 @@
     <DataType defaultSuperType='libraryClass'>QuantLib::RealMCCancellableNote</DataType>
     <DataType defaultSuperType='libraryClass'>QuantLib::RealAMCPricer</DataType>
     <DataType defaultSuperType='libraryClass'>QuantLib::RealRegression</DataType>
+    <DataType defaultSuperType='libraryClass'>QuantLib::RealMCScript</DataType>
 
     <DataType defaultSuperType='libraryClass'>QuantLib::HestonProcess</DataType>
     <DataType defaultSuperType='libraryClass'>QuantLib::HestonModel</DataType>

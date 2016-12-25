@@ -188,16 +188,26 @@ namespace QuantLibAddin {
 	RealMCLiborRate::RealMCLiborRate  (
 		                   const boost::shared_ptr<ObjectHandler::ValueObject>&    properties,
 			               const QuantLib::Time                                    fixingTime,
-				           const QuantLib::Time                                    startTime,
-					       const QuantLib::Time                                    endTime,
 					       const boost::shared_ptr<QuantLib::IborIndex>&           iborIndex,
 					       const QuantLib::Handle<QuantLib::YieldTermStructure>&   discYTS, 
 			               bool                                                    permanent) : RealMCPayoff(properties,permanent) {
         libraryObject_ = boost::shared_ptr<QuantLib::RealMCPayoff>(
-			new QuantLib::RealMCRates::LiborRate( fixingTime, startTime, endTime, iborIndex, discYTS ));
+			new QuantLib::RealMCRates::LiborRate( fixingTime, iborIndex, discYTS ));
 	}
 
-	RealMCCashFlow::RealMCCashFlow( 
+	RealMCLiborRate::RealMCLiborRate(
+		                  const boost::shared_ptr<ObjectHandler::ValueObject>&    properties,
+		                  const QuantLib::Time                                    fixingTime,
+		                  const QuantLib::Time                                    startTime,
+		                  const QuantLib::Time                                    endTime,
+		                  const boost::shared_ptr<QuantLib::IborIndex>&           iborIndex,
+		                  const QuantLib::Handle<QuantLib::YieldTermStructure>&   discYTS,
+		                  bool                                                    permanent) : RealMCPayoff(properties, permanent) {
+		libraryObject_ = boost::shared_ptr<QuantLib::RealMCPayoff>(
+			new QuantLib::RealMCRates::LiborRate(fixingTime, startTime, endTime, iborIndex, discYTS));
+	}
+
+	RealMCCashFlow::RealMCCashFlow(
 		                   const boost::shared_ptr<ObjectHandler::ValueObject>&    properties,
 						   const boost::shared_ptr<QuantLib::RealMCPayoff>&        x,
 			               const QuantLib::Time                                    startTime,
@@ -207,6 +217,17 @@ namespace QuantLibAddin {
         libraryObject_ = boost::shared_ptr<QuantLib::RealMCPayoff>(
 			new QuantLib::RealMCRates::CashFlow( x, startTime, payTime, applyZCBAdjuster ));
 	}
+
+	RealMCScript::RealMCScript(const boost::shared_ptr<ObjectHandler::ValueObject>&    properties,
+		                       const std::vector< std::string >&                       keys,
+		                       const std::vector< boost::shared_ptr<QuantLib::RealMCPayoff> >&  payoffs,
+		                       const std::vector< std::string >&                       script,
+		                       const bool                                              overwrite,
+		                       bool                                                    permanent) : RealMCPayoff(properties, permanent) {
+		libraryObject_ = boost::shared_ptr<QuantLib::RealMCPayoff>(
+			new QuantLib::RealMCScript(keys, payoffs, script, overwrite));
+	}
+
 
 	// Cancellable note details and pricer
 

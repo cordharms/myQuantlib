@@ -193,11 +193,16 @@ namespace QuantLibAddin {
 	public:
 		RealMCLiborRate  ( const boost::shared_ptr<ObjectHandler::ValueObject>&    properties,
 			               const QuantLib::Time                                    fixingTime,
-				           const QuantLib::Time                                    startTime,
-					       const QuantLib::Time                                    endTime,
 					       const boost::shared_ptr<QuantLib::IborIndex>&           iborIndex,
 					       const QuantLib::Handle<QuantLib::YieldTermStructure>&   discYTS, 
 			               bool                                                    permanent);
+		RealMCLiborRate(const boost::shared_ptr<ObjectHandler::ValueObject>&    properties,
+			            const QuantLib::Time                                    fixingTime,
+			            const QuantLib::Time                                    startTime,
+			            const QuantLib::Time                                    endTime,
+			            const boost::shared_ptr<QuantLib::IborIndex>&           iborIndex,
+			            const QuantLib::Handle<QuantLib::YieldTermStructure>&   discYTS,
+			            bool                                                    permanent);
 	};
 
 	class RealMCCashFlow : public RealMCPayoff {
@@ -208,6 +213,16 @@ namespace QuantLibAddin {
 			                const QuantLib::Time                                    payTime,
 							const bool                                              applyZCBAdjuster,
 			                bool                                                    permanent);
+	};
+
+	class RealMCScript : public RealMCPayoff {
+	public:
+		RealMCScript(const boost::shared_ptr<ObjectHandler::ValueObject>&    properties,
+			         const std::vector< std::string >&                       keys,
+			         const std::vector< boost::shared_ptr<QuantLib::RealMCPayoff> >&  payoffs,
+                     const std::vector< std::string >&                       script,
+			         const bool                                              overwrte,
+			         bool                                                    permanent);
 	};
 
 	// Cancellable note details and pricer

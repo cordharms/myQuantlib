@@ -816,15 +816,43 @@
             <tensorRank>scalar</tensorRank>
             <description>forward libor fixing time.</description>
           </Parameter>
+          <Parameter name='IborIndex' exampleValue='Libor3M'>
+            <type>QuantLib::IborIndex</type>
+            <tensorRank>scalar</tensorRank>
+            <description>Forcasting Ibor index (for tenor basis).</description>
+          </Parameter>
+          <Parameter name='DiscountCurve'>
+            <type>QuantLib::YieldTermStructure</type>
+            <superType>libToHandle</superType>
+            <tensorRank>scalar</tensorRank>
+            <description>YieldTermStructure for discounting.</description>
+          </Parameter>
+        </Parameters>
+      </ParameterList>
+    </Constructor>
+
+    <Constructor name='qlRealMCLiborRate2'>
+      <libraryFunction>RealMCLiborRate</libraryFunction>
+      <SupportedPlatforms>
+        <SupportedPlatform name='Excel'/>
+        <SupportedPlatform name='Cpp'/>
+      </SupportedPlatforms>
+      <ParameterList>
+        <Parameters>
+          <Parameter name='FixingTime' exampleValue ='1.0' default='1.0' >
+            <type>QuantLib::Time</type>
+            <tensorRank>scalar</tensorRank>
+            <description>forward libor fixing time.</description>
+          </Parameter>
           <Parameter name='StartTime' exampleValue ='1.0' default='1.0' >
             <type>QuantLib::Time</type>
             <tensorRank>scalar</tensorRank>
-            <description>period start time.</description>
+            <description>forward libor fixing time.</description>
           </Parameter>
-          <Parameter name='EndTime' exampleValue ='1.5' default='1.5' >
+          <Parameter name='EndTime' exampleValue ='1.0' default='1.0' >
             <type>QuantLib::Time</type>
             <tensorRank>scalar</tensorRank>
-            <description>period end time.</description>
+            <description>forward libor fixing time.</description>
           </Parameter>
           <Parameter name='IborIndex' exampleValue='Libor3M'>
             <type>QuantLib::IborIndex</type>
@@ -1026,6 +1054,85 @@
         </Parameters>
       </ParameterList>
     </Constructor>
+
+    <Constructor name='qlRealMCScript'>
+      <libraryFunction>RealMCScript</libraryFunction>
+      <SupportedPlatforms>
+        <SupportedPlatform name='Excel'/>
+        <SupportedPlatform name='Cpp'/>
+      </SupportedPlatforms>
+      <ParameterList>
+        <Parameters>
+          <Parameter name='Keys' >
+            <type>string</type>
+            <tensorRank>vector</tensorRank>
+            <description>keys for initial payoff map.</description>
+          </Parameter>
+          <Parameter name='Payoffs' >
+            <type>QuantLib::RealMCPayoff</type>
+            <tensorRank>vector</tensorRank>
+            <description>values for initial payoff map.</description>
+          </Parameter>
+          <Parameter name='Script' >
+            <type>string</type>
+            <tensorRank>vector</tensorRank>
+            <description>Payoff script extending the payoff map.</description>
+          </Parameter>
+          <Parameter name='OverwritePayoff' >
+            <type>bool</type>
+            <tensorRank>scalar</tensorRank>
+            <description>Allow overwriting payoffs in map.</description>
+          </Parameter>
+        </Parameters>
+      </ParameterList>
+    </Constructor>
+
+    <Member name='qlRealMCScriptLog' type='QuantLib::RealMCScript' >
+      <description>Return ScriptLog.</description>
+      <libraryFunction>scriptLog</libraryFunction>
+      <SupportedPlatforms>
+        <!--SupportedPlatform name='Excel' calcInWizard='false'/-->
+        <SupportedPlatform name='Excel'/>
+        <!--SupportedPlatform name='Calc'/-->
+        <!--SupportedPlatform name='Cpp'/-->
+      </SupportedPlatforms>
+      <ParameterList>
+        <Parameters/>
+      </ParameterList>
+      <ReturnValue>
+        <type>string</type>
+        <tensorRank>vector</tensorRank>
+      </ReturnValue>
+    </Member>
+
+    <Member name='qlRealMCScriptNPV' type='QuantLib::RealMCScript' >
+      <description>Returns NPV of simulated payoffs.</description>
+      <libraryFunction>NPV</libraryFunction>
+      <SupportedPlatforms>
+        <!--SupportedPlatform name='Excel' calcInWizard='false'/-->
+        <SupportedPlatform name='Excel'/>
+        <!--SupportedPlatform name='Calc'/-->
+        <!--SupportedPlatform name='Cpp'/-->
+      </SupportedPlatforms>
+      <ParameterList>
+        <Parameters>
+          <Parameter name='Simulation' >
+            <type>QuantLib::RealMCSimulation</type>
+            <tensorRank>scalar</tensorRank>
+            <description>reference to RealMCSimulation object.</description>
+          </Parameter>
+          <Parameter name='Keys' >
+            <type>string</type>
+            <tensorRank>vector</tensorRank>
+            <description>payoffs names</description>
+          </Parameter>
+        </Parameters>
+      </ParameterList>
+      <ReturnValue>
+        <type>QuantLib::Real</type>
+        <tensorRank>vector</tensorRank>
+      </ReturnValue>
+    </Member>
 
 
 
