@@ -282,6 +282,20 @@ namespace QuantLibAddin {
 			new QuantLib::RealRegression( controls, observations, maxDegree ));
 	}
 
+	RealAMCMax::RealAMCMax(
+		const boost::shared_ptr<ObjectHandler::ValueObject>&             properties,
+		const std::vector< boost::shared_ptr<QuantLib::RealMCPayoff> >&  x,
+		const std::vector< boost::shared_ptr<QuantLib::RealMCPayoff> >&  y,
+		const std::vector< boost::shared_ptr<QuantLib::RealMCPayoff> >&  z,  // regression variables
+		const QuantLib::Time                                             observationTime,
+		const boost::shared_ptr<QuantLib::RealMCSimulation>&             simulation,
+		const QuantLib::Size                                             maxPolynDegree,
+		bool                                                             permanent)
+		: RealMCPayoff(properties, permanent) {
+		libraryObject_ = boost::shared_ptr<QuantLib::RealMCPayoff>(
+			new QuantLib::RealAMCPricer::Max(x, y, z, observationTime, simulation, maxPolynDegree));
+	}
+
 	// more rates pricing and analysis objects
 
 	RealMCAnnuity::RealMCAnnuity( 

@@ -270,6 +270,19 @@ namespace QuantLibAddin {
 			              bool                                                            permanent);
 	};
 
+	class RealAMCMax : public RealMCPayoff {
+	public:
+		RealAMCMax(const boost::shared_ptr<ObjectHandler::ValueObject>&             properties,
+			       const std::vector< boost::shared_ptr<QuantLib::RealMCPayoff> >&  x,  
+			       const std::vector< boost::shared_ptr<QuantLib::RealMCPayoff> >&  y,
+			       const std::vector< boost::shared_ptr<QuantLib::RealMCPayoff> >&  z,  // regression variables
+			       const QuantLib::Time                                             observationTime,
+			       const boost::shared_ptr<QuantLib::RealMCSimulation>&             simulation,
+			       const QuantLib::Size                                             maxPolynDegree,
+			       bool                                                             permanent);
+	};
+
+
 	// more rates pricing and analysis objects
 
 	class RealMCAnnuity : public RealMCPayoff {

@@ -1327,8 +1327,51 @@
       </ReturnValue>
     </Member>
 
-    
-  <!-- Regression operator and functions -->
+    <Constructor name='qlRealAMCMax'>
+      <libraryFunction>RealAMCMax</libraryFunction>
+      <SupportedPlatforms>
+        <SupportedPlatform name='Excel'/>
+        <SupportedPlatform name='Cpp'/>
+      </SupportedPlatforms>
+      <ParameterList>
+        <Parameters>
+          <Parameter name='X' >
+            <type>QuantLib::RealMCPayoff</type>
+            <tensorRank>vector</tensorRank>
+            <description>payoffs that are discounted and summed up.</description>
+          </Parameter>
+          <Parameter name='Y' >
+            <type>QuantLib::RealMCPayoff</type>
+            <tensorRank>vector</tensorRank>
+            <description>other payoffs that are discounted and summed up.</description>
+          </Parameter>
+          <Parameter name='Z' >
+            <type>QuantLib::RealMCPayoff</type>
+            <tensorRank>vector</tensorRank>
+            <description>regression variables for trigger evaluation.</description>
+          </Parameter>
+          <Parameter name='ObservationTime' exampleValue ='1.0' default='1.0' >
+            <type>QuantLib::Time</type>
+            <tensorRank>scalar</tensorRank>
+            <description>(exercise) time at which maximum is observed.</description>
+          </Parameter>
+          <Parameter name='Simulation' >
+            <type>QuantLib::RealMCSimulation</type>
+            <tensorRank>scalar</tensorRank>
+            <description>reference to MC simulation used for regression.</description>
+          </Parameter>
+          <Parameter name='MaxPolynDegree' exampleValue ='0' default='0'>
+            <type>QuantLib::Size</type>
+            <tensorRank>scalar</tensorRank>
+            <description>maximum degree of monomial for regression.</description>
+          </Parameter>
+        </Parameters>
+      </ParameterList>
+    </Constructor>
+
+
+
+    <!-- Regression operator and functions -->
 
     <Constructor name='qlRealRegression'>
       <libraryFunction>RealRegression</libraryFunction>
