@@ -340,6 +340,16 @@
             <tensorRank>scalar</tensorRank>
             <description>Tolerance for numerical integration.</description>
           </Parameter>
+          <Parameter name='OpportunityCosts' exampleValue ='0.05, 0.05, ...' >
+            <type>QuantLib::Real</type>
+            <tensorRank>vector</tensorRank>
+            <description>(Optional) vector of opportunity costs for each exercise.</description>
+          </Parameter>
+          <Parameter name='ExerciseIntensity' exampleValue ='0.01, 0.01, ...' >
+            <type>QuantLib::Real</type>
+            <tensorRank>vector</tensorRank>
+            <description>(Optional) vector of independent anualized exercise intensities for each exercise.</description>
+          </Parameter>
         </Parameters>
       </ParameterList>
       <ReturnValue>
