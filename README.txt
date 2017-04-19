@@ -7,7 +7,7 @@ The QuantLib solution consists of two git repositories:
    QunantLib (sub-repo containing the project for core QuantLib - only C++)   
 
 1) Clone your local repository
-   git clone --recursive git@moco.d-fine.de:quantlib.git quantlib
+   git clone --recursive https://github.com/sschlenkrich/quantlib-old quantlib-old
    The option '--recursive' also clones the QuantLib repository
 
 2) Include Boost into VS 2012
@@ -23,7 +23,7 @@ The QuantLib solution consists of two git repositories:
    Note: You need to have Boost libraries compiled with VS 2012 and corresponding
    single/multi threading and release/debug options
    
-2) Open Solution ..\quantlib\QuantLibXL\QuantLibXL_full_vc11.sln
+2) Open Solution ..\quantlib-old\QuantLibXL\QuantLibXL_full_vc11.sln
 
 3) Build Solution and create Excel Addin (e.g. ...\quantlib\QuantLibXL\xll\QuantLibXL-vc90-mt-gd-1_1_0.xll)
 
