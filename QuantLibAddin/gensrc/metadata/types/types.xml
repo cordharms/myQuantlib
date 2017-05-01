@@ -349,6 +349,8 @@
     <DataType defaultSuperType='libraryClass'>QuantLib::ZeroCouponInflationSwapHelper</DataType>
     <DataType defaultSuperType='libraryClass'>QuantLib::Seasonality</DataType>
 
+    <DataType defaultSuperType='libraryClass'>QuantLib::LocalVolTermStructure</DataType>
+    <DataType defaultSuperType='libraryClass'>QuantLib::HestonSLVFokkerPlanckFdmParams</DataType>
 
   </DataTypes>
 

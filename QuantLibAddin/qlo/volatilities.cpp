@@ -30,6 +30,7 @@
 #include <ql/experimental/volatility/abcdatmvolcurve.hpp>
 #include <ql/experimental/volatility/sabrvolsurface.hpp>
 #include <ql/experimental/volatility/smiledsurface.hpp>
+#include <ql/processes/blackscholesprocess.hpp>
 
 
 namespace QuantLibAddin {
@@ -134,5 +135,12 @@ namespace QuantLibAddin {
                 QuantLib::SmiledSurface(smiles, referenceDate, cal, bdc, dayCounter));
 	}
 
+	LocalVolTermStructure::LocalVolTermStructure(
+		const boost::shared_ptr<ObjectHandler::ValueObject>&              properties,
+		const boost::shared_ptr<QuantLib::GeneralizedBlackScholesProcess> bsprocess,
+		bool                                                              permanent)
+		: VolatilityTermStructure(properties, permanent) {
+		    libraryObject_ = boost::shared_ptr<QuantLib::LocalVolTermStructure>(bsprocess->localVolatility().currentLink());
+	}
 
 }

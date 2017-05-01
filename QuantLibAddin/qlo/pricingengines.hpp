@@ -46,7 +46,8 @@ namespace QuantLib {
     class DiscountingSwapEngine;
     class GeneralizedBlackScholesProcess;
 	class DeltaVolQuote;
-
+	class HestonModel;
+	class LocalVolTermStructure;
     template <class T>
     class Handle;
 }
@@ -238,7 +239,36 @@ namespace QuantLibAddin {
 			bool permanent);
     };
 
+	class FdBlackScholesBarrierEngine : public PricingEngine {
+	public:
+		FdBlackScholesBarrierEngine(
+			const boost::shared_ptr<ObjectHandler::ValueObject>&                properties,
+			const boost::shared_ptr<QuantLib::GeneralizedBlackScholesProcess>&  process,
+			const QuantLib::Size                                                tGrid, 
+			const QuantLib::Size                                                xGrid,
+			const QuantLib::Size                                                dampingSteps,
+			const std::string&                                                  schemeString,
+			const bool                                                          localVol,
+			const QuantLib::Real                                                illegalLocalVolOverwrite,
+			bool permanent);
+	};
+
+
+class FdHestonBarrierEngine : public PricingEngine {
+public:
+	FdHestonBarrierEngine(
+		const boost::shared_ptr<ObjectHandler::ValueObject>&                properties,
+		const boost::shared_ptr<QuantLib::HestonModel>&                     model,
+		const QuantLib::Size                                                tGrid,
+		const QuantLib::Size                                                xGrid,
+		const QuantLib::Size                                                vGrid,
+		const QuantLib::Size                                                dampingSteps,
+		const std::string&                                                  schemeString,
+		const boost::shared_ptr<QuantLib::LocalVolTermStructure>&           leverageFct,
+		bool permanent);
+};
 
 }
+
 
 #endif

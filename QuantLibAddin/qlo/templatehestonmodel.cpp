@@ -8,6 +8,9 @@
 
 #include <qlo/templatehestonmodel.hpp>
 
+#include <boost/algorithm/string.hpp>
+
+
 namespace QuantLibAddin {
 
     HestonProcess::HestonProcess(
@@ -155,6 +158,118 @@ namespace QuantLibAddin {
 				 z0IsFixed,rhoIsFixed,exercTime,forward,strikes,vols,optimizationParams));
 	}
 
+	HestonSLVFokkerPlanckFdmParams::HestonSLVFokkerPlanckFdmParams(
+		const boost::shared_ptr<ObjectHandler::ValueObject>&  properties,
+		const QuantLib::Size                                  xGrid,
+		const QuantLib::Size                                  vGrid,
+		const QuantLib::Size                                  tMaxStepsPerYear,
+		const QuantLib::Size                                  tMinStepsPerYear,
+		const QuantLib::Real                                  tStepNumberDecay,
+		const QuantLib::Size                                  predictionCorretionSteps,
+		// local volatility forward equation
+		const QuantLib::Real                                  x0Density,
+		const QuantLib::Real                                  localVolEpsProb,
+		const QuantLib::Size                                  maxIntegrationIterations,
+		// variance mesher definition
+		const QuantLib::Real                                  vLowerEps,
+		const QuantLib::Real                                  vUpperEps,
+		const QuantLib::Real                                  vMin,
+		const QuantLib::Real                                  v0Density,
+		const QuantLib::Real                                  vLowerBoundDensity,
+		const QuantLib::Real                                  vUpperBoundDensity,
+		// do not calculate leverage function if prob is smaller than eps
+		const QuantLib::Real                                  leverageFctPropEps,
+		// algorithm to get to the start configuration at time point one
+		const std::string                                     greensAlgorithmString,
+		const std::string                                     trafoTypeString,
+		// define finite difference scheme
+		const std::string                                     schemeDescString,
+		bool                                                  permanent)
+		: ObjectHandler::LibraryObject<QuantLib::HestonSLVFokkerPlanckFdmParams>(properties, permanent) {
+		// parse string arguments
+		std::string desc;
+		desc = greensAlgorithmString;
+		boost::to_upper(desc);
+		QuantLib::FdmHestonGreensFct::Algorithm greensAlgorithm(QuantLib::FdmHestonGreensFct::Gaussian);
+		if (desc == "GAUSSIAN")        greensAlgorithm = QuantLib::FdmHestonGreensFct::Gaussian;
+		if (desc == "ZEROCORRELATION") greensAlgorithm = QuantLib::FdmHestonGreensFct::ZeroCorrelation;
+		if (desc == "SEMIANALYTICAL")  greensAlgorithm = QuantLib::FdmHestonGreensFct::SemiAnalytical;
+		desc = trafoTypeString;
+		boost::to_upper(desc);
+		QuantLib::FdmSquareRootFwdOp::TransformationType trafoType(QuantLib::FdmSquareRootFwdOp::Plain);
+		if (desc == "PLAIN")  trafoType = QuantLib::FdmSquareRootFwdOp::Plain;
+		if (desc == "POWER")  trafoType = QuantLib::FdmSquareRootFwdOp::Power;
+		if (desc == "LOG")    trafoType = QuantLib::FdmSquareRootFwdOp::Log;
+		desc = schemeDescString;
+		boost::to_upper(desc);
+		QuantLib::FdmSchemeDesc *schemeDesc(&QuantLib::FdmSchemeDesc::ModifiedCraigSneyd());
+		if (desc == "DOUGLAS")              schemeDesc = &(QuantLib::FdmSchemeDesc::Douglas());
+		if (desc == "IMPLICITEULER")        schemeDesc = &(QuantLib::FdmSchemeDesc::ImplicitEuler());
+		if (desc == "EXPLICITEULER")        schemeDesc = &(QuantLib::FdmSchemeDesc::ExplicitEuler());
+		if (desc == "CRAIGSNEYDL")          schemeDesc = &(QuantLib::FdmSchemeDesc::CraigSneyd());
+		if (desc == "MODIFIEDCRAIGSNEYDL")  schemeDesc = &(QuantLib::FdmSchemeDesc::ModifiedCraigSneyd());
+		if (desc == "HUNDSDORFER")          schemeDesc = &(QuantLib::FdmSchemeDesc::Hundsdorfer());
+		if (desc == "MODIFIEDHUNDSDORFER")  schemeDesc = &(QuantLib::FdmSchemeDesc::ModifiedHundsdorfer());
+		QuantLib::HestonSLVFokkerPlanckFdmParams params = {
+			xGrid, vGrid,  tMaxStepsPerYear, tMinStepsPerYear, tStepNumberDecay, predictionCorretionSteps,
+			x0Density, localVolEpsProb, maxIntegrationIterations, vLowerEps, vUpperEps,
+			vMin, v0Density, vLowerBoundDensity, vUpperBoundDensity, leverageFctPropEps,
+			greensAlgorithm, trafoType, *schemeDesc
+		};
+		libraryObject_ = boost::shared_ptr<QuantLib::HestonSLVFokkerPlanckFdmParams>(
+		    new QuantLib::HestonSLVFokkerPlanckFdmParams(params));
+	}
+
+	HestonSLVFokkerPlanckFdmParams::HestonSLVFokkerPlanckFdmParams(
+		const boost::shared_ptr<ObjectHandler::ValueObject>&  properties,
+		const std::string                                     setID,
+		bool                                                  permanent)
+		: ObjectHandler::LibraryObject<QuantLib::HestonSLVFokkerPlanckFdmParams>(properties, permanent) {
+		// some pre-defined sets from unit tests
+		const QuantLib::HestonSLVFokkerPlanckFdmParams plainParams =
+		{ 201, 301, 1000, 25, 3.0, 2,
+			0.1, 1e-4, 10000,
+			1e-8, 1e-8, 0.0, 1.0, 1.0, 1.0, 1e-6,
+			QuantLib::FdmHestonGreensFct::Gaussian,
+			QuantLib::FdmSquareRootFwdOp::Plain,
+			QuantLib::FdmSchemeDesc::ModifiedCraigSneyd()
+		};
+		const QuantLib::HestonSLVFokkerPlanckFdmParams logParams =
+		{ 301, 601, 2000, 30, 2.0, 2,
+			0.1, 1e-4, 10000,
+			1e-5, 1e-5, 0.0000025, 1.0, 0.1, 0.9, 1e-5,
+			QuantLib::FdmHestonGreensFct::Gaussian,
+			QuantLib::FdmSquareRootFwdOp::Log,
+			QuantLib::FdmSchemeDesc::ModifiedCraigSneyd()
+		};
+		const QuantLib::HestonSLVFokkerPlanckFdmParams powerParams =
+		{ 401, 801, 2000, 30, 2.0, 2,
+			0.1, 1e-3, 10000,
+			1e-6, 1e-6, 0.001, 1.0, 0.001, 1.0, 1e-5,
+			QuantLib::FdmHestonGreensFct::Gaussian,
+			QuantLib::FdmSquareRootFwdOp::Power,
+			QuantLib::FdmSchemeDesc::ModifiedCraigSneyd()
+		};
+		std::string setString = setID;
+		boost::to_upper(setString);
+		if (setString == "PLAIN") libraryObject_ = boost::shared_ptr<QuantLib::HestonSLVFokkerPlanckFdmParams>(new QuantLib::HestonSLVFokkerPlanckFdmParams(plainParams));
+		if (setString == "LOG") libraryObject_ = boost::shared_ptr<QuantLib::HestonSLVFokkerPlanckFdmParams>(new QuantLib::HestonSLVFokkerPlanckFdmParams(logParams));
+		if (setString == "POWER") libraryObject_ = boost::shared_ptr<QuantLib::HestonSLVFokkerPlanckFdmParams>(new QuantLib::HestonSLVFokkerPlanckFdmParams(powerParams));
+	}
+
+	HestonSLVFDMModel::HestonSLVFDMModel(
+		const boost::shared_ptr<ObjectHandler::ValueObject>&                properties,
+		const QuantLib::Handle<QuantLib::LocalVolTermStructure>&           localVol,
+		const QuantLib::Handle<QuantLib::HestonModel>&                     hestonModel,
+		const QuantLib::Date&                                               endDate,
+		const boost::shared_ptr<QuantLib::HestonSLVFokkerPlanckFdmParams>&  params,
+		const bool                                                          logging,
+		const std::vector<QuantLib::Date>&                                  mandatoryDates,
+		bool                                                                permanent)
+		: ObjectHandler::LibraryObject<QuantLib::HestonSLVFDMModel>(properties, permanent) {
+		libraryObject_ = boost::shared_ptr<QuantLib::HestonSLVFDMModel>(
+			new QuantLib::HestonSLVFDMModel(localVol, hestonModel, endDate, *params, logging, mandatoryDates));
+	}
 
 }
 

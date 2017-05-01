@@ -36,6 +36,7 @@ namespace QuantLib {
     class Matrix;
     class Period;
     class SabrVolSurface;
+	class GeneralizedBlackScholesProcess;
 }
 
 namespace QuantLibAddin {
@@ -112,6 +113,13 @@ namespace QuantLibAddin {
             bool permanent);
     };
 
+	class LocalVolTermStructure : public VolatilityTermStructure {
+	public:
+		LocalVolTermStructure(
+			const boost::shared_ptr<ObjectHandler::ValueObject>&          properties,
+            const boost::shared_ptr<QuantLib::GeneralizedBlackScholesProcess> bsprocess,
+			bool permanent);
+	};
 
 
 

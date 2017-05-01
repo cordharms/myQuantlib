@@ -23,6 +23,8 @@
 #include <ql/experimental/templatemodels/stochvol/stochvolmodels.hpp>
 #include <ql/experimental/templatemodels/stochvol/stochvolcalibrator.hpp>
 
+#include <ql/experimental/models/hestonslvfdmmodel.hpp>
+
 // #include <qlo/templatequasigaussian.hpp>
 
 
@@ -178,6 +180,58 @@ namespace QuantLibAddin {
 				const std::vector<QuantLib::Real>&                   optimizationParams,  // { [min], [max], epsfcn, ftol, xtol, gtol, maxfev, glAbsAcc, glMaxEval }							 
   				bool                                                 permanent);
 	};
+
+	// Heston Local-Stochastic Volatility Model
+
+	// this class captures deep-in-the-model parameters
+	class HestonSLVFokkerPlanckFdmParams : public ObjectHandler::LibraryObject<QuantLib::HestonSLVFokkerPlanckFdmParams> {
+	public:
+		HestonSLVFokkerPlanckFdmParams(
+			const boost::shared_ptr<ObjectHandler::ValueObject>&  properties,
+			const QuantLib::Size                                  xGrid,
+			const QuantLib::Size                                  vGrid,
+			const QuantLib::Size                                  tMaxStepsPerYear,
+			const QuantLib::Size                                  tMinStepsPerYear,
+		    const QuantLib::Real                                  tStepNumberDecay,
+            const QuantLib::Size                                  predictionCorretionSteps,
+			// local volatility forward equation
+		    const QuantLib::Real                                  x0Density,
+		    const QuantLib::Real                                  localVolEpsProb,
+		    const QuantLib::Size                                  maxIntegrationIterations,
+		    // variance mesher definition
+		    const QuantLib::Real                                  vLowerEps,
+			const QuantLib::Real                                  vUpperEps,
+			const QuantLib::Real                                  vMin,
+		    const QuantLib::Real                                  v0Density,
+			const QuantLib::Real                                  vLowerBoundDensity,
+			const QuantLib::Real                                  vUpperBoundDensity,
+            // do not calculate leverage function if prob is smaller than eps
+		    const QuantLib::Real                                  leverageFctPropEps,
+		    // algorithm to get to the start configuration at time point one
+		    const std::string                                     greensAlgorithmString,
+		    const std::string                                     trafoTypeString,
+		    // define finite difference scheme
+		    const std::string                                     schemeDescString,
+			bool                                                  permanent);
+		HestonSLVFokkerPlanckFdmParams(
+			const boost::shared_ptr<ObjectHandler::ValueObject>&  properties,
+			const std::string                                     setID,
+			bool                                                  permanent);
+	};
+
+	class HestonSLVFDMModel : public ObjectHandler::LibraryObject<QuantLib::HestonSLVFDMModel> {
+	public:
+		HestonSLVFDMModel(
+			const boost::shared_ptr<ObjectHandler::ValueObject>&                properties,
+			const QuantLib::Handle<QuantLib::LocalVolTermStructure>&           localVol,
+			const QuantLib::Handle<QuantLib::HestonModel>&                     hestonModel,
+			const QuantLib::Date&                                               endDate,
+			const boost::shared_ptr<QuantLib::HestonSLVFokkerPlanckFdmParams>&  params,
+			const bool                                                          logging,
+			const std::vector<QuantLib::Date>&                                  mandatoryDates,
+		    bool                                                                permanent);
+	};
+
 }
 
 #endif

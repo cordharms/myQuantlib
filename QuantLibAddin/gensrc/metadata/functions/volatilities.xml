@@ -5,6 +5,7 @@
   <serializationIncludes>
     <include>qlo/indexes/interestrateindex.hpp</include>
     <include>qlo/volatilities.hpp</include>
+    <include>qlo/processes.hpp</include>
     <include>ql/math/interpolations/sabrinterpolation.hpp</include>
     <include>ql/termstructures/volatility/equityfx/blackconstantvol.hpp</include>
     <include>ql/termstructures/volatility/equityfx/blackvariancesurface.hpp</include>
@@ -14,6 +15,7 @@
   <addinIncludes>
     <include>qlo/indexes/interestrateindex.hpp</include>
     <include>qlo/volatilities.hpp</include>
+    <include>qlo/processes.hpp</include>
     <include>ql/math/interpolations/sabrinterpolation.hpp</include>
     <include>ql/termstructures/volatility/equityfx/blackconstantvol.hpp</include>
     <include>ql/termstructures/volatility/equityfx/blackvariancesurface.hpp</include>
@@ -907,6 +909,54 @@
       </ParameterList>
     </Constructor>
 
+    <Constructor name='qlLocalVTSFromGBSProcess'>
+      <libraryFunction>LocalVolTermStructure</libraryFunction>
+      <SupportedPlatforms>
+        <!--SupportedPlatform name='Excel' calcInWizard='false'/-->
+        <SupportedPlatform name='Excel'/>
+        <!--SupportedPlatform name='Cpp'/-->
+      </SupportedPlatforms>
+      <ParameterList>
+        <Parameters>
+          <Parameter name='GBSProcess' >
+            <type>QuantLib::GeneralizedBlackScholesProcess</type>
+            <tensorRank>scalar</tensorRank>
+            <description>reference to GeneralizedBlackScholesProcess.</description>
+          </Parameter>
+        </Parameters>
+      </ParameterList>
+    </Constructor>
+
+    <Member name='qlLocalVTSLocalVol' type='QuantLib::LocalVolTermStructure'>
+      <description>Returns local volatility value V(ObsDate, UnderlyingLevel).</description>
+      <libraryFunction>localVol</libraryFunction>
+      <SupportedPlatforms>
+        <SupportedPlatform name='Excel'/>
+      </SupportedPlatforms>
+      <ParameterList>
+        <Parameters>
+          <Parameter name='ObservationDate' exampleValue ='0D' >
+            <type>QuantLib::Date</type>
+            <tensorRank>scalar</tensorRank>
+            <description>observation date.</description>
+          </Parameter>
+          <Parameter name='UnderlyingLevel' exampleValue ='100' >
+            <type>QuantLib::Real</type>
+            <tensorRank>scalar</tensorRank>
+            <description>underlying level.</description>
+          </Parameter>
+          <Parameter name='AllowExtrapolation' exampleValue ='true' default='false'>
+            <type>bool</type>
+            <tensorRank>scalar</tensorRank>
+            <description>allow volatility extrapolation.</description>
+          </Parameter>
+        </Parameters>
+      </ParameterList>
+      <ReturnValue>
+        <type>QuantLib::Real</type>
+        <tensorRank>scalar</tensorRank>
+      </ReturnValue>
+    </Member>
 
 
 
