@@ -31,6 +31,9 @@
 #include <ql/experimental/volatility/sabrvolsurface.hpp>
 #include <ql/experimental/volatility/smiledsurface.hpp>
 #include <ql/processes/blackscholesprocess.hpp>
+#include <ql/experimental/models/hestonslvfdmmodel.hpp>
+#include <ql/termstructures/volatility/equityfx/localvolsurface.hpp>
+#include <ql/termstructures/volatility/equityfx/noexceptlocalvolsurface.hpp>
 
 
 namespace QuantLibAddin {
@@ -137,10 +140,35 @@ namespace QuantLibAddin {
 
 	LocalVolTermStructure::LocalVolTermStructure(
 		const boost::shared_ptr<ObjectHandler::ValueObject>&              properties,
-		const boost::shared_ptr<QuantLib::GeneralizedBlackScholesProcess> bsprocess,
+		const QuantLib::Handle<QuantLib::BlackVolTermStructure>&          blackTS,
+		const QuantLib::Handle<QuantLib::YieldTermStructure>&             riskFreeTS,
+		const QuantLib::Handle<QuantLib::YieldTermStructure>&             dividendTS,
+		const QuantLib::Real                                              underlying,
+		const QuantLib::Real                                              illegalLocalVolOverwrite,
 		bool                                                              permanent)
 		: VolatilityTermStructure(properties, permanent) {
-		    libraryObject_ = boost::shared_ptr<QuantLib::LocalVolTermStructure>(bsprocess->localVolatility().currentLink());
+		if (illegalLocalVolOverwrite > 0) {
+			libraryObject_ = boost::shared_ptr<QuantLib::LocalVolTermStructure>(new QuantLib::NoExceptLocalVolSurface(blackTS, riskFreeTS, dividendTS, underlying, illegalLocalVolOverwrite));
+		}
+		else {
+			libraryObject_ = boost::shared_ptr<QuantLib::LocalVolTermStructure>(new QuantLib::LocalVolSurface(blackTS, riskFreeTS, dividendTS, underlying));
+		}
+	}
+
+	LocalVolTermStructure::LocalVolTermStructure(
+		const boost::shared_ptr<ObjectHandler::ValueObject>&              properties,
+		const boost::shared_ptr<QuantLib::GeneralizedBlackScholesProcess>& bsprocess,
+		bool                                                              permanent)
+		: VolatilityTermStructure(properties, permanent) {
+		libraryObject_ = boost::shared_ptr<QuantLib::LocalVolTermStructure>(bsprocess->localVolatility().currentLink());
+	}
+
+	LocalVolTermStructure::LocalVolTermStructure(
+		const boost::shared_ptr<ObjectHandler::ValueObject>&              properties,
+		const boost::shared_ptr<QuantLib::HestonSLVFDMModel>&             model,
+		bool                                                              permanent)
+		: VolatilityTermStructure(properties, permanent) {
+		libraryObject_ = boost::shared_ptr<QuantLib::LocalVolTermStructure>(model->leverageFunction());
 	}
 
 }

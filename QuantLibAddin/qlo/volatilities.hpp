@@ -37,6 +37,7 @@ namespace QuantLib {
     class Period;
     class SabrVolSurface;
 	class GeneralizedBlackScholesProcess;
+	class HestonSLVFDMModel;
 }
 
 namespace QuantLibAddin {
@@ -117,7 +118,19 @@ namespace QuantLibAddin {
 	public:
 		LocalVolTermStructure(
 			const boost::shared_ptr<ObjectHandler::ValueObject>&          properties,
-            const boost::shared_ptr<QuantLib::GeneralizedBlackScholesProcess> bsprocess,
+			const QuantLib::Handle<QuantLib::BlackVolTermStructure>&      blackTS,
+			const QuantLib::Handle<QuantLib::YieldTermStructure>&         riskFreeTS,
+			const QuantLib::Handle<QuantLib::YieldTermStructure>&         dividendTS,
+			const QuantLib::Real                                          underlying,
+			const QuantLib::Real                                          illegalLocalVolOverwrite,
+			bool                                                          permanent);
+		LocalVolTermStructure(
+			const boost::shared_ptr<ObjectHandler::ValueObject>&          properties,
+            const boost::shared_ptr<QuantLib::GeneralizedBlackScholesProcess>& bsprocess,
+			bool permanent);
+		LocalVolTermStructure(
+			const boost::shared_ptr<ObjectHandler::ValueObject>&          properties,
+			const boost::shared_ptr<QuantLib::HestonSLVFDMModel>&         model,
 			bool permanent);
 	};
 

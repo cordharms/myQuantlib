@@ -351,6 +351,7 @@
 
     <DataType defaultSuperType='libraryClass'>QuantLib::LocalVolTermStructure</DataType>
     <DataType defaultSuperType='libraryClass'>QuantLib::HestonSLVFokkerPlanckFdmParams</DataType>
+    <DataType defaultSuperType='libraryClass'>QuantLib::HestonSLVFDMModel</DataType>
 
   </DataTypes>
 

@@ -6,6 +6,7 @@
     <include>qlo/indexes/interestrateindex.hpp</include>
     <include>qlo/volatilities.hpp</include>
     <include>qlo/processes.hpp</include>
+    <include>qlo/templatehestonmodel.hpp</include>
     <include>ql/math/interpolations/sabrinterpolation.hpp</include>
     <include>ql/termstructures/volatility/equityfx/blackconstantvol.hpp</include>
     <include>ql/termstructures/volatility/equityfx/blackvariancesurface.hpp</include>
@@ -16,6 +17,7 @@
     <include>qlo/indexes/interestrateindex.hpp</include>
     <include>qlo/volatilities.hpp</include>
     <include>qlo/processes.hpp</include>
+    <include>qlo/templatehestonmodel.hpp</include>
     <include>ql/math/interpolations/sabrinterpolation.hpp</include>
     <include>ql/termstructures/volatility/equityfx/blackconstantvol.hpp</include>
     <include>ql/termstructures/volatility/equityfx/blackvariancesurface.hpp</include>
@@ -909,6 +911,47 @@
       </ParameterList>
     </Constructor>
 
+    <Constructor name='qlLocalVolTermStructure'>
+      <libraryFunction>LocalVolTermStructure</libraryFunction>
+      <SupportedPlatforms>
+        <!--SupportedPlatform name='Excel' calcInWizard='false'/-->
+        <SupportedPlatform name='Excel'/>
+        <!--SupportedPlatform name='Cpp'/-->
+      </SupportedPlatforms>
+      <ParameterList>
+        <Parameters>
+          <Parameter name='BlackVolTermStructure' >
+            <type>QuantLib::BlackVolTermStructure</type>
+            <superType>libToHandle</superType>
+            <tensorRank>scalar</tensorRank>
+            <description>reference to BlackVolTermStructure.</description>
+          </Parameter>
+          <Parameter name='YieldTermStructure' >
+            <type>QuantLib::YieldTermStructure</type>
+            <superType>libToHandle</superType>
+            <tensorRank>scalar</tensorRank>
+            <description>reference to YieldTermStructure.</description>
+          </Parameter>
+          <Parameter name='DividendTermStructure' >
+            <type>QuantLib::YieldTermStructure</type>
+            <superType>libToHandle</superType>
+            <tensorRank>scalar</tensorRank>
+            <description>reference to YieldTermStructure.</description>
+          </Parameter>
+          <Parameter name='Underlying' >
+            <type>QuantLib::Real</type>
+            <tensorRank>scalar</tensorRank>
+            <description>underlying spot value.</description>
+          </Parameter>
+          <Parameter name='IllegalLocalVolOverwrite' >
+            <type>QuantLib::Real</type>
+            <tensorRank>scalar</tensorRank>
+            <description>if positive use this value in case implied local vol is negative.</description>
+          </Parameter>
+        </Parameters>
+      </ParameterList>
+    </Constructor>
+
     <Constructor name='qlLocalVTSFromGBSProcess'>
       <libraryFunction>LocalVolTermStructure</libraryFunction>
       <SupportedPlatforms>
@@ -926,6 +969,25 @@
         </Parameters>
       </ParameterList>
     </Constructor>
+
+    <Constructor name='qlHestonSLVFDMModelLeverageFunction'>
+      <libraryFunction>LocalVolTermStructure</libraryFunction>
+      <SupportedPlatforms>
+        <!--SupportedPlatform name='Excel' calcInWizard='false'/-->
+        <SupportedPlatform name='Excel'/>
+        <!--SupportedPlatform name='Cpp'/-->
+      </SupportedPlatforms>
+      <ParameterList>
+        <Parameters>
+          <Parameter name='HestonSLVFDMModel' >
+            <type>QuantLib::HestonSLVFDMModel</type>
+            <tensorRank>scalar</tensorRank>
+            <description>reference to HestonSLVFDMModel.</description>
+          </Parameter>
+        </Parameters>
+      </ParameterList>
+    </Constructor>
+
 
     <Member name='qlLocalVTSLocalVol' type='QuantLib::LocalVolTermStructure'>
       <description>Returns local volatility value V(ObsDate, UnderlyingLevel).</description>
