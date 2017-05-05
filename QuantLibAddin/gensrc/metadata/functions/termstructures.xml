@@ -4,14 +4,16 @@
   <xlFunctionWizardCategory>QuantLib - Financial</xlFunctionWizardCategory>
   <serializationIncludes>
     <include>qlo/conversions/coercetermstructure.hpp</include>
-    
+    <include>qlo/volatilities.hpp</include>
     <include>qlo/ratehelpers.hpp</include>
+    <include>ql/termstructures/volatility/equityfx/blackvoltermstructure.hpp</include>
   </serializationIncludes>
   <addinIncludes>
     <include>qlo/handleimpl.hpp</include>
     <include>qlo/conversions/coercetermstructure.hpp</include>
-    
+    <include>qlo/volatilities.hpp</include>
     <include>qlo/ratehelpers.hpp</include>
+    <include>ql/termstructures/volatility/equityfx/blackvoltermstructure.hpp</include>
   </addinIncludes>
   <copyright>
     Copyright (C) 2005, 2006 Eric Ehlers
@@ -726,6 +728,66 @@
         </Parameters>
       </ParameterList>
     </Constructor>
+
+    <!-- YieldTermStructure constructors -->
+    <Constructor name='qlQuantoTermStructure'>
+      <libraryFunction>QuantoTermStructure</libraryFunction>
+      <SupportedPlatforms>
+        <!--SupportedPlatform name='Excel' calcInWizard='false'/-->
+        <SupportedPlatform name='Excel'/>
+      </SupportedPlatforms>
+      <ParameterList>
+        <Parameters>
+          <Parameter name='UnderlyingDividendTS' >
+            <type>QuantLib::YieldTermStructure</type>
+            <superType>libToHandle</superType>
+            <tensorRank>scalar</tensorRank>
+            <description>Base dividend YTS object ID.</description>
+          </Parameter>
+          <Parameter name='DomesticRiskFreeTS' >
+            <type>QuantLib::YieldTermStructure</type>
+            <superType>libToHandle</superType>
+            <tensorRank>scalar</tensorRank>
+            <description>Domestic discount curve YTS object ID (consistent to FX forwards).</description>
+          </Parameter>
+          <Parameter name='ForeignRiskFreeTS' >
+            <type>QuantLib::YieldTermStructure</type>
+            <superType>libToHandle</superType>
+            <tensorRank>scalar</tensorRank>
+            <description>Foreign discount curve YTS object ID (consistent to underlying forwards).</description>
+          </Parameter>
+          <Parameter name='UnderlyingBlackVolTS' >
+            <type>QuantLib::BlackVolTermStructure</type>
+            <superType>libToHandle</superType>
+            <tensorRank>scalar</tensorRank>
+            <description>Underlying BlackVolTS object ID.</description>
+          </Parameter>
+          <Parameter name='UnderlyingStrike' >
+            <type>QuantLib::Real</type>
+            <tensorRank>scalar</tensorRank>
+            <description>Strike used for underlying vol extraction.</description>
+          </Parameter>
+          <Parameter name='ExchRateBlackVolTS' >
+            <type>QuantLib::BlackVolTermStructure</type>
+            <superType>libToHandle</superType>
+            <tensorRank>scalar</tensorRank>
+            <description>FX BlackVolTS object ID.</description>
+          </Parameter>
+          <Parameter name='ExchRateATMlevel' >
+            <type>QuantLib::Real</type>
+            <tensorRank>scalar</tensorRank>
+            <description>Strike used for FX vol extraction.</description>
+          </Parameter>
+          <Parameter name='UnderlyingExchRateCorrelation' >
+            <type>QuantLib::Real</type>
+            <tensorRank>scalar</tensorRank>
+            <description>underlying vs. FX correlation.</description>
+          </Parameter>
+        </Parameters>
+      </ParameterList>
+    </Constructor>
+
+
 
   </Functions>
 </Category>

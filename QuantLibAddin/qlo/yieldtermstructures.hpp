@@ -38,6 +38,7 @@ namespace QuantLib {
     class DayCounter;
     class Date;
     class Quote;
+	class BlackVolTermStructure;
 
     template<class TS>
     class BootstrapHelper;
@@ -187,6 +188,20 @@ namespace QuantLibAddin {
 			bool                                                         permanent);
 	};
 
+	class QuantoTermStructure : public YieldTermStructure {
+	public:
+		QuantoTermStructure(
+			const boost::shared_ptr<ObjectHandler::ValueObject>&        properties,
+			const QuantLib::Handle<QuantLib::YieldTermStructure>&       underlyingDividendTS,
+			const QuantLib::Handle<QuantLib::YieldTermStructure>&       riskFreeTS,
+			const QuantLib::Handle<QuantLib::YieldTermStructure>&       foreignRiskFreeTS,
+			const QuantLib::Handle<QuantLib::BlackVolTermStructure>&    underlyingBlackVolTS,
+			const QuantLib::Real                                        underlyingStrike,
+			const QuantLib::Handle<QuantLib::BlackVolTermStructure>&    exchRateBlackVolTS,
+			const QuantLib::Real                                        exchRateATMlevel,
+			const QuantLib::Real                                        underlyingExchRateCorrelation,
+			bool permanent);
+	};
 
 }
 

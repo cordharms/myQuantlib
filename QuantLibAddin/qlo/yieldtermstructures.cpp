@@ -42,6 +42,9 @@
 #include <ql/termstructures/yield/fittedbonddiscountcurve.hpp>
 #include <ql/termstructures/yield/nonlinearfittingmethods.hpp>
 
+#include <ql/termstructures/yield/quantotermstructure.hpp>
+
+
 #include <boost/algorithm/string/case_conv.hpp>
 
 using boost::algorithm::to_upper_copy;
@@ -671,6 +674,22 @@ namespace QuantLibAddin {
 	}
 
 
+	QuantoTermStructure::QuantoTermStructure(
+		const boost::shared_ptr<ObjectHandler::ValueObject>&        properties,
+		const QuantLib::Handle<QuantLib::YieldTermStructure>&       underlyingDividendTS,
+		const QuantLib::Handle<QuantLib::YieldTermStructure>&       riskFreeTS,
+		const QuantLib::Handle<QuantLib::YieldTermStructure>&       foreignRiskFreeTS,
+		const QuantLib::Handle<QuantLib::BlackVolTermStructure>&    underlyingBlackVolTS,
+		const QuantLib::Real                                        underlyingStrike,
+		const QuantLib::Handle<QuantLib::BlackVolTermStructure>&    exchRateBlackVolTS,
+		const QuantLib::Real                                        exchRateATMlevel,
+		const QuantLib::Real                                        underlyingExchRateCorrelation,
+		bool permanent)
+		: YieldTermStructure(properties, permanent) {
+		libraryObject_ = shared_ptr<QuantLib::Extrapolator>(new
+			QuantLib::QuantoTermStructure(underlyingDividendTS, riskFreeTS, foreignRiskFreeTS, underlyingBlackVolTS, underlyingStrike, exchRateBlackVolTS, exchRateATMlevel, underlyingExchRateCorrelation));
+
+	}
 
 
 
