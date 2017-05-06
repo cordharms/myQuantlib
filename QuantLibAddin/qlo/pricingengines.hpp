@@ -48,11 +48,15 @@ namespace QuantLib {
 	class DeltaVolQuote;
 	class HestonModel;
 	class LocalVolTermStructure;
+	class CalibrationHelper;
     template <class T>
     class Handle;
 }
 
 namespace QuantLibAddin {
+
+	// we need CalibrationHelpers at various places
+	OH_LIB_CLASS(CalibrationHelper, QuantLib::CalibrationHelper);
 
     class PricingEngine : public ObjectHandler::LibraryObject<QuantLib::PricingEngine> {
       public:

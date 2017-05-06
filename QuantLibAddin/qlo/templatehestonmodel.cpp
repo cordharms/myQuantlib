@@ -36,6 +36,21 @@ namespace QuantLibAddin {
 			new QuantLib::HestonModel( process ));            
     }
 
+	void HestonModel::calibrate(const std::vector<boost::shared_ptr<QuantLib::CalibrationHelper> >& instruments,
+		const boost::shared_ptr<QuantLib::OptimizationMethod>&              method,
+		const boost::shared_ptr<QuantLib::EndCriteria>&                     endCriteria,
+		const std::vector<QuantLib::Real>&                                  weights,
+		const std::vector<bool>&                                            fixParameters,
+		const QuantLib::Real                                                hestonRelTolerance,
+	    const QuantLib::Size                                                hestonMaxEvaluations ) {
+		boost::shared_ptr<QuantLib::HestonModel> model = boost::dynamic_pointer_cast<QuantLib::HestonModel>(libraryObject_);
+		for (QuantLib::Size k = 0; k<instruments.size(); ++k) {
+			instruments[k]->setPricingEngine(boost::shared_ptr<QuantLib::PricingEngine>(new QuantLib::AnalyticHestonEngine(model, hestonRelTolerance, hestonMaxEvaluations)));
+		}
+		model->calibrate(instruments, *method, *endCriteria, QuantLib::NoConstraint(), weights, fixParameters);
+	}
+
+
     AnalyticHestonEngine::AnalyticHestonEngine(
                 const boost::shared_ptr<ObjectHandler::ValueObject>& properties,
                 const boost::shared_ptr<QuantLib::HestonModel>& model,
@@ -45,6 +60,31 @@ namespace QuantLibAddin {
         libraryObject_ = boost::shared_ptr<QuantLib::AnalyticHestonEngine>(
 			new QuantLib::AnalyticHestonEngine( model, relTolerance, maxEvaluations ));            
     }
+
+	HestonModelHelper::HestonModelHelper(
+		const boost::shared_ptr<ObjectHandler::ValueObject>&    properties,
+		const QuantLib::Period&                                 maturity,
+		const QuantLib::Calendar&                               calendar,
+		const QuantLib::Handle<QuantLib::Quote>&                s0,
+		const QuantLib::Real                                    strikePrice,
+		const QuantLib::Handle<QuantLib::Quote>&                volatility,
+		const QuantLib::Handle<QuantLib::YieldTermStructure>&   riskFreeRate,
+		const QuantLib::Handle<QuantLib::YieldTermStructure>&   dividendYield,
+		const QuantLib::CalibrationHelper::CalibrationErrorType& errorType,
+		bool                                                    permanent)
+		: CalibrationHelper(properties, permanent) {
+		libraryObject_ = boost::shared_ptr<QuantLib::CalibrationHelper>(
+			new QuantLib::HestonModelHelper(maturity, calendar, s0, strikePrice, volatility, riskFreeRate, dividendYield, errorType));
+	}
+
+	HestonBlackVolSurface::HestonBlackVolSurface(
+		const boost::shared_ptr<ObjectHandler::ValueObject>&    properties,
+		const QuantLib::Handle<QuantLib::HestonModel>&          model,
+		bool                                                    permanent)
+		: BlackVolTermStructure(properties, permanent) {
+		libraryObject_ = boost::shared_ptr<QuantLib::BlackVolTermStructure>(new QuantLib::HestonBlackVolSurface(model));
+	}
+
 
     RealHestonModel::RealHestonModel(
                 const boost::shared_ptr<ObjectHandler::ValueObject>& properties,

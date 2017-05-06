@@ -89,8 +89,6 @@ namespace QuantLibAddin {
 		                 bool                                                  permanent);
 	};
 
-	OH_LIB_CLASS(CalibrationHelper, QuantLib::CalibrationHelper);
-
     class SwaptionHelper : public CalibrationHelper {
     public:
         SwaptionHelper(const boost::shared_ptr<ObjectHandler::ValueObject>&  properties,

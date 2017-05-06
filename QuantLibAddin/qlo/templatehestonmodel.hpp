@@ -25,6 +25,9 @@
 
 #include <ql/experimental/models/hestonslvfdmmodel.hpp>
 
+#include <ql/models/equity/hestonmodelhelper.hpp>
+#include <ql/termstructures/volatility/equityfx/hestonblackvolsurface.hpp>
+
 // #include <qlo/templatequasigaussian.hpp>
 
 
@@ -63,6 +66,13 @@ namespace QuantLibAddin {
             const boost::shared_ptr<ObjectHandler::ValueObject>& properties,
             const boost::shared_ptr<QuantLib::HestonProcess>& process,
             bool permanent);
+		void calibrate(const std::vector<boost::shared_ptr<QuantLib::CalibrationHelper> >& instruments,
+			const boost::shared_ptr<QuantLib::OptimizationMethod>&              method,
+			const boost::shared_ptr<QuantLib::EndCriteria>&                     endCriteria,
+			const std::vector<QuantLib::Real>&                                  weights,
+			const std::vector<bool>&                                            fixParameters,
+			const QuantLib::Real                                                hestonRelTolerance,
+			const QuantLib::Size                                                hestonMaxEvaluations );
     };
 
     class AnalyticHestonEngine : public PricingEngine {
@@ -75,8 +85,30 @@ namespace QuantLibAddin {
                 bool permanent);
     };
 
+	class HestonModelHelper : public CalibrationHelper {
+	public:
+		HestonModelHelper(
+			const boost::shared_ptr<ObjectHandler::ValueObject>&    properties,
+			const QuantLib::Period&                                 maturity,
+			const QuantLib::Calendar&                               calendar,
+			const QuantLib::Handle<QuantLib::Quote>&                s0,
+			const QuantLib::Real                                    strikePrice,
+			const QuantLib::Handle<QuantLib::Quote>&                volatility,
+			const QuantLib::Handle<QuantLib::YieldTermStructure>&   riskFreeRate,
+			const QuantLib::Handle<QuantLib::YieldTermStructure>&   dividendYield,
+			const QuantLib::CalibrationHelper::CalibrationErrorType& errorType,
+			bool                                                    permanent);
+	};
 
-    class RealHestonModel : public ObjectHandler::LibraryObject<QuantLib::RealHestonModel> {
+	class HestonBlackVolSurface : public BlackVolTermStructure {
+	public:
+		HestonBlackVolSurface(
+			const boost::shared_ptr<ObjectHandler::ValueObject>&    properties,
+			const QuantLib::Handle<QuantLib::HestonModel>&          model,
+			bool                                                    permanent);
+	};
+
+	class RealHestonModel : public ObjectHandler::LibraryObject<QuantLib::RealHestonModel> {
     public:
         RealHestonModel(
                 const boost::shared_ptr<ObjectHandler::ValueObject>& properties,

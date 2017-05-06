@@ -300,6 +300,7 @@
     <DataType defaultSuperType='libraryClass'>QuantLib::RealMCScript</DataType>
 
     <DataType defaultSuperType='libraryClass'>QuantLib::HestonProcess</DataType>
+    <DataType defaultSuperType='objectClass'>QuantLibAddin::HestonModel</DataType>
     <DataType defaultSuperType='libraryClass'>QuantLib::HestonModel</DataType>
     <DataType defaultSuperType='libraryClass'>QuantLib::RealHestonModel</DataType>
     <DataType defaultSuperType='libraryClass'>QuantLib::ActiveHestonModel</DataType>
@@ -352,6 +353,8 @@
     <DataType defaultSuperType='libraryClass'>QuantLib::LocalVolTermStructure</DataType>
     <DataType defaultSuperType='libraryClass'>QuantLib::HestonSLVFokkerPlanckFdmParams</DataType>
     <DataType defaultSuperType='libraryClass'>QuantLib::HestonSLVFDMModel</DataType>
+    <DataType defaultSuperType='libraryClass'>QuantLib::HestonModelHelper</DataType>
+    <DataType defaultSuperType='libraryClass'>QuantLib::HestonBlackVolSurface</DataType>
 
   </DataTypes>
 

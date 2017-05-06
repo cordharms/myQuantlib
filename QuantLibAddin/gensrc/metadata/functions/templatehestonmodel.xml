@@ -100,6 +100,157 @@
       </ParameterList>
     </Constructor>
 
+    <Member name='qlHestonModelTheta' type='QuantLib::HestonModel' >
+      <description>return Heston Model theta.</description>
+      <libraryFunction>theta</libraryFunction>
+      <SupportedPlatforms>
+        <!--SupportedPlatform name='Excel' calcInWizard='false'/-->
+        <SupportedPlatform name='Excel'/>
+        <!--SupportedPlatform name='Calc'/-->
+        <!--SupportedPlatform name='Cpp'/-->
+      </SupportedPlatforms>
+      <ParameterList>
+        <Parameters>
+        </Parameters>
+      </ParameterList>
+      <ReturnValue>
+        <type>QuantLib::Real</type>
+        <tensorRank>scalar</tensorRank>
+      </ReturnValue>
+    </Member>
+
+    <Member name='qlHestonModelKappa' type='QuantLib::HestonModel' >
+      <description>return Heston Model kappa.</description>
+      <libraryFunction>kappa</libraryFunction>
+      <SupportedPlatforms>
+        <!--SupportedPlatform name='Excel' calcInWizard='false'/-->
+        <SupportedPlatform name='Excel'/>
+        <!--SupportedPlatform name='Calc'/-->
+        <!--SupportedPlatform name='Cpp'/-->
+      </SupportedPlatforms>
+      <ParameterList>
+        <Parameters>
+        </Parameters>
+      </ParameterList>
+      <ReturnValue>
+        <type>QuantLib::Real</type>
+        <tensorRank>scalar</tensorRank>
+      </ReturnValue>
+    </Member>
+
+    <Member name='qlHestonModelSigma' type='QuantLib::HestonModel' >
+      <description>return Heston Model sigma.</description>
+      <libraryFunction>sigma</libraryFunction>
+      <SupportedPlatforms>
+        <!--SupportedPlatform name='Excel' calcInWizard='false'/-->
+        <SupportedPlatform name='Excel'/>
+        <!--SupportedPlatform name='Calc'/-->
+        <!--SupportedPlatform name='Cpp'/-->
+      </SupportedPlatforms>
+      <ParameterList>
+        <Parameters>
+        </Parameters>
+      </ParameterList>
+      <ReturnValue>
+        <type>QuantLib::Real</type>
+        <tensorRank>scalar</tensorRank>
+      </ReturnValue>
+    </Member>
+
+    <Member name='qlHestonModelRho' type='QuantLib::HestonModel' >
+      <description>return Heston Model rho.</description>
+      <libraryFunction>rho</libraryFunction>
+      <SupportedPlatforms>
+        <!--SupportedPlatform name='Excel' calcInWizard='false'/-->
+        <SupportedPlatform name='Excel'/>
+        <!--SupportedPlatform name='Calc'/-->
+        <!--SupportedPlatform name='Cpp'/-->
+      </SupportedPlatforms>
+      <ParameterList>
+        <Parameters>
+        </Parameters>
+      </ParameterList>
+      <ReturnValue>
+        <type>QuantLib::Real</type>
+        <tensorRank>scalar</tensorRank>
+      </ReturnValue>
+    </Member>
+
+    <Member name='qlHestonModelV0' type='QuantLib::HestonModel' >
+      <description>return Heston Model v0.</description>
+      <libraryFunction>v0</libraryFunction>
+      <SupportedPlatforms>
+        <!--SupportedPlatform name='Excel' calcInWizard='false'/-->
+        <SupportedPlatform name='Excel'/>
+        <!--SupportedPlatform name='Calc'/-->
+        <!--SupportedPlatform name='Cpp'/-->
+      </SupportedPlatforms>
+      <ParameterList>
+        <Parameters>
+        </Parameters>
+      </ParameterList>
+      <ReturnValue>
+        <type>QuantLib::Real</type>
+        <tensorRank>scalar</tensorRank>
+      </ReturnValue>
+    </Member>
+
+
+
+    <Member name='qlHestonModelCalibrate' type='QuantLibAddin::HestonModel' >
+      <description>Calibrate a Heston Model.</description>
+      <libraryFunction>calibrate</libraryFunction>
+      <SupportedPlatforms>
+        <!--SupportedPlatform name='Excel' calcInWizard='false'/-->
+        <SupportedPlatform name='Excel'/>
+        <!--SupportedPlatform name='Calc'/-->
+        <!--SupportedPlatform name='Cpp'/-->
+      </SupportedPlatforms>
+      <ParameterList>
+        <Parameters>
+          <Parameter name='CalibrationHelpers' >
+            <type>QuantLib::CalibrationHelper</type>
+            <tensorRank>vector</tensorRank>
+            <description>vector of Helper IDs.</description>
+          </Parameter>
+          <Parameter name='OptimizationMethod' >
+            <type>QuantLib::OptimizationMethod</type>
+            <tensorRank>scalar</tensorRank>
+            <description>optimization method.</description>
+          </Parameter>
+          <Parameter name='EndCriteria' >
+            <type>QuantLib::EndCriteria</type>
+            <tensorRank>scalar</tensorRank>
+            <description>end criteria for optimization.</description>
+          </Parameter>
+          <Parameter name='Weights' >
+            <type>QuantLib::Real</type>
+            <tensorRank>vector</tensorRank>
+            <description>vector weights for options.</description>
+          </Parameter>
+          <Parameter name='FixParameters' >
+            <type>bool</type>
+            <tensorRank>vector</tensorRank>
+            <description>flags if (theta,kappa,sigma,rho,v0) is fixed in calibration.</description>
+          </Parameter>
+          <Parameter name='HestonRelTolerance' >
+            <type>QuantLib::Real</type>
+            <tensorRank>scalar</tensorRank>
+            <description>relative tolerance for Heston Vanilla pricing.</description>
+          </Parameter>
+          <Parameter name='HestonMaxEvaluations' >
+            <type>QuantLib::Size</type>
+            <tensorRank>scalar</tensorRank>
+            <description>maximum function evaluations for Heston Vanilla pricing.</description>
+          </Parameter>
+        </Parameters>
+      </ParameterList>
+      <ReturnValue>
+        <type>void</type>
+        <tensorRank>scalar</tensorRank>
+      </ReturnValue>
+    </Member>
+
     <Constructor name='qlAnalyticHestonEngine'>
       <libraryFunction>AnalyticHestonEngine</libraryFunction>
       <SupportedPlatforms>
@@ -126,6 +277,106 @@
         </Parameters>
       </ParameterList>
     </Constructor>
+
+    <Constructor name='qlHestonModelHelper'>
+      <libraryFunction>HestonModelHelper</libraryFunction>
+      <SupportedPlatforms>
+        <SupportedPlatform name='Excel'/>
+        <SupportedPlatform name='Cpp'/>
+      </SupportedPlatforms>
+      <ParameterList>
+        <Parameters>
+          <Parameter name='Maturity'>
+            <type>QuantLib::Period</type>
+            <tensorRank>scalar</tensorRank>
+            <description>Option maturty.</description>
+          </Parameter>
+          <Parameter name='Calendar'>
+            <type>QuantLib::Calendar</type>
+            <tensorRank>scalar</tensorRank>
+            <description>Calender for maturity date calculation.</description>
+          </Parameter>
+          <Parameter name='S0' exampleValue='1'>
+            <type>QuantLib::Quote</type>
+            <superType>libToHandle</superType>
+            <tensorRank>scalar</tensorRank>
+            <description>Underlying spot.</description>
+          </Parameter>
+          <Parameter name='Strike' exampleValue='1'>
+            <type>QuantLib::Real</type>
+            <tensorRank>scalar</tensorRank>
+            <description>Option strike.</description>
+          </Parameter>
+          <Parameter name='BlackVol' exampleValue='1'>
+            <type>QuantLib::Quote</type>
+            <superType>libToHandle</superType>
+            <tensorRank>scalar</tensorRank>
+            <description>Underlying spot.</description>
+          </Parameter>
+          <Parameter name='DiscountingCurve' >
+            <type>QuantLib::YieldTermStructure</type>
+            <superType>libToHandle</superType>
+            <tensorRank>scalar</tensorRank>
+            <description>discounting YieldTermStructure object ID.</description>
+          </Parameter>
+          <Parameter name='DividendCurve' >
+            <type>QuantLib::YieldTermStructure</type>
+            <superType>libToHandle</superType>
+            <tensorRank>scalar</tensorRank>
+            <description>dividend YieldTermStructure object ID.</description>
+          </Parameter>
+          <Parameter name='CalibrationErrorType'   exampleValue ='RelativePriceError'>
+            <type>QuantLib::CalibrationHelper::CalibrationErrorType</type>
+            <tensorRank>scalar</tensorRank>
+            <description>Calibration error type.</description>
+          </Parameter>
+        </Parameters>
+      </ParameterList>
+    </Constructor>
+
+    <Member name='qlHestonModelHelperSetPricingEngine' type='QuantLib::HestonModelHelper' >
+      <description>Set pricing engine with model.</description>
+      <libraryFunction>setPricingEngine</libraryFunction>
+      <SupportedPlatforms>
+        <!--SupportedPlatform name='Excel' calcInWizard='false'/-->
+        <SupportedPlatform name='Excel'/>
+        <!--SupportedPlatform name='Calc'/-->
+        <!--SupportedPlatform name='Cpp'/-->
+      </SupportedPlatforms>
+      <ParameterList>
+        <Parameters>
+          <Parameter name='PricingEngine' >
+            <type>QuantLib::PricingEngine</type>
+            <tensorRank>scalar</tensorRank>
+            <description>Pricing engine ID.</description>
+          </Parameter>
+        </Parameters>
+      </ParameterList>
+      <ReturnValue>
+        <type>void</type>
+        <tensorRank>scalar</tensorRank>
+      </ReturnValue>
+    </Member>
+
+    <Constructor name='qlHestonBlackVolSurface'>
+      <libraryFunction>HestonBlackVolSurface</libraryFunction>
+      <SupportedPlatforms>
+        <SupportedPlatform name='Excel'/>
+        <SupportedPlatform name='Cpp'/>
+      </SupportedPlatforms>
+      <ParameterList>
+        <Parameters>
+          <Parameter name='HestonModel' >
+            <type>QuantLib::HestonModel</type>
+            <superType>libToHandle</superType>
+            <tensorRank>scalar</tensorRank>
+            <description>HestonModel object ID.</description>
+          </Parameter>
+        </Parameters>
+      </ParameterList>
+    </Constructor>
+
+
 
     <Constructor name='qlRealHestonModel'>
       <libraryFunction>RealHestonModel</libraryFunction>
