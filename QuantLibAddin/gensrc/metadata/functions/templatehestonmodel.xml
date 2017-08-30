@@ -7,6 +7,7 @@
     <include>qlo/baseinstruments.hpp</include>
     <include>qlo/termstructures.hpp</include>
     <include>qlo/pricingengines.hpp</include>
+    <include>qlo/processes.hpp</include>
     <include>qlo/bonds.hpp</include>
     <include>qlo/templatehestonmodel.hpp</include>
     <include>qlo/volatilities.hpp</include>
@@ -21,6 +22,7 @@
     <include>qlo/bonds.hpp</include>
     <include>qlo/templatehestonmodel.hpp</include>
     <include>qlo/volatilities.hpp</include>
+    <include>qlo/processes.hpp</include>
     <include>ql/termstructures/volatility/equityfx/localvoltermstructure.hpp</include>    
   </addinIncludes>
   <copyright>
@@ -1515,7 +1517,42 @@
         </Parameters>
       </ParameterList>
     </Constructor>
-    
+
+
+    <Constructor name='qlMultiAssetBSModel'>
+      <libraryFunction>MultiAssetBSModel</libraryFunction>
+      <SupportedPlatforms>
+        <SupportedPlatform name='Excel'/>
+        <SupportedPlatform name='Cpp'/>
+      </SupportedPlatforms>
+      <ParameterList>
+        <Parameters>
+          <Parameter name='DiscountCurve'>
+            <type>QuantLib::YieldTermStructure</type>
+            <superType>libToHandle</superType>
+            <tensorRank>scalar</tensorRank>
+            <description>YieldTermStructure for discounting.</description>
+          </Parameter>
+          <Parameter name='Aliases' >
+            <type>string</type>
+            <tensorRank>vector</tensorRank>
+            <description>Aliases for underlying assets.</description>
+          </Parameter>
+          <Parameter name='GBSProcesses' >
+            <type>QuantLib::GeneralizedBlackScholesProcess</type>
+            <tensorRank>vector</tensorRank>
+            <description>references to GeneralizedBlackScholesProcesses.</description>
+          </Parameter>
+          <Parameter name='Correlation' default='0.0'>
+            <type>QuantLib::Time</type>
+            <tensorRank>matrix</tensorRank>
+            <description>Asset correlation matrix.</description>
+          </Parameter>
+        </Parameters>
+      </ParameterList>
+    </Constructor>
+
+
 
 
   </Functions>

@@ -501,6 +501,29 @@
       </ParameterList>
     </Constructor>
 
+    <Constructor name='qlRealMCAsset'>
+      <libraryFunction>RealMCAsset</libraryFunction>
+      <SupportedPlatforms>
+        <SupportedPlatform name='Excel'/>
+        <SupportedPlatform name='Cpp'/>
+      </SupportedPlatforms>
+      <ParameterList>
+        <Parameters>
+          <Parameter name='ObservationTime' exampleValue ='1' default='1' >
+            <type>QuantLib::Time</type>
+            <tensorRank>scalar</tensorRank>
+            <description>observation time (t).</description>
+          </Parameter>
+          <Parameter name='Alias' >
+            <type>string</type>
+            <tensorRank>scalar</tensorRank>
+            <description>alias of underlying asset.</description>
+          </Parameter>
+        </Parameters>
+      </ParameterList>
+    </Constructor>
+
+
     <Constructor name='qlRealMCVanillaOption'>
       <libraryFunction>RealMCVanillaOption</libraryFunction>
       <SupportedPlatforms>

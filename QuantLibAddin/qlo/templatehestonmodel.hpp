@@ -28,6 +28,9 @@
 #include <ql/models/equity/hestonmodelhelper.hpp>
 #include <ql/termstructures/volatility/equityfx/hestonblackvolsurface.hpp>
 
+#include <ql/experimental/templatemodels/multiasset/multiassetbsmodel.hpp>
+
+
 // #include <qlo/templatequasigaussian.hpp>
 
 
@@ -262,6 +265,17 @@ namespace QuantLibAddin {
 			const bool                                                          logging,
 			const std::vector<QuantLib::Date>&                                  mandatoryDates,
 		    bool                                                                permanent);
+	};
+
+	class MultiAssetBSModel : public RealStochasticProcess {
+	public:
+		MultiAssetBSModel(
+			const boost::shared_ptr<ObjectHandler::ValueObject>&                            properties,
+			const QuantLib::Handle<QuantLib::YieldTermStructure>&                           termStructure,
+			const std::vector<std::string>&                                                 aliases,
+			const std::vector<boost::shared_ptr<QuantLib::GeneralizedBlackScholesProcess>>& processes,
+			const QuantLib::RealStochasticProcess::MatA&                                    correlations,
+			bool                                                                            permanent);
 	};
 
 }

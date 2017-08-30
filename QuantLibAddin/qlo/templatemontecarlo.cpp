@@ -93,6 +93,15 @@ namespace QuantLibAddin {
 			new QuantLib::RealMCPayoff::Cash( t, T ));
 	}
 
+	RealMCAsset::RealMCAsset(const boost::shared_ptr<ObjectHandler::ValueObject>& properties,
+		const QuantLib::Time  t,
+		const std::string&    alias,
+		bool permanent) : RealMCPayoff(properties, permanent) {
+		libraryObject_ = boost::shared_ptr<QuantLib::RealMCPayoff>(
+			new QuantLib::RealMCPayoff::Asset(t, alias));
+	}
+
+
 	RealMCVanillaOption::RealMCVanillaOption( const boost::shared_ptr<ObjectHandler::ValueObject>& properties,
 			          const QuantLib::Time  t,
 					  const QuantLib::Time  T,
