@@ -308,6 +308,11 @@
             <tensorRank>vector</tensorRank>
             <description>vector of time-grid for asset adjuster (in year fractions)</description>
           </Parameter>
+          <Parameter name='Aliases' exampleValue='EUR, USD, ...'>
+            <type>string</type>
+            <tensorRank>vector</tensorRank>
+            <description>vector of aliases for which adjusters should de calculated</description>
+          </Parameter>
         </Parameters>
       </ParameterList>
       <ReturnValue>
@@ -326,7 +331,13 @@
         <!--SupportedPlatform name='Cpp'/-->
       </SupportedPlatforms>
       <ParameterList>
-        <Parameters/>
+        <Parameters>
+          <Parameter name='Alias' exampleValue ='EUR' >
+            <type>string</type>
+            <tensorRank>scalar</tensorRank>
+            <description>asset alias.</description>
+          </Parameter>
+        </Parameters>
       </ParameterList>
       <ReturnValue>
         <type>QuantLib::Real</type>
@@ -349,6 +360,11 @@
             <type>QuantLib::Time</type>
             <tensorRank>scalar</tensorRank>
             <description>asset observation time.</description>
+          </Parameter>
+          <Parameter name='Alias' exampleValue ='EUR' >
+            <type>string</type>
+            <tensorRank>scalar</tensorRank>
+            <description>asset alias.</description>
           </Parameter>
         </Parameters>
       </ParameterList>
