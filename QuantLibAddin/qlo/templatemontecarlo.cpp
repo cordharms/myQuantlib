@@ -37,6 +37,14 @@ namespace QuantLibAddin {
 			new QuantLib::RealMCPayoffPricer( payoffs, simulation ));
 	}
 
+	RealMCClone::RealMCClone(const boost::shared_ptr<ObjectHandler::ValueObject>& properties,
+		                     const boost::shared_ptr<QuantLib::RealMCPayoff>&             x,
+		                     const QuantLib::Time                                         observationTime,
+		                     bool                                                         permanent) : RealMCPayoff(properties, permanent) {
+		libraryObject_ = boost::shared_ptr<QuantLib::RealMCPayoff>(new QuantLib::RealMCPayoff::Clone(x,observationTime));
+	}
+
+
 	RealMCFixedAmount::RealMCFixedAmount( const boost::shared_ptr<ObjectHandler::ValueObject>& properties,
 						                  const QuantLib::Real                                 amount,
 			                              bool                                                 permanent) : RealMCPayoff(properties,permanent) {
@@ -135,6 +143,16 @@ namespace QuantLibAddin {
 		bool                                                    permanent) : RealMCPayoff(properties, permanent) {
 		libraryObject_ = boost::shared_ptr<QuantLib::RealMCPayoff>(
 			new QuantLib::RealMCPayoff::IfThenElse(x, y, z));
+	}
+
+	RealMCBasket::RealMCBasket(
+		const boost::shared_ptr<ObjectHandler::ValueObject>&               properties,
+		const std::vector<boost::shared_ptr<QuantLib::RealMCPayoff>> &     underlyings,
+		const std::vector<QuantLib::Real>&                                 weights,
+		const bool                                                         rainbow,
+		bool                                                               permanent) : RealMCPayoff(properties, permanent) {
+		libraryObject_ = boost::shared_ptr<QuantLib::RealMCPayoff>(
+			new QuantLib::RealMCPayoff::Basket(underlyings, weights, rainbow));
 	}
 
 

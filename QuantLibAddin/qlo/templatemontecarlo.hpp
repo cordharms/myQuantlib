@@ -59,6 +59,14 @@ namespace QuantLibAddin {
 
 	OH_LIB_CLASS(RealMCPayoff, QuantLib::RealMCPayoff);
 
+	class RealMCClone : public RealMCPayoff {
+	public:
+		RealMCClone(const boost::shared_ptr<ObjectHandler::ValueObject>& properties,
+			const boost::shared_ptr<QuantLib::RealMCPayoff>&             x,
+			const QuantLib::Time                                         observationTime,
+			bool                                                         permanent);
+	};
+
 	class RealMCFixedAmount : public RealMCPayoff {
 	public:
 		RealMCFixedAmount( const boost::shared_ptr<ObjectHandler::ValueObject>& properties,
@@ -157,6 +165,17 @@ namespace QuantLibAddin {
 			const boost::shared_ptr<QuantLib::RealMCPayoff>&        z,
 			bool                                                    permanent);
 	};
+
+	class RealMCBasket : public RealMCPayoff {
+	public:
+		RealMCBasket(
+			const boost::shared_ptr<ObjectHandler::ValueObject>&               properties,
+			const std::vector<boost::shared_ptr<QuantLib::RealMCPayoff>> &     underlyings,
+			const std::vector<QuantLib::Real>&                                 weights,
+			const bool                                                         rainbow,
+			bool                                                               permanent);
+	};
+
 
 	// particular rates payoffs
 

@@ -495,6 +495,28 @@
       </ReturnValue>
     </Member>
 
+    <Constructor name='qlRealMCClone'>
+      <libraryFunction>RealMCClone</libraryFunction>
+      <SupportedPlatforms>
+        <SupportedPlatform name='Excel'/>
+        <SupportedPlatform name='Cpp'/>
+      </SupportedPlatforms>
+      <ParameterList>
+        <Parameters>
+          <Parameter name='X' >
+            <type>QuantLib::RealMCPayoff</type>
+            <tensorRank>scalar</tensorRank>
+            <description>reference to payoff.</description>
+          </Parameter>
+          <Parameter name='ObservationTime' exampleValue ='1' default='1' >
+            <type>QuantLib::Time</type>
+            <tensorRank>scalar</tensorRank>
+            <description>new observation time (t).</description>
+          </Parameter>
+        </Parameters>
+      </ParameterList>
+    </Constructor>
+
     <Constructor name='qlRealMCCash'>
       <libraryFunction>RealMCCash</libraryFunction>
       <SupportedPlatforms>
@@ -1089,6 +1111,33 @@
             <type>QuantLib::RealMCPayoff</type>
             <tensorRank>scalar</tensorRank>
             <description>reference to 'else' payoff.</description>
+          </Parameter>
+        </Parameters>
+      </ParameterList>
+    </Constructor>
+
+    <Constructor name='qlRealMCBasket'>
+      <libraryFunction>RealMCBasket</libraryFunction>
+      <SupportedPlatforms>
+        <SupportedPlatform name='Excel'/>
+        <SupportedPlatform name='Cpp'/>
+      </SupportedPlatforms>
+      <ParameterList>
+        <Parameters>
+          <Parameter name='Underlyings' >
+            <type>QuantLib::RealMCPayoff</type>
+            <tensorRank>vector</tensorRank>
+            <description>vector of references to basket payoffs.</description>
+          </Parameter>
+          <Parameter name='Weights' >
+            <type>QuantLib::Real</type>
+            <tensorRank>vector</tensorRank>
+            <description>Basket weights.</description>
+          </Parameter>
+          <Parameter name='Rainbow' >
+            <type>bool</type>
+            <tensorRank>scalar</tensorRank>
+            <description>If True then sort underlyings descending.</description>
           </Parameter>
         </Parameters>
       </ParameterList>
