@@ -561,6 +561,48 @@
       </ParameterList>
     </Constructor>
 
+    <Constructor name='qlRealMCAssetBarrierNoHit'>
+      <libraryFunction>RealMCAssetBarrierNoHit</libraryFunction>
+      <SupportedPlatforms>
+        <SupportedPlatform name='Excel'/>
+        <SupportedPlatform name='Cpp'/>
+      </SupportedPlatforms>
+      <ParameterList>
+        <Parameters>
+          <Parameter name='BarrierStartTime' exampleValue ='1' default='1' >
+            <type>QuantLib::Time</type>
+            <tensorRank>scalar</tensorRank>
+            <description>start time of barrier observation.</description>
+          </Parameter>
+          <Parameter name='BarrierEndTime' exampleValue ='1' default='1' >
+            <type>QuantLib::Time</type>
+            <tensorRank>scalar</tensorRank>
+            <description>start time of barrier observation.</description>
+          </Parameter>
+          <Parameter name='DownBarrier' exampleValue ='1' default='1' >
+            <type>QuantLib::Real</type>
+            <tensorRank>scalar</tensorRank>
+            <description>lower barrier value.</description>
+          </Parameter>
+          <Parameter name='UpBarrier' exampleValue ='1' default='1' >
+            <type>QuantLib::Real</type>
+            <tensorRank>scalar</tensorRank>
+            <description>upper barrier value.</description>
+          </Parameter>
+          <Parameter name='DownOrUpOrBoth' exampleValue ='0' default='0' >
+            <type>QuantLib::Real</type>
+            <tensorRank>scalar</tensorRank>
+            <description>down barrier (-1), up barrier (+1), double barrier (0)</description>
+          </Parameter>
+          <Parameter name='Alias' >
+            <type>string</type>
+            <tensorRank>scalar</tensorRank>
+            <description>alias of underlying asset.</description>
+          </Parameter>
+        </Parameters>
+      </ParameterList>
+    </Constructor>
+
 
     <Constructor name='qlRealMCVanillaOption'>
       <libraryFunction>RealMCVanillaOption</libraryFunction>

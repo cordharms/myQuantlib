@@ -131,6 +131,18 @@ namespace QuantLibAddin {
 			bool permanent);
 	};
 
+	class RealMCAssetBarrierNoHit : public RealMCPayoff {
+	public:
+		RealMCAssetBarrierNoHit(const boost::shared_ptr<ObjectHandler::ValueObject>& properties,
+			const QuantLib::Time  tStart,
+			const QuantLib::Time  tEnd,
+			const QuantLib::Real  downBarrier,
+			const QuantLib::Real  upBarrier,
+			const QuantLib::Real  downOrUpOrBoth,
+			const std::string&    alias,
+			bool permanent);
+	};
+
 	class RealMCVanillaOption : public RealMCPayoff {
 	public:
 		RealMCVanillaOption( const boost::shared_ptr<ObjectHandler::ValueObject>& properties,
