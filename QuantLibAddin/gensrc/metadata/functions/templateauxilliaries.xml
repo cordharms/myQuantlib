@@ -105,7 +105,33 @@
       </ReturnValue>
     </Procedure>
 
-    
+    <Procedure name='qlUnionVector' >
+      <description>Returns union of two vectors.</description>
+      <alias>TemplateAuxilliaries::unionVector</alias>
+      <SupportedPlatforms>
+        <SupportedPlatform name='Excel'/>
+      </SupportedPlatforms>
+      <ParameterList>
+        <Parameters>
+          <Parameter name='V1' >
+            <type>double</type>
+            <tensorRank>vector</tensorRank>
+            <description>Vector one.</description>
+          </Parameter>
+          <Parameter name='V2' >
+            <type>double</type>
+            <tensorRank>vector</tensorRank>
+            <description>Vector two.</description>
+          </Parameter>
+        </Parameters>
+      </ParameterList>
+      <ReturnValue>
+        <type>double</type>
+        <tensorRank>vector</tensorRank>
+      </ReturnValue>
+    </Procedure>
+
+
   </Functions>
 
 </Category>

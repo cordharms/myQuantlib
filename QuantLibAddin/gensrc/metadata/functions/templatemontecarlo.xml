@@ -1235,6 +1235,24 @@
       </ReturnValue>
     </Member>
 
+    <Member name='qlRealMCScriptExpressions' type='QuantLib::RealMCScript' >
+      <description>Return expression trees.</description>
+      <libraryFunction>expressions</libraryFunction>
+      <SupportedPlatforms>
+        <!--SupportedPlatform name='Excel' calcInWizard='false'/-->
+        <SupportedPlatform name='Excel'/>
+        <!--SupportedPlatform name='Calc'/-->
+        <!--SupportedPlatform name='Cpp'/-->
+      </SupportedPlatforms>
+      <ParameterList>
+        <Parameters/>
+      </ParameterList>
+      <ReturnValue>
+        <type>string</type>
+        <tensorRank>vector</tensorRank>
+      </ReturnValue>
+    </Member>
+
     <Member name='qlRealMCScriptNPV' type='QuantLib::RealMCScript' >
       <description>Returns NPV of simulated payoffs.</description>
       <libraryFunction>NPV</libraryFunction>
@@ -1251,6 +1269,30 @@
             <tensorRank>scalar</tensorRank>
             <description>reference to RealMCSimulation object.</description>
           </Parameter>
+          <Parameter name='Keys' >
+            <type>string</type>
+            <tensorRank>vector</tensorRank>
+            <description>payoffs names</description>
+          </Parameter>
+        </Parameters>
+      </ParameterList>
+      <ReturnValue>
+        <type>QuantLib::Real</type>
+        <tensorRank>vector</tensorRank>
+      </ReturnValue>
+    </Member>
+
+    <Member name='qlRealMCScriptObservationTimes' type='QuantLib::RealMCScript' >
+      <description>Returns observation times of simulated payoffs.</description>
+      <libraryFunction>observationTimes</libraryFunction>
+      <SupportedPlatforms>
+        <!--SupportedPlatform name='Excel' calcInWizard='false'/-->
+        <SupportedPlatform name='Excel'/>
+        <!--SupportedPlatform name='Calc'/-->
+        <!--SupportedPlatform name='Cpp'/-->
+      </SupportedPlatforms>
+      <ParameterList>
+        <Parameters>
           <Parameter name='Keys' >
             <type>string</type>
             <tensorRank>vector</tensorRank>
