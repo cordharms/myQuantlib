@@ -260,7 +260,7 @@ namespace QuantLibAddin {
 			const boost::shared_ptr<ObjectHandler::ValueObject>&                properties,
 			const QuantLib::Handle<QuantLib::LocalVolTermStructure>&           localVol,
 			const QuantLib::Handle<QuantLib::HestonModel>&                     hestonModel,
-			const QuantLib::Date&                                               endDate,
+			const QuantLib::Date&                                              endDate,
 			const boost::shared_ptr<QuantLib::HestonSLVFokkerPlanckFdmParams>&  params,
 			const bool                                                          logging,
 			const std::vector<QuantLib::Date>&                                  mandatoryDates,
@@ -276,6 +276,20 @@ namespace QuantLibAddin {
 			const std::vector<boost::shared_ptr<QuantLib::GeneralizedBlackScholesProcess>>& processes,
 			const QuantLib::RealStochasticProcess::MatA&                                    correlations,
 			bool                                                                            permanent);
+	};
+
+	class VanillaLocalVolModel : public ObjectHandler::LibraryObject<QuantLib::VanillaLocalVolModel> {
+	public:
+		VanillaLocalVolModel(
+			const boost::shared_ptr<ObjectHandler::ValueObject>&  properties,
+			const QuantLib::Time                                  T,
+			const QuantLib::Real                                  S0,
+			const QuantLib::Real                                  sigmaATM,
+			const std::vector<QuantLib::Real>&                    Sp,
+			const std::vector<QuantLib::Real>&                    Sm,
+			const std::vector<QuantLib::Real>&                    Mp,
+			const std::vector<QuantLib::Real>&                    Mm,
+			bool                                                  permanent);
 	};
 
 }
