@@ -332,10 +332,13 @@ namespace QuantLibAddin {
 		const std::vector<QuantLib::Real>&                    Sm,
 		const std::vector<QuantLib::Real>&                    Mp,
 		const std::vector<QuantLib::Real>&                    Mm,
+		const QuantLib::Size                                  maxCalibrationIters,
+		const bool                                            adjustATMFlag,
+		const bool                                            enableLogging,
 		bool                                                  permanent)
 		: ObjectHandler::LibraryObject<QuantLib::VanillaLocalVolModel>(properties, permanent) {
 		libraryObject_ = boost::shared_ptr<QuantLib::VanillaLocalVolModel>(
-			new QuantLib::VanillaLocalVolModel(T,S0,sigmaATM,Sp,Sm,Mp,Mm));
+			new QuantLib::VanillaLocalVolModel(T,S0,sigmaATM,Sp,Sm,Mp,Mm,maxCalibrationIters,adjustATMFlag,enableLogging));
 	}
 
 

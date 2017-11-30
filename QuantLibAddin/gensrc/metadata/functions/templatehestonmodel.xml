@@ -1595,6 +1595,21 @@
             <tensorRank>vector</tensorRank>
             <description>Left wing volatility slopes.</description>
           </Parameter>
+          <Parameter name='MaxCalibrationIters' default='5'>
+            <type>QuantLib::Size</type>
+            <tensorRank>scalar</tensorRank>
+            <description>Max. number of iterations for ATM calibration.</description>
+          </Parameter>
+          <Parameter name='EnableAdjustATM' default='true'>
+            <type>bool</type>
+            <tensorRank>scalar</tensorRank>
+            <description>Apply ATM adjuster post ATM calibration.</description>
+          </Parameter>
+          <Parameter name='EnableLogging' default='false'>
+            <type>bool</type>
+            <tensorRank>scalar</tensorRank>
+            <description>Log ATM calibration details.</description>
+          </Parameter>
         </Parameters>
       </ParameterList>
     </Constructor>
@@ -1748,7 +1763,24 @@
       </ReturnValue>
     </Member>
 
-
+    <Member name='qlVanillaLocalVolModelLogging' type='QuantLib::VanillaLocalVolModel' >
+      <description>inspect calibration debug details.</description>
+      <libraryFunction>logging</libraryFunction>
+      <SupportedPlatforms>
+        <!--SupportedPlatform name='Excel' calcInWizard='false'/-->
+        <SupportedPlatform name='Excel'/>
+        <!--SupportedPlatform name='Calc'/-->
+        <!--SupportedPlatform name='Cpp'/-->
+      </SupportedPlatforms>
+      <ParameterList>
+        <Parameters>
+        </Parameters>
+      </ParameterList>
+      <ReturnValue>
+        <type>string</type>
+        <tensorRank>vector</tensorRank>
+      </ReturnValue>
+    </Member>
 
 
   </Functions>
