@@ -11,6 +11,7 @@
     <include>qlo/exercise.hpp</include>
     <include>ql/indexes/swapindex.hpp</include>
     <include>ql/exercise.hpp</include>
+    <include>ql/termstructures/volatility/volatilitytype.hpp</include>
   </serializationIncludes>
   <addinIncludes>
     <include>qlo/swaption.hpp</include>
@@ -21,6 +22,7 @@
     <include>qlo/exercise.hpp</include>
     <include>ql/indexes/swapindex.hpp</include>
     <include>ql/exercise.hpp</include>
+    <include>ql/termstructures/volatility/volatilitytype.hpp</include>
   </addinIncludes>
   <copyright>
     Copyright (C) 2006, 2007, 2008, 2014 Ferdinando Ametrano
@@ -196,6 +198,11 @@
             <type>QuantLib::Volatility</type>
             <tensorRank>scalar</tensorRank>
             <description>Maximum volatility, no higher solution.</description>
+          </Parameter>
+          <Parameter name='VolatilityType' default='"Normal"'>
+            <type>QuantLib::VolatilityType</type>
+            <tensorRank>scalar</tensorRank>
+            <description>Volatility type (Normal, ShiftedLognormal).</description>
           </Parameter>
           <Parameter name='Displacement' default='0.0'>
             <type>QuantLib::Real</type>

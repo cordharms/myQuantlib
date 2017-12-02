@@ -2138,6 +2138,22 @@
       </EnumeratedTypes>
     </EnumeratedTypeGroup>
 
+    <EnumeratedTypeGroup type='QuantLib::MixedInterpolation::Behavior'>
+      <includeFile>oh/enumerations/typefactory.hpp</includeFile>
+      <constructor>false</constructor>
+      <EnumeratedTypes>
+        <EnumeratedType>
+          <string>ShareRanges</string>
+          <value>QuantLib::MixedInterpolation::Behavior(QuantLib::MixedInterpolation::ShareRanges)</value>
+        </EnumeratedType>
+        <EnumeratedType>
+          <string>SplitRanges</string>
+          <value>QuantLib::MixedInterpolation::Behavior(QuantLib::MixedInterpolation::SplitRanges)</value>
+        </EnumeratedType>
+      </EnumeratedTypes>
+    </EnumeratedTypeGroup>
+
+
 
   </EnumeratedTypeGroups>
 

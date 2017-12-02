@@ -103,6 +103,7 @@ namespace QuantLibAddin {
                        const QuantLib::CalibrationHelper::CalibrationErrorType errorType,
                        const QuantLib::Real                                    strike,
                        const QuantLib::Real                                    nominal,
+			           const QuantLib::VolatilityType                          type,
                        const QuantLib::Real                                    shift,
 		               bool                                                    permanent);
 	};

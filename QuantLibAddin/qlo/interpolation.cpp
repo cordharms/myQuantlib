@@ -123,6 +123,7 @@ namespace QuantLibAddin {
         const vector<Real>& x,
         const vector<Handle<Quote> >& yh,
         QuantLib::Size n,
+		QuantLib::MixedInterpolation::Behavior behavior,
         QuantLib::CubicInterpolation::DerivativeApprox da,
         bool monotonic,
         QuantLib::CubicInterpolation::BoundaryCondition leftCondition,
@@ -142,6 +143,7 @@ namespace QuantLibAddin {
             QuantLib::MixedLinearCubicInterpolation(
                                                 x_.begin(), x_.end(),
                                                 y_.begin(), n,
+			 	                                behavior,
                                                 da, monotonic,
                                                 leftCondition, leftValue,
                                                 rightCondition, rightValue));
