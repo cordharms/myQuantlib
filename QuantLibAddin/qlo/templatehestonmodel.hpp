@@ -290,6 +290,7 @@ namespace QuantLibAddin {
 			const std::vector<QuantLib::Real>&                    Mp,
 			const std::vector<QuantLib::Real>&                    Mm,
 			const QuantLib::Size                                  maxCalibrationIters,
+			const QuantLib::Size                                  onlyForwardCalibrationIters,
 			const bool                                            adjustATMFlag,
 			const bool                                            enableLogging,
 			bool                                                  permanent);

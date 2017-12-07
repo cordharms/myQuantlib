@@ -1600,6 +1600,11 @@
             <tensorRank>scalar</tensorRank>
             <description>Max. number of iterations for ATM calibration.</description>
           </Parameter>
+          <Parameter name='OnlyForwardCalibrationIters' default='0'>
+            <type>QuantLib::Size</type>
+            <tensorRank>scalar</tensorRank>
+            <description>Number of initial iterations for only forward calibration.</description>
+          </Parameter>
           <Parameter name='EnableAdjustATM' default='true'>
             <type>bool</type>
             <tensorRank>scalar</tensorRank>
