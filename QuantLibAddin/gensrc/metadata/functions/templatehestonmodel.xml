@@ -10,6 +10,7 @@
     <include>qlo/processes.hpp</include>
     <include>qlo/bonds.hpp</include>
     <include>qlo/templatehestonmodel.hpp</include>
+    <include>qlo/vanillalocalvolmodel.hpp</include>
     <include>qlo/volatilities.hpp</include>
     <include>ql/termstructures/volatility/equityfx/localvoltermstructure.hpp</include>
   </serializationIncludes>
@@ -21,6 +22,7 @@
     <include>qlo/pricingengines.hpp</include>
     <include>qlo/bonds.hpp</include>
     <include>qlo/templatehestonmodel.hpp</include>
+    <include>qlo/vanillalocalvolmodel.hpp</include>
     <include>qlo/volatilities.hpp</include>
     <include>qlo/processes.hpp</include>
     <include>ql/termstructures/volatility/equityfx/localvoltermstructure.hpp</include>    
@@ -1614,6 +1616,16 @@
             <type>bool</type>
             <tensorRank>scalar</tensorRank>
             <description>Log ATM calibration details.</description>
+          </Parameter>
+          <Parameter name='UseInitialMu' default='false'>
+            <type>bool</type>
+            <tensorRank>scalar</tensorRank>
+            <description>Use user input flag for starting point for mu calibration.</description>
+          </Parameter>
+          <Parameter name='InitialMu' default='0.0'>
+            <type>QuantLib::Real</type>
+            <tensorRank>scalar</tensorRank>
+            <description>Actual user input for starting point for mu calibration.</description>
           </Parameter>
         </Parameters>
       </ParameterList>

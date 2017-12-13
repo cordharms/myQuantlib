@@ -30,10 +30,6 @@
 
 #include <ql/experimental/templatemodels/multiasset/multiassetbsmodel.hpp>
 
-
-// #include <qlo/templatequasigaussian.hpp>
-
-
 namespace QuantLib {
     template <class T>
     class Handle;
@@ -276,24 +272,6 @@ namespace QuantLibAddin {
 			const std::vector<boost::shared_ptr<QuantLib::GeneralizedBlackScholesProcess>>& processes,
 			const QuantLib::RealStochasticProcess::MatA&                                    correlations,
 			bool                                                                            permanent);
-	};
-
-	class VanillaLocalVolModel : public ObjectHandler::LibraryObject<QuantLib::VanillaLocalVolModel> {
-	public:
-		VanillaLocalVolModel(
-			const boost::shared_ptr<ObjectHandler::ValueObject>&  properties,
-			const QuantLib::Time                                  T,
-			const QuantLib::Real                                  S0,
-			const QuantLib::Real                                  sigmaATM,
-			const std::vector<QuantLib::Real>&                    Sp,
-			const std::vector<QuantLib::Real>&                    Sm,
-			const std::vector<QuantLib::Real>&                    Mp,
-			const std::vector<QuantLib::Real>&                    Mm,
-			const QuantLib::Size                                  maxCalibrationIters,
-			const QuantLib::Size                                  onlyForwardCalibrationIters,
-			const bool                                            adjustATMFlag,
-			const bool                                            enableLogging,
-			bool                                                  permanent);
 	};
 
 }

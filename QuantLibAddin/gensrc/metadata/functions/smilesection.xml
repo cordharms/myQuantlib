@@ -6,6 +6,7 @@
     <include>qlo/smilesection.hpp</include>
     <include>qlo/optimization.hpp</include>
     <include>qlo/volatilities.hpp</include>
+    <include>qlo/vanillalocalvolmodel.hpp</include>
     <include>ql/termstructures/volatility/interpolatedsmilesection.hpp</include>
     <include>ql/termstructures/volatility/sabrinterpolatedsmilesection.hpp</include>
     <include>ql/experimental/volatility/sabrvolsurface.hpp</include>
@@ -15,6 +16,7 @@
     <include>qlo/smilesection.hpp</include>
     <include>qlo/optimization.hpp</include>
     <include>qlo/volatilities.hpp</include>
+    <include>qlo/vanillalocalvolmodel.hpp</include>
     <include>ql/termstructures/volatility/interpolatedsmilesection.hpp</include>
     <include>ql/termstructures/volatility/sabrinterpolatedsmilesection.hpp</include>
     <include>ql/experimental/volatility/sabrvolsurface.hpp</include>
@@ -656,6 +658,42 @@
         </Parameters>
       </ParameterList>
     </Constructor>
+
+    <Constructor name='qlVanillaLocalVolModelSmileSection'>
+      <libraryFunction>VanillaLocalVolModelSmileSection</libraryFunction>
+      <SupportedPlatforms>
+        <!--SupportedPlatform name='Excel' calcInWizard='false'/-->
+        <SupportedPlatform name='Excel'/>
+        <SupportedPlatform name='Cpp'/>
+      </SupportedPlatforms>
+      <ParameterList>
+        <Parameters>
+          <Parameter name='Model'>
+            <type>QuantLib::VanillaLocalVolModel</type>
+            <tensorRank>scalar</tensorRank>
+            <description>Reference to VanillaLocalVolModel.</description>
+          </Parameter>
+          <Parameter name='DayCounter' default='"Actual/365 (Fixed)"'>
+            <type>QuantLib::DayCounter</type>
+            <tensorRank>scalar</tensorRank>
+            <description>DayCounter ID.</description>
+          </Parameter>
+          <Parameter name='VolalilityType' default='"Normal"'>
+            <type>QuantLib::VolatilityType</type>
+            <tensorRank>scalar</tensorRank>
+            <description>Normal or ShiftedLognormal volatility type.</description>
+          </Parameter>
+          <Parameter name='Shift' default='0.0'>
+            <type>QuantLib::Rate</type>
+            <tensorRank>scalar</tensorRank>
+            <description>Shift for ShiftedLognormal volatility type.</description>
+          </Parameter>
+        </Parameters>
+      </ParameterList>
+    </Constructor>
+
+
+
 
   </Functions>
 

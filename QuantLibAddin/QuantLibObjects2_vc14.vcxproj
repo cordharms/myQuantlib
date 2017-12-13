@@ -635,6 +635,7 @@
     <ClCompile Include="qlo\valueobjects\vo_volatility.cpp" />
     <ClCompile Include="qlo\piecewiseyieldcurve.cpp" />
     <ClCompile Include="qlo\ratehelpers.cpp" />
+    <ClCompile Include="qlo\vanillalocalvolmodel.cpp" />
     <ClCompile Include="qlo\yieldtermstructures.cpp" />
     <ClCompile Include="qlo\extrapolator.cpp" />
     <ClCompile Include="qlo\getcovariance.cpp" />
@@ -937,6 +938,7 @@
     <ClInclude Include="qlo\valueobjects\vo_volatility.hpp" />
     <ClInclude Include="qlo\piecewiseyieldcurve.hpp" />
     <ClInclude Include="qlo\ratehelpers.hpp" />
+    <ClInclude Include="qlo\vanillalocalvolmodel.hpp" />
     <ClInclude Include="qlo\yieldtermstructures.hpp" />
     <ClInclude Include="qlo\extrapolator.hpp" />
     <ClInclude Include="qlo\getcovariance.hpp" />
