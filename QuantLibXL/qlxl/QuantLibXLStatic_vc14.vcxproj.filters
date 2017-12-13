@@ -464,6 +464,12 @@
     <ClCompile Include="register\register_inflation.cpp">
       <Filter>register</Filter>
     </ClCompile>
+    <ClCompile Include="functions\templatelocalcorrelation.cpp">
+      <Filter>functions</Filter>
+    </ClCompile>
+    <ClCompile Include="register\register_templatelocalcorrelation.cpp">
+      <Filter>register</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="register\register_all.hpp">

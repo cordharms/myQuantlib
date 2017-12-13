@@ -1,0 +1,76 @@
+<Category name='templatelocalcorrelation'>
+  <description>functions and methods for template based local correlation model.</description>
+  <displayName>Template Local Correlation Model</displayName>
+  <xlFunctionWizardCategory>QuantLib - Financial</xlFunctionWizardCategory>
+  <serializationIncludes>
+    <include>qlo/conversions/coercetermstructure.hpp</include>
+    <include>qlo/volatilities.hpp</include>
+    <include>ql/termstructures/volatility/equityfx/localvoltermstructure.hpp</include>
+    <include>ql/experimental/templatemodels/multiasset/localcorrelationbsmodel.hpp</include>
+    <include>ql/experimental/termstructures/localcorrtermstructure.hpp</include>
+    <include>qlo/pricingengines.hpp</include>
+    <include>qlo/processes.hpp</include>
+    <include>qlo/termstructures.hpp</include>
+    <include>qlo/pricingengines.hpp</include>
+    <include>qlo/templatelocalcorrelation.hpp</include>
+  </serializationIncludes>
+  <addinIncludes>
+    <include>qlo/handleimpl.hpp</include>
+    <include>qlo/conversions/coercetermstructure.hpp</include>
+    <include>qlo/pricingengines.hpp</include>
+    <include>ql/experimental/templatemodels/multiasset/localcorrelationbsmodel.hpp</include>
+    <include>ql/experimental/termstructures/localcorrtermstructure.hpp</include>
+    <include>qlo/volatilities.hpp</include>
+    <include>qlo/processes.hpp</include>
+    <include>ql/termstructures/volatility/equityfx/localvoltermstructure.hpp</include>
+    <include>qlo/templatelocalcorrelation.hpp</include>
+  </addinIncludes>
+  <copyright>
+    Copyright (C) 2017, Sebastian Schlenkrich, Cord Harms
+  </copyright>
+  <Functions>
+
+    <!-- Constructor(s) for LocalCorrelationBSModel -->
+    
+    <Constructor name='qlRealLocalCorrelationModel'>
+      <libraryFunction>LocalCorrelationBSModel</libraryFunction>
+      <SupportedPlatforms>
+        <SupportedPlatform name='Excel'/>
+        <SupportedPlatform name='Cpp'/>
+      </SupportedPlatforms>
+      <ParameterList>
+        <Parameters>
+          <Parameter name='DiscountCurve'>
+            <type>QuantLib::YieldTermStructure</type>
+            <superType>libToHandle</superType>
+            <tensorRank>scalar</tensorRank>
+            <description>YieldTermStructure for discounting.</description>
+          </Parameter>
+          <Parameter name='Aliases'>
+            <type>string</type>
+            <tensorRank>vector</tensorRank>
+            <description>Aliases</description>
+          </Parameter>
+          <Parameter name='BSProcesses'>
+            <type>QuantLib::GeneralizedBlackScholesProcess</type>
+            <tensorRank>vector</tensorRank>
+            <description>Array of Black Scholes processes</description>
+          </Parameter>
+          <Parameter name='BSProcessLocalCorr'>
+            <type>QuantLib::GeneralizedBlackScholesProcess</type>
+            <tensorRank>scalar</tensorRank>
+            <description>Black Scholes process to determine local correlation</description>
+          </Parameter>
+          <Parameter name='LocalCorrelationTermStructure'>
+            <type>QuantLib::LocalCorrTermStructure</type>
+            <superType>libToHandle</superType>
+            <tensorRank>scalar</tensorRank>
+            <description>term structure for local correlation</description>
+          </Parameter>
+        </Parameters>
+      </ParameterList>
+    </Constructor>
+
+
+  </Functions>
+</Category>

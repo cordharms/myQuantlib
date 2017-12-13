@@ -103,6 +103,9 @@
     <Filter Include="Experimental\Inflation">
       <UniqueIdentifier>{ec087a92-ce96-4940-b2d9-3bac408be003}</UniqueIdentifier>
     </Filter>
+    <Filter Include="Experimental\Template\LocalCorrelation">
+      <UniqueIdentifier>{02291f24-54dd-45f6-913e-8d2a3c6dfeb4}</UniqueIdentifier>
+    </Filter>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="qlo\enumerations\register\register_all.cpp">
@@ -965,6 +968,12 @@
     </ClCompile>
     <ClCompile Include="qlo\valueobjects\vo_inflation.cpp">
       <Filter>valueobjects</Filter>
+    </ClCompile>
+    <ClCompile Include="qlo\valueobjects\vo_templatelocalcorrelation.cpp" />
+    <ClCompile Include="qlo\serialization\create\create_templatelocalcorrelation.cpp" />
+    <ClCompile Include="qlo\serialization\register\serialization_templatelocalcorrelation.cpp" />
+    <ClCompile Include="qlo\templatelocalcorrelation.cpp">
+      <Filter>Experimental\Template\LocalCorrelation</Filter>
     </ClCompile>
   </ItemGroup>
   <ItemGroup>
@@ -1950,6 +1959,12 @@
     </ClInclude>
     <ClInclude Include="qlo\valueobjects\vo_inflation.hpp">
       <Filter>valueobjects</Filter>
+    </ClInclude>
+    <ClInclude Include="qlo\valueobjects\vo_templatelocalcorrelation.hpp" />
+    <ClInclude Include="qlo\serialization\create\create_templatelocalcorrelation.hpp" />
+    <ClInclude Include="qlo\serialization\register\serialization_templatelocalcorrelation.hpp" />
+    <ClInclude Include="qlo\templatelocalcorrelation.hpp">
+      <Filter>Experimental\Template\LocalCorrelation</Filter>
     </ClInclude>
   </ItemGroup>
 </Project>

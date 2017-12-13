@@ -226,6 +226,7 @@
     <Xml Include="metadata\functions\templatehullwhite.xml">
       <SubType>Designer</SubType>
     </Xml>
+    <Xml Include="metadata\functions\templatelocalcorrelation.xml" />
     <Xml Include="metadata\functions\templatemontecarlo.xml">
       <SubType>Designer</SubType>
     </Xml>
