@@ -6,6 +6,7 @@
     <include>qlo/optimization.hpp</include>
     <include>ql/math/optimization/spherecylinder.hpp</include>
     <include>ql/math/optimization/endcriteria.hpp</include>
+    <include>ql/math/optimization/levenbergmarquardt.hpp</include>
   </addinIncludes>
   <copyright>
     Copyright (C) 2006, 2007 Ferdinando Ametrano
@@ -245,6 +246,24 @@
         </Parameters>
       </ParameterList>
     </Constructor>
+
+    <Member name='qlLevenbergMarquardtGetInfo' type='QuantLib::LevenbergMarquardt'>
+      <description>Returns the info parameter indicating success or failure.</description>
+      <libraryFunction>getInfo</libraryFunction>
+      <SupportedPlatforms>
+        <SupportedPlatform name='Excel'/>
+        <!--SupportedPlatform name='Cpp'/-->
+      </SupportedPlatforms>
+      <ParameterList>
+        <Parameters/>
+      </ParameterList>
+      <ReturnValue>
+        <type>long</type>
+        <tensorRank>scalar</tensorRank>
+      </ReturnValue>
+    </Member>
+
+
 
     <Constructor name='qlConjugateGradient'>
       <libraryFunction>ConjugateGradient</libraryFunction>

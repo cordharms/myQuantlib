@@ -7,6 +7,7 @@
 
 
 #include <qlo/vanillalocalvolmodel.hpp>
+#include <ql/experimental/templatemodels/vanillalocalvol/vanillalocalvolsmilesection.hpp>
 
 // #include <boost/algorithm/string.hpp>
 
@@ -34,7 +35,13 @@ namespace QuantLibAddin {
 			new QuantLib::VanillaLocalVolModel(T,S0,sigmaATM,Sp,Sm,Mp,Mm,maxCalibrationIters,onlyForwardCalibrationIters,adjustATMFlag,enableLogging,useInitialMu,initialMu));
 	}
 
-
+	VanillaLocalVolModel::VanillaLocalVolModel(
+		const boost::shared_ptr<ObjectHandler::ValueObject>&  properties,
+		const boost::shared_ptr<QuantLib::VanillaLocalVolModelSmileSection> smileSection,
+		bool                                                  permanent)
+		: ObjectHandler::LibraryObject<QuantLib::VanillaLocalVolModel>(properties, permanent) {
+		libraryObject_ = smileSection->model();
+	}
 }
 
 

@@ -120,6 +120,7 @@
     <DataType defaultSuperType='libraryClass'>QuantLib::NthToDefault</DataType>
     <DataType defaultSuperType='libraryClass'>QuantLib::OneAssetOption</DataType>
     <DataType defaultSuperType='libraryClass'>QuantLib::OptimizationMethod</DataType>
+    <DataType defaultSuperType='libraryClass'>QuantLib::LevenbergMarquardt</DataType>
     <DataType defaultSuperType='libraryClass'>QuantLib::OptionletStripper1</DataType>
     <DataType defaultSuperType='libraryClass'>QuantLib::OptionletStripper2</DataType>
     <DataType defaultSuperType='libraryClass'>QuantLib::OptionletStripper</DataType>

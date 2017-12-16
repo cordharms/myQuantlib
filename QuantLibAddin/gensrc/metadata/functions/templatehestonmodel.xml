@@ -1631,6 +1631,23 @@
       </ParameterList>
     </Constructor>
 
+    <Constructor name='qlVanillaLocalVolModelFromSmileSection'>
+      <libraryFunction>VanillaLocalVolModel</libraryFunction>
+      <SupportedPlatforms>
+        <SupportedPlatform name='Excel'/>
+        <SupportedPlatform name='Cpp'/>
+      </SupportedPlatforms>
+      <ParameterList>
+        <Parameters>
+          <Parameter name='SmileSection' >
+            <type>QuantLib::VanillaLocalVolModelSmileSection</type>
+            <tensorRank>scalar</tensorRank>
+            <description>Calibrated SmileSection.</description>
+          </Parameter>
+        </Parameters>
+      </ParameterList>
+    </Constructor>
+
     <Member name='qlVanillaLocalVolModelUnderlyingX' type='QuantLib::VanillaLocalVolModel' >
       <description>Returns x-grid.</description>
       <libraryFunction>underlyingX</libraryFunction>

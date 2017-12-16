@@ -12,35 +12,15 @@
 
 #include <qlo/baseinstruments.hpp>
 
- // #include <qlo/vanillaswap.hpp>
-// #include <qlo/termstructures.hpp>
-// #include <qlo/pricingengines.hpp>
-// #include <qlo/indexes/iborindex.hpp>
-
-// #include <ql/processes/hestonprocess.hpp>
-// #include <ql/models/equity/hestonmodel.hpp>
-// #include <ql/pricingengines/vanilla/analytichestonengine.hpp>
-// #include <ql/pricingengines/vanilla/analytichestonengine.hpp>
-// #include <ql/experimental/templatemodels/stochvol/stochvolmodels.hpp>
-// #include <ql/experimental/templatemodels/stochvol/stochvolcalibrator.hpp>
-// 
-// #include <ql/experimental/models/hestonslvfdmmodel.hpp>
-
-// #include <ql/models/equity/hestonmodelhelper.hpp>
-// #include <ql/termstructures/volatility/equityfx/hestonblackvolsurface.hpp>
-// 
-// #include <ql/experimental/templatemodels/multiasset/multiassetbsmodel.hpp>
 
 #include <ql/experimental/templatemodels/vanillalocalvol/vanillalocalvolmodels.hpp>
-
-
-// #include <qlo/templatequasigaussian.hpp>
 
 
 namespace QuantLib {
     template <class T>
     class Handle;
 	class StochasticProcess;
+	class VanillaLocalVolModelSmileSection;
 }
 
 
@@ -64,6 +44,11 @@ namespace QuantLibAddin {
 			const bool                                            enableLogging,
 			const bool                                            useInitialMu,
 			const  QuantLib::Real                                 initialMu,
+			bool                                                  permanent);
+
+		VanillaLocalVolModel(
+			const boost::shared_ptr<ObjectHandler::ValueObject>&  properties,
+			const boost::shared_ptr<QuantLib::VanillaLocalVolModelSmileSection> smileSection,
 			bool                                                  permanent);
 	};
 

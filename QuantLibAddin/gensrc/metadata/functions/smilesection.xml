@@ -692,6 +692,104 @@
       </ParameterList>
     </Constructor>
 
+    <Constructor name='qlVanillaLocalVolModelSmileSection2'>
+      <libraryFunction>VanillaLocalVolModelSmileSection</libraryFunction>
+      <SupportedPlatforms>
+        <!--SupportedPlatform name='Excel' calcInWizard='false'/-->
+        <SupportedPlatform name='Excel'/>
+        <SupportedPlatform name='Cpp'/>
+      </SupportedPlatforms>
+      <ParameterList>
+        <Parameters>
+          <Parameter name='ExpiryDate' exampleValue ='3m'>
+            <type>QuantLib::Date</type>
+            <tensorRank>scalar</tensorRank>
+            <description>smile's expiry as date.</description>
+          </Parameter>
+          <Parameter name='Forward' default='0.0'>
+            <type>QuantLib::Rate</type>
+            <tensorRank>scalar</tensorRank>
+            <description>Underlying forward rate.</description>
+          </Parameter>
+          <Parameter name='RelStrikes' >
+            <type>QuantLib::Rate</type>
+            <tensorRank>vector</tensorRank>
+            <description>Strikes relative to ATM - at least 3 strikes including zero (i.e. ATM).</description>
+          </Parameter>
+          <Parameter name='SmileVolatilties' >
+            <type>QuantLib::Volatility</type>
+            <tensorRank>vector</tensorRank>
+            <description>Implied volatility values corresponding to strikes.</description>
+          </Parameter>
+          <Parameter name='ExtrRelStrikes' default='1.0'>
+            <type>QuantLib::Rate</type>
+            <tensorRank>scalar</tensorRank>
+            <description>additional strike for right-wing extrapolation.</description>
+          </Parameter>
+          <Parameter name='ExtrSlope' default='0.0'>
+            <type>QuantLib::Real</type>
+            <tensorRank>scalar</tensorRank>
+            <description>additional slope for right-wing extrapolation.</description>
+          </Parameter>
+          <Parameter name='VegaWeighted' default='true'>
+            <type>bool</type>
+            <tensorRank>scalar</tensorRank>
+            <description>Calibrate prices (true) or vols (false).</description>
+          </Parameter>
+          <Parameter name='EndCriteria' >
+            <type>QuantLib::EndCriteria</type>
+            <tensorRank>scalar</tensorRank>
+            <description>Reference to EndCriteria object for optimisation.</description>
+          </Parameter>
+          <Parameter name='OptimizationMethod' >
+            <type>QuantLib::OptimizationMethod</type>
+            <tensorRank>scalar</tensorRank>
+            <description>Reference to OptimizationMethod object (e.g. Levenberg-Marquardt).</description>
+          </Parameter>
+          <Parameter name='DayCounter' default='"Actual/365 (Fixed)"'>
+            <type>QuantLib::DayCounter</type>
+            <tensorRank>scalar</tensorRank>
+            <description>DayCounter ID.</description>
+          </Parameter>
+          <Parameter name='ReferenceDate' exampleValue ='3m'>
+            <type>QuantLib::Date</type>
+            <tensorRank>scalar</tensorRank>
+            <description>reference date for time to expiry calculation.</description>
+          </Parameter>
+          <Parameter name='VolalilityType' default='"Normal"'>
+            <type>QuantLib::VolatilityType</type>
+            <tensorRank>scalar</tensorRank>
+            <description>Normal or ShiftedLognormal volatility type.</description>
+          </Parameter>
+          <Parameter name='Shift' default='0.0'>
+            <type>QuantLib::Rate</type>
+            <tensorRank>scalar</tensorRank>
+            <description>Shift for ShiftedLognormal volatility type.</description>
+          </Parameter>
+          <Parameter name='BaseModel'>
+            <type>QuantLib::VanillaLocalVolModel</type>
+            <tensorRank>scalar</tensorRank>
+            <description>Reference to VanillaLocalVolModel to clone model properties.</description>
+          </Parameter>
+          <Parameter name='MinSlope' default='-1.0'>
+            <type>QuantLib::Real</type>
+            <tensorRank>scalar</tensorRank>
+            <description>Minimum slope change (optimization boundary).</description>
+          </Parameter>
+          <Parameter name='MaxSlope' default='1.0'>
+            <type>QuantLib::Real</type>
+            <tensorRank>scalar</tensorRank>
+            <description>Maximum slope change (optimization boundary).</description>
+          </Parameter>
+          <Parameter name='Alpha' default='0.0'>
+            <type>QuantLib::Real</type>
+            <tensorRank>scalar</tensorRank>
+            <description>Tikhonov alpha for regularisation.</description>
+          </Parameter>
+        </Parameters>
+      </ParameterList>
+    </Constructor>
+
 
 
 
