@@ -790,6 +790,69 @@
       </ParameterList>
     </Constructor>
 
+    <Constructor name='qlVanillaLocalVolModelSmileSection3'>
+      <libraryFunction>VanillaLocalVolModelSmileSection</libraryFunction>
+      <SupportedPlatforms>
+        <!--SupportedPlatform name='Excel' calcInWizard='false'/-->
+        <SupportedPlatform name='Excel'/>
+        <SupportedPlatform name='Cpp'/>
+      </SupportedPlatforms>
+      <ParameterList>
+        <Parameters>
+          <Parameter name='ExpiryDate' exampleValue ='3m'>
+            <type>QuantLib::Date</type>
+            <tensorRank>scalar</tensorRank>
+            <description>smile's expiry as date.</description>
+          </Parameter>
+          <Parameter name='Forward' default='0.0'>
+            <type>QuantLib::Rate</type>
+            <tensorRank>scalar</tensorRank>
+            <description>Underlying forward rate.</description>
+          </Parameter>
+          <Parameter name='ATMVolatility' default='0.0'>
+            <type>QuantLib::Volatility</type>
+            <tensorRank>scalar</tensorRank>
+            <description>Underlying ATM volatility.</description>
+          </Parameter>
+          <Parameter name='Smile1' >
+            <type>QuantLib::VanillaLocalVolModelSmileSection</type>
+            <tensorRank>scalar</tensorRank>
+            <description>Reference to SmileSection (rho=0).</description>
+          </Parameter>
+          <Parameter name='Smile2' >
+            <type>QuantLib::VanillaLocalVolModelSmileSection</type>
+            <tensorRank>scalar</tensorRank>
+            <description>Reference to SmileSection (rho=1).</description>
+          </Parameter>
+          <Parameter name='Rho' default='0.5'>
+            <type>QuantLib::Real</type>
+            <tensorRank>scalar</tensorRank>
+            <description>Convex combination, rho in [0,1].</description>
+          </Parameter>
+          <Parameter name='DayCounter' default='"Actual/365 (Fixed)"'>
+            <type>QuantLib::DayCounter</type>
+            <tensorRank>scalar</tensorRank>
+            <description>DayCounter ID.</description>
+          </Parameter>
+          <Parameter name='ReferenceDate' exampleValue ='3m'>
+            <type>QuantLib::Date</type>
+            <tensorRank>scalar</tensorRank>
+            <description>reference date for time to expiry calculation.</description>
+          </Parameter>
+          <Parameter name='VolalilityType' default='"Normal"'>
+            <type>QuantLib::VolatilityType</type>
+            <tensorRank>scalar</tensorRank>
+            <description>Normal or ShiftedLognormal volatility type.</description>
+          </Parameter>
+          <Parameter name='Shift' default='0.0'>
+            <type>QuantLib::Rate</type>
+            <tensorRank>scalar</tensorRank>
+            <description>Shift for ShiftedLognormal volatility type.</description>
+          </Parameter>
+        </Parameters>
+      </ParameterList>
+    </Constructor>
+
 
 
 

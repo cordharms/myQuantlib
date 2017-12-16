@@ -256,6 +256,23 @@ namespace QuantLibAddin {
 			new QuantLib::VanillaLocalVolModelSmileSection(expiryDate, forward, relativeStrikes, smileVolatilities, extrapolationRelativeStrike, extrapolationSlope, vegaWeighted, endCriteria, method, dc, referenceDate, type, shift, model, minSlope, maxSlope, alpha));
 	}
 
+	VanillaLocalVolModelSmileSection::VanillaLocalVolModelSmileSection(
+		const boost::shared_ptr<ObjectHandler::ValueObject>&      properties,
+		const QuantLib::Date&                                     expiryDate,
+		const QuantLib::Rate&                                     forward,
+		const QuantLib::Volatility&                               atmVolatility,
+		const boost::shared_ptr<QuantLib::VanillaLocalVolModelSmileSection>& smile1,
+		const boost::shared_ptr<QuantLib::VanillaLocalVolModelSmileSection>& smile2,
+		const QuantLib::Real&                                     rho,
+		const QuantLib::DayCounter&                               dc,
+		const QuantLib::Date&                                     referenceDate,
+		const QuantLib::VolatilityType                            type,
+		const QuantLib::Rate                                      shift,
+		bool                                                      permanent)
+		: SmileSection(properties, permanent) {
+		libraryObject_ = boost::shared_ptr<QuantLib::SmileSection>(
+			new QuantLib::VanillaLocalVolModelSmileSection(expiryDate, forward, atmVolatility, smile1, smile2, rho, dc, referenceDate, type, shift));
+	}
 
 }
 
