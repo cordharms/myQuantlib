@@ -969,11 +969,13 @@
     <ClCompile Include="qlo\valueobjects\vo_inflation.cpp">
       <Filter>valueobjects</Filter>
     </ClCompile>
-    <ClCompile Include="qlo\valueobjects\vo_templatelocalcorrelation.cpp" />
     <ClCompile Include="qlo\serialization\create\create_templatelocalcorrelation.cpp" />
     <ClCompile Include="qlo\serialization\register\serialization_templatelocalcorrelation.cpp" />
     <ClCompile Include="qlo\templatelocalcorrelation.cpp">
       <Filter>Experimental\Template\LocalCorrelation</Filter>
+    </ClCompile>
+    <ClCompile Include="qlo\valueobjects\vo_templatelocalcorrelation.cpp">
+      <Filter>valueobjects</Filter>
     </ClCompile>
   </ItemGroup>
   <ItemGroup>
@@ -1960,11 +1962,13 @@
     <ClInclude Include="qlo\valueobjects\vo_inflation.hpp">
       <Filter>valueobjects</Filter>
     </ClInclude>
-    <ClInclude Include="qlo\valueobjects\vo_templatelocalcorrelation.hpp" />
     <ClInclude Include="qlo\serialization\create\create_templatelocalcorrelation.hpp" />
     <ClInclude Include="qlo\serialization\register\serialization_templatelocalcorrelation.hpp" />
     <ClInclude Include="qlo\templatelocalcorrelation.hpp">
       <Filter>Experimental\Template\LocalCorrelation</Filter>
+    </ClInclude>
+    <ClInclude Include="qlo\valueobjects\vo_templatelocalcorrelation.hpp">
+      <Filter>valueobjects</Filter>
     </ClInclude>
   </ItemGroup>
 </Project>

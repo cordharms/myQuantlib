@@ -56,11 +56,6 @@
             <tensorRank>vector</tensorRank>
             <description>Array of Black Scholes processes</description>
           </Parameter>
-          <Parameter name='BSProcessLocalCorr'>
-            <type>QuantLib::GeneralizedBlackScholesProcess</type>
-            <tensorRank>scalar</tensorRank>
-            <description>Black Scholes process to determine local correlation</description>
-          </Parameter>
           <Parameter name='LocalCorrelationTermStructure'>
             <type>QuantLib::LocalCorrTermStructure</type>
             <superType>libToHandle</superType>
@@ -71,6 +66,27 @@
       </ParameterList>
     </Constructor>
 
+    <Constructor name='qlCorrTermStructurelocalInCrossCorrFX'>
+      <libraryFunction>localInCrossCorrelationFX</libraryFunction>
+      <SupportedPlatforms>
+        <SupportedPlatform name='Excel'/>
+        <SupportedPlatform name='Cpp'/>
+      </SupportedPlatforms>
+      <ParameterList>
+        <Parameters>
+          <Parameter name='BSProcesses'>
+            <type>QuantLib::GeneralizedBlackScholesProcess</type>
+            <tensorRank>vector</tensorRank>
+            <description>Array of Black Scholes processes</description>
+          </Parameter>
+          <Parameter name='BSProcessLocalCorr'>
+            <type>QuantLib::GeneralizedBlackScholesProcess</type>
+            <tensorRank>scalar</tensorRank>
+            <description>Black Scholes process to determine local correlation</description>
+          </Parameter>
+        </Parameters>
+      </ParameterList>
+    </Constructor>
 
   </Functions>
 </Category>

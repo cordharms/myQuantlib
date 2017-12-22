@@ -18,15 +18,31 @@ namespace QuantLibAddin {
 		const QuantLib::Handle<QuantLib::YieldTermStructure>&							termStructure,
 		const std::vector<std::string>&                                                 aliases,
 		const std::vector<boost::shared_ptr<QuantLib::GeneralizedBlackScholesProcess>>& processes,
-		const boost::shared_ptr<QuantLib::GeneralizedBlackScholesProcess>&				processToCal,
 		const QuantLib::Handle<QuantLib::LocalCorrTermStructure>&						localCorrTermStructure,
 		bool                                                                            permanent)
-		: ObjectHandler::LibraryObject<QuantLib::LocalCorrelationBSModel>(properties, permanent) {
+		: MultiAssetBSModel(properties,termStructure,aliases,processes, permanent) {
 		libraryObject_ = boost::shared_ptr<QuantLib::LocalCorrelationBSModel>(
-			new QuantLib::LocalCorrelationBSModel(termStructure, aliases, processes, processToCal, localCorrTermStructure));
+			new QuantLib::LocalCorrelationBSModel(termStructure, aliases, processes, localCorrTermStructure));
 	}
 
+	//LocalCorrTermStructure::LocalCorrTermStructure(
+	//	const boost::shared_ptr<ObjectHandler::ValueObject>&                            properties,
+	//	const std::vector<boost::shared_ptr<QuantLib::GeneralizedBlackScholesProcess>>& processes,
+	//	const boost::shared_ptr<QuantLib::GeneralizedBlackScholesProcess>&				processToCal,
+	//	bool                                                                            permanent) 
+	//	: CorrelationTermStructureStrike(properties, permanent) {
+	//	libraryObject_ = boost::shared_ptr<QuantLib::LocalCorrTermStructure>(processes, processToCal);
+	//}
 
+	localInCrossCorrelationFX::localInCrossCorrelationFX(
+		const boost::shared_ptr<ObjectHandler::ValueObject>&                            properties,
+		const std::vector<boost::shared_ptr<QuantLib::GeneralizedBlackScholesProcess>>& processes,
+		const boost::shared_ptr<QuantLib::GeneralizedBlackScholesProcess>&				processToCal,
+		bool                                                                            permanent)
+		: LocalCorrSurfaceABFFX(properties, permanent) {
+		libraryObject_ = boost::shared_ptr<QuantLib::localInCrossCorrelationFX>(
+			new QuantLib::localInCrossCorrelationFX(processes, processToCal));
+	}
 }
 
 

@@ -323,6 +323,16 @@ namespace QuantLibAddin {
 			new QuantLib::MultiAssetBSModel(termStructure, aliases, processes, correlations));
 	}
 
+	MultiAssetBSModel::MultiAssetBSModel(
+		const boost::shared_ptr<ObjectHandler::ValueObject>&                            properties,
+		const QuantLib::Handle<QuantLib::YieldTermStructure>&                           termStructure,
+		const std::vector<std::string>&                                                 aliases,
+		const std::vector<boost::shared_ptr<QuantLib::GeneralizedBlackScholesProcess>>& processes,
+		bool                                                                            permanent)
+		: RealStochasticProcess(properties, permanent) {
+		libraryObject_ = boost::shared_ptr<QuantLib::RealStochasticProcess>(
+			new QuantLib::MultiAssetBSModel(termStructure, aliases, processes));
+	}
 }
 
 
