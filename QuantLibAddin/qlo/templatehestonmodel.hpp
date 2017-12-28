@@ -278,9 +278,6 @@ namespace QuantLibAddin {
 			bool                                                                            permanent);
 		MultiAssetBSModel(
 			const boost::shared_ptr<ObjectHandler::ValueObject>&                            properties,
-			const QuantLib::Handle<QuantLib::YieldTermStructure>&                           termStructure,
-			const std::vector<std::string>&                                                 aliases,
-			const std::vector<boost::shared_ptr<QuantLib::GeneralizedBlackScholesProcess>>& processes,
 			bool                                                                            permanent);
 	};
 }

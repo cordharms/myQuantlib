@@ -20,8 +20,8 @@ namespace QuantLibAddin {
 		const std::vector<boost::shared_ptr<QuantLib::GeneralizedBlackScholesProcess>>& processes,
 		const QuantLib::Handle<QuantLib::LocalCorrTermStructure>&						localCorrTermStructure,
 		bool                                                                            permanent)
-		: MultiAssetBSModel(properties,termStructure,aliases,processes, permanent) {
-		libraryObject_ = boost::shared_ptr<QuantLib::LocalCorrelationBSModel>(
+		: MultiAssetBSModel(properties, permanent) {
+		libraryObject_ = boost::shared_ptr<QuantLib::RealStochasticProcess>(
 			new QuantLib::LocalCorrelationBSModel(termStructure, aliases, processes, localCorrTermStructure));
 	}
 
@@ -40,7 +40,7 @@ namespace QuantLibAddin {
 		const boost::shared_ptr<QuantLib::GeneralizedBlackScholesProcess>&				processToCal,
 		bool                                                                            permanent)
 		: LocalCorrSurfaceABFFX(properties, permanent) {
-		libraryObject_ = boost::shared_ptr<QuantLib::localInCrossCorrelationFX>(
+		libraryObject_ = boost::shared_ptr<QuantLib::LocalCorrTermStructure>(
 			new QuantLib::localInCrossCorrelationFX(processes, processToCal));
 	}
 }
