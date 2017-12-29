@@ -16,7 +16,7 @@
 
 #include <ql/experimental/templatemodels/multiasset/localcorrelationbsmodel.hpp>
 #include <ql/experimental/termstructures/localcorrtermstructure.hpp>
-#include <ql/experimental/termstructures/localCorrFX/localInCrossCorrelationFX.hpp>
+#include <ql/experimental/termstructures/localCorrFX/CTSlocalInCrossCorrelationFX.hpp>
 #include <ql/experimental/termstructures/localCorrFX/localcorrsurfaceabfFX.hpp>
 #include <qlo\templatehestonmodel.hpp>
 

@@ -41,7 +41,7 @@ namespace QuantLibAddin {
 		bool                                                                            permanent)
 		: LocalCorrSurfaceABFFX(properties, permanent) {
 		libraryObject_ = boost::shared_ptr<QuantLib::LocalCorrTermStructure>(
-			new QuantLib::localInCrossCorrelationFX(processes, processToCal));
+			new QuantLib::CTSlocalInCrossCorrelationFX(processes, processToCal));
 	}
 }
 
