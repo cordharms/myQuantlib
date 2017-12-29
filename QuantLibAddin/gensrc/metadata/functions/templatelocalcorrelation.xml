@@ -66,8 +66,8 @@
       </ParameterList>
     </Constructor>
 
-    <Constructor name='qlCorrTermStructurelocalInCrossCorrFX'>
-      <libraryFunction>localInCrossCorrelationFX</libraryFunction>
+    <Constructor name='qlCTSlocalInCrossCorrFX'>
+      <libraryFunction>CTSlocalInCrossCorrelationFX</libraryFunction>
       <SupportedPlatforms>
         <SupportedPlatform name='Excel'/>
         <SupportedPlatform name='Cpp'/>

@@ -34,7 +34,7 @@ namespace QuantLibAddin {
 	//	libraryObject_ = boost::shared_ptr<QuantLib::LocalCorrTermStructure>(processes, processToCal);
 	//}
 
-	localInCrossCorrelationFX::localInCrossCorrelationFX(
+	CTSlocalInCrossCorrelationFX::CTSlocalInCrossCorrelationFX(
 		const boost::shared_ptr<ObjectHandler::ValueObject>&                            properties,
 		const std::vector<boost::shared_ptr<QuantLib::GeneralizedBlackScholesProcess>>& processes,
 		const boost::shared_ptr<QuantLib::GeneralizedBlackScholesProcess>&				processToCal,
