@@ -189,6 +189,7 @@ namespace QuantLibAddin {
 		    const boost::shared_ptr<QuantLib::VanillaLocalVolModelSmileSection>& smile1,
 		    const boost::shared_ptr<QuantLib::VanillaLocalVolModelSmileSection>& smile2,
 		    const QuantLib::Real&                                     rho,
+			const bool                                                calcSimple,
 		    const QuantLib::DayCounter&                               dc,
 		    const QuantLib::Date&                                     referenceDate,
 		    const QuantLib::VolatilityType                            type,

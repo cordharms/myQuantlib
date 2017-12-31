@@ -264,6 +264,7 @@ namespace QuantLibAddin {
 		const boost::shared_ptr<QuantLib::VanillaLocalVolModelSmileSection>& smile1,
 		const boost::shared_ptr<QuantLib::VanillaLocalVolModelSmileSection>& smile2,
 		const QuantLib::Real&                                     rho,
+		const bool                                                calcSimple,
 		const QuantLib::DayCounter&                               dc,
 		const QuantLib::Date&                                     referenceDate,
 		const QuantLib::VolatilityType                            type,
@@ -271,7 +272,7 @@ namespace QuantLibAddin {
 		bool                                                      permanent)
 		: SmileSection(properties, permanent) {
 		libraryObject_ = boost::shared_ptr<QuantLib::SmileSection>(
-			new QuantLib::VanillaLocalVolModelSmileSection(expiryDate, forward, atmVolatility, smile1, smile2, rho, dc, referenceDate, type, shift));
+			new QuantLib::VanillaLocalVolModelSmileSection(expiryDate, forward, atmVolatility, smile1, smile2, rho, calcSimple, dc, referenceDate, type, shift));
 	}
 
 }

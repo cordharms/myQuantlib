@@ -829,6 +829,11 @@
             <tensorRank>scalar</tensorRank>
             <description>Convex combination, rho in [0,1].</description>
           </Parameter>
+          <Parameter name='CalculateSimpleX' default='true'>
+            <type>bool</type>
+            <tensorRank>scalar</tensorRank>
+            <description>calculate x-grid only based on ATM vol, otherwise use internal x-grid.</description>
+          </Parameter>
           <Parameter name='DayCounter' default='"Actual/365 (Fixed)"'>
             <type>QuantLib::DayCounter</type>
             <tensorRank>scalar</tensorRank>
