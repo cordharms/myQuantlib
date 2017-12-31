@@ -12,8 +12,9 @@
 
 #include <qlo/baseinstruments.hpp>
 
-
 #include <ql/experimental/templatemodels/vanillalocalvol/vanillalocalvolmodels.hpp>
+
+#include <qlo/templatestochasticprocess.hpp>
 
 
 namespace QuantLib {
@@ -27,7 +28,7 @@ namespace QuantLib {
 namespace QuantLibAddin {
 
 
-	class VanillaLocalVolModel : public ObjectHandler::LibraryObject<QuantLib::VanillaLocalVolModel> {
+	class VanillaLocalVolModel : public RealStochasticProcess {
 	public:
 		VanillaLocalVolModel(
 			const boost::shared_ptr<ObjectHandler::ValueObject>&  properties,

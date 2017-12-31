@@ -30,7 +30,7 @@ namespace QuantLibAddin {
 		const bool                                            useInitialMu,
 		const  QuantLib::Real                                 initialMu,
 		bool                                                  permanent)
-		: ObjectHandler::LibraryObject<QuantLib::VanillaLocalVolModel>(properties, permanent) {
+		: RealStochasticProcess(properties, permanent) {
 		libraryObject_ = boost::shared_ptr<QuantLib::VanillaLocalVolModel>(
 			new QuantLib::VanillaLocalVolModel(T,S0,sigmaATM,Sp,Sm,Mp,Mm,maxCalibrationIters,onlyForwardCalibrationIters,adjustATMFlag,enableLogging,useInitialMu,initialMu));
 	}
@@ -39,7 +39,7 @@ namespace QuantLibAddin {
 		const boost::shared_ptr<ObjectHandler::ValueObject>&  properties,
 		const boost::shared_ptr<QuantLib::VanillaLocalVolModelSmileSection> smileSection,
 		bool                                                  permanent)
-		: ObjectHandler::LibraryObject<QuantLib::VanillaLocalVolModel>(properties, permanent) {
+		: RealStochasticProcess(properties, permanent) {
 		libraryObject_ = smileSection->model();
 	}
 }

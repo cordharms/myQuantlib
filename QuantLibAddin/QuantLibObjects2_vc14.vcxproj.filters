@@ -1960,5 +1960,8 @@
     <ClInclude Include="qlo\vanillalocalvolmodel.hpp">
       <Filter>Experimental\Template\VanillaLocalVolModel</Filter>
     </ClInclude>
+    <ClInclude Include="qlo\templatestochasticprocess.hpp">
+      <Filter>Experimental\Template</Filter>
+    </ClInclude>
   </ItemGroup>
 </Project>

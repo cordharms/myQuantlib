@@ -870,6 +870,7 @@
     <ClInclude Include="qlo\templatehullwhite.hpp" />
     <ClInclude Include="qlo\templatemontecarlo.hpp" />
     <ClInclude Include="qlo\templatequasigaussian.hpp" />
+    <ClInclude Include="qlo\templatestochasticprocess.hpp" />
     <ClInclude Include="qlo\valueobjects\vo_abcd.hpp" />
     <ClInclude Include="qlo\valueobjects\vo_accountingengines.hpp" />
     <ClInclude Include="qlo\valueobjects\vo_all.hpp" />

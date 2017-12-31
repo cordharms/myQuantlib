@@ -1797,6 +1797,35 @@
       </ReturnValue>
     </Member>
 
+    <Member name='qlVanillaLocalVolModelVariance' type='QuantLib::VanillaLocalVolModel' >
+      <description>Returns E[ (S(x)>K)*[S(x)-K]^2 ].</description>
+      <libraryFunction>variance</libraryFunction>
+      <SupportedPlatforms>
+        <!--SupportedPlatform name='Excel' calcInWizard='false'/-->
+        <SupportedPlatform name='Excel'/>
+        <!--SupportedPlatform name='Calc'/-->
+        <!--SupportedPlatform name='Cpp'/-->
+      </SupportedPlatforms>
+      <ParameterList>
+        <Parameters>
+          <Parameter name='IsRightWing' default='0.0'>
+            <type>bool</type>
+            <tensorRank>scalar</tensorRank>
+            <description>right (call) or left (put) wing integration.</description>
+          </Parameter>
+          <Parameter name='Strike' default='0.0'>
+            <type>QuantLib::Real</type>
+            <tensorRank>scalar</tensorRank>
+            <description>Strike K.</description>
+          </Parameter>
+        </Parameters>
+      </ParameterList>
+      <ReturnValue>
+        <type>QuantLib::Real</type>
+        <tensorRank>scalar</tensorRank>
+      </ReturnValue>
+    </Member>
+
     <Member name='qlVanillaLocalVolModelLogging' type='QuantLib::VanillaLocalVolModel' >
       <description>inspect calibration debug details.</description>
       <libraryFunction>logging</libraryFunction>

@@ -30,6 +30,8 @@
 
 #include <ql/experimental/templatemodels/multiasset/multiassetbsmodel.hpp>
 
+#include <qlo/templatestochasticprocess.hpp>
+
 namespace QuantLib {
     template <class T>
     class Handle;
@@ -39,7 +41,6 @@ namespace QuantLib {
 
 namespace QuantLibAddin {
 
-    OH_LIB_CLASS(StochasticProcess, QuantLib::StochasticProcess);
 
     class HestonProcess : public StochasticProcess {
     public:
@@ -56,8 +57,6 @@ namespace QuantLibAddin {
                       QuantLib::Real rho,
                       bool permanent);
     };
-
-    OH_LIB_CLASS(CalibratedModel, QuantLib::CalibratedModel);
 
     class HestonModel : public CalibratedModel {
     public:
@@ -146,9 +145,6 @@ namespace QuantLibAddin {
                 bool            permanent);
     };
 
-    OH_LIB_CLASS(RealStochasticProcess, QuantLib::RealStochasticProcess);
-	OH_OBJ_CLASS(RealTDStochVolModel, RealStochasticProcess);
-      
 	class RealPWCStochVolModel : public RealTDStochVolModel {
 	public:
 		RealPWCStochVolModel(
