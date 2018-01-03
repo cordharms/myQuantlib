@@ -14,10 +14,13 @@
 #include <qlo/pricingengines.hpp>
 #include <qlo/indexes/iborindex.hpp>
 
+
 #include <ql/experimental/templatemodels/multiasset/localcorrelationbsmodel.hpp>
 #include <ql/experimental/termstructures/localcorrtermstructure.hpp>
 #include <ql/experimental/termstructures/localCorrFX/CTSlocalInCrossCorrelationFX.hpp>
 #include <ql/experimental/termstructures/localCorrFX/localcorrsurfaceabfFX.hpp>
+#include <ql/experimental/termstructures/Helper/CalibratorLocalCorrInt.hpp>
+#include <ql/experimental/termstructures/Helper/ParticleMethodUtils.hpp>
 #include <qlo\templatehestonmodel.hpp>
 
 
@@ -78,8 +81,32 @@ namespace QuantLibAddin {
 		const boost::shared_ptr<ObjectHandler::ValueObject>&                            properties,
 		const std::vector<boost::shared_ptr<QuantLib::GeneralizedBlackScholesProcess>>& processes,
 		const boost::shared_ptr<QuantLib::GeneralizedBlackScholesProcess>&				processToCal,
+		boost::shared_ptr<QuantLib::CalibratorLocalCorrInt>&								calibratorLocalCorr,
 		bool                                                                            permanent);
 	};
+
+	OH_LIB_CLASS(CalibratorLocalCorrInt, QuantLib::CalibratorLocalCorrInt);
+
+	class ParticleMethodUtils : public CalibratorLocalCorrInt {
+	public:
+		ParticleMethodUtils(
+			const boost::shared_ptr<ObjectHandler::ValueObject>&    properties,
+			const std::string&										kernel,
+			unsigned int											numberOfPaths, 
+			QuantLib::Time											maxTime,
+			QuantLib::Time											deltaT,
+			QuantLib::Time											tMin,
+			QuantLib::Real											kappa,
+			QuantLib::Real											sigmaAVR,
+			QuantLib::Real											exponentN,
+			QuantLib::Real											gridMinQuantile,
+			QuantLib::Real											gridMaxQuantile,
+			bool                                                    permanent);
+	};
+
+
+
+
 }
 
 #endif

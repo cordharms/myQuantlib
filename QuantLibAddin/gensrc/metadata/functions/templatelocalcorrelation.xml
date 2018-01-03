@@ -8,6 +8,8 @@
     <include>ql/termstructures/volatility/equityfx/localvoltermstructure.hpp</include>
     <include>ql/experimental/templatemodels/multiasset/localcorrelationbsmodel.hpp</include>
     <include>ql/experimental/termstructures/localcorrtermstructure.hpp</include>
+    <include>ql/experimental/termstructures/Helper/CalibratorLocalCorrInt.hpp</include>
+    <include>ql/experimental/termstructures/Helper/ParticleMethodUtils.hpp</include>
     <include>qlo/pricingengines.hpp</include>
     <include>qlo/processes.hpp</include>
     <include>qlo/termstructures.hpp</include>
@@ -23,6 +25,8 @@
     <include>qlo/volatilities.hpp</include>
     <include>qlo/processes.hpp</include>
     <include>ql/termstructures/volatility/equityfx/localvoltermstructure.hpp</include>
+    <include>ql/experimental/termstructures/Helper/CalibratorLocalCorrInt.hpp</include>
+    <include>ql/experimental/termstructures/Helper/ParticleMethodUtils.hpp</include>
     <include>qlo/templatelocalcorrelation.hpp</include>
   </addinIncludes>
   <copyright>
@@ -84,9 +88,76 @@
             <tensorRank>scalar</tensorRank>
             <description>Black Scholes process to determine local correlation</description>
           </Parameter>
+          <Parameter name='CalibratorLocalCorr'>
+            <type>QuantLib::CalibratorLocalCorrInt</type>
+            <tensorRank>scalar</tensorRank>
+            <description>Calibrator for local correlation</description>
+          </Parameter>
         </Parameters>
       </ParameterList>
     </Constructor>
-
+    
+    
+    <Constructor name='qlCTSParticleMethodCalibrator'>
+      <libraryFunction>ParticleMethodUtils</libraryFunction>
+      <SupportedPlatforms>
+        <SupportedPlatform name='Excel'/>
+        <SupportedPlatform name='Cpp'/>
+      </SupportedPlatforms>
+      <ParameterList>
+        <Parameters>
+          <Parameter name='KernelString' default='"QuarticKernel"'>
+            <type>string</type>
+            <tensorRank>scalar</tensorRank>
+            <description>Kernel specification</description>
+          </Parameter>
+          <Parameter name='NumberOfPaths'>
+            <type>long</type>
+            <tensorRank>scalar</tensorRank>
+            <description>number of paths for particle method</description>
+          </Parameter>
+          <Parameter name='MaxTime'>
+            <type>QuantLib::Time</type>
+            <tensorRank>scalar</tensorRank>
+            <description>maxTime for particle method grid</description>
+          </Parameter>
+          <Parameter name='DeltaT'>
+            <type>QuantLib::Time</type>
+            <tensorRank>scalar</tensorRank>
+            <description>time step in the grid</description>
+          </Parameter>
+          <Parameter name='MinT'>
+            <type>QuantLib::Time</type>
+            <tensorRank>scalar</tensorRank>
+            <description>minTime for particle method grid</description>
+          </Parameter>
+          <Parameter name='Kappa'>
+            <type>QuantLib::Real</type>
+            <tensorRank>scalar</tensorRank>
+            <description>kappa for bandwidth</description>
+          </Parameter>
+          <Parameter name='SigmaAVR'>
+            <type>QuantLib::Real</type>
+            <tensorRank>scalar</tensorRank>
+            <description>average volatility for bandwidth</description>
+          </Parameter>
+          <Parameter name='ExponentN'>
+            <type>QuantLib::Real</type>
+            <tensorRank>scalar</tensorRank>
+            <description>exponent of N to determine bandwidth</description>
+          </Parameter>
+          <Parameter name='GridMinQuantile'>
+            <type>QuantLib::Real</type>
+            <tensorRank>scalar</tensorRank>
+            <description>minQuantile for strike grid</description>
+          </Parameter>
+          <Parameter name='GridMaxQuantile'>
+            <type>QuantLib::Real</type>
+            <tensorRank>scalar</tensorRank>
+            <description>minQuantile for strike grid</description>
+          </Parameter>
+        </Parameters>
+      </ParameterList>
+    </Constructor>
   </Functions>
 </Category>

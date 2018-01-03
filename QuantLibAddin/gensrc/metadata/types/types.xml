@@ -189,6 +189,7 @@
     <DataType defaultSuperType='libraryTermStructure'>QuantLib::SwaptionVolatilityCube</DataType>
 
     <DataType defaultSuperType='libraryTermStructure'>QuantLib::LocalCorrTermStructure</DataType>
+    <DataType defaultSuperType='libraryClass'>QuantLib::CalibratorLocalCorrInt</DataType>
 
     <DataType defaultSuperType='libraryTermStructure'>QuantLibAddin::BaseCorrelationTermStructure</DataType>
 
