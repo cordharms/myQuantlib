@@ -61,15 +61,6 @@
     <Filter Include="serialization\register">
       <UniqueIdentifier>{857895f2-4f46-4266-9ec2-f95c89106bd6}</UniqueIdentifier>
     </Filter>
-    <Filter Include="indexes">
-      <UniqueIdentifier>{c1043b2b-4458-4659-b33d-ef297f0e89aa}</UniqueIdentifier>
-    </Filter>
-    <Filter Include="indexes\ibor">
-      <UniqueIdentifier>{6c0da93e-b3b8-4f42-b010-c7caa12195a9}</UniqueIdentifier>
-    </Filter>
-    <Filter Include="indexes\swap">
-      <UniqueIdentifier>{4b9e624d-9d7d-4853-b8c7-b5e5b8a51dd5}</UniqueIdentifier>
-    </Filter>
     <Filter Include="credit">
       <UniqueIdentifier>{ccd99a6d-175e-4f4f-b645-0842651abc04}</UniqueIdentifier>
     </Filter>
@@ -105,6 +96,15 @@
     </Filter>
     <Filter Include="Experimental\Template\LocalCorrelation">
       <UniqueIdentifier>{02291f24-54dd-45f6-913e-8d2a3c6dfeb4}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="indexes">
+      <UniqueIdentifier>{c1043b2b-4458-4659-b33d-ef297f0e89aa}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="indexes\ibor">
+      <UniqueIdentifier>{6c0da93e-b3b8-4f42-b010-c7caa12195a9}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="indexes\swap">
+      <UniqueIdentifier>{4b9e624d-9d7d-4853-b8c7-b5e5b8a51dd5}</UniqueIdentifier>
     </Filter>
   </ItemGroup>
   <ItemGroup>

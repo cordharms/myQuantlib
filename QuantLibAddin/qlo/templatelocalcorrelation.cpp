@@ -55,11 +55,13 @@ namespace QuantLibAddin {
 		QuantLib::Real											exponentN,
 		QuantLib::Real											gridMinQuantile,
 		QuantLib::Real											gridMaxQuantile,
+		unsigned int											ns1,
+		unsigned int											ns2,
 		bool                                                    permanent)
 		: CalibratorLocalCorrInt(properties, permanent) {
 
 		libraryObject_ = boost::shared_ptr<QuantLib::CalibratorLocalCorrInt>(
-			new QuantLib::ParticleMethodUtils(kernel,numberOfPaths,maxTime,deltaT,tMin,kappa,sigmaAVR,exponentN,gridMinQuantile,gridMaxQuantile));
+			new QuantLib::ParticleMethodUtils(kernel,numberOfPaths,maxTime,deltaT,tMin,kappa,sigmaAVR,exponentN,gridMinQuantile,gridMaxQuantile,ns1,ns2));
 		//libraryObject_ = boost::shared_ptr<QuantLib::CalibratorLocalCorrInt>(
 		//	new QuantLib::ParticleMethodUtils());
 	}

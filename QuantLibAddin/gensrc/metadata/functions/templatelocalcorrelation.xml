@@ -111,7 +111,7 @@
             <tensorRank>scalar</tensorRank>
             <description>Kernel specification</description>
           </Parameter>
-          <Parameter name='NumberOfPaths'>
+          <Parameter name='NumberOfPaths' default='1024'>
             <type>long</type>
             <tensorRank>scalar</tensorRank>
             <description>number of paths for particle method</description>
@@ -126,12 +126,12 @@
             <tensorRank>scalar</tensorRank>
             <description>time step in the grid</description>
           </Parameter>
-          <Parameter name='MinT'>
+          <Parameter name='MinT' default='0.25'>
             <type>QuantLib::Time</type>
             <tensorRank>scalar</tensorRank>
             <description>minTime for particle method grid</description>
           </Parameter>
-          <Parameter name='Kappa'>
+          <Parameter name='Kappa' default='3'>
             <type>QuantLib::Real</type>
             <tensorRank>scalar</tensorRank>
             <description>kappa for bandwidth</description>
@@ -141,20 +141,30 @@
             <tensorRank>scalar</tensorRank>
             <description>average volatility for bandwidth</description>
           </Parameter>
-          <Parameter name='ExponentN'>
+          <Parameter name='ExponentN' default='-0.25'>
             <type>QuantLib::Real</type>
             <tensorRank>scalar</tensorRank>
             <description>exponent of N to determine bandwidth</description>
           </Parameter>
-          <Parameter name='GridMinQuantile'>
+          <Parameter name='GridMinQuantile' default='0.1'>
             <type>QuantLib::Real</type>
             <tensorRank>scalar</tensorRank>
             <description>minQuantile for strike grid</description>
           </Parameter>
-          <Parameter name='GridMaxQuantile'>
+          <Parameter name='GridMaxQuantile' default='0.9'>
             <type>QuantLib::Real</type>
             <tensorRank>scalar</tensorRank>
             <description>minQuantile for strike grid</description>
+          </Parameter>
+          <Parameter name='Ns1' default='30'>
+            <type>long</type>
+            <tensorRank>scalar</tensorRank>
+            <description>strike grid amount indicator 1 (paper: nS)</description>
+          </Parameter>
+          <Parameter name='Ns2' default='15'>
+            <type>long</type>
+            <tensorRank>scalar</tensorRank>
+            <description>strike grid amount indicator 2 (paper: nS')</description>
           </Parameter>
         </Parameters>
       </ParameterList>

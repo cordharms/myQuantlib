@@ -101,6 +101,8 @@ namespace QuantLibAddin {
 			QuantLib::Real											exponentN,
 			QuantLib::Real											gridMinQuantile,
 			QuantLib::Real											gridMaxQuantile,
+			unsigned int											ns1,
+			unsigned int											ns2,
 			bool                                                    permanent);
 	};
 
