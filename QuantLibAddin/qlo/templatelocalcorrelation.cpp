@@ -36,35 +36,12 @@ namespace QuantLibAddin {
 		const boost::shared_ptr<ObjectHandler::ValueObject>&                            properties,
 		const std::vector<boost::shared_ptr<QuantLib::GeneralizedBlackScholesProcess>>& processes,
 		const boost::shared_ptr<QuantLib::GeneralizedBlackScholesProcess>&				processToCal,
-		boost::shared_ptr<QuantLib::CalibratorLocalCorrInt>&								calibratorLocalCorr,
 		bool                                                                            permanent)
 		: LocalCorrSurfaceABFFX(properties, permanent) {
 		libraryObject_ = boost::shared_ptr<QuantLib::LocalCorrTermStructure>(
-			new QuantLib::CTSlocalInCrossCorrelationFX(processes, processToCal, calibratorLocalCorr));
+			new QuantLib::CTSlocalInCrossCorrelationFX(processes, processToCal));
 	}
 
-	ParticleMethodUtils::ParticleMethodUtils(
-		const boost::shared_ptr<ObjectHandler::ValueObject>&    properties,
-		const std::string&										kernel,
-		unsigned int											numberOfPaths,
-		QuantLib::Time											maxTime,
-		QuantLib::Time											deltaT,
-		QuantLib::Time											tMin,
-		QuantLib::Real											kappa,
-		QuantLib::Real											sigmaAVR,
-		QuantLib::Real											exponentN,
-		QuantLib::Real											gridMinQuantile,
-		QuantLib::Real											gridMaxQuantile,
-		unsigned int											ns1,
-		unsigned int											ns2,
-		bool                                                    permanent)
-		: CalibratorLocalCorrInt(properties, permanent) {
-
-		libraryObject_ = boost::shared_ptr<QuantLib::CalibratorLocalCorrInt>(
-			new QuantLib::ParticleMethodUtils(kernel,numberOfPaths,maxTime,deltaT,tMin,kappa,sigmaAVR,exponentN,gridMinQuantile,gridMaxQuantile,ns1,ns2));
-		//libraryObject_ = boost::shared_ptr<QuantLib::CalibratorLocalCorrInt>(
-		//	new QuantLib::ParticleMethodUtils());
-	}
 }
 
 

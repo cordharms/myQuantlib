@@ -8,7 +8,6 @@
     <include>ql/termstructures/volatility/equityfx/localvoltermstructure.hpp</include>
     <include>ql/experimental/templatemodels/multiasset/localcorrelationbsmodel.hpp</include>
     <include>ql/experimental/termstructures/localcorrtermstructure.hpp</include>
-    <include>ql/experimental/termstructures/Helper/CalibratorLocalCorrInt.hpp</include>
     <include>ql/experimental/termstructures/Helper/ParticleMethodUtils.hpp</include>
     <include>qlo/pricingengines.hpp</include>
     <include>qlo/processes.hpp</include>
@@ -25,7 +24,6 @@
     <include>qlo/volatilities.hpp</include>
     <include>qlo/processes.hpp</include>
     <include>ql/termstructures/volatility/equityfx/localvoltermstructure.hpp</include>
-    <include>ql/experimental/termstructures/Helper/CalibratorLocalCorrInt.hpp</include>
     <include>ql/experimental/termstructures/Helper/ParticleMethodUtils.hpp</include>
     <include>qlo/templatelocalcorrelation.hpp</include>
   </addinIncludes>
@@ -88,24 +86,26 @@
             <tensorRank>scalar</tensorRank>
             <description>Black Scholes process to determine local correlation</description>
           </Parameter>
-          <Parameter name='CalibratorLocalCorr'>
-            <type>QuantLib::CalibratorLocalCorrInt</type>
-            <tensorRank>scalar</tensorRank>
-            <description>Calibrator for local correlation</description>
-          </Parameter>
         </Parameters>
       </ParameterList>
     </Constructor>
-    
-    
-    <Constructor name='qlCTSParticleMethodCalibrator'>
-      <libraryFunction>ParticleMethodUtils</libraryFunction>
+
+
+    <Procedure name='qlCalibrateFXCTSWithParticleMethod'>
+      <description>Calibrator for FX local correlation model</description>
+      <alias>QuantLib::ParticleMethodUtils::calibrateFX</alias>
       <SupportedPlatforms>
         <SupportedPlatform name='Excel'/>
         <SupportedPlatform name='Cpp'/>
       </SupportedPlatforms>
       <ParameterList>
         <Parameters>
+          <Parameter name='LocalCorrSurfaceABFFX'>
+            <type>QuantLib::LocalCorrSurfaceABFFX</type>
+            <superType>libToHandle</superType>
+            <tensorRank>scalar</tensorRank>
+            <description>Local Correlation Term Structure to calibrate</description>
+          </Parameter>
           <Parameter name='KernelString' default='"QuarticKernel"'>
             <type>string</type>
             <tensorRank>scalar</tensorRank>
@@ -168,6 +168,12 @@
           </Parameter>
         </Parameters>
       </ParameterList>
-    </Constructor>
+      <ReturnValue>
+        <type>void</type>
+        <tensorRank>scalar</tensorRank>
+      </ReturnValue>
+    </Procedure>
+    
+    
   </Functions>
 </Category>
