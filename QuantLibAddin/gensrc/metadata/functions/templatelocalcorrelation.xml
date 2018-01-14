@@ -90,6 +90,39 @@
       </ParameterList>
     </Constructor>
 
+    <Member name='qlCTSgetCalibratedFXCorrFromGrid' type='QuantLib::LocalCorrSurfaceABFFX' >
+      <description>Return local correlation for a specified time and asset grid.</description>
+      <libraryFunction>getLocalCorrelationSurface</libraryFunction>
+      <SupportedPlatforms>
+        <!--SupportedPlatform name='Excel' calcInWizard='false'/-->
+        <SupportedPlatform name='Excel'/>
+        <!--SupportedPlatform name='Calc'/-->
+        <!--SupportedPlatform name='Cpp'/-->
+      </SupportedPlatforms>
+      <ParameterList>
+        <Parameters>
+          <Parameter name='Time' default='1'>
+            <type>QuantLib::Real</type>
+            <tensorRank>scalar</tensorRank>
+            <description>Maturity</description>
+          </Parameter>
+          <Parameter name='FX1Grid'>
+            <type>QuantLib::Real</type>
+            <tensorRank>vector</tensorRank>
+            <description>grid of FX rate 1</description>
+          </Parameter>
+          <Parameter name='FX2Grid'>
+            <type>QuantLib::Real</type>
+            <tensorRank>vector</tensorRank>
+            <description>grid of FX rate 2</description>
+          </Parameter>
+        </Parameters>
+      </ParameterList>
+      <ReturnValue>
+        <type>QuantLib::Matrix</type>
+        <tensorRank>matrix</tensorRank>
+      </ReturnValue>
+    </Member>
 
     <Procedure name='qlCalibrateFXCTSWithParticleMethod'>
       <description>Calibrator for FX local correlation model</description>
