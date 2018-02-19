@@ -972,6 +972,15 @@
     <ClCompile Include="qlo\vanillalocalvolmodel.cpp">
       <Filter>Experimental\Template\VanillaLocalVolModel</Filter>
     </ClCompile>
+    <ClCompile Include="qlo\valueobjects\vo_vanillalocalvolmodel.cpp">
+      <Filter>valueobjects</Filter>
+    </ClCompile>
+    <ClCompile Include="qlo\serialization\create\create_vanillalocalvolmodel.cpp">
+      <Filter>serialization\create</Filter>
+    </ClCompile>
+    <ClCompile Include="qlo\serialization\register\serialization_vanillalocalvolmodel.cpp">
+      <Filter>serialization\register</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="qlo\enumerations\register\register_all.hpp">
@@ -1962,6 +1971,15 @@
     </ClInclude>
     <ClInclude Include="qlo\templatestochasticprocess.hpp">
       <Filter>Experimental\Template</Filter>
+    </ClInclude>
+    <ClInclude Include="qlo\valueobjects\vo_vanillalocalvolmodel.hpp">
+      <Filter>valueobjects</Filter>
+    </ClInclude>
+    <ClInclude Include="qlo\serialization\create\create_vanillalocalvolmodel.hpp">
+      <Filter>serialization\create</Filter>
+    </ClInclude>
+    <ClInclude Include="qlo\serialization\register\serialization_vanillalocalvolmodel.hpp">
+      <Filter>serialization\register</Filter>
     </ClInclude>
   </ItemGroup>
 </Project>

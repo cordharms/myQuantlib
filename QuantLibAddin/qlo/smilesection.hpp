@@ -23,8 +23,6 @@
 #include <oh/libraryobject.hpp>
 #include <ql/types.hpp>
 
-#include <ql/experimental/templatemodels/vanillalocalvol/vanillalocalvolsmilesection.hpp>
-
 namespace QuantLib {
     class Date;
     class SmileSection;
@@ -149,54 +147,6 @@ namespace QuantLibAddin {
             const QuantLib::Time& time,
             bool permanent);
     };
-
-	class VanillaLocalVolModelSmileSection : public SmileSection {
-	public:
-		VanillaLocalVolModelSmileSection(
-			const boost::shared_ptr<ObjectHandler::ValueObject>&        properties,
-			const boost::shared_ptr<QuantLib::VanillaLocalVolModel>&    model,
-			const QuantLib::DayCounter&                                 dc,
-			const QuantLib::VolatilityType                              type,
-			const QuantLib::Rate                                        shift,
-			bool permanent);
-
-		VanillaLocalVolModelSmileSection(
-			const boost::shared_ptr<ObjectHandler::ValueObject>&      properties,
-			const QuantLib::Date&                                     expiryDate,
-			const QuantLib::Rate&                                     forward,
-			const std::vector<QuantLib::Rate>&                        relativeStrikes,
-			const std::vector<QuantLib::Volatility>&                  smileVolatilities,
-			const QuantLib::Real                                      extrapolationRelativeStrike,
-			const QuantLib::Real                                      extrapolationSlope,
-			bool                                                      vegaWeighted,
-			const boost::shared_ptr<QuantLib::EndCriteria>&           endCriteria,
-			const boost::shared_ptr<QuantLib::OptimizationMethod>&    method,
-			const QuantLib::DayCounter&                               dc,
-			const QuantLib::Date&                                     referenceDate,
-			const QuantLib::VolatilityType                            type,
-			const QuantLib::Rate                                      shift,
-			const boost::shared_ptr<QuantLib::VanillaLocalVolModel>&  model,
-			const QuantLib::Real                                      minSlope,   //  lower boundary for m in calibration
-			const QuantLib::Real                                      maxSlope,   //  upper boundary for m in calibration
-			const QuantLib::Real                                      alpha,      //  Tikhonov alpha
-			bool                                                      permanent);
-
-		VanillaLocalVolModelSmileSection(
-		    const boost::shared_ptr<ObjectHandler::ValueObject>&      properties,
-		    const QuantLib::Date&                                     expiryDate,
-		    const QuantLib::Rate&                                     forward,
-		    const QuantLib::Volatility&                               atmVolatility,
-		    const boost::shared_ptr<QuantLib::VanillaLocalVolModelSmileSection>& smile1,
-		    const boost::shared_ptr<QuantLib::VanillaLocalVolModelSmileSection>& smile2,
-		    const QuantLib::Real&                                     rho,
-			const bool                                                calcSimple,
-		    const QuantLib::DayCounter&                               dc,
-		    const QuantLib::Date&                                     referenceDate,
-		    const QuantLib::VolatilityType                            type,
-		    const QuantLib::Rate                                      shift,
-		    bool                                                      permanent);
-
-	};  // class VanillaLocalVolModelSmileSection
 
 
 }
