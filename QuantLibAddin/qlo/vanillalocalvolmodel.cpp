@@ -7,7 +7,7 @@
 
 
 #include <qlo/vanillalocalvolmodel.hpp>
-#include <ql/experimental/templatemodels/vanillalocalvol/vanillalocalvolsmilesection.hpp>
+
 
 // #include <boost/algorithm/string.hpp>
 
@@ -97,6 +97,39 @@ namespace QuantLibAddin {
 		libraryObject_ = boost::shared_ptr<QuantLib::SmileSection>(
 			new QuantLib::VanillaLocalVolModelSmileSection(expiryDate, forward, atmVolatility, smile1, smile2, rho, calcSimple, dc, referenceDate, type, shift));
 	}
+
+	VanillaLocalVolCMSTS::VanillaLocalVolCMSTS(
+		const boost::shared_ptr<ObjectHandler::ValueObject>&    properties,
+		const QuantLib::Period&                                 swapTerm,
+		const std::vector< boost::shared_ptr<QuantLib::VanillaLocalVolModelSmileSection> >&  smiles,
+		bool                                                    permanent)
+		: ObjectHandler::LibraryObject< std::vector< boost::shared_ptr<QuantLib::VanillaLocalVolModelSmileSection> > >(properties, permanent),
+	      swapTerm_(swapTerm) {
+		libraryObject_ = boost::shared_ptr< std::vector< boost::shared_ptr<QuantLib::VanillaLocalVolModelSmileSection> > >(
+			new std::vector< boost::shared_ptr<QuantLib::VanillaLocalVolModelSmileSection> >(smiles));
+	}
+
+
+	VanillaLocalVolSwaptionVTS::VanillaLocalVolSwaptionVTS(
+		const boost::shared_ptr<ObjectHandler::ValueObject>&              properties,
+		const boost::shared_ptr<QuantLib::SwaptionVolatilityStructure>&   atmVolTS,
+		const std::vector< boost::shared_ptr<VanillaLocalVolCMSTS> >&     cmsTS,
+		const boost::shared_ptr<QuantLib::SwapIndex>&                     index,
+		bool                                                              permanent)
+		: SwaptionVolatilityStructure(properties, permanent) {
+		std::vector< std::vector< boost::shared_ptr<QuantLib::VanillaLocalVolModelSmileSection> > > smiles;
+		std::vector<QuantLib::Period> swapTerms;
+		for (size_t k = 0; k < cmsTS.size(); ++k) {
+			boost::shared_ptr< std::vector< boost::shared_ptr<QuantLib::VanillaLocalVolModelSmileSection> > > obj;
+			cmsTS[k]->getLibraryObject(obj);  // check if retrieval and cast was successfull
+			if (obj->size() > 0) {
+				smiles.push_back(*obj);
+				swapTerms.push_back(cmsTS[k]->swapTerm());
+			}
+		}
+		libraryObject_ = boost::shared_ptr<QuantLib::Extrapolator>(new QuantLib::VanillaLocalVolSwaptionVTS(atmVolTS, smiles, swapTerms, index));
+	}
+
 
 }
 

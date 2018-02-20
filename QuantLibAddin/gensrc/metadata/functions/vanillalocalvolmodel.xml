@@ -6,13 +6,17 @@
     <include>qlo/conversions/coercetermstructure.hpp</include>
     <include>qlo/termstructures.hpp</include>
     <include>qlo/processes.hpp</include>
+    <include>qlo/indexes/swapindex.hpp</include>
     <include>qlo/vanillalocalvolmodel.hpp</include>
+    <include>ql/indexes/swapindex.hpp</include>
   </serializationIncludes>
   <addinIncludes>
     <include>qlo/conversions/coercetermstructure.hpp</include>
     <include>qlo/termstructures.hpp</include>
     <include>qlo/processes.hpp</include>
+    <include>qlo/indexes/swapindex.hpp</include>
     <include>qlo/vanillalocalvolmodel.hpp</include>
+    <include>ql/indexes/swapindex.hpp</include>
   </addinIncludes>
   <copyright>
     Copyright (C) 2018, Sebastian Schlenkrich
@@ -506,6 +510,57 @@
             <type>QuantLib::Rate</type>
             <tensorRank>scalar</tensorRank>
             <description>Shift for ShiftedLognormal volatility type.</description>
+          </Parameter>
+        </Parameters>
+      </ParameterList>
+    </Constructor>
+
+    <Constructor name='qlVanillaLocalVolCMSTS'>
+      <libraryFunction>VanillaLocalVolCMSTS</libraryFunction>
+      <SupportedPlatforms>
+        <!--SupportedPlatform name='Excel' calcInWizard='false'/-->
+        <SupportedPlatform name='Excel'/>
+        <SupportedPlatform name='Cpp'/>
+      </SupportedPlatforms>
+      <ParameterList>
+        <Parameters>
+          <Parameter name='SwapTerm' >
+            <type>QuantLib::Period</type>
+            <tensorRank>scalar</tensorRank>
+            <description>swap term periods.</description>
+          </Parameter>
+          <Parameter name='Smiles' >
+            <type>QuantLib::VanillaLocalVolModelSmileSection</type>
+            <tensorRank>vector</tensorRank>
+            <description>List of reference smile sections.</description>
+          </Parameter>
+        </Parameters>
+      </ParameterList>
+    </Constructor>
+
+    <Constructor name='qlVanillaLocalVolSwaptionVTS'>
+      <libraryFunction>VanillaLocalVolSwaptionVTS</libraryFunction>
+      <SupportedPlatforms>
+        <!--SupportedPlatform name='Excel' calcInWizard='false'/-->
+        <SupportedPlatform name='Excel'/>
+        <SupportedPlatform name='Cpp'/>
+      </SupportedPlatforms>
+      <ParameterList>
+        <Parameters>
+          <Parameter name='AtmVolTS' >
+            <type>QuantLib::SwaptionVolatilityStructure</type>
+            <tensorRank>scalar</tensorRank>
+            <description>Base VolTS for ATM calculation.</description>
+          </Parameter>
+          <Parameter name='CmsTS' >
+            <type>QuantLibAddin::VanillaLocalVolCMSTS</type>
+            <tensorRank>vector</tensorRank>
+            <description>List of reference smile sections.</description>
+          </Parameter>
+          <Parameter name='Index' >
+            <type>QuantLib::SwapIndex</type>
+            <tensorRank>scalar</tensorRank>
+            <description>Reference to SwapIndex for forward calculation.</description>
           </Parameter>
         </Parameters>
       </ParameterList>

@@ -12,9 +12,11 @@
 
 #include <qlo/baseinstruments.hpp>
 #include <qlo/smilesection.hpp>
+#include <qlo/termstructures.hpp>
 
 #include <ql/experimental/templatemodels/vanillalocalvol/vanillalocalvolmodels.hpp>
 #include <ql/experimental/templatemodels/vanillalocalvol/vanillalocalvolsmilesection.hpp>
+#include <ql/experimental/templatemodels/vanillalocalvol/vanillalocalvoltermstructures.hpp>
 
 #include <qlo/templatestochasticprocess.hpp>
 
@@ -23,7 +25,6 @@ namespace QuantLib {
     template <class T>
     class Handle;
 	class StochasticProcess;
-	class VanillaLocalVolModelSmileSection;
 }
 
 
@@ -102,6 +103,29 @@ namespace QuantLibAddin {
 			bool                                                      permanent);
 
 	};  // class VanillaLocalVolModelSmileSection
+
+	// this is an auxillary container for a column of smiles
+	class VanillaLocalVolCMSTS : public ObjectHandler::LibraryObject< std::vector< boost::shared_ptr<QuantLib::VanillaLocalVolModelSmileSection> > >{
+	private:
+		const QuantLib::Period swapTerm_;
+	public:
+		VanillaLocalVolCMSTS(
+			const boost::shared_ptr<ObjectHandler::ValueObject>&    properties,
+			const QuantLib::Period&                                 swapTerm,
+			const std::vector< boost::shared_ptr<QuantLib::VanillaLocalVolModelSmileSection> >&  smiles,
+			bool                                                    permanent);
+		const QuantLib::Period swapTerm() const { return swapTerm_; }
+	};
+
+	class VanillaLocalVolSwaptionVTS : public SwaptionVolatilityStructure {
+	public:
+		VanillaLocalVolSwaptionVTS(
+			const boost::shared_ptr<ObjectHandler::ValueObject>&              properties,
+			const boost::shared_ptr<QuantLib::SwaptionVolatilityStructure>&   atmVolTS,
+			const std::vector< boost::shared_ptr<VanillaLocalVolCMSTS> >&     cmsTS,
+			const boost::shared_ptr<QuantLib::SwapIndex>&                     index,
+			bool                                                              permanent);
+	};
 
 
 }
