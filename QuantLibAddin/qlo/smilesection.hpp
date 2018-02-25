@@ -23,7 +23,6 @@
 #include <oh/libraryobject.hpp>
 #include <ql/types.hpp>
 
-
 namespace QuantLib {
     class Date;
     class SmileSection;
@@ -148,6 +147,8 @@ namespace QuantLibAddin {
             const QuantLib::Time& time,
             bool permanent);
     };
+
+
 }
 
 #endif

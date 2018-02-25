@@ -557,6 +557,7 @@
     <ClCompile Include="qlo\serialization\create\create_templatehullwhite.cpp" />
     <ClCompile Include="qlo\serialization\create\create_templatemontecarlo.cpp" />
     <ClCompile Include="qlo\serialization\create\create_templatequasigaussian.cpp" />
+    <ClCompile Include="qlo\serialization\create\create_vanillalocalvolmodel.cpp" />
     <ClCompile Include="qlo\serialization\register\serialization_basisswap.cpp" />
     <ClCompile Include="qlo\serialization\register\serialization_inflation.cpp" />
     <ClCompile Include="qlo\serialization\register\serialization_sabrswaptioncube.cpp" />
@@ -565,6 +566,7 @@
     <ClCompile Include="qlo\serialization\register\serialization_templatehullwhite.cpp" />
     <ClCompile Include="qlo\serialization\register\serialization_templatemontecarlo.cpp" />
     <ClCompile Include="qlo\serialization\register\serialization_templatequasigaussian.cpp" />
+    <ClCompile Include="qlo\serialization\register\serialization_vanillalocalvolmodel.cpp" />
     <ClCompile Include="qlo\templatecommodity.cpp" />
     <ClCompile Include="qlo\templatehestonmodel.cpp" />
     <ClCompile Include="qlo\templatehullwhite.cpp" />
@@ -630,11 +632,13 @@
     <ClCompile Include="qlo\valueobjects\vo_templatequasigaussian.cpp" />
     <ClCompile Include="qlo\valueobjects\vo_termstructures.cpp" />
     <ClCompile Include="qlo\valueobjects\vo_timeseries.cpp" />
+    <ClCompile Include="qlo\valueobjects\vo_vanillalocalvolmodel.cpp" />
     <ClCompile Include="qlo\valueobjects\vo_vanillaswap.cpp" />
     <ClCompile Include="qlo\valueobjects\vo_volatilities.cpp" />
     <ClCompile Include="qlo\valueobjects\vo_volatility.cpp" />
     <ClCompile Include="qlo\piecewiseyieldcurve.cpp" />
     <ClCompile Include="qlo\ratehelpers.cpp" />
+    <ClCompile Include="qlo\vanillalocalvolmodel.cpp" />
     <ClCompile Include="qlo\yieldtermstructures.cpp" />
     <ClCompile Include="qlo\extrapolator.cpp" />
     <ClCompile Include="qlo\getcovariance.cpp" />
@@ -856,6 +860,7 @@
     <ClInclude Include="qlo\serialization\create\create_templatehullwhite.hpp" />
     <ClInclude Include="qlo\serialization\create\create_templatemontecarlo.hpp" />
     <ClInclude Include="qlo\serialization\create\create_templatequasigaussian.hpp" />
+    <ClInclude Include="qlo\serialization\create\create_vanillalocalvolmodel.hpp" />
     <ClInclude Include="qlo\serialization\register\serialization_basisswap.hpp" />
     <ClInclude Include="qlo\serialization\register\serialization_inflation.hpp" />
     <ClInclude Include="qlo\serialization\register\serialization_sabrswaptioncube.hpp" />
@@ -864,11 +869,13 @@
     <ClInclude Include="qlo\serialization\register\serialization_templatehullwhite.hpp" />
     <ClInclude Include="qlo\serialization\register\serialization_templatemontecarlo.hpp" />
     <ClInclude Include="qlo\serialization\register\serialization_templatequasigaussian.hpp" />
+    <ClInclude Include="qlo\serialization\register\serialization_vanillalocalvolmodel.hpp" />
     <ClInclude Include="qlo\templatecommodity.hpp" />
     <ClInclude Include="qlo\templatehestonmodel.hpp" />
     <ClInclude Include="qlo\templatehullwhite.hpp" />
     <ClInclude Include="qlo\templatemontecarlo.hpp" />
     <ClInclude Include="qlo\templatequasigaussian.hpp" />
+    <ClInclude Include="qlo\templatestochasticprocess.hpp" />
     <ClInclude Include="qlo\valueobjects\vo_abcd.hpp" />
     <ClInclude Include="qlo\valueobjects\vo_accountingengines.hpp" />
     <ClInclude Include="qlo\valueobjects\vo_all.hpp" />
@@ -932,11 +939,13 @@
     <ClInclude Include="qlo\valueobjects\vo_templatequasigaussian.hpp" />
     <ClInclude Include="qlo\valueobjects\vo_termstructures.hpp" />
     <ClInclude Include="qlo\valueobjects\vo_timeseries.hpp" />
+    <ClInclude Include="qlo\valueobjects\vo_vanillalocalvolmodel.hpp" />
     <ClInclude Include="qlo\valueobjects\vo_vanillaswap.hpp" />
     <ClInclude Include="qlo\valueobjects\vo_volatilities.hpp" />
     <ClInclude Include="qlo\valueobjects\vo_volatility.hpp" />
     <ClInclude Include="qlo\piecewiseyieldcurve.hpp" />
     <ClInclude Include="qlo\ratehelpers.hpp" />
+    <ClInclude Include="qlo\vanillalocalvolmodel.hpp" />
     <ClInclude Include="qlo\yieldtermstructures.hpp" />
     <ClInclude Include="qlo\extrapolator.hpp" />
     <ClInclude Include="qlo\getcovariance.hpp" />

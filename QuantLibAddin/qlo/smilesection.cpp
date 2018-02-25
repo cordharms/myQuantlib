@@ -31,6 +31,7 @@
 #include <ql/termstructures/volatility/flatsmilesection.hpp>
 #include <ql/quotes/simplequote.hpp>
 
+
 namespace QuantLibAddin {
 
     FlatSmileSection::FlatSmileSection(
@@ -218,5 +219,6 @@ namespace QuantLibAddin {
            
              libraryObject_ = sabrVol->smileSection(time,true);  
     }
+
 }
 

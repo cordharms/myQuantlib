@@ -120,6 +120,7 @@
     <DataType defaultSuperType='libraryClass'>QuantLib::NthToDefault</DataType>
     <DataType defaultSuperType='libraryClass'>QuantLib::OneAssetOption</DataType>
     <DataType defaultSuperType='libraryClass'>QuantLib::OptimizationMethod</DataType>
+    <DataType defaultSuperType='libraryClass'>QuantLib::LevenbergMarquardt</DataType>
     <DataType defaultSuperType='libraryClass'>QuantLib::OptionletStripper1</DataType>
     <DataType defaultSuperType='libraryClass'>QuantLib::OptionletStripper2</DataType>
     <DataType defaultSuperType='libraryClass'>QuantLib::OptionletStripper</DataType>
@@ -312,6 +313,9 @@
     <DataType defaultSuperType='libraryClass'>QuantLib::RealShiftedSABRModel</DataType>
     <DataType defaultSuperType='libraryClass'>QuantLib::StochVolModelCalibrator</DataType>
     <DataType defaultSuperType='libraryClass'>QuantLib::QuasiGaussianModelCalibrator</DataType>
+    <DataType defaultSuperType='libraryClass'>QuantLib::VanillaLocalVolModel</DataType>
+    <DataType defaultSuperType='libraryClass'>QuantLib::VanillaLocalVolModelSmileSection</DataType>
+    <DataType defaultSuperType='objectClass'>QuantLibAddin::VanillaLocalVolCMSTS</DataType>
 
     <DataType defaultSuperType='libraryClass'>QuantLib::IndexTermStructure</DataType>
     <DataType defaultSuperType='libraryClass'>QuantLib::Real2FMeanReversionModel</DataType>
