@@ -11,7 +11,9 @@
     <include>qlo/swaption.hpp</include>
     <include>qlo/schedule.hpp</include>    
     <include>qlo/templatehullwhite.hpp</include>
+    <include>qlo/shortratemodels.hpp</include>
     <include>ql/experimental/templatemodels/hullwhite/hullwhitemodels.hpp</include>
+    <include>ql/models/shortrate/twofactormodels/g2.hpp</include>
   </serializationIncludes>
   <addinIncludes>
     <include>qlo/handleimpl.hpp</include>
@@ -23,7 +25,9 @@
     <include>qlo/swaption.hpp</include>
     <include>qlo/schedule.hpp</include>
     <include>qlo/templatehullwhite.hpp</include>
+    <include>qlo/shortratemodels.hpp</include>
     <include>ql/experimental/templatemodels/hullwhite/hullwhitemodels.hpp</include>
+    <include>ql/models/shortrate/twofactormodels/g2.hpp</include>
   </addinIncludes>
   <copyright>
     Copyright (C) 2014, Sebastian Schlenkrich
@@ -893,6 +897,67 @@
       </ReturnValue>
     </Member>
 
-    
+
+    <Constructor name='qlRealG2ppModel'>
+      <libraryFunction>RealG2ppModel</libraryFunction>
+      <SupportedPlatforms>
+        <SupportedPlatform name='Excel'/>
+        <SupportedPlatform name='Cpp'/>
+      </SupportedPlatforms>
+      <ParameterList>
+        <Parameters>
+          <Parameter name='DiscountCurve'>
+            <type>QuantLib::YieldTermStructure</type>
+            <superType>libToHandle</superType>
+            <tensorRank>scalar</tensorRank>
+            <description>YieldTermStructure for discounting.</description>
+          </Parameter>
+          <Parameter name='Sigma' default='0.01' const='False'>
+            <type>QuantLib::Real</type>
+            <tensorRank>scalar</tensorRank>
+            <description>x-factor volatility.</description>
+          </Parameter>
+          <Parameter name='Eta' default='0.01' const='False'>
+            <type>QuantLib::Real</type>
+            <tensorRank>scalar</tensorRank>
+            <description>y-factor volatility.</description>
+          </Parameter>
+          <Parameter name='A' default='0.05' const='False'>
+            <type>QuantLib::Real</type>
+            <tensorRank>scalar</tensorRank>
+            <description>x-factor mean reversion speed.</description>
+          </Parameter>
+          <Parameter name='B' default='0.50' const='False'>
+            <type>QuantLib::Real</type>
+            <tensorRank>scalar</tensorRank>
+            <description>y-factor mean reversion speed.</description>
+          </Parameter>
+          <Parameter name='Correlation' default='0.05' const='False'>
+            <type>QuantLib::Real</type>
+            <tensorRank>scalar</tensorRank>
+            <description>correlation between dx and dy.</description>
+          </Parameter>
+        </Parameters>
+      </ParameterList>
+    </Constructor>
+
+    <Constructor name='qlRealG2ppModel2'>
+      <libraryFunction>RealG2ppModel</libraryFunction>
+      <SupportedPlatforms>
+        <SupportedPlatform name='Excel'/>
+        <SupportedPlatform name='Cpp'/>
+      </SupportedPlatforms>
+      <ParameterList>
+        <Parameters>
+          <Parameter name='G2ppModel'>
+            <type>QuantLib::G2</type>
+            <tensorRank>scalar</tensorRank>
+            <description>reference to (standard) G2++ model.</description>
+          </Parameter>
+        </Parameters>
+      </ParameterList>
+    </Constructor>
+
+
   </Functions>
 </Category>
