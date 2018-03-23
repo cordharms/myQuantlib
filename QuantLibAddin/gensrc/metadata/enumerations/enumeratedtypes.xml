@@ -2005,6 +2005,14 @@
           <string>LogNormalApproximation</string>
           <value>QuantLib::RealStochasticProcess::VolEvolv(QuantLib::RealStochasticProcess::LogNormalApproximation)</value>
         </EnumeratedType>
+        <EnumeratedType>
+          <string>LocalGaussian</string>
+          <value>QuantLib::RealStochasticProcess::VolEvolv(QuantLib::RealStochasticProcess::LocalGaussian)</value>
+        </EnumeratedType>
+        <EnumeratedType>
+          <string>Other</string>
+          <value>QuantLib::RealStochasticProcess::VolEvolv(QuantLib::RealStochasticProcess::Other)</value>
+        </EnumeratedType>
       </EnumeratedTypes>
     </EnumeratedTypeGroup>
 
