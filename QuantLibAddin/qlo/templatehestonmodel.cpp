@@ -162,6 +162,20 @@ namespace QuantLibAddin {
 			new QuantLib::RealShiftedSABRModel( S0, lambda, alpha, beta, rho, nu ) );
 	}
 
+	RealQuadraticLVSVModel::RealQuadraticLVSVModel(
+		const boost::shared_ptr<ObjectHandler::ValueObject>& properties,
+		const QuantLib::Real                                 S0,
+		const QuantLib::Real                                 curv,
+		const QuantLib::Real                                 skew,
+		const QuantLib::Real                                 sigma0,
+		const QuantLib::Real                                 theta,
+		const QuantLib::Real                                 nu,
+		const QuantLib::Real                                 rho,
+		bool                                                 permanent)
+		: RealStochasticProcess(properties, permanent) {
+		libraryObject_ = boost::shared_ptr<QuantLib::RealStochasticProcess>(
+			new QuantLib::RealQuadraticLVSVModel(S0, curv,skew, sigma0, theta, nu, rho));
+	}
 
 
 	StochVolModelCalibrator::StochVolModelCalibrator(

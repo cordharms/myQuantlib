@@ -176,6 +176,20 @@ namespace QuantLibAddin {
   				bool                                                 permanent);			   
 	};
 
+	class RealQuadraticLVSVModel : public RealStochasticProcess {
+	public:
+		RealQuadraticLVSVModel(
+			const boost::shared_ptr<ObjectHandler::ValueObject>& properties,
+			const QuantLib::Real                                 S0,
+			const QuantLib::Real                                 curv,
+			const QuantLib::Real                                 skew,
+			const QuantLib::Real                                 sigma0,
+			const QuantLib::Real                                 theta,
+			const QuantLib::Real                                 nu,
+			const QuantLib::Real                                 rho,
+			bool                                                 permanent);
+	};
+
 
 	class StochVolModelCalibrator : public ObjectHandler::LibraryObject<QuantLib::StochVolModelCalibrator> {
 	public:
