@@ -18,6 +18,9 @@
 #include <ql/experimental/templatemodels/multiasset/localcorrelationbsmodel.hpp>
 #include <ql/experimental/termstructures/localcorrtermstructure.hpp>
 #include <ql/experimental/termstructures/localCorrFX/CTSlocalInCrossCorrelationFX.hpp>
+#include <ql/experimental/termstructures/localCorrFX/CTSlocalInCrossCovarianceFX.hpp>
+#include <ql/experimental/termstructures/localCorrFX/CTSlocalInCrossVolatilityFX.hpp>
+#include <ql/experimental/termstructures/localCorrFX/CTSlocalInCrossNegSkewFX.hpp>
 #include <ql/experimental/termstructures/localCorrFX/localcorrsurfaceabfFX.hpp>
 #include <qlo\templatehestonmodel.hpp>
 
@@ -81,9 +84,31 @@ namespace QuantLibAddin {
 		const boost::shared_ptr<QuantLib::GeneralizedBlackScholesProcess>&				processToCal,
 		bool                                                                            permanent);
 	};
-
-
-
+	class CTSlocalInCrossCovarianceFX : public LocalCorrSurfaceABFFX {
+	public:
+		CTSlocalInCrossCovarianceFX(
+			const boost::shared_ptr<ObjectHandler::ValueObject>&                            properties,
+			const std::vector<boost::shared_ptr<QuantLib::GeneralizedBlackScholesProcess>>& processes,
+			const boost::shared_ptr<QuantLib::GeneralizedBlackScholesProcess>&				processToCal,
+			bool                                                                            permanent);
+	};
+	class CTSlocalInCrossVolatilityFX : public LocalCorrSurfaceABFFX {
+	public:
+		CTSlocalInCrossVolatilityFX(
+			const boost::shared_ptr<ObjectHandler::ValueObject>&                            properties,
+			const std::vector<boost::shared_ptr<QuantLib::GeneralizedBlackScholesProcess>>& processes,
+			const boost::shared_ptr<QuantLib::GeneralizedBlackScholesProcess>&				processToCal,
+			bool                                                                            permanent);
+	};
+	class CTSlocalInCrossNegSkewFX : public LocalCorrSurfaceABFFX {
+	public:
+		CTSlocalInCrossNegSkewFX(
+			const boost::shared_ptr<ObjectHandler::ValueObject>&                            properties,
+			const std::vector<boost::shared_ptr<QuantLib::GeneralizedBlackScholesProcess>>& processes,
+			const boost::shared_ptr<QuantLib::GeneralizedBlackScholesProcess>&				processToCal,
+			double																			beta,
+			bool                                                                            permanent);
+	};
 }
 
 #endif

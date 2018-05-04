@@ -90,6 +90,77 @@
       </ParameterList>
     </Constructor>
 
+    <Constructor name='qlCTSlocalInCrossCovFX'>
+      <libraryFunction>CTSlocalInCrossCovarianceFX</libraryFunction>
+      <SupportedPlatforms>
+        <SupportedPlatform name='Excel'/>
+        <SupportedPlatform name='Cpp'/>
+      </SupportedPlatforms>
+      <ParameterList>
+        <Parameters>
+          <Parameter name='BSProcesses'>
+            <type>QuantLib::GeneralizedBlackScholesProcess</type>
+            <tensorRank>vector</tensorRank>
+            <description>Array of Black Scholes processes</description>
+          </Parameter>
+          <Parameter name='BSProcessLocalCorr'>
+            <type>QuantLib::GeneralizedBlackScholesProcess</type>
+            <tensorRank>scalar</tensorRank>
+            <description>Black Scholes process to determine local correlation</description>
+          </Parameter>
+        </Parameters>
+      </ParameterList>
+    </Constructor>
+
+    <Constructor name='qlCTSlocalInCrossVolaFX'>
+      <libraryFunction>CTSlocalInCrossVolatilityFX</libraryFunction>
+      <SupportedPlatforms>
+        <SupportedPlatform name='Excel'/>
+        <SupportedPlatform name='Cpp'/>
+      </SupportedPlatforms>
+      <ParameterList>
+        <Parameters>
+          <Parameter name='BSProcesses'>
+            <type>QuantLib::GeneralizedBlackScholesProcess</type>
+            <tensorRank>vector</tensorRank>
+            <description>Array of Black Scholes processes</description>
+          </Parameter>
+          <Parameter name='BSProcessLocalCorr'>
+            <type>QuantLib::GeneralizedBlackScholesProcess</type>
+            <tensorRank>scalar</tensorRank>
+            <description>Black Scholes process to determine local correlation</description>
+          </Parameter>
+        </Parameters>
+      </ParameterList>
+    </Constructor>
+
+    <Constructor name='qlCTSlocalInCrossNegSkewFX'>
+      <libraryFunction>CTSlocalInCrossNegSkewFX</libraryFunction>
+      <SupportedPlatforms>
+        <SupportedPlatform name='Excel'/>
+        <SupportedPlatform name='Cpp'/>
+      </SupportedPlatforms>
+      <ParameterList>
+        <Parameters>
+          <Parameter name='BSProcesses'>
+            <type>QuantLib::GeneralizedBlackScholesProcess</type>
+            <tensorRank>vector</tensorRank>
+            <description>Array of Black Scholes processes</description>
+          </Parameter>
+          <Parameter name='BSProcessLocalCorr'>
+            <type>QuantLib::GeneralizedBlackScholesProcess</type>
+            <tensorRank>scalar</tensorRank>
+            <description>Black Scholes process to determine local correlation</description>
+          </Parameter>
+          <Parameter name='Beta' default='1'>
+            <type>QuantLib::Real</type>
+            <tensorRank>scalar</tensorRank>
+            <description>beta (positive for negative skew, negative for positive skew)</description>
+          </Parameter>
+        </Parameters>
+      </ParameterList>
+    </Constructor>
+    
     <Member name='qlCTSgetCalibratedFXCorrFromGrid' type='QuantLib::LocalCorrSurfaceABFFX' >
       <description>Return local correlation for a specified time and asset grid.</description>
       <libraryFunction>getLocalCorrelationSurface</libraryFunction>

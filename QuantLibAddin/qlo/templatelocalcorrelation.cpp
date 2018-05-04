@@ -41,7 +41,34 @@ namespace QuantLibAddin {
 		libraryObject_ = boost::shared_ptr<QuantLib::LocalCorrTermStructure>(
 			new QuantLib::CTSlocalInCrossCorrelationFX(processes, processToCal));
 	}
-
+	CTSlocalInCrossCovarianceFX::CTSlocalInCrossCovarianceFX(
+		const boost::shared_ptr<ObjectHandler::ValueObject>&                            properties,
+		const std::vector<boost::shared_ptr<QuantLib::GeneralizedBlackScholesProcess>>& processes,
+		const boost::shared_ptr<QuantLib::GeneralizedBlackScholesProcess>&				processToCal,
+		bool                                                                            permanent)
+		: LocalCorrSurfaceABFFX(properties, permanent) {
+		libraryObject_ = boost::shared_ptr<QuantLib::LocalCorrTermStructure>(
+			new QuantLib::CTSlocalInCrossCovarianceFX(processes, processToCal));
+	}
+	CTSlocalInCrossNegSkewFX::CTSlocalInCrossNegSkewFX(
+		const boost::shared_ptr<ObjectHandler::ValueObject>&                            properties,
+		const std::vector<boost::shared_ptr<QuantLib::GeneralizedBlackScholesProcess>>& processes,
+		const boost::shared_ptr<QuantLib::GeneralizedBlackScholesProcess>&				processToCal,
+		double																			beta,
+		bool                                                                            permanent)
+		: LocalCorrSurfaceABFFX(properties, permanent) {
+		libraryObject_ = boost::shared_ptr<QuantLib::LocalCorrTermStructure>(
+			new QuantLib::CTSlocalInCrossNegSkewFX(processes, processToCal,beta));
+	}
+	CTSlocalInCrossVolatilityFX::CTSlocalInCrossVolatilityFX(
+		const boost::shared_ptr<ObjectHandler::ValueObject>&                            properties,
+		const std::vector<boost::shared_ptr<QuantLib::GeneralizedBlackScholesProcess>>& processes,
+		const boost::shared_ptr<QuantLib::GeneralizedBlackScholesProcess>&				processToCal,
+		bool                                                                            permanent)
+		: LocalCorrSurfaceABFFX(properties, permanent) {
+		libraryObject_ = boost::shared_ptr<QuantLib::LocalCorrTermStructure>(
+			new QuantLib::CTSlocalInCrossVolatilityFX(processes, processToCal));
+	}
 }
 
 
