@@ -557,6 +557,7 @@
     <ClCompile Include="qlo\serialization\create\create_templatehullwhite.cpp" />
     <ClCompile Include="qlo\serialization\create\create_templatemontecarlo.cpp" />
     <ClCompile Include="qlo\serialization\create\create_templatequasigaussian.cpp" />
+    <ClCompile Include="qlo\serialization\create\create_templatequasigaussian2.cpp" />
     <ClCompile Include="qlo\serialization\create\create_vanillalocalvolmodel.cpp" />
     <ClCompile Include="qlo\serialization\register\serialization_basisswap.cpp" />
     <ClCompile Include="qlo\serialization\register\serialization_inflation.cpp" />
@@ -566,12 +567,14 @@
     <ClCompile Include="qlo\serialization\register\serialization_templatehullwhite.cpp" />
     <ClCompile Include="qlo\serialization\register\serialization_templatemontecarlo.cpp" />
     <ClCompile Include="qlo\serialization\register\serialization_templatequasigaussian.cpp" />
+    <ClCompile Include="qlo\serialization\register\serialization_templatequasigaussian2.cpp" />
     <ClCompile Include="qlo\serialization\register\serialization_vanillalocalvolmodel.cpp" />
     <ClCompile Include="qlo\templatecommodity.cpp" />
     <ClCompile Include="qlo\templatehestonmodel.cpp" />
     <ClCompile Include="qlo\templatehullwhite.cpp" />
     <ClCompile Include="qlo\templatemontecarlo.cpp" />
     <ClCompile Include="qlo\templatequasigaussian.cpp" />
+    <ClCompile Include="qlo\templatequasigaussian2.cpp" />
     <ClCompile Include="qlo\valueobjects\vo_abcd.cpp" />
     <ClCompile Include="qlo\valueobjects\vo_accountingengines.cpp" />
     <ClCompile Include="qlo\valueobjects\vo_alphaform.cpp" />
@@ -630,6 +633,7 @@
     <ClCompile Include="qlo\valueobjects\vo_templatehullwhite.cpp" />
     <ClCompile Include="qlo\valueobjects\vo_templatemontecarlo.cpp" />
     <ClCompile Include="qlo\valueobjects\vo_templatequasigaussian.cpp" />
+    <ClCompile Include="qlo\valueobjects\vo_templatequasigaussian2.cpp" />
     <ClCompile Include="qlo\valueobjects\vo_termstructures.cpp" />
     <ClCompile Include="qlo\valueobjects\vo_timeseries.cpp" />
     <ClCompile Include="qlo\valueobjects\vo_vanillalocalvolmodel.cpp" />
@@ -860,6 +864,7 @@
     <ClInclude Include="qlo\serialization\create\create_templatehullwhite.hpp" />
     <ClInclude Include="qlo\serialization\create\create_templatemontecarlo.hpp" />
     <ClInclude Include="qlo\serialization\create\create_templatequasigaussian.hpp" />
+    <ClInclude Include="qlo\serialization\create\create_templatequasigaussian2.hpp" />
     <ClInclude Include="qlo\serialization\create\create_vanillalocalvolmodel.hpp" />
     <ClInclude Include="qlo\serialization\register\serialization_basisswap.hpp" />
     <ClInclude Include="qlo\serialization\register\serialization_inflation.hpp" />
@@ -869,12 +874,14 @@
     <ClInclude Include="qlo\serialization\register\serialization_templatehullwhite.hpp" />
     <ClInclude Include="qlo\serialization\register\serialization_templatemontecarlo.hpp" />
     <ClInclude Include="qlo\serialization\register\serialization_templatequasigaussian.hpp" />
+    <ClInclude Include="qlo\serialization\register\serialization_templatequasigaussian2.hpp" />
     <ClInclude Include="qlo\serialization\register\serialization_vanillalocalvolmodel.hpp" />
     <ClInclude Include="qlo\templatecommodity.hpp" />
     <ClInclude Include="qlo\templatehestonmodel.hpp" />
     <ClInclude Include="qlo\templatehullwhite.hpp" />
     <ClInclude Include="qlo\templatemontecarlo.hpp" />
     <ClInclude Include="qlo\templatequasigaussian.hpp" />
+    <ClInclude Include="qlo\templatequasigaussian2.hpp" />
     <ClInclude Include="qlo\templatestochasticprocess.hpp" />
     <ClInclude Include="qlo\valueobjects\vo_abcd.hpp" />
     <ClInclude Include="qlo\valueobjects\vo_accountingengines.hpp" />
@@ -937,6 +944,7 @@
     <ClInclude Include="qlo\valueobjects\vo_templatehullwhite.hpp" />
     <ClInclude Include="qlo\valueobjects\vo_templatemontecarlo.hpp" />
     <ClInclude Include="qlo\valueobjects\vo_templatequasigaussian.hpp" />
+    <ClInclude Include="qlo\valueobjects\vo_templatequasigaussian2.hpp" />
     <ClInclude Include="qlo\valueobjects\vo_termstructures.hpp" />
     <ClInclude Include="qlo\valueobjects\vo_timeseries.hpp" />
     <ClInclude Include="qlo\valueobjects\vo_vanillalocalvolmodel.hpp" />

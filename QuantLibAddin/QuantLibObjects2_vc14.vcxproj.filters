@@ -981,6 +981,18 @@
     <ClCompile Include="qlo\serialization\register\serialization_vanillalocalvolmodel.cpp">
       <Filter>serialization\register</Filter>
     </ClCompile>
+    <ClCompile Include="qlo\templatequasigaussian2.cpp">
+      <Filter>Experimental\Template\QGaussian</Filter>
+    </ClCompile>
+    <ClCompile Include="qlo\valueobjects\vo_templatequasigaussian2.cpp">
+      <Filter>valueobjects</Filter>
+    </ClCompile>
+    <ClCompile Include="qlo\serialization\create\create_templatequasigaussian2.cpp">
+      <Filter>serialization\create</Filter>
+    </ClCompile>
+    <ClCompile Include="qlo\serialization\register\serialization_templatequasigaussian2.cpp">
+      <Filter>serialization\register</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="qlo\enumerations\register\register_all.hpp">
@@ -1979,6 +1991,18 @@
       <Filter>serialization\create</Filter>
     </ClInclude>
     <ClInclude Include="qlo\serialization\register\serialization_vanillalocalvolmodel.hpp">
+      <Filter>serialization\register</Filter>
+    </ClInclude>
+    <ClInclude Include="qlo\templatequasigaussian2.hpp">
+      <Filter>Experimental\Template\QGaussian</Filter>
+    </ClInclude>
+    <ClInclude Include="qlo\valueobjects\vo_templatequasigaussian2.hpp">
+      <Filter>valueobjects</Filter>
+    </ClInclude>
+    <ClInclude Include="qlo\serialization\create\create_templatequasigaussian2.hpp">
+      <Filter>serialization\create</Filter>
+    </ClInclude>
+    <ClInclude Include="qlo\serialization\register\serialization_templatequasigaussian2.hpp">
       <Filter>serialization\register</Filter>
     </ClInclude>
   </ItemGroup>

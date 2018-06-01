@@ -617,10 +617,10 @@
             <tensorRank>scalar</tensorRank>
             <description>observation time (t).</description>
           </Parameter>
-          <Parameter name='PayTime' exampleValue ='2' default='2' >
-            <type>QuantLib::Time</type>
+          <Parameter name='Alias' >
+            <type>string</type>
             <tensorRank>scalar</tensorRank>
-            <description>payment time (T).</description>
+            <description>alias of underlying asset.</description>
           </Parameter>
           <Parameter name='Strike' exampleValue ='2' default='2' >
             <type>QuantLib::Real</type>

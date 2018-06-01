@@ -1,0 +1,642 @@
+<Category name='templatequasigaussian2'>
+  <description>functions and methods for re-factored template based Quasi Gaussian model.</description>
+  <displayName>Template Quasi Gaussain Model 2</displayName>
+  <xlFunctionWizardCategory>QuantLib - Financial</xlFunctionWizardCategory>
+  <serializationIncludes>
+    <include>qlo/conversions/coercetermstructure.hpp</include>
+    <include>qlo/termstructures.hpp</include>
+    <include>ql/indexes/swapindex.hpp</include>
+    <include>qlo/indexes/swapindex.hpp</include>
+    <include>qlo/swaption.hpp</include>
+    <include>qlo/templatequasigaussian2.hpp</include>
+  </serializationIncludes>
+  <addinIncludes>
+    <include>qlo/handleimpl.hpp</include>
+    <include>qlo/conversions/coercetermstructure.hpp</include>
+    <include>qlo/termstructures.hpp</include>
+    <include>ql/indexes/swapindex.hpp</include>
+    <include>qlo/indexes/swapindex.hpp</include>
+    <include>qlo/swaption.hpp</include>
+    <include>qlo/templatequasigaussian2.hpp</include>
+  </addinIncludes>
+  <copyright>
+    Copyright (C) 2018, Sebastian Schlenkrich
+  </copyright>
+  <Functions>
+
+    <!-- Constructor(s) for QuasiGaussianModel -->
+    
+    <Constructor name='qlQuasiGaussianModel'>
+      <libraryFunction>QuasiGaussianModel</libraryFunction>
+      <SupportedPlatforms>
+        <SupportedPlatform name='Excel'/>
+        <SupportedPlatform name='Cpp'/>
+      </SupportedPlatforms>
+      <ParameterList>
+        <Parameters>
+          <Parameter name='DiscountCurve'>
+            <type>QuantLib::YieldTermStructure</type>
+            <superType>libToHandle</superType>
+            <tensorRank>scalar</tensorRank>
+            <description>YieldTermStructure for discounting.</description>
+          </Parameter>
+          <Parameter name='D' exampleValue ='4' default='4'>
+            <type>QuantLib::Size</type>
+            <tensorRank>scalar</tensorRank>
+            <description>number risk factors for yield curve (excl. stoch. vol).</description>
+          </Parameter>
+          <Parameter name='Times' exampleValue='5, 10, ...'>
+            <type>QuantLib::Time</type>
+            <tensorRank>vector</tensorRank>
+            <description>vector of time-grid of left-constant model parameter values (in year fractions)</description>
+          </Parameter>
+          <Parameter name='Sigma' exampleValue ='0.005, 0.005, ...' default='0.0'>
+            <type>QuantLib::Time</type>
+            <tensorRank>matrix</tensorRank>
+            <description>volatility (times,d).</description>
+          </Parameter>
+          <Parameter name='Slope' exampleValue ='0.05, 0.05, ...' default='0.0'>
+            <type>QuantLib::Time</type>
+            <tensorRank>matrix</tensorRank>
+            <description>skew (times,d).</description>
+          </Parameter>
+          <Parameter name='Curve' exampleValue ='2.0, 2.0, ...' default='0.0'>
+            <type>QuantLib::Time</type>
+            <tensorRank>matrix</tensorRank>
+            <description>smile (times,d).</description>
+          </Parameter>
+          <Parameter name='Eta' exampleValue ='0.10, 0.10, ...' default='0.0'>
+            <type>QuantLib::Real</type>
+            <tensorRank>vector</tensorRank>
+            <description>vol-of-vol (times).</description>
+          </Parameter>
+          <Parameter name='Delta' exampleValue ='0.5, 2.0, 10.0, 30.0 ...' default='0.0'>
+            <type>QuantLib::Real</type>
+            <tensorRank>vector</tensorRank>
+            <description>maturity of benchmark rates (d).</description>
+          </Parameter>
+          <Parameter name='Chi' exampleValue ='0.015, 0.15, 0.30, 1.20 ...' default='0.1'>
+            <type>QuantLib::Real</type>
+            <tensorRank>vector</tensorRank>
+            <description>mean reversion speads (d).</description>
+          </Parameter>
+          <Parameter name='Gamma' exampleValue ='1.0, 0.7, ...' default='1.0'>
+            <type>QuantLib::Time</type>
+            <tensorRank>matrix</tensorRank>
+            <description>benchmark rate correlation matrix (d,d).</description>
+          </Parameter>
+          <Parameter name='Theta' exampleValue ='0.1' default='0.1'>
+            <type>QuantLib::Real</type>
+            <tensorRank>scalar</tensorRank>
+            <description>stoch vol mean reversion speads.</description>
+          </Parameter>
+        </Parameters>
+      </ParameterList>
+    </Constructor>
+
+    <!-- Attribute inspectors for RealQuasiGaussianModel -->
+
+    <Member name='qlQuasiGaussianModelTimes' type='QuantLib::QuasiGaussianModel' >
+      <description>Returns model time grid.</description>
+      <libraryFunction>times</libraryFunction>
+      <SupportedPlatforms>
+        <!--SupportedPlatform name='Excel' calcInWizard='false'/-->
+        <SupportedPlatform name='Excel'/>
+        <!--SupportedPlatform name='Calc'/-->
+        <!--SupportedPlatform name='Cpp'/-->
+      </SupportedPlatforms>
+      <ParameterList>
+        <Parameters/>
+      </ParameterList>
+      <ReturnValue>
+        <type>QuantLib::Real</type>
+        <tensorRank>vector</tensorRank>
+      </ReturnValue>
+    </Member>
+
+    <Member name='qlQuasiGaussianModelSigmas' type='QuantLib::QuasiGaussianModel' >
+      <description>Returns model input volatilities.</description>
+      <libraryFunction>sigma</libraryFunction>
+      <SupportedPlatforms>
+        <!--SupportedPlatform name='Excel' calcInWizard='false'/-->
+        <SupportedPlatform name='Excel'/>
+        <!--SupportedPlatform name='Calc'/-->
+        <!--SupportedPlatform name='Cpp'/-->
+      </SupportedPlatforms>
+      <ParameterList>
+        <Parameters/>
+      </ParameterList>
+      <ReturnValue>
+        <type>QuantLib::Time</type>
+        <tensorRank>matrix</tensorRank>
+      </ReturnValue>
+    </Member>
+
+    <Member name='qlRealQuasiGaussianModelSlopes' type='QuantLib::QuasiGaussianModel' >
+      <description>Returns model input slopes.</description>
+      <libraryFunction>slope</libraryFunction>
+      <SupportedPlatforms>
+        <!--SupportedPlatform name='Excel' calcInWizard='false'/-->
+        <SupportedPlatform name='Excel'/>
+        <!--SupportedPlatform name='Calc'/-->
+        <!--SupportedPlatform name='Cpp'/-->
+      </SupportedPlatforms>
+      <ParameterList>
+        <Parameters/>
+      </ParameterList>
+      <ReturnValue>
+        <type>QuantLib::Time</type>
+        <tensorRank>matrix</tensorRank>
+      </ReturnValue>
+    </Member>
+
+    <Member name='qlRealQuasiGaussianModelCurves' type='QuantLib::QuasiGaussianModel' >
+      <description>Returns model input curves.</description>
+      <libraryFunction>curve</libraryFunction>
+      <SupportedPlatforms>
+        <!--SupportedPlatform name='Excel' calcInWizard='false'/-->
+        <SupportedPlatform name='Excel'/>
+        <!--SupportedPlatform name='Calc'/-->
+        <!--SupportedPlatform name='Cpp'/-->
+      </SupportedPlatforms>
+      <ParameterList>
+        <Parameters/>
+      </ParameterList>
+      <ReturnValue>
+        <type>QuantLib::Time</type>
+        <tensorRank>matrix</tensorRank>
+      </ReturnValue>
+    </Member>
+
+    <Member name='qlQuasiGaussianModelEtas' type='QuantLib::QuasiGaussianModel' >
+      <description>Returns model input eta.</description>
+      <libraryFunction>eta</libraryFunction>
+      <SupportedPlatforms>
+        <!--SupportedPlatform name='Excel' calcInWizard='false'/-->
+        <SupportedPlatform name='Excel'/>
+        <!--SupportedPlatform name='Calc'/-->
+        <!--SupportedPlatform name='Cpp'/-->
+      </SupportedPlatforms>
+      <ParameterList>
+        <Parameters/>
+      </ParameterList>
+      <ReturnValue>
+        <type>QuantLib::Real</type>
+        <tensorRank>vector</tensorRank>
+      </ReturnValue>
+    </Member>
+
+    <!-- Inspectors for RealQuasiGaussianModel -->
+
+    <Member name='qlQuasiGaussianModelDfT' type='QuantLib::QuasiGaussianModel' >
+      <description>Returns the factorized correlation matrix.</description>
+      <libraryFunction>DfT</libraryFunction>
+      <SupportedPlatforms>
+        <!--SupportedPlatform name='Excel' calcInWizard='false'/-->
+        <SupportedPlatform name='Excel'/>
+        <!--SupportedPlatform name='Calc'/-->
+        <!--SupportedPlatform name='Cpp'/-->
+      </SupportedPlatforms>
+      <ParameterList>
+        <Parameters/>
+      </ParameterList>
+      <ReturnValue>
+        <type>QuantLib::Time</type>
+        <tensorRank>matrix</tensorRank>
+      </ReturnValue>
+    </Member>
+
+    <Member name='qlQuasiGaussianModelHHfInv' type='QuantLib::QuasiGaussianModel' >
+      <description>Returns the inverse H Hf^-1.</description>
+      <libraryFunction>HHfInv</libraryFunction>
+      <SupportedPlatforms>
+        <!--SupportedPlatform name='Excel' calcInWizard='false'/-->
+        <SupportedPlatform name='Excel'/>
+        <!--SupportedPlatform name='Calc'/-->
+        <!--SupportedPlatform name='Cpp'/-->
+      </SupportedPlatforms>
+      <ParameterList>
+        <Parameters/>
+      </ParameterList>
+      <ReturnValue>
+        <type>QuantLib::Time</type>
+        <tensorRank>matrix</tensorRank>
+      </ReturnValue>
+    </Member>
+
+    <Member name='qlQuasiGaussianModelSigma' type='QuantLib::QuasiGaussianModel' >
+      <description>Returns model volatility.</description>
+      <libraryFunction>sigma</libraryFunction>
+      <SupportedPlatforms>
+        <!--SupportedPlatform name='Excel' calcInWizard='false'/-->
+        <SupportedPlatform name='Excel'/>
+        <!--SupportedPlatform name='Calc'/-->
+        <!--SupportedPlatform name='Cpp'/-->
+      </SupportedPlatforms>
+      <ParameterList>
+        <Parameters>
+          <Parameter name='Index' exampleValue ='0' default='0'>
+            <type>QuantLib::Size</type>
+            <tensorRank>scalar</tensorRank>
+            <description>risk factor index.</description>
+          </Parameter>
+          <Parameter name='Time' exampleValue ='1.0' default='1.0'>
+            <type>QuantLib::Time</type>
+            <tensorRank>scalar</tensorRank>
+            <description>observation time.</description>
+          </Parameter>
+        </Parameters>
+      </ParameterList>
+      <ReturnValue>
+        <type>QuantLib::Real</type>
+        <tensorRank>scalar</tensorRank>
+      </ReturnValue>
+    </Member>
+
+    <Member name='qlQuasiGaussianModelSlope' type='QuantLib::QuasiGaussianModel' >
+      <description>Returns model skew.</description>
+      <libraryFunction>slope</libraryFunction>
+      <SupportedPlatforms>
+        <!--SupportedPlatform name='Excel' calcInWizard='false'/-->
+        <SupportedPlatform name='Excel'/>
+        <!--SupportedPlatform name='Calc'/-->
+        <!--SupportedPlatform name='Cpp'/-->
+      </SupportedPlatforms>
+      <ParameterList>
+        <Parameters>
+          <Parameter name='Index' exampleValue ='0' default='0'>
+            <type>QuantLib::Size</type>
+            <tensorRank>scalar</tensorRank>
+            <description>risk factor index.</description>
+          </Parameter>
+          <Parameter name='Time' exampleValue ='1.0' default='1.0'>
+            <type>QuantLib::Time</type>
+            <tensorRank>scalar</tensorRank>
+            <description>observation time.</description>
+          </Parameter>
+        </Parameters>
+      </ParameterList>
+      <ReturnValue>
+        <type>QuantLib::Real</type>
+        <tensorRank>scalar</tensorRank>
+      </ReturnValue>
+    </Member>
+
+    <Member name='qlQuasiGaussianModelCurve' type='QuantLib::QuasiGaussianModel' >
+      <description>Returns model curve.</description>
+      <libraryFunction>curve</libraryFunction>
+      <SupportedPlatforms>
+        <!--SupportedPlatform name='Excel' calcInWizard='false'/-->
+        <SupportedPlatform name='Excel'/>
+        <!--SupportedPlatform name='Calc'/-->
+        <!--SupportedPlatform name='Cpp'/-->
+      </SupportedPlatforms>
+      <ParameterList>
+        <Parameters>
+          <Parameter name='Index' exampleValue ='0' default='0'>
+            <type>QuantLib::Size</type>
+            <tensorRank>scalar</tensorRank>
+            <description>risk factor index.</description>
+          </Parameter>
+          <Parameter name='Time' exampleValue ='1.0' default='1.0'>
+            <type>QuantLib::Time</type>
+            <tensorRank>scalar</tensorRank>
+            <description>observation time.</description>
+          </Parameter>
+        </Parameters>
+      </ParameterList>
+      <ReturnValue>
+        <type>QuantLib::Real</type>
+        <tensorRank>scalar</tensorRank>
+      </ReturnValue>
+    </Member>
+
+    <Member name='qlQuasiGaussianModelEta' type='QuantLib::QuasiGaussianModel' >
+      <description>Returns model vol-of-vol.</description>
+      <libraryFunction>eta</libraryFunction>
+      <SupportedPlatforms>
+        <!--SupportedPlatform name='Excel' calcInWizard='false'/-->
+        <SupportedPlatform name='Excel'/>
+        <!--SupportedPlatform name='Calc'/-->
+        <!--SupportedPlatform name='Cpp'/-->
+      </SupportedPlatforms>
+      <ParameterList>
+        <Parameters>
+          <Parameter name='Time' exampleValue ='1.0' default='1.0'>
+            <type>QuantLib::Time</type>
+            <tensorRank>scalar</tensorRank>
+            <description>observation time.</description>
+          </Parameter>
+        </Parameters>
+      </ParameterList>
+      <ReturnValue>
+        <type>QuantLib::Real</type>
+        <tensorRank>scalar</tensorRank>
+      </ReturnValue>
+    </Member>
+
+    <Member name='qlQuasiGaussianModelSigmaXT' type='QuantLib::QuasiGaussianModel' >
+      <description>Returns model volatility.</description>
+      <libraryFunction>sigma_xT</libraryFunction>
+      <SupportedPlatforms>
+        <!--SupportedPlatform name='Excel' calcInWizard='false'/-->
+        <SupportedPlatform name='Excel'/>
+        <!--SupportedPlatform name='Calc'/-->
+        <!--SupportedPlatform name='Cpp'/-->
+      </SupportedPlatforms>
+      <ParameterList>
+        <Parameters>
+          <Parameter name='Time' exampleValue ='1.0' default='1.0'>
+            <type>QuantLib::Time</type>
+            <tensorRank>scalar</tensorRank>
+            <description>observation time.</description>
+          </Parameter>
+          <Parameter name='X' >
+            <type>QuantLib::Time</type>
+            <tensorRank>vector</tensorRank>
+            <description>state variable x.</description>
+          </Parameter>
+          <Parameter name='Y' >
+            <type>QuantLib::Time</type>
+            <tensorRank>matrix</tensorRank>
+            <description>auxilliary variable y.</description>
+          </Parameter>
+        </Parameters>
+      </ParameterList>
+      <ReturnValue>
+        <type>QuantLib::Time</type>
+        <tensorRank>matrix</tensorRank>
+      </ReturnValue>
+    </Member>
+
+    <Constructor name='qlQGSwaprateModel'>
+      <libraryFunction>QGSwaprateModel</libraryFunction>
+      <SupportedPlatforms>
+        <SupportedPlatform name='Excel'/>
+        <SupportedPlatform name='Cpp'/>
+      </SupportedPlatforms>
+      <ParameterList>
+        <Parameters>
+          <Parameter name='QuasiGaussianModel' >
+            <type>QuantLib::QuasiGaussianModel</type>
+            <tensorRank>scalar</tensorRank>
+            <description>reference to base model.</description>
+          </Parameter>
+          <Parameter name='FloatTimes' exampleValue='5, 10, ...'>
+            <type>QuantLib::Time</type>
+            <tensorRank>vector</tensorRank>
+            <description>underlying swap float leg and paydates</description>
+          </Parameter>
+          <Parameter name='FloatWeights' exampleValue ='1.0, -1.0' default='1.0'>
+            <type>QuantLib::Real</type>
+            <tensorRank>vector</tensorRank>
+            <description>underlying swap float leg cash flows.</description>
+          </Parameter>
+          <Parameter name='FixedTimes' exampleValue='5, 10, ...'>
+            <type>QuantLib::Time</type>
+            <tensorRank>vector</tensorRank>
+            <description>underlying swap fixed leg paydates</description>
+          </Parameter>
+          <Parameter name='FixedWeights' exampleValue ='1.0, 1.0, ...' default='1.0'>
+            <type>QuantLib::Real</type>
+            <tensorRank>vector</tensorRank>
+            <description>underlying swap fixed leg annuity year fractions.</description>
+          </Parameter>
+          <Parameter name='ModelTimes' exampleValue='0, 1, 2, ...'>
+            <type>QuantLib::Time</type>
+            <tensorRank>vector</tensorRank>
+            <description>time grid for numerical integration.</description>
+          </Parameter>
+          <Parameter name='UseExpectedXY' exampleValue ='true' default='true'>
+            <type>bool</type>
+            <tensorRank>scalar</tensorRank>
+            <description>evaluate E^A[x(t)] and E^A[y(t)].</description>
+          </Parameter>
+        </Parameters>
+      </ParameterList>
+    </Constructor>
+
+    <Constructor name='qlQGSwaprateModel2'>
+      <libraryFunction>QGSwaprateModel</libraryFunction>
+      <SupportedPlatforms>
+        <SupportedPlatform name='Excel'/>
+        <SupportedPlatform name='Cpp'/>
+      </SupportedPlatforms>
+      <ParameterList>
+        <Parameters>
+          <Parameter name='QuasiGaussianModel' >
+            <type>QuantLib::QuasiGaussianModel</type>
+            <tensorRank>scalar</tensorRank>
+            <description>reference to base model.</description>
+          </Parameter>
+          <Parameter name='Swaption' >
+            <type>QuantLib::Swaption</type>
+            <tensorRank>scalar</tensorRank>
+            <description>reference to swaption instrument.</description>
+          </Parameter>
+          <Parameter name='DiscountCurve'>
+            <type>QuantLib::YieldTermStructure</type>
+            <superType>libToHandle</superType>
+            <tensorRank>scalar</tensorRank>
+            <description>YieldTermStructure for discounting.</description>
+          </Parameter>
+          <Parameter name='TimePointsPerYear' exampleValue='1' default='1'>
+            <type>QuantLib::Size</type>
+            <tensorRank>scalar</tensorRank>
+            <description>time grid for numerical integration.</description>
+          </Parameter>
+          <Parameter name='UseExpectedXY' exampleValue ='true' default='true'>
+            <type>bool</type>
+            <tensorRank>scalar</tensorRank>
+            <description>evaluate E^A[x(t)] and E^A[y(t)].</description>
+          </Parameter>
+        </Parameters>
+      </ParameterList>
+    </Constructor>
+
+    <Constructor name='qlQGSwaprateModel3'>
+      <libraryFunction>QGSwaprateModel</libraryFunction>
+      <SupportedPlatforms>
+        <SupportedPlatform name='Excel'/>
+        <SupportedPlatform name='Cpp'/>
+      </SupportedPlatforms>
+      <ParameterList>
+        <Parameters>
+          <Parameter name='QuasiGaussianModel' >
+            <type>QuantLib::QuasiGaussianModel</type>
+            <tensorRank>scalar</tensorRank>
+            <description>reference to base model.</description>
+          </Parameter>
+          <Parameter name='FixingTime' >
+            <type>QuantLib::Time</type>
+            <tensorRank>scalar</tensorRank>
+            <description>swap rate fixing time.</description>
+          </Parameter>
+          <Parameter name='SwapIndex' >
+            <type>QuantLib::SwapIndex</type>
+            <tensorRank>scalar</tensorRank>
+            <description>reference to swap index.</description>
+          </Parameter>
+          <Parameter name='DiscountCurve'>
+            <type>QuantLib::YieldTermStructure</type>
+            <superType>libToHandle</superType>
+            <tensorRank>scalar</tensorRank>
+            <description>YieldTermStructure for discounting.</description>
+          </Parameter>
+          <Parameter name='TimePointsPerYear' exampleValue='1' default='1'>
+            <type>QuantLib::Size</type>
+            <tensorRank>scalar</tensorRank>
+            <description>time grid for numerical integration.</description>
+          </Parameter>
+          <Parameter name='UseExpectedXY' exampleValue ='true' default='true'>
+            <type>bool</type>
+            <tensorRank>scalar</tensorRank>
+            <description>evaluate E^A[x(t)] and E^A[y(t)].</description>
+          </Parameter>
+        </Parameters>
+      </ParameterList>
+    </Constructor>
+
+    <Member name='qlQGSwaprateModelModelTimes' type='QuantLib::QGSwaprateModel' >
+      <description>Returns model times for disretisation.</description>
+      <libraryFunction>modelTimes</libraryFunction>
+      <SupportedPlatforms>
+        <!--SupportedPlatform name='Excel' calcInWizard='false'/-->
+        <SupportedPlatform name='Excel'/>
+        <!--SupportedPlatform name='Calc'/-->
+        <!--SupportedPlatform name='Cpp'/-->
+      </SupportedPlatforms>
+      <ParameterList>
+        <Parameters>
+        </Parameters>
+      </ParameterList>
+      <ReturnValue>
+        <type>QuantLib::Real</type>
+        <tensorRank>vector</tensorRank>
+      </ReturnValue>
+    </Member>
+
+    <Member name='qlQGSwaprateModelSigma' type='QuantLib::QGSwaprateModel' >
+      <description>Returns model volatility.</description>
+      <libraryFunction>sigma</libraryFunction>
+      <SupportedPlatforms>
+        <!--SupportedPlatform name='Excel' calcInWizard='false'/-->
+        <SupportedPlatform name='Excel'/>
+        <!--SupportedPlatform name='Calc'/-->
+        <!--SupportedPlatform name='Cpp'/-->
+      </SupportedPlatforms>
+      <ParameterList>
+        <Parameters>
+          <Parameter name='Time' exampleValue ='1.0' default='1.0'>
+            <type>QuantLib::Time</type>
+            <tensorRank>scalar</tensorRank>
+            <description>observation time.</description>
+          </Parameter>
+        </Parameters>
+      </ParameterList>
+      <ReturnValue>
+        <type>QuantLib::Real</type>
+        <tensorRank>scalar</tensorRank>
+      </ReturnValue>
+    </Member>
+
+    <Member name='qlQGSwaprateModelSlope' type='QuantLib::QGSwaprateModel' >
+      <description>Returns model skew.</description>
+      <libraryFunction>slope</libraryFunction>
+      <SupportedPlatforms>
+        <!--SupportedPlatform name='Excel' calcInWizard='false'/-->
+        <SupportedPlatform name='Excel'/>
+        <!--SupportedPlatform name='Calc'/-->
+        <!--SupportedPlatform name='Cpp'/-->
+      </SupportedPlatforms>
+      <ParameterList>
+        <Parameters>
+          <Parameter name='Time' exampleValue ='1.0' default='1.0'>
+            <type>QuantLib::Time</type>
+            <tensorRank>scalar</tensorRank>
+            <description>observation time.</description>
+          </Parameter>
+        </Parameters>
+      </ParameterList>
+      <ReturnValue>
+        <type>QuantLib::Real</type>
+        <tensorRank>scalar</tensorRank>
+      </ReturnValue>
+    </Member>
+
+    <Member name='qlQGSwaprateModelEta' type='QuantLib::QGSwaprateModel' >
+      <description>Returns model vol-of-vol.</description>
+      <libraryFunction>eta</libraryFunction>
+      <SupportedPlatforms>
+        <!--SupportedPlatform name='Excel' calcInWizard='false'/-->
+        <SupportedPlatform name='Excel'/>
+        <!--SupportedPlatform name='Calc'/-->
+        <!--SupportedPlatform name='Cpp'/-->
+      </SupportedPlatforms>
+      <ParameterList>
+        <Parameters>
+          <Parameter name='Time' exampleValue ='1.0' default='1.0'>
+            <type>QuantLib::Time</type>
+            <tensorRank>scalar</tensorRank>
+            <description>observation time.</description>
+          </Parameter>
+        </Parameters>
+      </ParameterList>
+      <ReturnValue>
+        <type>QuantLib::Real</type>
+        <tensorRank>scalar</tensorRank>
+      </ReturnValue>
+    </Member>
+
+    <Member name='qlQGSwaprateModelBarX' type='QuantLib::QGSwaprateModel' >
+      <description>Returns E^A[ x(t) ].</description>
+      <libraryFunction>barX</libraryFunction>
+      <SupportedPlatforms>
+        <!--SupportedPlatform name='Excel' calcInWizard='false'/-->
+        <SupportedPlatform name='Excel'/>
+        <!--SupportedPlatform name='Calc'/-->
+        <!--SupportedPlatform name='Cpp'/-->
+      </SupportedPlatforms>
+      <ParameterList>
+        <Parameters>
+          <Parameter name='Time' exampleValue ='1.0' default='1.0'>
+            <type>QuantLib::Time</type>
+            <tensorRank>scalar</tensorRank>
+            <description>observation time.</description>
+          </Parameter>
+        </Parameters>
+      </ParameterList>
+      <ReturnValue>
+        <type>QuantLib::Real</type>
+        <tensorRank>vector</tensorRank>
+      </ReturnValue>
+    </Member>
+
+    <Member name='qlQGSwaprateModelBarY' type='QuantLib::QGSwaprateModel' >
+      <description>Returns E^A[ y(t) ].</description>
+      <libraryFunction>barY</libraryFunction>
+      <SupportedPlatforms>
+        <!--SupportedPlatform name='Excel' calcInWizard='false'/-->
+        <SupportedPlatform name='Excel'/>
+        <!--SupportedPlatform name='Calc'/-->
+        <!--SupportedPlatform name='Cpp'/-->
+      </SupportedPlatforms>
+      <ParameterList>
+        <Parameters>
+          <Parameter name='Time' exampleValue ='1.0' default='1.0'>
+            <type>QuantLib::Time</type>
+            <tensorRank>scalar</tensorRank>
+            <description>observation time.</description>
+          </Parameter>
+        </Parameters>
+      </ParameterList>
+      <ReturnValue>
+        <type>QuantLib::Time</type>
+        <tensorRank>matrix</tensorRank>
+      </ReturnValue>
+    </Member>
+
+
+
+  </Functions>
+</Category>

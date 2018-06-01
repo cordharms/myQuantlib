@@ -723,6 +723,7 @@
     <ClCompile Include="functions\templatehullwhite.cpp" />
     <ClCompile Include="functions\templatemontecarlo.cpp" />
     <ClCompile Include="functions\templatequasigaussian.cpp" />
+    <ClCompile Include="functions\templatequasigaussian2.cpp" />
     <ClCompile Include="functions\vanillalocalvolmodel.cpp" />
     <ClCompile Include="register\addin.cpp" />
     <ClCompile Include="register\register_abcd.cpp" />
@@ -792,6 +793,7 @@
     <ClCompile Include="register\register_templatehullwhite.cpp" />
     <ClCompile Include="register\register_templatemontecarlo.cpp" />
     <ClCompile Include="register\register_templatequasigaussian.cpp" />
+    <ClCompile Include="register\register_templatequasigaussian2.cpp" />
     <ClCompile Include="register\register_termstructures.cpp" />
     <ClCompile Include="register\register_timeseries.cpp" />
     <ClCompile Include="register\register_utilities.cpp" />
