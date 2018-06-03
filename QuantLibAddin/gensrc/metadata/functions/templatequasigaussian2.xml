@@ -653,6 +653,45 @@
       </ParameterList>
     </Constructor>
 
+    <Member name='qlQGAverageSwaprateModelVanillaOption' type='QuantLib::QGAverageSwaprateModel' >
+      <description>Returns undiscounted Vanilla option price.</description>
+      <libraryFunction>vanillaOption</libraryFunction>
+      <SupportedPlatforms>
+        <!--SupportedPlatform name='Excel' calcInWizard='false'/-->
+        <SupportedPlatform name='Excel'/>
+        <!--SupportedPlatform name='Calc'/-->
+        <!--SupportedPlatform name='Cpp'/-->
+      </SupportedPlatforms>
+      <ParameterList>
+        <Parameters>
+          <Parameter name='Strike' exampleValue ='0.0' default='0.0'>
+            <type>QuantLib::Real</type>
+            <tensorRank>scalar</tensorRank>
+            <description>Option strike.</description>
+          </Parameter>
+          <Parameter name='CallOrPut' exampleValue ='1' default='1'>
+            <type>long</type>
+            <tensorRank>scalar</tensorRank>
+            <description>Call (+1) or Put (-1) option.</description>
+          </Parameter>
+          <Parameter name='Accuracy' exampleValue ='1.0e-6' default='1.0e-6'>
+            <type>QuantLib::Real</type>
+            <tensorRank>scalar</tensorRank>
+            <description>Accuracy for integration.</description>
+          </Parameter>
+          <Parameter name='MaxEvaluations' exampleValue ='1000' default='1000'>
+            <type>long</type>
+            <tensorRank>scalar</tensorRank>
+            <description>Maximum number of integrand function evaluations in integration.</description>
+          </Parameter>
+        </Parameters>
+      </ParameterList>
+      <ReturnValue>
+        <type>QuantLib::Real</type>
+        <tensorRank>scalar</tensorRank>
+      </ReturnValue>
+    </Member>
+
 
 
   </Functions>
