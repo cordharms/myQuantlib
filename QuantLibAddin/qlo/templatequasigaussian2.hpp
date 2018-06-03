@@ -11,6 +11,7 @@
 #include <ql/types.hpp>
 #include <ql/experimental/templatemodels/qgaussian2/quasigaussianmodel2T.hpp>
 #include <ql/experimental/templatemodels/qgaussian2/qgswapratemodelT.hpp>
+#include <ql/experimental/templatemodels/qgaussian2/qgaverageswapratemodelT.hpp>
 
 #include <qlo/termstructures.hpp>
 #include <qlo/termstructures.hpp>
@@ -24,6 +25,7 @@ namespace QuantLib {
 
 	typedef QuasiGaussianModel2T<QuantLib::Time, QuantLib::Real, QuantLib::Real> QuasiGaussianModel;
 	typedef QGSwaprateModelT<QuantLib::Time, QuantLib::Real, QuantLib::Real> QGSwaprateModel;
+	typedef QGAverageSwaprateModelT<QuantLib::Time, QuantLib::Real, QuantLib::Real> QGAverageSwaprateModel;
 }
 
 namespace QuantLibAddin {
@@ -54,6 +56,10 @@ namespace QuantLibAddin {
 
 	class QGSwaprateModel : public RealStochasticProcess {
 	public:
+		// do nothing, only fascilitate inheritance
+		QGSwaprateModel(const boost::shared_ptr<ObjectHandler::ValueObject>&         properties,
+			            bool                                                         permanent);
+
 		QGSwaprateModel(const boost::shared_ptr<ObjectHandler::ValueObject>&         properties,
 			            const boost::shared_ptr<QuantLib::QuasiGaussianModel>&       model,
 			            const std::vector<QuantLib::Time>&                           floatTimes,    // T[1], ..., T[M]
@@ -82,7 +88,12 @@ namespace QuantLibAddin {
 			bool permanent);
 	};
 
-
+	class QGAverageSwaprateModel : public QGSwaprateModel {
+	public:
+		QGAverageSwaprateModel(const boost::shared_ptr<ObjectHandler::ValueObject>&         properties,
+			const boost::shared_ptr<QuantLib::QGSwaprateModel>&                             model,
+			bool                                                                            permanent);
+	};
 
 }  // namespace QuantLibAddin
 

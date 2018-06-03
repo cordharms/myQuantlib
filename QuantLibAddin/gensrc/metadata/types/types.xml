@@ -292,6 +292,7 @@
 
     <DataType defaultSuperType='libraryClass'>QuantLib::QuasiGaussianModel</DataType>
     <DataType defaultSuperType='libraryClass'>QuantLib::QGSwaprateModel</DataType>
+    <DataType defaultSuperType='libraryClass'>QuantLib::QGAverageSwaprateModel</DataType>
 
     <DataType defaultSuperType='libraryClass'>QuantLib::RealMCSimulation</DataType>
     <DataType defaultSuperType='libraryClass'>QuantLib::RealMCPayoff</DataType>

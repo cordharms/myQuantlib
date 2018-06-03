@@ -636,6 +636,23 @@
       </ReturnValue>
     </Member>
 
+    <Constructor name='qlQGAverageSwaprateModel'>
+      <libraryFunction>QGAverageSwaprateModel</libraryFunction>
+      <SupportedPlatforms>
+        <SupportedPlatform name='Excel'/>
+        <SupportedPlatform name='Cpp'/>
+      </SupportedPlatforms>
+      <ParameterList>
+        <Parameters>
+          <Parameter name='QGSwaprateModel' >
+            <type>QuantLib::QGSwaprateModel</type>
+            <tensorRank>scalar</tensorRank>
+            <description>reference to base model.</description>
+          </Parameter>
+        </Parameters>
+      </ParameterList>
+    </Constructor>
+
 
 
   </Functions>

@@ -38,6 +38,11 @@ namespace QuantLibAddin {
 
 	QGSwaprateModel::QGSwaprateModel(
 		const boost::shared_ptr<ObjectHandler::ValueObject>&         properties,
+		bool                                                         permanent)
+		: RealStochasticProcess(properties, permanent) { }
+
+	QGSwaprateModel::QGSwaprateModel(
+		const boost::shared_ptr<ObjectHandler::ValueObject>&         properties,
 		const boost::shared_ptr<QuantLib::QuasiGaussianModel>&       model,
 		const std::vector<QuantLib::Time>&                           floatTimes,    // T[1], ..., T[M]
 		const std::vector<QuantLib::Real>&                           floatWeights,  // u[1], ..., u[M]
@@ -61,12 +66,12 @@ namespace QuantLibAddin {
 		// use swaption cash flow model
 		QuantLib::SwaptionCashFlows cf(swaption, discountCurve);
 		// we need to roll out the model time grid for discretisation
-		QuantLib::Size numberOfRegularPoints = (QuantLib::Size) (cf.floatTimes()[0] * timePointsPerYear);  // this is rounded to the lower integer
+		QuantLib::Size numberOfRegularPoints = (QuantLib::Size) (cf.exerciseTimes()[0] * timePointsPerYear);  // this is rounded to the lower integer
 		std::vector<QuantLib::Time> modelTimes(numberOfRegularPoints+1);
 		modelTimes[0] = 0.0;
 		for (QuantLib::Size k = 1; k < numberOfRegularPoints + 1; ++k) modelTimes[k] = modelTimes[k - 1] + 1.0 / timePointsPerYear;
-		if (modelTimes[numberOfRegularPoints]<cf.floatTimes()[0]-10.0/365.0) modelTimes.push_back(cf.floatTimes()[0]);  // we want to avoid too close grid points
-		else modelTimes[numberOfRegularPoints] = cf.floatTimes()[0];
+		if (modelTimes[numberOfRegularPoints]<cf.exerciseTimes()[0]-1.0/365.0) modelTimes.push_back(cf.exerciseTimes()[0]);  // we want to avoid too close grid points
+		else modelTimes[numberOfRegularPoints] = cf.exerciseTimes()[0];
 		// finally, we may set up the model
 		libraryObject_ = boost::shared_ptr<QuantLib::QGSwaprateModel>(
 			new QuantLib::QGSwaprateModel(model, cf.floatTimes(), cf.floatWeights(), cf.fixedTimes(), cf.annuityWeights(), modelTimes, useExpectedXY));
@@ -85,16 +90,23 @@ namespace QuantLibAddin {
 		QuantLib::Date fixingDate = today + ((QuantLib::BigInteger)QuantLib::ClosestRounding(0)(fixingTime*365.0)); // assuming act/365 day counting
 		QuantLib::SwapCashFlows scf(swapIndex->underlyingSwap(fixingDate), discountCurve, true);        // assume continuous tenor spreads
 		// we need to roll out the model time grid for discretisation
-		QuantLib::Size numberOfRegularPoints = (QuantLib::Size) (scf.floatTimes()[0] * timePointsPerYear);  // this is rounded to the lower integer
+		QuantLib::Size numberOfRegularPoints = (QuantLib::Size) (fixingTime * timePointsPerYear);  // this is rounded to the lower integer
 		std::vector<QuantLib::Time> modelTimes(numberOfRegularPoints + 1);
 		modelTimes[0] = 0.0;
 		for (QuantLib::Size k = 1; k < numberOfRegularPoints + 1; ++k) modelTimes[k] = modelTimes[k - 1] + 1.0 / timePointsPerYear;
-		if (modelTimes[numberOfRegularPoints]<scf.floatTimes()[0] - 10.0 / 365.0) modelTimes.push_back(scf.floatTimes()[0]);  // we want to avoid too close grid points
-		else modelTimes[numberOfRegularPoints] = scf.floatTimes()[0];
+		if (modelTimes[numberOfRegularPoints]<fixingTime - 1.0 / 365.0) modelTimes.push_back(fixingTime);  // we want to avoid too close grid points
+		else modelTimes[numberOfRegularPoints] = fixingTime;
 		// finally, we may set up the model
 		libraryObject_ = boost::shared_ptr<QuantLib::QGSwaprateModel>(
 			new QuantLib::QGSwaprateModel(model, scf.floatTimes(), scf.floatWeights(), scf.fixedTimes(), scf.annuityWeights(), modelTimes, useExpectedXY));
 	}
 
+	QGAverageSwaprateModel::QGAverageSwaprateModel(
+		const boost::shared_ptr<ObjectHandler::ValueObject>&         properties,
+		const boost::shared_ptr<QuantLib::QGSwaprateModel>&                             model,
+		bool                                                                            permanent)
+		: QGSwaprateModel(properties, permanent) {
+		libraryObject_ = boost::shared_ptr<QuantLib::QGAverageSwaprateModel>(new QuantLib::QGAverageSwaprateModel(model));
+	}
 
 }
