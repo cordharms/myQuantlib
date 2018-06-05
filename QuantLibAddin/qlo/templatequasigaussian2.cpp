@@ -109,4 +109,37 @@ namespace QuantLibAddin {
 		libraryObject_ = boost::shared_ptr<QuantLib::QGAverageSwaprateModel>(new QuantLib::QGAverageSwaprateModel(model));
 	}
 
+	QGCalibrator::QGCalibrator(
+		const boost::shared_ptr<ObjectHandler::ValueObject>&            properties,
+		const boost::shared_ptr<QuantLib::QuasiGaussianModel>&          model,
+		const boost::shared_ptr<QuantLib::SwaptionVolatilityStructure>& volTS,
+		const std::vector< boost::shared_ptr<QuantLib::SwapIndex> >&    swapIndices,
+		const QuantLib::Real                                            modelTimesStepSize,
+		const bool                                                      useExpectedXY,
+		const QuantLib::Real                                            sigmaMax,
+		const QuantLib::Real                                            slopeMax,
+		const QuantLib::Real                                            etaMax,
+		const QuantLib::Real                                            sigmaWeight,
+		const QuantLib::Real                                            slopeWeight,
+		const QuantLib::Real                                            etaWeight,
+		const QuantLib::Real                                            penaltySigma,
+		const QuantLib::Real                                            penaltySlope,
+		const boost::shared_ptr<QuantLib::EndCriteria>&                 endCriteria,
+		bool                                                            permanent)
+		: ObjectHandler::LibraryObject<QuantLib::QGCalibrator>(properties, permanent) {
+		libraryObject_ = boost::shared_ptr<QuantLib::QGCalibrator>(
+			new QuantLib::QGCalibrator(model, volTS, swapIndices, modelTimesStepSize, useExpectedXY, 
+				sigmaMax, slopeMax, etaMax, sigmaWeight, slopeWeight, etaWeight, penaltySigma, penaltySlope, endCriteria));
+	}
+
+	// calibrated model from calibrator
+	QuasiGaussianModel::QuasiGaussianModel(
+		const boost::shared_ptr<ObjectHandler::ValueObject>& properties,
+		const boost::shared_ptr<QuantLib::QGCalibrator>&     calibrator,
+		bool permanent)
+		: RealStochasticProcess(properties, permanent) {
+		libraryObject_ = boost::shared_ptr<QuantLib::RealStochasticProcess>(calibrator->calibratedModel());
+	}
+
+
 }

@@ -12,6 +12,7 @@
 #include <ql/experimental/templatemodels/qgaussian2/quasigaussianmodel2T.hpp>
 #include <ql/experimental/templatemodels/qgaussian2/qgswapratemodelT.hpp>
 #include <ql/experimental/templatemodels/qgaussian2/qgaverageswapratemodelT.hpp>
+#include <ql/experimental/templatemodels/qgaussian2/qgcalibrator.hpp>
 
 #include <qlo/termstructures.hpp>
 #include <qlo/termstructures.hpp>
@@ -51,6 +52,11 @@ namespace QuantLibAddin {
 		                     const std::vector<QuantLib::Real>&                 chi,     // mean reversions
 		                     const std::vector< std::vector<QuantLib::Real> >&  Gamma,   // (benchmark rate) correlation matrix
 		                     QuantLib::Real                                     theta,   // stoch vol mean reversion speed
+							 bool permanent);
+
+		  // calibrated model from calibrator
+		  QuasiGaussianModel(const boost::shared_ptr<ObjectHandler::ValueObject>& properties,
+			                 const boost::shared_ptr<QuantLib::QGCalibrator>&     calibrator,
 							 bool permanent);
 	};
 
@@ -93,6 +99,26 @@ namespace QuantLibAddin {
 		QGAverageSwaprateModel(const boost::shared_ptr<ObjectHandler::ValueObject>&         properties,
 			const boost::shared_ptr<QuantLib::QGSwaprateModel>&                             model,
 			bool                                                                            permanent);
+	};
+
+	class QGCalibrator : public ObjectHandler::LibraryObject<QuantLib::QGCalibrator> {
+	public:
+		QGCalibrator(const boost::shared_ptr<ObjectHandler::ValueObject>&            properties,
+			         const boost::shared_ptr<QuantLib::QuasiGaussianModel>&          model,
+			         const boost::shared_ptr<QuantLib::SwaptionVolatilityStructure>& volTS,
+			         const std::vector< boost::shared_ptr<QuantLib::SwapIndex> >&    swapIndices,
+			         const QuantLib::Real                                            modelTimesStepSize,
+			         const bool                                                      useExpectedXY,
+                     const QuantLib::Real                                            sigmaMax,
+                     const QuantLib::Real                                            slopeMax,
+                     const QuantLib::Real                                            etaMax,
+                     const QuantLib::Real                                            sigmaWeight,
+                     const QuantLib::Real                                            slopeWeight,
+                     const QuantLib::Real                                            etaWeight,
+			         const QuantLib::Real                                            penaltySigma,
+			         const QuantLib::Real                                            penaltySlope,
+			         const boost::shared_ptr<QuantLib::EndCriteria>&                 endCriteria,
+			         bool                                                            permanent);
 	};
 
 }  // namespace QuantLibAddin
