@@ -224,6 +224,24 @@
       </ReturnValue>
     </Member>
 
+    <Member name='qlQuasiGaussianModelCondHHf' type='QuantLib::QuasiGaussianModel' >
+      <description>Returns the condition number of H Hf.</description>
+      <libraryFunction>condHHf</libraryFunction>
+      <SupportedPlatforms>
+        <!--SupportedPlatform name='Excel' calcInWizard='false'/-->
+        <SupportedPlatform name='Excel'/>
+        <!--SupportedPlatform name='Calc'/-->
+        <!--SupportedPlatform name='Cpp'/-->
+      </SupportedPlatforms>
+      <ParameterList>
+        <Parameters/>
+      </ParameterList>
+      <ReturnValue>
+        <type>QuantLib::Real</type>
+        <tensorRank>scalar</tensorRank>
+      </ReturnValue>
+    </Member>
+
     <Member name='qlQuasiGaussianModelSigma' type='QuantLib::QuasiGaussianModel' >
       <description>Returns model volatility.</description>
       <libraryFunction>sigma</libraryFunction>
