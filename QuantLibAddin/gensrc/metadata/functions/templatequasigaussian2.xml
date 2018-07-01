@@ -828,6 +828,107 @@
       </ParameterList>
     </Constructor>
 
+    <Constructor name='qlQGLocalvolModel'>
+      <libraryFunction>QGLocalvolModel</libraryFunction>
+      <SupportedPlatforms>
+        <SupportedPlatform name='Excel'/>
+        <SupportedPlatform name='Cpp'/>
+      </SupportedPlatforms>
+      <ParameterList>
+        <Parameters>
+          <Parameter name='DiscountCurve'>
+            <type>QuantLib::YieldTermStructure</type>
+            <superType>libToHandle</superType>
+            <tensorRank>scalar</tensorRank>
+            <description>YieldTermStructure for discounting.</description>
+          </Parameter>
+          <Parameter name='VolTS' >
+            <type>QuantLib::SwaptionVolatilityStructure</type>
+            <tensorRank>scalar</tensorRank>
+            <description>VolTS as calibration target.</description>
+          </Parameter>
+          <Parameter name='Chi' exampleValue ='0.03' default='0.03'>
+            <type>QuantLib::Real</type>
+            <tensorRank>scalar</tensorRank>
+            <description>mean reversion spead.</description>
+          </Parameter>
+          <Parameter name='SwapIndex' >
+            <type>QuantLib::SwapIndex</type>
+            <tensorRank>scalar</tensorRank>
+            <description>reference to SwapIndex for calibration.</description>
+          </Parameter>
+          <Parameter name='Times' exampleValue='5, 10, ...'>
+            <type>QuantLib::Time</type>
+            <tensorRank>vector</tensorRank>
+            <description>vector of time-grid (in year fractions) for calibration</description>
+          </Parameter>
+          <Parameter name='StdDevs' exampleValue='5, 10, ...'>
+            <type>QuantLib::Real</type>
+            <tensorRank>vector</tensorRank>
+            <description>vector of state-grid for calibration in terms of stddevs</description>
+          </Parameter>
+          <Parameter name='NPaths' exampleValue ='1024' default='1024' >
+            <type>QuantLib::Size</type>
+            <tensorRank>scalar</tensorRank>
+            <description>number of MC paths.</description>
+          </Parameter>
+          <Parameter name='Seed' exampleValue ='1234' default='1234' >
+            <type>QuantLib::Size</type>
+            <tensorRank>scalar</tensorRank>
+            <description>MC seed.</description>
+          </Parameter>
+        </Parameters>
+      </ParameterList>
+    </Constructor>
+
+    <Constructor name='qlQGLocalvolModelSimulation'>
+      <libraryFunction>QGLocalvolModelSimulation</libraryFunction>
+      <SupportedPlatforms>
+        <SupportedPlatform name='Excel'/>
+        <SupportedPlatform name='Cpp'/>
+      </SupportedPlatforms>
+      <ParameterList>
+        <Parameters>
+          <Parameter name='Model' >
+            <type>QuantLib::QGLocalvolModel</type>
+            <tensorRank>scalar</tensorRank>
+            <description>model to retrieve simulation from.</description>
+          </Parameter>
+        </Parameters>
+      </ParameterList>
+    </Constructor>
+
+    <Member name='qlQGLocalvolModelSigmaS' type='QuantLib::QGLocalvolModel' >
+      <description>Return local volatility.</description>
+      <libraryFunction>sigmaS</libraryFunction>
+      <SupportedPlatforms>
+        <!--SupportedPlatform name='Excel' calcInWizard='false'/-->
+        <SupportedPlatform name='Excel'/>
+        <!--SupportedPlatform name='Calc'/-->
+        <!--SupportedPlatform name='Cpp'/-->
+      </SupportedPlatforms>
+      <ParameterList>
+        <Parameters>
+          <Parameter name='Idx' exampleValue ='0' default='0' >
+            <type>QuantLib::Size</type>
+            <tensorRank>scalar</tensorRank>
+            <description>time grid point index.</description>
+          </Parameter>
+          <Parameter name='S' exampleValue ='0.0' default='0.0' >
+            <type>QuantLib::Real</type>
+            <tensorRank>scalar</tensorRank>
+            <description>underlying value.</description>
+          </Parameter>
+        </Parameters>
+      </ParameterList>
+      <ReturnValue>
+        <type>QuantLib::Real</type>
+        <tensorRank>scalar</tensorRank>
+      </ReturnValue>
+    </Member>
+
+
+
 
   </Functions>
 </Category>

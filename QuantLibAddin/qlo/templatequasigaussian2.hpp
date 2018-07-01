@@ -13,6 +13,8 @@
 #include <ql/experimental/templatemodels/qgaussian2/qgswapratemodelT.hpp>
 #include <ql/experimental/templatemodels/qgaussian2/qgaverageswapratemodelT.hpp>
 #include <ql/experimental/templatemodels/qgaussian2/qgcalibrator.hpp>
+#include <ql/experimental/templatemodels/qgaussian2/qglocalvolmodel.hpp>
+
 
 #include <qlo/termstructures.hpp>
 #include <qlo/termstructures.hpp>
@@ -58,6 +60,10 @@ namespace QuantLibAddin {
 		  QuasiGaussianModel(const boost::shared_ptr<ObjectHandler::ValueObject>& properties,
 			                 const boost::shared_ptr<QuantLib::QGCalibrator>&     calibrator,
 							 bool permanent);
+
+		  // do nothing, only fascilitate inheritance
+		  QuasiGaussianModel(const boost::shared_ptr<ObjectHandler::ValueObject>& properties,
+			                 bool                                                 permanent);
 	};
 
 	class QGSwaprateModel : public RealStochasticProcess {
@@ -119,6 +125,30 @@ namespace QuantLibAddin {
 			         const QuantLib::Real                                            penaltySlope,
 			         const boost::shared_ptr<QuantLib::EndCriteria>&                 endCriteria,
 			         bool                                                            permanent);
+	};
+
+	class QGLocalvolModel : public QuasiGaussianModel {
+	public:
+		QGLocalvolModel(
+			const boost::shared_ptr<ObjectHandler::ValueObject>&            properties,
+			const QuantLib::Handle<QuantLib::YieldTermStructure>&           hYTS,
+			const boost::shared_ptr<QuantLib::SwaptionVolatilityStructure>& volTS,
+			const QuantLib::Real                                            chi,
+			const boost::shared_ptr<QuantLib::SwapIndex>&                   swapIndex,
+			const std::vector<QuantLib::Time>&                              times,      // time-grid of left-constant model parameter values
+			const std::vector<QuantLib::Real>&                              stdDevGrid,  // S-grid in terms of normal ATM vol stdDev's
+			const QuantLib::Size                                            nPaths,
+			const QuantLib::BigNatural                                      seed,
+			bool                                                            permanent);
+
+	};
+
+	class QGLocalvolModelSimulation : public ObjectHandler::LibraryObject<QuantLib::QGLocalvolModel::MCSimulation> {
+	public:
+		QGLocalvolModelSimulation(
+			const boost::shared_ptr<ObjectHandler::ValueObject>&         properties,
+			const boost::shared_ptr<QuantLib::QGLocalvolModel>&          model,
+			bool                                                         permanent);
 	};
 
 }  // namespace QuantLibAddin

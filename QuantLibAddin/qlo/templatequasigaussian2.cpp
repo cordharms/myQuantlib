@@ -36,6 +36,13 @@ namespace QuantLibAddin {
 			new QuantLib::QuasiGaussianModel( hYTS, d, times, sigma, slope, curve, eta, delta, chi, Gamma, theta ));
     }
 
+
+	// do nothing, only fascilitate inheritance
+	QuasiGaussianModel::QuasiGaussianModel(
+		const boost::shared_ptr<ObjectHandler::ValueObject>& properties,
+		bool                                                 permanent)
+		: RealStochasticProcess(properties, permanent) { }
+
 	QGSwaprateModel::QGSwaprateModel(
 		const boost::shared_ptr<ObjectHandler::ValueObject>&         properties,
 		bool                                                         permanent)
@@ -139,6 +146,29 @@ namespace QuantLibAddin {
 		bool permanent)
 		: RealStochasticProcess(properties, permanent) {
 		libraryObject_ = boost::shared_ptr<QuantLib::RealStochasticProcess>(calibrator->calibratedModel());
+	}
+
+	QGLocalvolModel::QGLocalvolModel(
+		const boost::shared_ptr<ObjectHandler::ValueObject>&            properties,
+		const QuantLib::Handle<QuantLib::YieldTermStructure>&           hYTS,
+		const boost::shared_ptr<QuantLib::SwaptionVolatilityStructure>& volTS,
+		const QuantLib::Real                                            chi,
+		const boost::shared_ptr<QuantLib::SwapIndex>&                   swapIndex,
+		const std::vector<QuantLib::Time>&                              times,      // time-grid of left-constant model parameter values
+		const std::vector<QuantLib::Real>&                              stdDevGrid,  // S-grid in terms of normal ATM vol stdDev's
+		const QuantLib::Size                                            nPaths,
+		const QuantLib::BigNatural                                      seed,
+		bool                                                            permanent)
+		: QuasiGaussianModel(properties, permanent) {
+		libraryObject_ = boost::shared_ptr<QuantLib::QuasiGaussianModel>(new QuantLib::QGLocalvolModel(hYTS, volTS, chi, swapIndex, times, stdDevGrid, nPaths, seed));
+	}
+
+	QGLocalvolModelSimulation::QGLocalvolModelSimulation(
+		const boost::shared_ptr<ObjectHandler::ValueObject>&         properties,
+		const boost::shared_ptr<QuantLib::QGLocalvolModel>&          model,
+		bool                                                         permanent)
+		: ObjectHandler::LibraryObject<QuantLib::QGLocalvolModel::MCSimulation>(properties, permanent) {
+		libraryObject_ = boost::shared_ptr<QuantLib::QGLocalvolModel::MCSimulation>(model->simulation());
 	}
 
 
