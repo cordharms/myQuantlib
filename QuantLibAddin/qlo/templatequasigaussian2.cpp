@@ -158,16 +158,17 @@ namespace QuantLibAddin {
 		const std::vector<QuantLib::Real>&                              stdDevGrid,  // S-grid in terms of normal ATM vol stdDev's
 		const QuantLib::Size                                            nPaths,
 		const QuantLib::BigNatural                                      seed,
+		const QuantLib::Size                                            debugLevel,
 		bool                                                            permanent)
 		: QuasiGaussianModel(properties, permanent) {
-		libraryObject_ = boost::shared_ptr<QuantLib::QuasiGaussianModel>(new QuantLib::QGLocalvolModel(hYTS, volTS, chi, swapIndex, times, stdDevGrid, nPaths, seed));
+		libraryObject_ = boost::shared_ptr<QuantLib::QuasiGaussianModel>(new QuantLib::QGLocalvolModel(hYTS, volTS, chi, swapIndex, times, stdDevGrid, nPaths, seed, debugLevel));
 	}
 
 	QGLocalvolModelSimulation::QGLocalvolModelSimulation(
 		const boost::shared_ptr<ObjectHandler::ValueObject>&         properties,
 		const boost::shared_ptr<QuantLib::QGLocalvolModel>&          model,
 		bool                                                         permanent)
-		: ObjectHandler::LibraryObject<QuantLib::QGLocalvolModel::MCSimulation>(properties, permanent) {
+		: RealMCSimulation(properties, permanent) {
 		libraryObject_ = boost::shared_ptr<QuantLib::QGLocalvolModel::MCSimulation>(model->simulation());
 	}
 

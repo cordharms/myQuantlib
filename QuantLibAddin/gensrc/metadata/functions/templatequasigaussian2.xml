@@ -877,6 +877,11 @@
             <tensorRank>scalar</tensorRank>
             <description>MC seed.</description>
           </Parameter>
+          <Parameter name='DebugLevel' exampleValue ='1' default='1' >
+            <type>QuantLib::Size</type>
+            <tensorRank>scalar</tensorRank>
+            <description>set debug level (0 to 4).</description>
+          </Parameter>
         </Parameters>
       </ParameterList>
     </Constructor>
@@ -927,8 +932,43 @@
       </ReturnValue>
     </Member>
 
+    <Member name='qlQGLocalvolModelSimulateAndCalibrate' type='QuantLib::QGLocalvolModel' >
+      <description>perform calculations.</description>
+      <libraryFunction>simulateAndCalibrate</libraryFunction>
+      <SupportedPlatforms>
+        <!--SupportedPlatform name='Excel' calcInWizard='false'/-->
+        <SupportedPlatform name='Excel'/>
+        <!--SupportedPlatform name='Calc'/-->
+        <!--SupportedPlatform name='Cpp'/-->
+      </SupportedPlatforms>
+      <ParameterList>
+        <Parameters>
+        </Parameters>
+      </ParameterList>
+      <ReturnValue>
+        <type>void</type>
+        <tensorRank>scalar</tensorRank>
+      </ReturnValue>
+    </Member>
 
-
+    <Member name='qlQGLocalvolModelDebugLog' type='QuantLib::QGLocalvolModel' >
+      <description>output logging.</description>
+      <libraryFunction>debugLog</libraryFunction>
+      <SupportedPlatforms>
+        <!--SupportedPlatform name='Excel' calcInWizard='false'/-->
+        <SupportedPlatform name='Excel'/>
+        <!--SupportedPlatform name='Calc'/-->
+        <!--SupportedPlatform name='Cpp'/-->
+      </SupportedPlatforms>
+      <ParameterList>
+        <Parameters>
+        </Parameters>
+      </ParameterList>
+      <ReturnValue>
+        <type>string</type>
+        <tensorRank>vector</tensorRank>
+      </ReturnValue>
+    </Member>
 
   </Functions>
 </Category>

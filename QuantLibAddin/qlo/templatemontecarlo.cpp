@@ -28,6 +28,10 @@ namespace QuantLibAddin {
 			new QuantLib::RealMCSimulation( process, simTimes, obsTimes, nPaths, seed, richardsonExtrapolation, timeInterpolation, storeBrownians ));
 	}
 
+	RealMCSimulation::RealMCSimulation(
+		const boost::shared_ptr<ObjectHandler::ValueObject>& properties, bool permanent)
+		: TemplateSimulation(properties, permanent) {}
+
 	RealMCPayoffPricer::RealMCPayoffPricer(
 		                      const boost::shared_ptr<ObjectHandler::ValueObject>&              properties,
 			                  const std::vector< boost::shared_ptr<QuantLib::RealMCPayoff> >& payoffs,

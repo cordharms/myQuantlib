@@ -15,10 +15,9 @@
 #include <ql/experimental/templatemodels/qgaussian2/qgcalibrator.hpp>
 #include <ql/experimental/templatemodels/qgaussian2/qglocalvolmodel.hpp>
 
-
-#include <qlo/termstructures.hpp>
 #include <qlo/termstructures.hpp>
 #include <qlo/templatestochasticprocess.hpp>
+#include <qlo/templatemontecarlo.hpp>
 
 namespace QuantLib {
     template <class T>
@@ -139,11 +138,12 @@ namespace QuantLibAddin {
 			const std::vector<QuantLib::Real>&                              stdDevGrid,  // S-grid in terms of normal ATM vol stdDev's
 			const QuantLib::Size                                            nPaths,
 			const QuantLib::BigNatural                                      seed,
+			const QuantLib::Size                                            debugLevel,
 			bool                                                            permanent);
 
 	};
 
-	class QGLocalvolModelSimulation : public ObjectHandler::LibraryObject<QuantLib::QGLocalvolModel::MCSimulation> {
+	class QGLocalvolModelSimulation : public RealMCSimulation {
 	public:
 		QGLocalvolModelSimulation(
 			const boost::shared_ptr<ObjectHandler::ValueObject>&         properties,
