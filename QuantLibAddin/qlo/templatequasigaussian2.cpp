@@ -145,6 +145,7 @@ namespace QuantLibAddin {
 		const boost::shared_ptr<QuantLib::QGCalibrator>&     calibrator,
 		bool permanent)
 		: RealStochasticProcess(properties, permanent) {
+		QL_REQUIRE(!calibrator->calibratedModel(), "Non-empty model pointer required.");
 		libraryObject_ = boost::shared_ptr<QuantLib::RealStochasticProcess>(calibrator->calibratedModel());
 	}
 
@@ -169,6 +170,7 @@ namespace QuantLibAddin {
 		const boost::shared_ptr<QuantLib::QGLocalvolModel>&          model,
 		bool                                                         permanent)
 		: RealMCSimulation(properties, permanent) {
+		QL_REQUIRE(!model->simulation(), "Non-empty simulation pointer required.");
 		libraryObject_ = boost::shared_ptr<QuantLib::QGLocalvolModel::MCSimulation>(model->simulation());
 	}
 
