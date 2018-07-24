@@ -155,6 +155,23 @@ namespace QuantLibAddin {
 			const std::string                                               flavor, 
 			bool                                                            permanent);
 
+		QGLocalvolModel(
+			const boost::shared_ptr<ObjectHandler::ValueObject>&            properties,
+			const QuantLib::Handle<QuantLib::YieldTermStructure>&           hYTS,
+			const boost::shared_ptr<QuantLib::SwaptionVolatilityStructure>& volTS,
+			const QuantLib::Real                                            chi,
+			const QuantLib::Real                                            theta,
+			const QuantLib::Real                                            eta,
+			const boost::shared_ptr<QuantLib::SwapIndex>&                   swapIndex,
+			const std::vector<QuantLib::Time>&                              times,      // time-grid of left-constant model parameter values
+			const std::vector<QuantLib::Real>&                              stdDevGrid,  // S-grid in terms of normal ATM vol stdDev's
+			const QuantLib::Real                                            kernelWidth,
+			const QuantLib::Size                                            nPaths,
+			const QuantLib::BigNatural                                      seed,
+			const QuantLib::Size                                            debugLevel,
+			const std::string                                               flavor,
+			bool                                                            permanent);
+
 	};
 
 	class QGLocalvolModelSimulation : public RealMCSimulation {
