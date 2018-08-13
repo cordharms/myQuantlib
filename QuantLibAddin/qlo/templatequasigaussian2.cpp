@@ -155,51 +155,6 @@ namespace QuantLibAddin {
 		const QuantLib::Handle<QuantLib::YieldTermStructure>&           hYTS,
 		const boost::shared_ptr<QuantLib::SwaptionVolatilityStructure>& volTS,
 		const QuantLib::Real                                            chi,
-		const boost::shared_ptr<QuantLib::SwapIndex>&                   swapIndex,
-		const std::vector<QuantLib::Time>&                              times,      // time-grid of left-constant model parameter values
-		const std::vector<QuantLib::Real>&                              stdDevGrid,  // S-grid in terms of normal ATM vol stdDev's
-		const QuantLib::Size                                            nPaths,
-		const QuantLib::BigNatural                                      seed,
-		const QuantLib::Size                                            debugLevel,
-		bool                                                            permanent)
-		: QuasiGaussianModel(properties, permanent) {
-		libraryObject_ = boost::shared_ptr<QuantLib::QuasiGaussianModel>(new QuantLib::QGLocalvolModelForwardFlavor(hYTS, volTS, chi, swapIndex, times, stdDevGrid, nPaths, seed, debugLevel));
-	}
-
-	QGLocalvolModel::QGLocalvolModel(
-		const boost::shared_ptr<ObjectHandler::ValueObject>&            properties,
-		const QuantLib::Handle<QuantLib::YieldTermStructure>&           hYTS,
-		const boost::shared_ptr<QuantLib::SwaptionVolatilityStructure>& volTS,
-		const QuantLib::Real                                            chi,
-		const boost::shared_ptr<QuantLib::SwapIndex>&                   swapIndex,
-		const std::vector<QuantLib::Time>&                              times,      // time-grid of left-constant model parameter values
-		const std::vector<QuantLib::Real>&                              stdDevGrid,  // S-grid in terms of normal ATM vol stdDev's
-		const QuantLib::Size                                            nPaths,
-		const QuantLib::BigNatural                                      seed,
-		const QuantLib::Size                                            debugLevel,
-		const std::string                                               flavor,
-		bool                                                            permanent)
-		: QuasiGaussianModel(properties, permanent) {
-		std::string flavorUpperCase = flavor;
-		boost::to_upper(flavorUpperCase);
-		if (flavorUpperCase.compare("BACKWARD") == 0) {
-			libraryObject_ = boost::shared_ptr<QuantLib::QuasiGaussianModel>(new QuantLib::QGLocalvolModelBackwardFlavor(hYTS, volTS, chi, swapIndex, times, stdDevGrid, nPaths, seed, debugLevel));
-		} else if (flavorUpperCase.compare("FORWARD") == 0) {
-			libraryObject_ = boost::shared_ptr<QuantLib::QuasiGaussianModel>(new QuantLib::QGLocalvolModelForwardFlavor(hYTS, volTS, chi, swapIndex, times, stdDevGrid, nPaths, seed, debugLevel));
-		} else if (flavorUpperCase.compare("ANALYTIC") == 0) {
-			libraryObject_ = boost::shared_ptr<QuantLib::QuasiGaussianModel>(new QuantLib::QGLocalvolModelAnalyticFlavor(hYTS, volTS, chi, swapIndex, times, stdDevGrid, nPaths, seed, debugLevel));
-		} else if (flavorUpperCase.compare("MONTECARLO") == 0) {
-			libraryObject_ = boost::shared_ptr<QuantLib::QuasiGaussianModel>(new QuantLib::QGLocalvolModelMonteCarloFlavor(hYTS, volTS, chi, swapIndex, times, stdDevGrid, nPaths, seed, debugLevel));
-		} else {
-			QL_REQUIRE(0, "Invalid flavor parameter");
-		}
-	}
-
-	QGLocalvolModel::QGLocalvolModel(
-		const boost::shared_ptr<ObjectHandler::ValueObject>&            properties,
-		const QuantLib::Handle<QuantLib::YieldTermStructure>&           hYTS,
-		const boost::shared_ptr<QuantLib::SwaptionVolatilityStructure>& volTS,
-		const QuantLib::Real                                            chi,
 		const QuantLib::Real                                            theta,
 		const QuantLib::Real                                            eta,
 		const boost::shared_ptr<QuantLib::SwapIndex>&                   swapIndex,
@@ -215,18 +170,27 @@ namespace QuantLibAddin {
 		std::string flavorUpperCase = flavor;
 		boost::to_upper(flavorUpperCase);
 		if (flavorUpperCase.compare("BACKWARD") == 0) {
-			libraryObject_ = boost::shared_ptr<QuantLib::QuasiGaussianModel>(new QuantLib::QGLocalvolModelBackwardFlavor(hYTS, volTS, chi, swapIndex, times, stdDevGrid, nPaths, seed, debugLevel));
+			libraryObject_ = boost::shared_ptr<QuantLib::QuasiGaussianModel>(new QuantLib::QGLocalvolModelBackwardFlavor(hYTS, volTS, chi, theta, eta, swapIndex, times, stdDevGrid, false, kernelWidth, nPaths, seed, debugLevel));
 		}
 		else if (flavorUpperCase.compare("FORWARD") == 0) {
-			libraryObject_ = boost::shared_ptr<QuantLib::QuasiGaussianModel>(new QuantLib::QGLocalvolModelForwardFlavor(hYTS, volTS, chi, swapIndex, times, stdDevGrid, nPaths, seed, debugLevel));
+			libraryObject_ = boost::shared_ptr<QuantLib::QuasiGaussianModel>(new QuantLib::QGLocalvolModelForwardFlavor(hYTS, volTS, chi, theta, eta, swapIndex, times, stdDevGrid, false, kernelWidth, nPaths, seed, debugLevel));
 		}
 		else if (flavorUpperCase.compare("ANALYTIC") == 0) {
 			libraryObject_ = boost::shared_ptr<QuantLib::QuasiGaussianModel>(new QuantLib::QGLocalvolModelAnalyticFlavor(hYTS, volTS, chi, swapIndex, times, stdDevGrid, nPaths, seed, debugLevel));
 		}
 		else if (flavorUpperCase.compare("MONTECARLO") == 0) {
-			libraryObject_ = boost::shared_ptr<QuantLib::QuasiGaussianModel>(new QuantLib::QGLocalvolModelMonteCarloFlavor(hYTS, volTS, chi, swapIndex, times, stdDevGrid, nPaths, seed, debugLevel));
+			libraryObject_ = boost::shared_ptr<QuantLib::QuasiGaussianModel>(new QuantLib::QGLocalvolModelMonteCarloFlavor(hYTS, volTS, chi, theta, eta, swapIndex, times, stdDevGrid, false, kernelWidth, nPaths, seed, debugLevel));
+		}
+		if (flavorUpperCase.compare("BACKWARDSTOCHVOL") == 0) {
+			libraryObject_ = boost::shared_ptr<QuantLib::QuasiGaussianModel>(new QuantLib::QGLocalvolModelBackwardFlavor(hYTS, volTS, chi, theta, eta, swapIndex, times, stdDevGrid, true, kernelWidth, nPaths, seed, debugLevel));
 		}
 		else if (flavorUpperCase.compare("FORWARDSTOCHVOL") == 0) {
+			libraryObject_ = boost::shared_ptr<QuantLib::QuasiGaussianModel>(new QuantLib::QGLocalvolModelForwardFlavor(hYTS, volTS, chi, theta, eta, swapIndex, times, stdDevGrid, true, kernelWidth, nPaths, seed, debugLevel));
+		}
+		else if (flavorUpperCase.compare("MONTECARLOSTOCHVOL") == 0) {
+			libraryObject_ = boost::shared_ptr<QuantLib::QuasiGaussianModel>(new QuantLib::QGLocalvolModelMonteCarloFlavor(hYTS, volTS, chi, theta, eta, swapIndex, times, stdDevGrid, true, kernelWidth, nPaths, seed, debugLevel));
+		}
+		else if (flavorUpperCase.compare("_FORWARDSTOCHVOL") == 0) {  // legacy
 			libraryObject_ = boost::shared_ptr<QuantLib::QuasiGaussianModel>(new QuantLib::QGLocalvolModelForwardStochVolFlavor(hYTS, volTS, chi, theta, eta, swapIndex, times, stdDevGrid, kernelWidth, nPaths, seed, debugLevel));
 		}
 		else {
