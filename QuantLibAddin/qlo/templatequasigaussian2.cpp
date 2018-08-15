@@ -11,6 +11,7 @@
 #include <ql/indexes/swapindex.hpp>
 #include <ql/experimental/basismodels/swaptioncfs.hpp>
 #include <qlo/templatequasigaussian2.hpp>
+#include <ql/experimental/templatemodels/qgaussian2/qglsvmodel.hpp>
 
 namespace QuantLibAddin {
 
@@ -198,6 +199,24 @@ namespace QuantLibAddin {
 		}
 	}
 
+	QGLocalvolModel::QGLocalvolModel(
+		const boost::shared_ptr<ObjectHandler::ValueObject>&            properties,
+		const QuantLib::Handle<QuantLib::YieldTermStructure>&           hYTS,
+		const boost::shared_ptr<QuantLib::SwaptionVolatilityStructure>& volTS,
+		const QuantLib::Real                                            chi,
+		const QuantLib::Real                                            theta,
+		const QuantLib::Real                                            eta,
+		const boost::shared_ptr<QuantLib::SwapIndex>&                   swapIndex,
+		const std::vector<QuantLib::Time>&                              times,      // time-grid of left-constant model parameter values
+		const QuantLib::Size                                            nStrikes,
+		const bool                                                      calcStochVolAdjustment,
+		const QuantLib::Size                                            nPaths,
+		const QuantLib::BigNatural                                      seed,
+		const QuantLib::Size                                            debugLevel,
+		bool                                                            permanent)
+		: QuasiGaussianModel(properties, permanent) {
+		libraryObject_ = boost::shared_ptr<QuantLib::QuasiGaussianModel>(new QuantLib::QGLSVModel(hYTS, volTS, chi, theta, eta, swapIndex, times, nStrikes, calcStochVolAdjustment, nPaths, seed, debugLevel));
+	}
 
 	QGLocalvolModelSimulation::QGLocalvolModelSimulation(
 		const boost::shared_ptr<ObjectHandler::ValueObject>&         properties,
