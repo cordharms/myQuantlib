@@ -156,6 +156,8 @@ namespace QuantLibAddin {
 			const std::vector<QuantLib::Time>&                              times,      // time-grid of left-constant model parameter values
 			const QuantLib::Size                                            nStrikes,
 			const bool                                                      calcStochVolAdjustment,
+			const QuantLib::Real                                            kernelWidth,
+			const QuantLib::Real                                            svKernelScaling,
 			const QuantLib::Size                                            nPaths,
 			const QuantLib::BigNatural                                      seed,
 			const QuantLib::Size                                            debugLevel,

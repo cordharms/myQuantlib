@@ -962,6 +962,16 @@
             <tensorRank>scalar</tensorRank>
             <description>apply stochastic volatility adjustment or not.</description>
           </Parameter>
+          <Parameter name='KernelWidth' exampleValue ='0.15' default='0.15'>
+            <type>QuantLib::Real</type>
+            <tensorRank>scalar</tensorRank>
+            <description>kernel width in stdDevs for density calculation.</description>
+          </Parameter>
+          <Parameter name='SvKernelScaling' exampleValue ='3.0' default='3.0'>
+            <type>QuantLib::Real</type>
+            <tensorRank>scalar</tensorRank>
+            <description>Adjust kernel width for conditional expectation calculation.</description>
+          </Parameter>
           <Parameter name='NPaths' exampleValue ='1024' default='1024' >
             <type>QuantLib::Size</type>
             <tensorRank>scalar</tensorRank>

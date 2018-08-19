@@ -210,12 +210,14 @@ namespace QuantLibAddin {
 		const std::vector<QuantLib::Time>&                              times,      // time-grid of left-constant model parameter values
 		const QuantLib::Size                                            nStrikes,
 		const bool                                                      calcStochVolAdjustment,
+		const QuantLib::Real                                            kernelWidth,
+		const QuantLib::Real                                            svKernelScaling,
 		const QuantLib::Size                                            nPaths,
 		const QuantLib::BigNatural                                      seed,
 		const QuantLib::Size                                            debugLevel,
 		bool                                                            permanent)
 		: QuasiGaussianModel(properties, permanent) {
-		libraryObject_ = boost::shared_ptr<QuantLib::QuasiGaussianModel>(new QuantLib::QGLSVModel(hYTS, volTS, chi, theta, eta, swapIndex, times, nStrikes, calcStochVolAdjustment, nPaths, seed, debugLevel));
+		libraryObject_ = boost::shared_ptr<QuantLib::QuasiGaussianModel>(new QuantLib::QGLSVModel(hYTS, volTS, chi, theta, eta, swapIndex, times, nStrikes, calcStochVolAdjustment, kernelWidth, svKernelScaling, nPaths, seed, debugLevel));
 	}
 
 	QGLocalvolModelSimulation::QGLocalvolModelSimulation(
