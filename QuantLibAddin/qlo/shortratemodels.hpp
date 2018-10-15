@@ -35,7 +35,7 @@ namespace QuantLib {
     class AffineModel;
 	class IborIndex;
 	class G2;
-	class CalibrationHelper;
+	// class CalibrationHelper;
 	class OptimizationMethod;
 	class EndCriteria;
 }
