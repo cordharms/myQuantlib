@@ -14,9 +14,13 @@
 #include <qlo/smilesection.hpp>
 #include <qlo/termstructures.hpp>
 
+// dev implementation based on template
 #include <ql/experimental/templatemodels/vanillalocalvol/vanillalocalvolmodels.hpp>
-#include <ql/experimental/templatemodels/vanillalocalvol/vanillalocalvolsmilesection.hpp>
-#include <ql/experimental/templatemodels/vanillalocalvol/vanillalocalvoltermstructures.hpp>
+
+// re-factored implementation
+#include <ql/experimental/vanillalocalvolmodel/vanillalocalvolmodel.hpp>
+#include <ql/experimental/vanillalocalvolmodel/vanillalocalvolsmilesection.hpp>
+#include <ql/experimental/vanillalocalvolmodel/vanillalocalvoltermstructures.hpp>
 
 #include <qlo/templatestochasticprocess.hpp>
 
@@ -30,8 +34,27 @@ namespace QuantLib {
 
 namespace QuantLibAddin {
 
+	class VanillaLocalVolModelDev : public RealStochasticProcess {
+	public:
+		VanillaLocalVolModelDev(
+			const boost::shared_ptr<ObjectHandler::ValueObject>&  properties,
+			const QuantLib::Time                                  T,
+			const QuantLib::Real                                  S0,
+			const QuantLib::Real                                  sigmaATM,
+			const std::vector<QuantLib::Real>&                    Sp,
+			const std::vector<QuantLib::Real>&                    Sm,
+			const std::vector<QuantLib::Real>&                    Mp,
+			const std::vector<QuantLib::Real>&                    Mm,
+			const QuantLib::Size                                  maxCalibrationIters,
+			const QuantLib::Size                                  onlyForwardCalibrationIters,
+			const bool                                            adjustATMFlag,
+			const bool                                            enableLogging,
+			const bool                                            useInitialMu,
+			const  QuantLib::Real                                 initialMu,
+			bool                                                  permanent);
+	};
 
-	class VanillaLocalVolModel : public RealStochasticProcess {
+	class VanillaLocalVolModel : public ObjectHandler::LibraryObject<QuantLib::VanillaLocalVolModel> {
 	public:
 		VanillaLocalVolModel(
 			const boost::shared_ptr<ObjectHandler::ValueObject>&  properties,

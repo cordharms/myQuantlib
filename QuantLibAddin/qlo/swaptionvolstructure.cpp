@@ -43,7 +43,8 @@ namespace QuantLibAddin {
         QuantLib::BusinessDayConvention bdc,
         const QuantLib::Handle<QuantLib::Quote>& vol,
         const QuantLib::DayCounter& dayCounter,
-        bool permanent)
+		const QuantLib::VolatilityType& volatilityType,
+		bool permanent)
     : SwaptionVolatilityStructure(properties, permanent)
     {
         libraryObject_ = boost::shared_ptr<QuantLib::Extrapolator>(new
@@ -51,7 +52,8 @@ namespace QuantLibAddin {
                                                  cal,
                                                  bdc,
                                                  vol,
-                                                 dayCounter));
+                                                 dayCounter,
+				                                 volatilityType));
     }
 
     SpreadedSwaptionVolatility::SpreadedSwaptionVolatility(

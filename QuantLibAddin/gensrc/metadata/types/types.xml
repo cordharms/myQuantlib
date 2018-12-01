@@ -319,6 +319,7 @@
     <DataType defaultSuperType='libraryClass'>QuantLib::RealShiftedSABRModel</DataType>
     <DataType defaultSuperType='libraryClass'>QuantLib::StochVolModelCalibrator</DataType>
     <DataType defaultSuperType='libraryClass'>QuantLib::QuasiGaussianModelCalibrator</DataType>
+    <DataType defaultSuperType='libraryClass'>QuantLib::VanillaLocalVolModelDev</DataType>
     <DataType defaultSuperType='libraryClass'>QuantLib::VanillaLocalVolModel</DataType>
     <DataType defaultSuperType='libraryClass'>QuantLib::VanillaLocalVolModelSmileSection</DataType>
     <DataType defaultSuperType='objectClass'>QuantLibAddin::VanillaLocalVolCMSTS</DataType>

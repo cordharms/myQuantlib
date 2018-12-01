@@ -48,7 +48,8 @@ namespace QuantLibAddin {
                         QuantLib::BusinessDayConvention bdc,
                         const QuantLib::Handle<QuantLib::Quote>& vol,
                         const QuantLib::DayCounter& dayCounter,
-                        bool permanent);
+			            const QuantLib::VolatilityType& volatilityType,
+			bool permanent);
     };
 
     class SpreadedSwaptionVolatility : public SwaptionVolatilityStructure {
