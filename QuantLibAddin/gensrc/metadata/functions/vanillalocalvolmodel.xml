@@ -550,6 +550,7 @@
         <Parameters>
           <Parameter name='AtmVolTS' >
             <type>QuantLib::SwaptionVolatilityStructure</type>
+            <superType>libToHandle</superType>
             <tensorRank>scalar</tensorRank>
             <description>Base VolTS for ATM calculation.</description>
           </Parameter>

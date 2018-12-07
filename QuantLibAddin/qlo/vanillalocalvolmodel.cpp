@@ -134,7 +134,7 @@ namespace QuantLibAddin {
 
 	VanillaLocalVolSwaptionVTS::VanillaLocalVolSwaptionVTS(
 		const boost::shared_ptr<ObjectHandler::ValueObject>&              properties,
-		const boost::shared_ptr<QuantLib::SwaptionVolatilityStructure>&   atmVolTS,
+		const QuantLib::Handle<QuantLib::SwaptionVolatilityStructure>&    atmVolTS,
 		const std::vector< boost::shared_ptr<VanillaLocalVolCMSTS> >&     cmsTS,
 		const boost::shared_ptr<QuantLib::SwapIndex>&                     index,
 		bool                                                              permanent)
