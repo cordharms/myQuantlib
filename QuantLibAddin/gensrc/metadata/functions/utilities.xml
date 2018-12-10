@@ -5,6 +5,7 @@
   <addinIncludes>
     <include>qlo/utilities.hpp</include>
     <include>ql/models/marketmodels/utilities.hpp</include>
+    <include>ql/buildinfo.hpp</include>
   </addinIncludes>
   <copyright>
     Copyright (C) 2006, 2007 Ferdinando Ametrano
@@ -77,6 +78,23 @@
       <ReturnValue>
         <type>long</type>
         <tensorRank>scalar</tensorRank>
+      </ReturnValue>
+    </Procedure>
+
+    <Procedure name='qlBuildinfo'>
+      <description>returns build information for QuantLib.</description>
+      <alias>QuantLib::buildinfo</alias>
+      <SupportedPlatforms>
+        <SupportedPlatform name='Excel'/>
+        <SupportedPlatform name='Calc'/>
+        <SupportedPlatform name='Cpp'/>
+      </SupportedPlatforms>
+      <ParameterList>
+        <Parameters/>
+      </ParameterList>
+      <ReturnValue>
+        <type>string</type>
+        <tensorRank>vector</tensorRank>
       </ReturnValue>
     </Procedure>
 
