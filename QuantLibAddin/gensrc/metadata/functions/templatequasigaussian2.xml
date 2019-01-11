@@ -725,6 +725,7 @@
           </Parameter>
           <Parameter name='VolTS' >
             <type>QuantLib::SwaptionVolatilityStructure</type>
+            <superType>libToHandle</superType>
             <tensorRank>scalar</tensorRank>
             <description>VolTS as calibration target.</description>
           </Parameter>
@@ -845,6 +846,7 @@
           </Parameter>
           <Parameter name='VolTS' >
             <type>QuantLib::SwaptionVolatilityStructure</type>
+            <superType>libToHandle</superType>
             <tensorRank>scalar</tensorRank>
             <description>VolTS as calibration target.</description>
           </Parameter>
@@ -924,6 +926,7 @@
           </Parameter>
           <Parameter name='VolTS' >
             <type>QuantLib::SwaptionVolatilityStructure</type>
+            <superType>libToHandle</superType>
             <tensorRank>scalar</tensorRank>
             <description>VolTS as calibration target.</description>
           </Parameter>

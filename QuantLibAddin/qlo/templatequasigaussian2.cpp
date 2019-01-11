@@ -121,7 +121,7 @@ namespace QuantLibAddin {
 	QGCalibrator::QGCalibrator(
 		const boost::shared_ptr<ObjectHandler::ValueObject>&            properties,
 		const boost::shared_ptr<QuantLib::QuasiGaussianModel>&          model,
-		const boost::shared_ptr<QuantLib::SwaptionVolatilityStructure>& volTS,
+		const QuantLib::Handle<QuantLib::SwaptionVolatilityStructure>&  volTS,
 		const std::vector< boost::shared_ptr<QuantLib::SwapIndex> >&    swapIndices,
 		const QuantLib::Real                                            modelTimesStepSize,
 		const bool                                                      useExpectedXY,
@@ -154,7 +154,7 @@ namespace QuantLibAddin {
 	QGLocalvolModel::QGLocalvolModel(
 		const boost::shared_ptr<ObjectHandler::ValueObject>&            properties,
 		const QuantLib::Handle<QuantLib::YieldTermStructure>&           hYTS,
-		const boost::shared_ptr<QuantLib::SwaptionVolatilityStructure>& volTS,
+		const QuantLib::Handle<QuantLib::SwaptionVolatilityStructure>&  volTS,
 		const QuantLib::Real                                            chi,
 		const QuantLib::Real                                            theta,
 		const QuantLib::Real                                            eta,
@@ -202,7 +202,7 @@ namespace QuantLibAddin {
 	QGLocalvolModel::QGLocalvolModel(
 		const boost::shared_ptr<ObjectHandler::ValueObject>&            properties,
 		const QuantLib::Handle<QuantLib::YieldTermStructure>&           hYTS,
-		const boost::shared_ptr<QuantLib::SwaptionVolatilityStructure>& volTS,
+		const QuantLib::Handle<QuantLib::SwaptionVolatilityStructure>&  volTS,
 		const QuantLib::Real                                            chi,
 		const QuantLib::Real                                            theta,
 		const QuantLib::Real                                            eta,
