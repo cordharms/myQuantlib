@@ -151,6 +151,40 @@ namespace QuantLibAddin {
 		libraryObject_ = boost::shared_ptr<QuantLib::RealStochasticProcess>(calibrator->calibratedModel());
 	}
 
+	QGMonteCarloCalibrator::QGMonteCarloCalibrator(
+		const boost::shared_ptr<ObjectHandler::ValueObject>&            properties,
+		const boost::shared_ptr<QuantLib::QuasiGaussianModel>&          model,
+		const QuantLib::Handle<QuantLib::SwaptionVolatilityStructure>&  volTS,
+		const std::vector< boost::shared_ptr<QuantLib::SwapIndex> >&    swapIndices,
+		const QuantLib::Real                                            monteCarloStepSize,
+		const QuantLib::Size                                            monteCarloPaths,
+		const QuantLib::Real                                            sigmaMax,
+		const QuantLib::Real                                            slopeMax,
+		const QuantLib::Real                                            curveMax,
+		const QuantLib::Real                                            sigmaWeight,
+		const QuantLib::Real                                            slopeWeight,
+		const QuantLib::Real                                            curveWeight,
+		const QuantLib::Real                                            penaltySigma,
+		const QuantLib::Real                                            penaltySlope,
+		const QuantLib::Real                                            penaltyCurve,
+		const boost::shared_ptr<QuantLib::EndCriteria>&                 endCriteria,
+		bool                                                            permanent)
+		: ObjectHandler::LibraryObject<QuantLib::QGMonteCarloCalibrator>(properties, permanent) {
+		libraryObject_ = boost::shared_ptr<QuantLib::QGMonteCarloCalibrator>(
+			new QuantLib::QGMonteCarloCalibrator(model, volTS, swapIndices, monteCarloStepSize, monteCarloPaths,
+				sigmaMax, slopeMax, curveMax, sigmaWeight, slopeWeight, curveWeight, penaltySigma, penaltySlope, penaltyCurve, endCriteria));
+	}
+
+	// calibrated model from calibrator
+	QuasiGaussianModel::QuasiGaussianModel(
+		const boost::shared_ptr<ObjectHandler::ValueObject>& properties,
+		const boost::shared_ptr<QuantLib::QGMonteCarloCalibrator>&     calibrator,
+		bool permanent)
+		: RealStochasticProcess(properties, permanent) {
+		QL_REQUIRE(calibrator->calibratedModel(), "Non-empty model pointer required.");
+		libraryObject_ = boost::shared_ptr<QuantLib::RealStochasticProcess>(calibrator->calibratedModel());
+	}
+
 	QGLocalvolModel::QGLocalvolModel(
 		const boost::shared_ptr<ObjectHandler::ValueObject>&            properties,
 		const QuantLib::Handle<QuantLib::YieldTermStructure>&           hYTS,

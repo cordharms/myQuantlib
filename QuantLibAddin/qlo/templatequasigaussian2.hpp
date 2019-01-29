@@ -13,6 +13,7 @@
 #include <ql/experimental/templatemodels/qgaussian2/qgswapratemodelT.hpp>
 #include <ql/experimental/templatemodels/qgaussian2/qgaverageswapratemodelT.hpp>
 #include <ql/experimental/templatemodels/qgaussian2/qgcalibrator.hpp>
+#include <ql/experimental/templatemodels/qgaussian2/mccalibrator.hpp>
 #include <ql/experimental/templatemodels/qgaussian2/qglocalvolmodel.hpp>
 
 #include <qlo/termstructures.hpp>
@@ -59,6 +60,11 @@ namespace QuantLibAddin {
 		  QuasiGaussianModel(const boost::shared_ptr<ObjectHandler::ValueObject>& properties,
 			                 const boost::shared_ptr<QuantLib::QGCalibrator>&     calibrator,
 							 bool permanent);
+
+		  // calibrated model from calibrator
+		  QuasiGaussianModel(const boost::shared_ptr<ObjectHandler::ValueObject>& properties,
+			                 const boost::shared_ptr<QuantLib::QGMonteCarloCalibrator>& calibrator,
+			                 bool permanent);
 
 		  // do nothing, only fascilitate inheritance
 		  QuasiGaussianModel(const boost::shared_ptr<ObjectHandler::ValueObject>& properties,
@@ -124,6 +130,28 @@ namespace QuantLibAddin {
 			         const QuantLib::Real                                            penaltySlope,
 			         const boost::shared_ptr<QuantLib::EndCriteria>&                 endCriteria,
 			         bool                                                            permanent);
+	};
+
+	class QGMonteCarloCalibrator : public ObjectHandler::LibraryObject<QuantLib::QGMonteCarloCalibrator> {
+	public:
+		QGMonteCarloCalibrator(
+			const boost::shared_ptr<ObjectHandler::ValueObject>&            properties,
+			const boost::shared_ptr<QuantLib::QuasiGaussianModel>&          model,
+			const QuantLib::Handle<QuantLib::SwaptionVolatilityStructure>&  volTS,
+			const std::vector< boost::shared_ptr<QuantLib::SwapIndex> >&    swapIndices,
+			const QuantLib::Real                                            monteCarloStepSize,
+			const QuantLib::Size                                            monteCarloPaths,
+			const QuantLib::Real                                            sigmaMax,
+			const QuantLib::Real                                            slopeMax,
+			const QuantLib::Real                                            curveMax,
+			const QuantLib::Real                                            sigmaWeight,
+			const QuantLib::Real                                            slopeWeight,
+			const QuantLib::Real                                            curveWeight,
+			const QuantLib::Real                                            penaltySigma,
+			const QuantLib::Real                                            penaltySlope,
+			const QuantLib::Real                                            penaltyCurve,
+			const boost::shared_ptr<QuantLib::EndCriteria>&                 endCriteria,
+			bool                                                            permanent);
 	};
 
 	class QGLocalvolModel : public QuasiGaussianModel {

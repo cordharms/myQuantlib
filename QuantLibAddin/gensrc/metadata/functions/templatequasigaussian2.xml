@@ -830,6 +830,131 @@
     </Constructor>
 
 
+    <Constructor name='qlQGMonteCarloCalibrator'>
+      <libraryFunction>QGMonteCarloCalibrator</libraryFunction>
+      <SupportedPlatforms>
+        <SupportedPlatform name='Excel'/>
+        <SupportedPlatform name='Cpp'/>
+      </SupportedPlatforms>
+      <ParameterList>
+        <Parameters>
+          <Parameter name='QGModel' >
+            <type>QuantLib::QuasiGaussianModel</type>
+            <tensorRank>scalar</tensorRank>
+            <description>reference to base model.</description>
+          </Parameter>
+          <Parameter name='VolTS' >
+            <type>QuantLib::SwaptionVolatilityStructure</type>
+            <superType>libToHandle</superType>
+            <tensorRank>scalar</tensorRank>
+            <description>VolTS as calibration target.</description>
+          </Parameter>
+          <Parameter name='SwapIndices' >
+            <type>QuantLib::SwapIndex</type>
+            <tensorRank>vector</tensorRank>
+            <description>Vector of references to SwapIndex forward calculation and conventions.</description>
+          </Parameter>
+          <Parameter name='MonteCarloStepSize' exampleValue ='1.0' default='1.0'>
+            <type>QuantLib::Real</type>
+            <tensorRank>scalar</tensorRank>
+            <description>Time step size for simulation.</description>
+          </Parameter>
+          <Parameter name='MonteCarloPaths' exampleValue ='1000' default='100'>
+            <type>QuantLib::Size</type>
+            <tensorRank>scalar</tensorRank>
+            <description>Number of MC paths.</description>
+          </Parameter>
+          <Parameter name='SigmaMax' exampleValue ='0.01' default='0.01'>
+            <type>QuantLib::Real</type>
+            <tensorRank>scalar</tensorRank>
+            <description>maximum sigma parameter.</description>
+          </Parameter>
+          <Parameter name='SlopeMax' exampleValue ='0.2' default='0.2'>
+            <type>QuantLib::Real</type>
+            <tensorRank>scalar</tensorRank>
+            <description>maximum slope parameter.</description>
+          </Parameter>
+          <Parameter name='CurveMax' exampleValue ='0.5' default='0.5'>
+            <type>QuantLib::Real</type>
+            <tensorRank>scalar</tensorRank>
+            <description>maximum curve parameter.</description>
+          </Parameter>
+          <Parameter name='SigmaWeight' exampleValue ='1.0' default='1.0'>
+            <type>QuantLib::Real</type>
+            <tensorRank>scalar</tensorRank>
+            <description>weight for ATM calibration.</description>
+          </Parameter>
+          <Parameter name='SlopeWeight' exampleValue ='1.0' default='1.0'>
+            <type>QuantLib::Real</type>
+            <tensorRank>scalar</tensorRank>
+            <description>weight for skew calibration.</description>
+          </Parameter>
+          <Parameter name='CurveWeight' exampleValue ='1.0' default='1.0'>
+            <type>QuantLib::Real</type>
+            <tensorRank>scalar</tensorRank>
+            <description>weight for smile calibration.</description>
+          </Parameter>
+          <Parameter name='PenaltySigma' exampleValue ='0.0' default='0.0'>
+            <type>QuantLib::Real</type>
+            <tensorRank>scalar</tensorRank>
+            <description>regularisation for multi-factor sigma.</description>
+          </Parameter>
+          <Parameter name='PenaltySlope' exampleValue ='0.0' default='0.0'>
+            <type>QuantLib::Real</type>
+            <tensorRank>scalar</tensorRank>
+            <description>regularisation for multi-factor slope.</description>
+          </Parameter>
+          <Parameter name='PenaltyCurve' exampleValue ='0.0' default='0.0'>
+            <type>QuantLib::Real</type>
+            <tensorRank>scalar</tensorRank>
+            <description>regularisation for multi-factor curve.</description>
+          </Parameter>
+          <Parameter name='EndCriteria' >
+            <type>QuantLib::EndCriteria</type>
+            <tensorRank>scalar</tensorRank>
+            <description>Reference to EndCriteria object for optimisation.</description>
+          </Parameter>
+        </Parameters>
+      </ParameterList>
+    </Constructor>
+
+    <Member name='qlQGMonteCarloCalibratorDebugLog' type='QuantLib::QGMonteCarloCalibrator' >
+      <description>Return debug information.</description>
+      <libraryFunction>debugLog</libraryFunction>
+      <SupportedPlatforms>
+        <!--SupportedPlatform name='Excel' calcInWizard='false'/-->
+        <SupportedPlatform name='Excel'/>
+        <!--SupportedPlatform name='Calc'/-->
+        <!--SupportedPlatform name='Cpp'/-->
+      </SupportedPlatforms>
+      <ParameterList>
+        <Parameters>
+        </Parameters>
+      </ParameterList>
+      <ReturnValue>
+        <type>string</type>
+        <tensorRank>vector</tensorRank>
+      </ReturnValue>
+    </Member>
+
+    <Constructor name='qlQuasiGaussianModelFromQGMonteCarloCalibrator'>
+      <libraryFunction>QuasiGaussianModel</libraryFunction>
+      <SupportedPlatforms>
+        <SupportedPlatform name='Excel'/>
+        <SupportedPlatform name='Cpp'/>
+      </SupportedPlatforms>
+      <ParameterList>
+        <Parameters>
+          <Parameter name='QGMonteCarloCalibrator' >
+            <type>QuantLib::QGCalibrator</type>
+            <tensorRank>scalar</tensorRank>
+            <description>reference to calibrator object.</description>
+          </Parameter>
+        </Parameters>
+      </ParameterList>
+    </Constructor>
+
+
     <Constructor name='qlQGLocalvolModel'>
       <libraryFunction>QGLocalvolModel</libraryFunction>
       <SupportedPlatforms>

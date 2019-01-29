@@ -294,6 +294,7 @@
     <DataType defaultSuperType='libraryClass'>QuantLib::QGSwaprateModel</DataType>
     <DataType defaultSuperType='libraryClass'>QuantLib::QGAverageSwaprateModel</DataType>
     <DataType defaultSuperType='libraryClass'>QuantLib::QGCalibrator</DataType>
+    <DataType defaultSuperType='libraryClass'>QuantLib::QGMonteCarloCalibrator</DataType>
     <DataType defaultSuperType='libraryClass'>QuantLib::QGLocalvolModel</DataType>
 
     <DataType defaultSuperType='libraryClass'>QuantLib::RealMCSimulation</DataType>
