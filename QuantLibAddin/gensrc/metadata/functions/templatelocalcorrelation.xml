@@ -68,6 +68,41 @@
       </ParameterList>
     </Constructor>
 
+
+    <Constructor name='qlRealLocalCorrelationSLVModel'>
+      <libraryFunction>LocalCorrelationSLVModel</libraryFunction>
+      <SupportedPlatforms>
+        <SupportedPlatform name='Excel'/>
+        <SupportedPlatform name='Cpp'/>
+      </SupportedPlatforms>
+      <ParameterList>
+        <Parameters>
+          <Parameter name='DiscountCurve'>
+            <type>QuantLib::YieldTermStructure</type>
+            <superType>libToHandle</superType>
+            <tensorRank>scalar</tensorRank>
+            <description>YieldTermStructure for discounting.</description>
+          </Parameter>
+          <Parameter name='Aliases'>
+            <type>string</type>
+            <tensorRank>vector</tensorRank>
+            <description>Aliases</description>
+          </Parameter>
+          <Parameter name='SLVProcesses'>
+            <type>QuantLib::HestonSLVProcess</type>
+            <tensorRank>vector</tensorRank>
+            <description>Array of local stochastic vol models</description>
+          </Parameter>
+          <Parameter name='LocalCorrelationTermStructure'>
+            <type>QuantLib::LocalCorrTermStructure</type>
+            <superType>libToHandle</superType>
+            <tensorRank>scalar</tensorRank>
+            <description>term structure for local correlation</description>
+          </Parameter>
+        </Parameters>
+      </ParameterList>
+    </Constructor>
+
     <Constructor name='qlCTSlocalInCrossCorrFX'>
       <libraryFunction>CTSlocalInCrossCorrelationFX</libraryFunction>
       <SupportedPlatforms>
@@ -81,10 +116,20 @@
             <tensorRank>vector</tensorRank>
             <description>Array of Black Scholes processes</description>
           </Parameter>
+          <Parameter name='SLVProcesses'>
+            <type>QuantLib::HestonSLVProcess</type>
+            <tensorRank>vector</tensorRank>
+            <description>Array of heston slv processes</description>
+          </Parameter>
           <Parameter name='BSProcessLocalCorr'>
             <type>QuantLib::GeneralizedBlackScholesProcess</type>
             <tensorRank>scalar</tensorRank>
             <description>Black Scholes process to determine local correlation</description>
+          </Parameter>
+          <Parameter name='Correlation' default='0.0'>
+            <type>QuantLib::Time</type>
+            <tensorRank>matrix</tensorRank>
+            <description>Asset and volvol correlation matrix.</description>
           </Parameter>
         </Parameters>
       </ParameterList>
@@ -103,10 +148,20 @@
             <tensorRank>vector</tensorRank>
             <description>Array of Black Scholes processes</description>
           </Parameter>
+          <Parameter name='SLVProcesses'>
+            <type>QuantLib::HestonSLVProcess</type>
+            <tensorRank>vector</tensorRank>
+            <description>Array of heston slv processes</description>
+          </Parameter>
           <Parameter name='BSProcessLocalCorr'>
             <type>QuantLib::GeneralizedBlackScholesProcess</type>
             <tensorRank>scalar</tensorRank>
             <description>Black Scholes process to determine local correlation</description>
+          </Parameter>
+          <Parameter name='Correlation' default='0.0'>
+            <type>QuantLib::Time</type>
+            <tensorRank>matrix</tensorRank>
+            <description>Asset and volvol correlation matrix.</description>
           </Parameter>
         </Parameters>
       </ParameterList>
@@ -125,10 +180,20 @@
             <tensorRank>vector</tensorRank>
             <description>Array of Black Scholes processes</description>
           </Parameter>
+          <Parameter name='SLVProcesses'>
+            <type>QuantLib::HestonSLVProcess</type>
+            <tensorRank>vector</tensorRank>
+            <description>Array of heston slv processes</description>
+          </Parameter>
           <Parameter name='BSProcessLocalCorr'>
             <type>QuantLib::GeneralizedBlackScholesProcess</type>
             <tensorRank>scalar</tensorRank>
             <description>Black Scholes process to determine local correlation</description>
+          </Parameter>
+          <Parameter name='Correlation' default='0.0'>
+            <type>QuantLib::Time</type>
+            <tensorRank>matrix</tensorRank>
+            <description>Asset and volvol correlation matrix.</description>
           </Parameter>
         </Parameters>
       </ParameterList>
@@ -147,6 +212,11 @@
             <tensorRank>vector</tensorRank>
             <description>Array of Black Scholes processes</description>
           </Parameter>
+          <Parameter name='SLVProcesses'>
+            <type>QuantLib::HestonSLVProcess</type>
+            <tensorRank>vector</tensorRank>
+            <description>Array of heston slv processes</description>
+          </Parameter>
           <Parameter name='BSProcessLocalCorr'>
             <type>QuantLib::GeneralizedBlackScholesProcess</type>
             <tensorRank>scalar</tensorRank>
@@ -156,6 +226,11 @@
             <type>QuantLib::Real</type>
             <tensorRank>scalar</tensorRank>
             <description>beta (positive for negative skew, negative for positive skew)</description>
+          </Parameter>
+          <Parameter name='Correlation' default='0.0'>
+            <type>QuantLib::Time</type>
+            <tensorRank>matrix</tensorRank>
+            <description>Asset and volvol correlation matrix.</description>
           </Parameter>
         </Parameters>
       </ParameterList>
@@ -277,7 +352,7 @@
         <tensorRank>scalar</tensorRank>
       </ReturnValue>
     </Procedure>
-    
+
     
   </Functions>
 </Category>

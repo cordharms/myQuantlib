@@ -264,6 +264,39 @@
       </ParameterList>
     </Constructor>
 
+    <Constructor name='qlSimulatedAnnealing'>
+      <libraryFunction>SimulatedAnnealing</libraryFunction>
+      <SupportedPlatforms>
+        <!--SupportedPlatform name='Excel' calcInWizard='false'/-->
+        <SupportedPlatform name='Excel'/>
+        <SupportedPlatform name='Cpp'/>
+      </SupportedPlatforms>
+      <ParameterList>
+        <Parameters>
+          <Parameter name='Lambda' default="1">
+            <type>double</type>
+            <tensorRank>scalar</tensorRank>
+            <description>lambda.</description>
+          </Parameter>
+          <Parameter name='T0' default="2">
+            <type>double</type>
+            <tensorRank>scalar</tensorRank>
+            <description>T0.</description>
+          </Parameter>
+          <Parameter name='Epsilon' default="1e-8">
+            <type>double</type>
+            <tensorRank>scalar</tensorRank>
+            <description>epsilon.</description>
+          </Parameter>
+          <Parameter name='M' default="100">
+            <type>double</type>
+            <tensorRank>scalar</tensorRank>
+            <description>m.</description>
+          </Parameter>
+        </Parameters>
+      </ParameterList>
+    </Constructor>
+
     <Constructor name='qlSteepestDescent'>
       <libraryFunction>SteepestDescent</libraryFunction>
       <SupportedPlatforms>

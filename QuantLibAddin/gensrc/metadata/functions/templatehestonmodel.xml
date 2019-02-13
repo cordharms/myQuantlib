@@ -447,7 +447,7 @@
           <Parameter name='CallOrPut' exampleValue ='1' default='1'>
             <type>long</type>
             <tensorRank>scalar</tensorRank>
-            <description>Call (+1) or Put (-1) option.</description>
+            <description>Call (1) or Put (-1) option.</description>
           </Parameter>
           <Parameter name='Accuracy' exampleValue ='1.0e-4' default='1.0e-4'>
             <type>QuantLib::Real</type>
@@ -1551,6 +1551,108 @@
         </Parameters>
       </ParameterList>
     </Constructor>
+    
+    <Constructor name='qlMultiAssetSLVModel'>
+      <libraryFunction>MultiAssetSLVModel</libraryFunction>
+      <SupportedPlatforms>
+        <SupportedPlatform name='Excel'/>
+        <SupportedPlatform name='Cpp'/>
+      </SupportedPlatforms>
+      <ParameterList>
+        <Parameters>
+          <Parameter name='DiscountCurve'>
+            <type>QuantLib::YieldTermStructure</type>
+            <superType>libToHandle</superType>
+            <tensorRank>scalar</tensorRank>
+            <description>YieldTermStructure for discounting.</description>
+          </Parameter>
+          <Parameter name='Aliases' >
+            <type>string</type>
+            <tensorRank>vector</tensorRank>
+            <description>Aliases for underlying assets.</description>
+          </Parameter>
+          <Parameter name='SLVProcesses' >
+            <type>QuantLib::HestonSLVProcess</type>
+            <tensorRank>vector</tensorRank>
+            <description>references to HestonSLVProcess.</description>
+          </Parameter>
+          <Parameter name='Correlation' default='0.0'>
+            <type>QuantLib::Time</type>
+            <tensorRank>matrix</tensorRank>
+            <description>Asset correlation matrix.</description>
+          </Parameter>
+        </Parameters>
+      </ParameterList>
+    </Constructor>
+
+    <Constructor name='qlHestonSLVMCModel'>
+      <libraryFunction>HestonSLVMCModel</libraryFunction>
+      <SupportedPlatforms>
+        <SupportedPlatform name='Excel'/>
+      </SupportedPlatforms>
+      <ParameterList>
+        <Parameters>
+          <Parameter name='LocalVolTermStructure'>
+            <type>QuantLib::LocalVolTermStructure</type>
+            <superType>libToHandle</superType>
+            <tensorRank>scalar</tensorRank>
+            <description>Reference to leverage surface.</description>
+          </Parameter>
+          <Parameter name='HestonModel'>
+            <type>QuantLib::HestonModel</type>
+            <superType>libToHandle</superType>
+            <tensorRank>scalar</tensorRank>
+            <description>Reference to Heston model.</description>
+          </Parameter>          
+          <Parameter name='EndDate'>
+            <type>QuantLib::Date</type>
+            <tensorRank>scalar</tensorRank>
+            <description>Simulation end date.</description>
+          </Parameter>    
+          <Parameter name='TimeStepsPerYear'>
+            <type>QuantLib::Size</type>
+            <tensorRank>scalar</tensorRank>
+            <description>Number of time steps per year</description>
+          </Parameter>
+          <Parameter name='NBins'>
+            <type>QuantLib::Size</type>
+            <tensorRank>scalar</tensorRank>
+            <description>tbd.</description>
+          </Parameter>
+          <Parameter name='CalibrationPaths'>
+            <type>QuantLib::Size</type>
+            <tensorRank>scalar</tensorRank>
+            <description>Number of calibration paths</description>
+          </Parameter>
+          <Parameter name='MandatoryDates'>
+            <type>QuantLib::Date</type>
+            <tensorRank>vector</tensorRank>
+            <description>vector of mandatory modelled dates.</description>
+          </Parameter>
+        </Parameters>
+      </ParameterList>
+    </Constructor>  
+    
+  <Constructor name='qlHestonSLVProcess'>
+      <libraryFunction>HestonSLVProcess</libraryFunction>
+      <SupportedPlatforms>
+        <SupportedPlatform name='Excel'/>
+      </SupportedPlatforms>
+      <ParameterList>
+        <Parameters>
+          <Parameter name='HestonProcess'>
+            <type>QuantLib::HestonProcess</type>
+            <tensorRank>scalar</tensorRank>
+            <description>Reference to HestonProcess.</description>
+          </Parameter>
+          <Parameter name='LeverageFunction'>
+            <type>QuantLib::LocalVolTermStructure</type>
+            <tensorRank>scalar</tensorRank>
+            <description>Reference to leverage surface.</description>
+          </Parameter>          
+        </Parameters>
+      </ParameterList>
+    </Constructor> 
 
   </Functions>
 </Category>

@@ -32,8 +32,10 @@
 #include <ql/experimental/volatility/smiledsurface.hpp>
 #include <ql/processes/blackscholesprocess.hpp>
 #include <ql/experimental/models/hestonslvfdmmodel.hpp>
+#include <ql/experimental/models/hestonslvmcmodel.hpp>
 #include <ql/termstructures/volatility/equityfx/localvolsurface.hpp>
 #include <ql/termstructures/volatility/equityfx/noexceptlocalvolsurface.hpp>
+
 
 
 namespace QuantLibAddin {
@@ -170,5 +172,12 @@ namespace QuantLibAddin {
 		: VolatilityTermStructure(properties, permanent) {
 		libraryObject_ = boost::shared_ptr<QuantLib::LocalVolTermStructure>(model->leverageFunction());
 	}
-
+	LocalVolTermStructure::LocalVolTermStructure(
+		const boost::shared_ptr<ObjectHandler::ValueObject>&              properties,
+		const boost::shared_ptr<QuantLib::HestonSLVMCModel>&			  model,
+		bool                                                              permanent)
+		 : VolatilityTermStructure(properties, permanent) {
+		libraryObject_ = boost::shared_ptr<QuantLib::LocalVolTermStructure>(model->leverageFunction());
+		
+	}
 }
