@@ -24,12 +24,17 @@
 #include <ql/experimental/templatemodels/stochvol/stochvolcalibrator.hpp>
 
 #include <ql/experimental/models/hestonslvfdmmodel.hpp>
+#include <ql/experimental/models/hestonslvmcmodel.hpp>
+#include <ql/experimental/processes/hestonslvprocess.hpp>
 
 #include <ql/models/equity/hestonmodelhelper.hpp>
 #include <ql/termstructures/volatility/equityfx/hestonblackvolsurface.hpp>
 
 #include <ql/experimental/templatemodels/multiasset/multiassetbsmodel.hpp>
+#include <ql/experimental/templatemodels/multiasset/multiassetslvmodel.hpp>
 
+#include <ql/models/marketmodels/browniangenerators/mtbrowniangenerator.hpp>
+#include <ql/termstructures/volatility/equityfx/localvoltermstructure.hpp>
 
 // #include <qlo/templatequasigaussian.hpp>
 

@@ -102,6 +102,66 @@
       </ParameterList>
     </Constructor>
 
+    <Constructor name='qlHestonSLVProcess'>
+      <libraryFunction>HestonSLVProcess</libraryFunction>
+      <SupportedPlatforms>
+        <SupportedPlatform name='Excel'/>
+        <SupportedPlatform name='Cpp'/>
+      </SupportedPlatforms>
+      <ParameterList>
+        <Parameters>
+          <Parameter name='HestonProcess'>
+            <type>QuantLib::HestonProcess</type>
+            <tensorRank>scalar</tensorRank>
+            <description>HestonProcess.</description>
+          </Parameter>
+          <Parameter name='LeverageFunction' >
+            <type>QuantLib::LocalVolTermStructure</type>
+            <tensorRank>scalar</tensorRank>
+            <description>LeverageFunction.</description>
+          </Parameter>
+        </Parameters>
+      </ParameterList>
+    </Constructor>
+
+    <Member name='qlCalibrationHelperModelValue' type='QuantLib::CalibrationHelper' >
+      <description>return model value.</description>
+      <libraryFunction>modelValue</libraryFunction>
+      <SupportedPlatforms>
+        <!--SupportedPlatform name='Excel' calcInWizard='false'/-->
+        <SupportedPlatform name='Excel'/>
+        <!--SupportedPlatform name='Calc'/-->
+        <!--SupportedPlatform name='Cpp'/-->
+      </SupportedPlatforms>
+      <ParameterList>
+        <Parameters>
+        </Parameters>
+      </ParameterList>
+      <ReturnValue>
+        <type>QuantLib::Real</type>
+        <tensorRank>scalar</tensorRank>
+      </ReturnValue>
+    </Member>
+
+    <Member name='qlCalibrationHelperMarketValue' type='QuantLib::CalibrationHelper' >
+      <description>return model value.</description>
+      <libraryFunction>marketValue</libraryFunction>
+      <SupportedPlatforms>
+        <!--SupportedPlatform name='Excel' calcInWizard='false'/-->
+        <SupportedPlatform name='Excel'/>
+        <!--SupportedPlatform name='Calc'/-->
+        <!--SupportedPlatform name='Cpp'/-->
+      </SupportedPlatforms>
+      <ParameterList>
+        <Parameters>
+        </Parameters>
+      </ParameterList>
+      <ReturnValue>
+        <type>QuantLib::Real</type>
+        <tensorRank>scalar</tensorRank>
+      </ReturnValue>
+    </Member>
+    
     <Member name='qlHestonModelTheta' type='QuantLib::HestonModel' >
       <description>return Heston Model theta.</description>
       <libraryFunction>theta</libraryFunction>
