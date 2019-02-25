@@ -527,6 +527,70 @@
       </ParameterList>
     </Constructor>
 
+    <Constructor name='qlLocalVolSurfaceInterpolated'>
+      <libraryFunction>InterpolatedLocalVolSurface</libraryFunction>
+      <SupportedPlatforms>
+        <!--SupportedPlatform name='Excel' calcInWizard='false'/-->
+        <SupportedPlatform name='Excel'/>
+        <!--SupportedPlatform name='Cpp'/-->
+      </SupportedPlatforms>
+      <ParameterList>
+        <Parameters>
+          <Parameter name='BlackVolTS'>
+            <type>QuantLib::BlackVolTermStructure</type>
+            <superType>libToHandle</superType>
+            <tensorRank>scalar</tensorRank>
+            <description>black volatility term structure.</description>
+          </Parameter>
+          <Parameter name='InterestRateTS'>
+            <type>QuantLib::YieldTermStructure</type>
+            <superType>libToHandle</superType>
+            <tensorRank>scalar</tensorRank>
+            <description>interest rate term structure.</description>
+          </Parameter>
+          <Parameter name='DividendTS'>
+            <type>QuantLib::YieldTermStructure</type>
+            <superType>libToHandle</superType>
+            <tensorRank>scalar</tensorRank>
+            <description>dividend term structure</description>
+          </Parameter>
+          <Parameter name='UnderlyingQuote'>
+            <type>QuantLib::Quote</type>
+            <superType>libToHandle</superType>
+            <tensorRank>scalar</tensorRank>
+            <description>underlying quote.</description>
+          </Parameter>
+          <Parameter name='StrikeGridAmt' exampleValue ='100'>
+            <type>QuantLib::Size</type>
+            <tensorRank>scalar</tensorRank>
+            <description>grid size in strike dimension.</description>
+          </Parameter>
+          <Parameter name='TimeStepsPerYear' exampleValue ='0.03, 0.05, 0.10'>
+            <type>QuantLib::Size</type>
+            <tensorRank>scalar</tensorRank>
+            <description>time steps per year for time grid</description>
+          </Parameter>
+        </Parameters>
+      </ParameterList>
+    </Constructor>
+
+    <Member name='qlLocalVolSurfaceInterpolatedGetSurface' type='QuantLib::InterpolatedLocalVolSurface'>
+      <description>Returns the local volatility surface</description>
+      <libraryFunction>getSurface</libraryFunction>
+      <SupportedPlatforms>
+        <!--SupportedPlatform name='Excel' calcInWizard='false'/-->
+        <SupportedPlatform name='Excel'/>
+        <!--SupportedPlatform name='Cpp'/-->
+      </SupportedPlatforms>
+      <ParameterList>
+        <Parameters/>
+      </ParameterList>
+      <ReturnValue>
+        <type>QuantLib::Matrix</type>
+        <tensorRank>matrix</tensorRank>
+      </ReturnValue>
+    </Member>
+
     <!-- AbcdAtmVolCurve interface and constructor -->
     <Member name='qlAbcdAtmVolCurveOptionTenors' type='QuantLib::AbcdAtmVolCurve' superType='libraryClass'>
       <description>Returns the options tenors of the atm volatility curve.</description>

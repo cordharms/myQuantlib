@@ -36,6 +36,7 @@ namespace QuantLib {
     class Matrix;
     class Period;
     class SabrVolSurface;
+	class Quote;
 	class GeneralizedBlackScholesProcess;
 	class HestonSLVFDMModel;
 	class HestonSLVMCModel;
@@ -127,6 +128,14 @@ namespace QuantLibAddin {
 			bool                                                          permanent);
 		LocalVolTermStructure(
 			const boost::shared_ptr<ObjectHandler::ValueObject>&          properties,
+			const QuantLib::Handle<QuantLib::BlackVolTermStructure>&      blackTS,
+			const QuantLib::Handle<QuantLib::YieldTermStructure>&         riskFreeTS,
+			const QuantLib::Handle<QuantLib::YieldTermStructure>&         dividendTS,
+			const QuantLib::Handle<QuantLib::Quote>&                       underlying,
+			const QuantLib::Real                                          illegalLocalVolOverwrite,
+			bool                                                          permanent);
+		LocalVolTermStructure(
+			const boost::shared_ptr<ObjectHandler::ValueObject>&          properties,
             const boost::shared_ptr<QuantLib::GeneralizedBlackScholesProcess>& bsprocess,
 			bool permanent);
 		LocalVolTermStructure(
@@ -137,8 +146,37 @@ namespace QuantLibAddin {
 			const boost::shared_ptr<ObjectHandler::ValueObject>&          properties,
 			const boost::shared_ptr<QuantLib::HestonSLVMCModel>&          model,
 			bool permanent);
+		LocalVolTermStructure(
+			const boost::shared_ptr<ObjectHandler::ValueObject>&          properties,
+			bool permanent);
 	};
 
+
+	class LocalVolSurface : public LocalVolTermStructure {
+	public:
+		LocalVolSurface(
+			const boost::shared_ptr<ObjectHandler::ValueObject>&          properties,
+			const QuantLib::Handle<QuantLib::BlackVolTermStructure>&      blackTS,
+			const QuantLib::Handle<QuantLib::YieldTermStructure>&         riskFreeTS,
+			const QuantLib::Handle<QuantLib::YieldTermStructure>&         dividendTS,
+			const QuantLib::Handle<QuantLib::Quote>&                       underlying,
+			bool                                                          permanent);
+		LocalVolSurface(
+			const boost::shared_ptr<ObjectHandler::ValueObject>&          properties,
+			bool                                                          permanent);
+	};
+
+	class InterpolatedLocalVolSurface : public LocalVolSurface {
+	public:
+		InterpolatedLocalVolSurface(
+			const boost::shared_ptr<ObjectHandler::ValueObject>&          properties,
+			const QuantLib::Handle<QuantLib::BlackVolTermStructure>&      blackTS,
+			const QuantLib::Handle<QuantLib::YieldTermStructure>&         riskFreeTS,
+			const QuantLib::Handle<QuantLib::YieldTermStructure>&         dividendTS,
+			const QuantLib::Handle<QuantLib::Quote>&                       underlying,
+			QuantLib::Size strikeGridAmt, QuantLib::Size				  timeStepsPerYear,
+			bool                                                          permanent);
+	};
 }
 
 #endif

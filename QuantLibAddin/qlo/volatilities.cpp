@@ -159,6 +159,23 @@ namespace QuantLibAddin {
 
 	LocalVolTermStructure::LocalVolTermStructure(
 		const boost::shared_ptr<ObjectHandler::ValueObject>&              properties,
+		const QuantLib::Handle<QuantLib::BlackVolTermStructure>&          blackTS,
+		const QuantLib::Handle<QuantLib::YieldTermStructure>&             riskFreeTS,
+		const QuantLib::Handle<QuantLib::YieldTermStructure>&             dividendTS,
+		const QuantLib::Handle<QuantLib::Quote>&                           underlying,
+		const QuantLib::Real                                              illegalLocalVolOverwrite,
+		bool                                                              permanent)
+		: VolatilityTermStructure(properties, permanent) {
+		if (illegalLocalVolOverwrite > 0) {
+			libraryObject_ = boost::shared_ptr<QuantLib::LocalVolTermStructure>(new QuantLib::NoExceptLocalVolSurface(blackTS, riskFreeTS, dividendTS, underlying, illegalLocalVolOverwrite));
+		}
+		else {
+			libraryObject_ = boost::shared_ptr<QuantLib::LocalVolTermStructure>(new QuantLib::LocalVolSurface(blackTS, riskFreeTS, dividendTS, underlying));
+		}
+	}
+
+	LocalVolTermStructure::LocalVolTermStructure(
+		const boost::shared_ptr<ObjectHandler::ValueObject>&              properties,
 		const boost::shared_ptr<QuantLib::GeneralizedBlackScholesProcess>& bsprocess,
 		bool                                                              permanent)
 		: VolatilityTermStructure(properties, permanent) {
@@ -174,10 +191,48 @@ namespace QuantLibAddin {
 	}
 	LocalVolTermStructure::LocalVolTermStructure(
 		const boost::shared_ptr<ObjectHandler::ValueObject>&              properties,
+		bool                                                              permanent)
+		: VolatilityTermStructure(properties, permanent) {
+		}
+	LocalVolTermStructure::LocalVolTermStructure(
+		const boost::shared_ptr<ObjectHandler::ValueObject>&              properties,
 		const boost::shared_ptr<QuantLib::HestonSLVMCModel>&			  model,
 		bool                                                              permanent)
 		 : VolatilityTermStructure(properties, permanent) {
 		libraryObject_ = boost::shared_ptr<QuantLib::LocalVolTermStructure>(model->leverageFunction());
 		
+	}
+
+
+	LocalVolSurface::LocalVolSurface(
+		const boost::shared_ptr<ObjectHandler::ValueObject>&          properties,
+		const QuantLib::Handle<QuantLib::BlackVolTermStructure>&      blackTS,
+		const QuantLib::Handle<QuantLib::YieldTermStructure>&         riskFreeTS,
+		const QuantLib::Handle<QuantLib::YieldTermStructure>&         dividendTS,
+		const QuantLib::Handle<QuantLib::Quote>&                       underlying,
+		bool                                                          permanent) 
+		: LocalVolTermStructure(properties,permanent)
+	{
+		libraryObject_ = boost::shared_ptr<QuantLib::LocalVolSurface>(new QuantLib::LocalVolSurface(blackTS, riskFreeTS, dividendTS, underlying));
+	}
+
+
+	LocalVolSurface::LocalVolSurface(
+		const boost::shared_ptr<ObjectHandler::ValueObject>&          properties,
+		bool                                                          permanent)
+		: LocalVolTermStructure(properties, permanent)
+	{}
+
+	InterpolatedLocalVolSurface::InterpolatedLocalVolSurface(
+		const boost::shared_ptr<ObjectHandler::ValueObject>&          properties,
+		const QuantLib::Handle<QuantLib::BlackVolTermStructure>&      blackTS,
+		const QuantLib::Handle<QuantLib::YieldTermStructure>&         riskFreeTS,
+		const QuantLib::Handle<QuantLib::YieldTermStructure>&         dividendTS,
+		const QuantLib::Handle<QuantLib::Quote>&                       underlying,
+		QuantLib::Size strikeGridAmt, QuantLib::Size				  timeStepsPerYear,
+		bool                                                          permanent)
+		: LocalVolSurface(properties,permanent)
+	{
+		libraryObject_ = boost::shared_ptr<QuantLib::InterpolatedLocalVolSurface>(new QuantLib::InterpolatedLocalVolSurface(blackTS, riskFreeTS, dividendTS, underlying,strikeGridAmt,timeStepsPerYear));
 	}
 }

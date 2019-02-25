@@ -34,6 +34,7 @@
 #include <ql/experimental/templatemodels/multiasset/multiassetbsmodel.hpp>
 #include <ql/experimental/templatemodels/multiasset/multiassetSLVmodel.hpp>
 #include <ql/termstructures/volatility/equityfx/localvoltermstructure.hpp>
+#include <ql\termstructures\volatility\equityfx\localvolsurface.hpp>
 
 
 // #include <qlo/templatequasigaussian.hpp>
@@ -287,6 +288,13 @@ namespace QuantLibAddin {
 			const QuantLib::Handle<QuantLib::YieldTermStructure>&                           termStructure,
 			const std::vector<std::string>&                                                 aliases,
 			const std::vector<boost::shared_ptr<QuantLib::GeneralizedBlackScholesProcess>>& processes,
+			const QuantLib::RealStochasticProcess::MatA&                                    correlations,
+			bool                                                                            permanent);
+		MultiAssetBSModel(
+			const boost::shared_ptr<ObjectHandler::ValueObject>&                            properties,
+			const QuantLib::Handle<QuantLib::YieldTermStructure>&                           termStructure,
+			const std::vector<std::string>&                                                 aliases,
+			const std::vector<boost::shared_ptr<QuantLib::LocalVolSurface>>&				localVolSurfaces,
 			const QuantLib::RealStochasticProcess::MatA&                                    correlations,
 			bool                                                                            permanent);
 		MultiAssetBSModel(

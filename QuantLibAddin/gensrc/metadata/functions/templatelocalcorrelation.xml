@@ -28,13 +28,13 @@
     <include>qlo/templatelocalcorrelation.hpp</include>
   </addinIncludes>
   <copyright>
-    Copyright (C) 2017, Sebastian Schlenkrich, Cord Harms
+    Copyright (C) 2017, Cord Harms
   </copyright>
   <Functions>
 
     <!-- Constructor(s) for LocalCorrelationBSModel -->
     
-    <Constructor name='qlRealLocalCorrelationModel'>
+    <Constructor name='qlRealLocalCorrelationBSModel'>
       <libraryFunction>LocalCorrelationBSModel</libraryFunction>
       <SupportedPlatforms>
         <SupportedPlatform name='Excel'/>
@@ -57,6 +57,40 @@
             <type>QuantLib::GeneralizedBlackScholesProcess</type>
             <tensorRank>vector</tensorRank>
             <description>Array of Black Scholes processes</description>
+          </Parameter>
+          <Parameter name='LocalCorrelationTermStructure'>
+            <type>QuantLib::LocalCorrTermStructure</type>
+            <superType>libToHandle</superType>
+            <tensorRank>scalar</tensorRank>
+            <description>term structure for local correlation</description>
+          </Parameter>
+        </Parameters>
+      </ParameterList>
+    </Constructor>
+    
+    <Constructor name='qlRealLocalCorrelationBSModel2'>
+      <libraryFunction>LocalCorrelationBSModel</libraryFunction>
+      <SupportedPlatforms>
+        <SupportedPlatform name='Excel'/>
+        <SupportedPlatform name='Cpp'/>
+      </SupportedPlatforms>
+      <ParameterList>
+        <Parameters>
+          <Parameter name='DiscountCurve'>
+            <type>QuantLib::YieldTermStructure</type>
+            <superType>libToHandle</superType>
+            <tensorRank>scalar</tensorRank>
+            <description>YieldTermStructure for discounting.</description>
+          </Parameter>
+          <Parameter name='Aliases'>
+            <type>string</type>
+            <tensorRank>vector</tensorRank>
+            <description>Aliases</description>
+          </Parameter>
+          <Parameter name='LocalVolSurfaces'>
+            <type>QuantLib::LocalVolSurface</type>
+            <tensorRank>vector</tensorRank>
+            <description>Array of localVolSurfaces</description>
           </Parameter>
           <Parameter name='LocalCorrelationTermStructure'>
             <type>QuantLib::LocalCorrTermStructure</type>
