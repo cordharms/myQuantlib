@@ -383,53 +383,6 @@ namespace QuantLibAddin {
 		
 	}
 
-	MultiAssetSLVModel::MultiAssetSLVModel(
-		const boost::shared_ptr<ObjectHandler::ValueObject>&                            properties,
-		const QuantLib::Handle<QuantLib::YieldTermStructure>&                           termStructure,
-		const std::vector<std::string>&                                                 aliases,
-		const std::vector<boost::shared_ptr<QuantLib::HestonSLVProcess>>& processes,
-		const QuantLib::RealStochasticProcess::MatA&                                    correlations,
-		bool                                                                            permanent)
-		: RealStochasticProcess(properties, permanent) {
-		libraryObject_ = boost::shared_ptr<QuantLib::RealStochasticProcess>(
-			new QuantLib::MultiAssetSLVModel(termStructure, aliases, processes, correlations));
-	}
-
-	MultiAssetSLVModel::MultiAssetSLVModel(
-		const boost::shared_ptr<ObjectHandler::ValueObject>&                            properties,
-		bool                                                                            permanent)
-		: RealStochasticProcess(properties, permanent) {
-	}
-
-	HestonSLVMCModel::HestonSLVMCModel(
-		const boost::shared_ptr<ObjectHandler::ValueObject>&                properties,
-		const QuantLib::Handle<QuantLib::LocalVolTermStructure>&           localVol,
-		const QuantLib::Handle<QuantLib::HestonModel>&                     hestonModel,
-		const QuantLib::Date&												endDate,
-		QuantLib::Size														timeStepsPerYear,
-		QuantLib::Size														nBins,
-		QuantLib::Size														calibrationPaths,
-		const std::vector<QuantLib::Date>&									mandatoryDates,
-		bool                                                                permanent)
-		 : ObjectHandler::LibraryObject<QuantLib::HestonSLVMCModel>(properties, permanent) {
-		libraryObject_ = boost::shared_ptr<QuantLib::HestonSLVMCModel>(
-			new QuantLib::HestonSLVMCModel(localVol, hestonModel, boost::shared_ptr<QuantLib::BrownianGeneratorFactory>(
-				new QuantLib::MTBrownianGeneratorFactory()), endDate, timeStepsPerYear, nBins, calibrationPaths, mandatoryDates));
-		
-	}
-
-	HestonSLVProcess::HestonSLVProcess(
-			const boost::shared_ptr<ObjectHandler::ValueObject>&                properties,
-			const boost::shared_ptr<QuantLib::HestonProcess>&					hestonProcess,
-			const boost::shared_ptr<QuantLib::LocalVolTermStructure>&			leverageFct,
-			bool                                                                permanent)
-		: 
-		ObjectHandler::LibraryObject<QuantLib::HestonSLVProcess>(properties, permanent) {
-		libraryObject_ = boost::shared_ptr<QuantLib::HestonSLVProcess>(
-			new QuantLib::HestonSLVProcess(hestonProcess,leverageFct));
-
-	}
-
 }
 
 
