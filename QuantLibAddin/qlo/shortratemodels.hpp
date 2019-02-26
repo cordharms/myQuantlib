@@ -35,7 +35,7 @@ namespace QuantLib {
     class AffineModel;
 	class IborIndex;
 	class G2;
-	class CalibrationHelper;
+	// class CalibrationHelper;
 	class OptimizationMethod;
 	class EndCriteria;
 }
@@ -103,6 +103,7 @@ namespace QuantLibAddin {
                        const QuantLib::CalibrationHelper::CalibrationErrorType errorType,
                        const QuantLib::Real                                    strike,
                        const QuantLib::Real                                    nominal,
+			           const QuantLib::VolatilityType                          type,
                        const QuantLib::Real                                    shift,
 		               bool                                                    permanent);
 	};

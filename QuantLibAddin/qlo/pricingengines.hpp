@@ -48,7 +48,7 @@ namespace QuantLib {
 	class DeltaVolQuote;
 	class HestonModel;
 	class LocalVolTermStructure;
-	class CalibrationHelper;
+	class BlackCalibrationHelper;
     template <class T>
     class Handle;
 }
@@ -56,7 +56,7 @@ namespace QuantLib {
 namespace QuantLibAddin {
 
 	// we need CalibrationHelpers at various places
-	OH_LIB_CLASS(CalibrationHelper, QuantLib::CalibrationHelper);
+	OH_LIB_CLASS(CalibrationHelper, QuantLib::BlackCalibrationHelper);
 
     class PricingEngine : public ObjectHandler::LibraryObject<QuantLib::PricingEngine> {
       public:
@@ -101,7 +101,6 @@ namespace QuantLibAddin {
             const boost::shared_ptr<ObjectHandler::ValueObject>& properties,
             const QuantLib::Handle<QuantLib::YieldTermStructure>&,
             const QuantLib::Handle<QuantLib::SwaptionVolatilityStructure>&,
-            const QuantLib::Real displacement,
             bool permanent);
     };
 

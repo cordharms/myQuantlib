@@ -169,6 +169,20 @@ namespace QuantLibAddin {
 			new QuantLib::RealShiftedSABRModel( S0, lambda, alpha, beta, rho, nu ) );
 	}
 
+	RealQuadraticLVSVModel::RealQuadraticLVSVModel(
+		const boost::shared_ptr<ObjectHandler::ValueObject>& properties,
+		const QuantLib::Real                                 S0,
+		const QuantLib::Real                                 curv,
+		const QuantLib::Real                                 skew,
+		const QuantLib::Real                                 sigma0,
+		const QuantLib::Real                                 theta,
+		const QuantLib::Real                                 nu,
+		const QuantLib::Real                                 rho,
+		bool                                                 permanent)
+		: RealStochasticProcess(properties, permanent) {
+		libraryObject_ = boost::shared_ptr<QuantLib::RealStochasticProcess>(
+			new QuantLib::RealQuadraticLVSVModel(S0, curv,skew, sigma0, theta, nu, rho));
+	}
 
 
 	StochVolModelCalibrator::StochVolModelCalibrator(
@@ -237,6 +251,7 @@ namespace QuantLibAddin {
 		std::string desc;
 		desc = greensAlgorithmString;
 		boost::to_upper(desc);
+		const QuantLib::Size nRannacherTimeSteps = 0; // this is better exposed to the user
 		QuantLib::FdmHestonGreensFct::Algorithm greensAlgorithm(QuantLib::FdmHestonGreensFct::Gaussian);
 		if (desc == "GAUSSIAN")        greensAlgorithm = QuantLib::FdmHestonGreensFct::Gaussian;
 		if (desc == "ZEROCORRELATION") greensAlgorithm = QuantLib::FdmHestonGreensFct::ZeroCorrelation;
@@ -258,7 +273,7 @@ namespace QuantLibAddin {
 		if (desc == "HUNDSDORFER")          schemeDesc = &(QuantLib::FdmSchemeDesc::Hundsdorfer());
 		if (desc == "MODIFIEDHUNDSDORFER")  schemeDesc = &(QuantLib::FdmSchemeDesc::ModifiedHundsdorfer());
 		QuantLib::HestonSLVFokkerPlanckFdmParams params = {
-			xGrid, vGrid,  tMaxStepsPerYear, tMinStepsPerYear, tStepNumberDecay, predictionCorretionSteps,
+			xGrid, vGrid,  tMaxStepsPerYear, tMinStepsPerYear, tStepNumberDecay, nRannacherTimeSteps, predictionCorretionSteps,
 			x0Density, localVolEpsProb, maxIntegrationIterations, vLowerEps, vUpperEps,
 			vMin, v0Density, vLowerBoundDensity, vUpperBoundDensity, leverageFctPropEps,
 			greensAlgorithm, trafoType, *schemeDesc
@@ -272,9 +287,10 @@ namespace QuantLibAddin {
 		const std::string                                     setID,
 		bool                                                  permanent)
 		: ObjectHandler::LibraryObject<QuantLib::HestonSLVFokkerPlanckFdmParams>(properties, permanent) {
+		const QuantLib::Size nRannacherTimeSteps = 0; // this parameter is new
 		// some pre-defined sets from unit tests
 		const QuantLib::HestonSLVFokkerPlanckFdmParams plainParams =
-		{ 201, 301, 1000, 25, 3.0, 2,
+		{ 201, 301, 1000, 25, 3.0, nRannacherTimeSteps, 2,
 			0.1, 1e-4, 10000,
 			1e-8, 1e-8, 0.0, 1.0, 1.0, 1.0, 1e-6,
 			QuantLib::FdmHestonGreensFct::Gaussian,
@@ -282,7 +298,7 @@ namespace QuantLibAddin {
 			QuantLib::FdmSchemeDesc::ModifiedCraigSneyd()
 		};
 		const QuantLib::HestonSLVFokkerPlanckFdmParams logParams =
-		{ 301, 601, 2000, 30, 2.0, 2,
+		{ 301, 601, 2000, 30, 2.0, nRannacherTimeSteps, 2,
 			0.1, 1e-4, 10000,
 			1e-5, 1e-5, 0.0000025, 1.0, 0.1, 0.9, 1e-5,
 			QuantLib::FdmHestonGreensFct::Gaussian,
@@ -290,7 +306,7 @@ namespace QuantLibAddin {
 			QuantLib::FdmSchemeDesc::ModifiedCraigSneyd()
 		};
 		const QuantLib::HestonSLVFokkerPlanckFdmParams powerParams =
-		{ 401, 801, 2000, 30, 2.0, 2,
+		{ 401, 801, 2000, 30, 2.0, nRannacherTimeSteps, 2,
 			0.1, 1e-3, 10000,
 			1e-6, 1e-6, 0.001, 1.0, 0.001, 1.0, 1e-5,
 			QuantLib::FdmHestonGreensFct::Gaussian,

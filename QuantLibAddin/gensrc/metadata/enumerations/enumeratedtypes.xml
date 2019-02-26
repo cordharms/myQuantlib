@@ -2005,6 +2005,14 @@
           <string>LogNormalApproximation</string>
           <value>QuantLib::RealStochasticProcess::VolEvolv(QuantLib::RealStochasticProcess::LogNormalApproximation)</value>
         </EnumeratedType>
+        <EnumeratedType>
+          <string>LocalGaussian</string>
+          <value>QuantLib::RealStochasticProcess::VolEvolv(QuantLib::RealStochasticProcess::LocalGaussian)</value>
+        </EnumeratedType>
+        <EnumeratedType>
+          <string>Other</string>
+          <value>QuantLib::RealStochasticProcess::VolEvolv(QuantLib::RealStochasticProcess::Other)</value>
+        </EnumeratedType>
       </EnumeratedTypes>
     </EnumeratedTypeGroup>
 
@@ -2137,6 +2145,22 @@
         </EnumeratedType>
       </EnumeratedTypes>
     </EnumeratedTypeGroup>
+
+    <EnumeratedTypeGroup type='QuantLib::MixedInterpolation::Behavior'>
+      <includeFile>oh/enumerations/typefactory.hpp</includeFile>
+      <constructor>false</constructor>
+      <EnumeratedTypes>
+        <EnumeratedType>
+          <string>ShareRanges</string>
+          <value>QuantLib::MixedInterpolation::Behavior(QuantLib::MixedInterpolation::ShareRanges)</value>
+        </EnumeratedType>
+        <EnumeratedType>
+          <string>SplitRanges</string>
+          <value>QuantLib::MixedInterpolation::Behavior(QuantLib::MixedInterpolation::SplitRanges)</value>
+        </EnumeratedType>
+      </EnumeratedTypes>
+    </EnumeratedTypeGroup>
+
 
 
   </EnumeratedTypeGroups>

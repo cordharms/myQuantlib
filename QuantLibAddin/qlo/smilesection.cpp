@@ -32,6 +32,7 @@
 #include <ql/quotes/simplequote.hpp>
 #include <ql/math/interpolations/cubicinterpolation.hpp>
 
+
 namespace QuantLibAddin {
 
     FlatSmileSection::FlatSmileSection(
@@ -219,5 +220,6 @@ namespace QuantLibAddin {
            
              libraryObject_ = sabrVol->smileSection(time,true);  
     }
+
 }
 

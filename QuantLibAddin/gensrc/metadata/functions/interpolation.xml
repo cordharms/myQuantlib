@@ -281,6 +281,11 @@
             <tensorRank>scalar</tensorRank>
             <description>zero based knot index at which interpolation switches from linear to cubic.</description>
           </Parameter>
+          <Parameter name='Behavior' default='"SplitRanges"'>
+            <type>QuantLib::MixedInterpolation::Behavior</type>
+            <tensorRank>scalar</tensorRank>
+            <description>MixedInterpolation Behaviour (SplitRanges or ShareRanges).</description>
+          </Parameter>
           <Parameter name='DerApprox' default='"Kruger"'>
             <type>QuantLib::CubicInterpolation::DerivativeApprox</type>
             <tensorRank>scalar</tensorRank>

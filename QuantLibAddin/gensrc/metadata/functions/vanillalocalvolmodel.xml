@@ -1,0 +1,850 @@
+<Category name='vanillalocalvolmodel'>
+  <description>functions and methods for Vanilla Local Volatility model.</description>
+  <displayName>Vanilla Local Vol Model</displayName>
+  <xlFunctionWizardCategory>QuantLib - Financial</xlFunctionWizardCategory>
+  <serializationIncludes>
+    <include>qlo/conversions/coercetermstructure.hpp</include>
+    <include>qlo/termstructures.hpp</include>
+    <include>qlo/processes.hpp</include>
+    <include>qlo/indexes/swapindex.hpp</include>
+    <include>qlo/vanillalocalvolmodel.hpp</include>
+    <include>ql/indexes/swapindex.hpp</include>
+  </serializationIncludes>
+  <addinIncludes>
+    <include>qlo/conversions/coercetermstructure.hpp</include>
+    <include>qlo/termstructures.hpp</include>
+    <include>qlo/processes.hpp</include>
+    <include>qlo/indexes/swapindex.hpp</include>
+    <include>qlo/vanillalocalvolmodel.hpp</include>
+    <include>ql/indexes/swapindex.hpp</include>
+  </addinIncludes>
+  <copyright>
+    Copyright (C) 2018, Sebastian Schlenkrich
+  </copyright>
+  <Functions>
+
+    <!-- Actual model functions -->
+
+    <Constructor name='qlVanillaLocalVolModel'>
+      <libraryFunction>VanillaLocalVolModel</libraryFunction>
+      <SupportedPlatforms>
+        <SupportedPlatform name='Excel'/>
+        <SupportedPlatform name='Cpp'/>
+      </SupportedPlatforms>
+      <ParameterList>
+        <Parameters>
+          <Parameter name='TimeToMaturity' default='1.0'>
+            <type>QuantLib::Time</type>
+            <tensorRank>scalar</tensorRank>
+            <description>Time to option maturity (in year fraction).</description>
+          </Parameter>
+          <Parameter name='S0' default='0.0'>
+            <type>QuantLib::Real</type>
+            <tensorRank>scalar</tensorRank>
+            <description>Forward of underlying.</description>
+          </Parameter>
+          <Parameter name='SigmaATM' default='1.0'>
+            <type>QuantLib::Real</type>
+            <tensorRank>scalar</tensorRank>
+            <description>Normal ATM volatility of underlying.</description>
+          </Parameter>
+          <Parameter name='SPlus' >
+            <type>QuantLib::Real</type>
+            <tensorRank>vector</tensorRank>
+            <description>Right wing S-grid.</description>
+          </Parameter>
+          <Parameter name='SMinus' >
+            <type>QuantLib::Real</type>
+            <tensorRank>vector</tensorRank>
+            <description>Left wing S-grid.</description>
+          </Parameter>
+          <Parameter name='MPlus' >
+            <type>QuantLib::Real</type>
+            <tensorRank>vector</tensorRank>
+            <description>Right wing volatility slopes.</description>
+          </Parameter>
+          <Parameter name='MMinus' >
+            <type>QuantLib::Real</type>
+            <tensorRank>vector</tensorRank>
+            <description>Left wing volatility slopes.</description>
+          </Parameter>
+          <Parameter name='MaxCalibrationIters' default='5'>
+            <type>QuantLib::Size</type>
+            <tensorRank>scalar</tensorRank>
+            <description>Max. number of iterations for ATM calibration.</description>
+          </Parameter>
+          <Parameter name='OnlyForwardCalibrationIters' default='0'>
+            <type>QuantLib::Size</type>
+            <tensorRank>scalar</tensorRank>
+            <description>Number of initial iterations for only forward calibration.</description>
+          </Parameter>
+          <Parameter name='EnableAdjustATM' default='true'>
+            <type>bool</type>
+            <tensorRank>scalar</tensorRank>
+            <description>Apply ATM adjuster post ATM calibration.</description>
+          </Parameter>
+          <Parameter name='EnableLogging' default='false'>
+            <type>bool</type>
+            <tensorRank>scalar</tensorRank>
+            <description>Log ATM calibration details.</description>
+          </Parameter>
+          <Parameter name='UseInitialMu' default='false'>
+            <type>bool</type>
+            <tensorRank>scalar</tensorRank>
+            <description>Use user input flag for starting point for mu calibration.</description>
+          </Parameter>
+          <Parameter name='InitialMu' default='0.0'>
+            <type>QuantLib::Real</type>
+            <tensorRank>scalar</tensorRank>
+            <description>Actual user input for starting point for mu calibration.</description>
+          </Parameter>
+        </Parameters>
+      </ParameterList>
+    </Constructor>
+
+    <Constructor name='qlVanillaLocalVolModelFromSmileSection'>
+      <libraryFunction>VanillaLocalVolModel</libraryFunction>
+      <SupportedPlatforms>
+        <SupportedPlatform name='Excel'/>
+        <SupportedPlatform name='Cpp'/>
+      </SupportedPlatforms>
+      <ParameterList>
+        <Parameters>
+          <Parameter name='SmileSection' >
+            <type>QuantLib::VanillaLocalVolModelSmileSection</type>
+            <tensorRank>scalar</tensorRank>
+            <description>Calibrated SmileSection.</description>
+          </Parameter>
+        </Parameters>
+      </ParameterList>
+    </Constructor>
+
+    <Member name='qlVanillaLocalVolModelUnderlyingX' type='QuantLib::VanillaLocalVolModel' >
+      <description>Returns x-grid.</description>
+      <libraryFunction>underlyingX</libraryFunction>
+      <SupportedPlatforms>
+        <!--SupportedPlatform name='Excel' calcInWizard='false'/-->
+        <SupportedPlatform name='Excel'/>
+        <!--SupportedPlatform name='Calc'/-->
+        <!--SupportedPlatform name='Cpp'/-->
+      </SupportedPlatforms>
+      <ParameterList>
+        <Parameters/>
+      </ParameterList>
+      <ReturnValue>
+        <type>QuantLib::Real</type>
+        <tensorRank>vector</tensorRank>
+      </ReturnValue>
+    </Member>
+
+    <Member name='qlVanillaLocalVolModelUnderlyingS' type='QuantLib::VanillaLocalVolModel' >
+      <description>Returns S-grid.</description>
+      <libraryFunction>underlyingS</libraryFunction>
+      <SupportedPlatforms>
+        <!--SupportedPlatform name='Excel' calcInWizard='false'/-->
+        <SupportedPlatform name='Excel'/>
+        <!--SupportedPlatform name='Calc'/-->
+        <!--SupportedPlatform name='Cpp'/-->
+      </SupportedPlatforms>
+      <ParameterList>
+        <Parameters/>
+      </ParameterList>
+      <ReturnValue>
+        <type>QuantLib::Real</type>
+        <tensorRank>vector</tensorRank>
+      </ReturnValue>
+    </Member>
+
+    <Member name='qlVanillaLocalVolModelLocalVol' type='QuantLib::VanillaLocalVolModel' >
+      <description>Returns sigma-grid.</description>
+      <libraryFunction>localVol</libraryFunction>
+      <SupportedPlatforms>
+        <!--SupportedPlatform name='Excel' calcInWizard='false'/-->
+        <SupportedPlatform name='Excel'/>
+        <!--SupportedPlatform name='Calc'/-->
+        <!--SupportedPlatform name='Cpp'/-->
+      </SupportedPlatforms>
+      <ParameterList>
+        <Parameters/>
+      </ParameterList>
+      <ReturnValue>
+        <type>QuantLib::Real</type>
+        <tensorRank>vector</tensorRank>
+      </ReturnValue>
+    </Member>
+
+    <Member name='qlVanillaLocalVolModelLocalVolSlope' type='QuantLib::VanillaLocalVolModel' >
+      <description>Returns m-grid.</description>
+      <libraryFunction>localVolSlope</libraryFunction>
+      <SupportedPlatforms>
+        <!--SupportedPlatform name='Excel' calcInWizard='false'/-->
+        <SupportedPlatform name='Excel'/>
+        <!--SupportedPlatform name='Calc'/-->
+        <!--SupportedPlatform name='Cpp'/-->
+      </SupportedPlatforms>
+      <ParameterList>
+        <Parameters/>
+      </ParameterList>
+      <ReturnValue>
+        <type>QuantLib::Real</type>
+        <tensorRank>vector</tensorRank>
+      </ReturnValue>
+    </Member>
+
+    <Member name='qlVanillaLocalVolModelLocalVol2' type='QuantLib::VanillaLocalVolModel' >
+      <description>Returns sigma(S).</description>
+      <libraryFunction>localVol</libraryFunction>
+      <SupportedPlatforms>
+        <!--SupportedPlatform name='Excel' calcInWizard='false'/-->
+        <SupportedPlatform name='Excel'/>
+        <!--SupportedPlatform name='Calc'/-->
+        <!--SupportedPlatform name='Cpp'/-->
+      </SupportedPlatforms>
+      <ParameterList>
+        <Parameters>
+          <Parameter name='S' default='0.0'>
+            <type>QuantLib::Real</type>
+            <tensorRank>scalar</tensorRank>
+            <description>underlying.</description>
+          </Parameter>
+        </Parameters>
+      </ParameterList>
+      <ReturnValue>
+        <type>QuantLib::Real</type>
+        <tensorRank>scalar</tensorRank>
+      </ReturnValue>
+    </Member>
+
+    <Member name='qlVanillaLocalVolModelUnderlyingS2' type='QuantLib::VanillaLocalVolModel' >
+      <description>Returns S(x).</description>
+      <libraryFunction>underlyingS</libraryFunction>
+      <SupportedPlatforms>
+        <!--SupportedPlatform name='Excel' calcInWizard='false'/-->
+        <SupportedPlatform name='Excel'/>
+        <!--SupportedPlatform name='Calc'/-->
+        <!--SupportedPlatform name='Cpp'/-->
+      </SupportedPlatforms>
+      <ParameterList>
+        <Parameters>
+          <Parameter name='X' default='0.0'>
+            <type>QuantLib::Real</type>
+            <tensorRank>scalar</tensorRank>
+            <description>underlying.</description>
+          </Parameter>
+        </Parameters>
+      </ParameterList>
+      <ReturnValue>
+        <type>QuantLib::Real</type>
+        <tensorRank>scalar</tensorRank>
+      </ReturnValue>
+    </Member>
+
+    <Member name='qlVanillaLocalVolModelExpectation' type='QuantLib::VanillaLocalVolModel' >
+      <description>Returns E[ [S(x)-K]^+ ].</description>
+      <libraryFunction>expectation</libraryFunction>
+      <SupportedPlatforms>
+        <!--SupportedPlatform name='Excel' calcInWizard='false'/-->
+        <SupportedPlatform name='Excel'/>
+        <!--SupportedPlatform name='Calc'/-->
+        <!--SupportedPlatform name='Cpp'/-->
+      </SupportedPlatforms>
+      <ParameterList>
+        <Parameters>
+          <Parameter name='IsRightWing' default='0.0'>
+            <type>bool</type>
+            <tensorRank>scalar</tensorRank>
+            <description>right (call) or left (put) wing integration.</description>
+          </Parameter>
+          <Parameter name='Strike' default='0.0'>
+            <type>QuantLib::Real</type>
+            <tensorRank>scalar</tensorRank>
+            <description>Strike K.</description>
+          </Parameter>
+        </Parameters>
+      </ParameterList>
+      <ReturnValue>
+        <type>QuantLib::Real</type>
+        <tensorRank>scalar</tensorRank>
+      </ReturnValue>
+    </Member>
+
+    <Member name='qlVanillaLocalVolModelVariance' type='QuantLib::VanillaLocalVolModel' >
+      <description>Returns E[ (S(x)>K)*[S(x)-K]^2 ].</description>
+      <libraryFunction>variance</libraryFunction>
+      <SupportedPlatforms>
+        <!--SupportedPlatform name='Excel' calcInWizard='false'/-->
+        <SupportedPlatform name='Excel'/>
+        <!--SupportedPlatform name='Calc'/-->
+        <!--SupportedPlatform name='Cpp'/-->
+      </SupportedPlatforms>
+      <ParameterList>
+        <Parameters>
+          <Parameter name='IsRightWing' default='0.0'>
+            <type>bool</type>
+            <tensorRank>scalar</tensorRank>
+            <description>right (call) or left (put) wing integration.</description>
+          </Parameter>
+          <Parameter name='Strike' default='0.0'>
+            <type>QuantLib::Real</type>
+            <tensorRank>scalar</tensorRank>
+            <description>Strike K.</description>
+          </Parameter>
+        </Parameters>
+      </ParameterList>
+      <ReturnValue>
+        <type>QuantLib::Real</type>
+        <tensorRank>scalar</tensorRank>
+      </ReturnValue>
+    </Member>
+
+    <Member name='qlVanillaLocalVolModelLogging' type='QuantLib::VanillaLocalVolModel' >
+      <description>inspect calibration debug details.</description>
+      <libraryFunction>logging</libraryFunction>
+      <SupportedPlatforms>
+        <!--SupportedPlatform name='Excel' calcInWizard='false'/-->
+        <SupportedPlatform name='Excel'/>
+        <!--SupportedPlatform name='Calc'/-->
+        <!--SupportedPlatform name='Cpp'/-->
+      </SupportedPlatforms>
+      <ParameterList>
+        <Parameters>
+        </Parameters>
+      </ParameterList>
+      <ReturnValue>
+        <type>string</type>
+        <tensorRank>vector</tensorRank>
+      </ReturnValue>
+    </Member>
+
+
+    <Constructor name='qlVanillaLocalVolModelSmileSection'>
+      <libraryFunction>VanillaLocalVolModelSmileSection</libraryFunction>
+      <SupportedPlatforms>
+        <!--SupportedPlatform name='Excel' calcInWizard='false'/-->
+        <SupportedPlatform name='Excel'/>
+        <SupportedPlatform name='Cpp'/>
+      </SupportedPlatforms>
+      <ParameterList>
+        <Parameters>
+          <Parameter name='Model'>
+            <type>QuantLib::VanillaLocalVolModel</type>
+            <tensorRank>scalar</tensorRank>
+            <description>Reference to VanillaLocalVolModel.</description>
+          </Parameter>
+          <Parameter name='DayCounter' default='"Actual/365 (Fixed)"'>
+            <type>QuantLib::DayCounter</type>
+            <tensorRank>scalar</tensorRank>
+            <description>DayCounter ID.</description>
+          </Parameter>
+          <Parameter name='VolalilityType' default='"Normal"'>
+            <type>QuantLib::VolatilityType</type>
+            <tensorRank>scalar</tensorRank>
+            <description>Normal or ShiftedLognormal volatility type.</description>
+          </Parameter>
+          <Parameter name='Shift' default='0.0'>
+            <type>QuantLib::Rate</type>
+            <tensorRank>scalar</tensorRank>
+            <description>Shift for ShiftedLognormal volatility type.</description>
+          </Parameter>
+        </Parameters>
+      </ParameterList>
+    </Constructor>
+
+    <Constructor name='qlVanillaLocalVolModelSmileSection2'>
+      <libraryFunction>VanillaLocalVolModelSmileSection</libraryFunction>
+      <SupportedPlatforms>
+        <!--SupportedPlatform name='Excel' calcInWizard='false'/-->
+        <SupportedPlatform name='Excel'/>
+        <SupportedPlatform name='Cpp'/>
+      </SupportedPlatforms>
+      <ParameterList>
+        <Parameters>
+          <Parameter name='ExpiryDate' exampleValue ='3m'>
+            <type>QuantLib::Date</type>
+            <tensorRank>scalar</tensorRank>
+            <description>smile's expiry as date.</description>
+          </Parameter>
+          <Parameter name='Forward' default='0.0'>
+            <type>QuantLib::Rate</type>
+            <tensorRank>scalar</tensorRank>
+            <description>Underlying forward rate.</description>
+          </Parameter>
+          <Parameter name='RelStrikes' >
+            <type>QuantLib::Rate</type>
+            <tensorRank>vector</tensorRank>
+            <description>Strikes relative to ATM - at least 3 strikes including zero (i.e. ATM).</description>
+          </Parameter>
+          <Parameter name='SmileVolatilties' >
+            <type>QuantLib::Volatility</type>
+            <tensorRank>vector</tensorRank>
+            <description>Implied volatility values corresponding to strikes.</description>
+          </Parameter>
+          <Parameter name='ExtrRelStrikes' default='1.0'>
+            <type>QuantLib::Rate</type>
+            <tensorRank>scalar</tensorRank>
+            <description>additional strike for right-wing extrapolation.</description>
+          </Parameter>
+          <Parameter name='ExtrSlope' default='0.0'>
+            <type>QuantLib::Real</type>
+            <tensorRank>scalar</tensorRank>
+            <description>additional slope for right-wing extrapolation.</description>
+          </Parameter>
+          <Parameter name='VegaWeighted' default='true'>
+            <type>bool</type>
+            <tensorRank>scalar</tensorRank>
+            <description>Calibrate prices (true) or vols (false).</description>
+          </Parameter>
+          <Parameter name='EndCriteria' >
+            <type>QuantLib::EndCriteria</type>
+            <tensorRank>scalar</tensorRank>
+            <description>Reference to EndCriteria object for optimisation.</description>
+          </Parameter>
+          <Parameter name='OptimizationMethod' >
+            <type>QuantLib::OptimizationMethod</type>
+            <tensorRank>scalar</tensorRank>
+            <description>Reference to OptimizationMethod object (e.g. Levenberg-Marquardt).</description>
+          </Parameter>
+          <Parameter name='DayCounter' default='"Actual/365 (Fixed)"'>
+            <type>QuantLib::DayCounter</type>
+            <tensorRank>scalar</tensorRank>
+            <description>DayCounter ID.</description>
+          </Parameter>
+          <Parameter name='ReferenceDate' exampleValue ='3m'>
+            <type>QuantLib::Date</type>
+            <tensorRank>scalar</tensorRank>
+            <description>reference date for time to expiry calculation.</description>
+          </Parameter>
+          <Parameter name='VolalilityType' default='"Normal"'>
+            <type>QuantLib::VolatilityType</type>
+            <tensorRank>scalar</tensorRank>
+            <description>Normal or ShiftedLognormal volatility type.</description>
+          </Parameter>
+          <Parameter name='Shift' default='0.0'>
+            <type>QuantLib::Rate</type>
+            <tensorRank>scalar</tensorRank>
+            <description>Shift for ShiftedLognormal volatility type.</description>
+          </Parameter>
+          <Parameter name='BaseModel'>
+            <type>QuantLib::VanillaLocalVolModel</type>
+            <tensorRank>scalar</tensorRank>
+            <description>Reference to VanillaLocalVolModel to clone model properties.</description>
+          </Parameter>
+          <Parameter name='MinSlope' default='-1.0'>
+            <type>QuantLib::Real</type>
+            <tensorRank>scalar</tensorRank>
+            <description>Minimum slope change (optimization boundary).</description>
+          </Parameter>
+          <Parameter name='MaxSlope' default='1.0'>
+            <type>QuantLib::Real</type>
+            <tensorRank>scalar</tensorRank>
+            <description>Maximum slope change (optimization boundary).</description>
+          </Parameter>
+          <Parameter name='Alpha' default='0.0'>
+            <type>QuantLib::Real</type>
+            <tensorRank>scalar</tensorRank>
+            <description>Tikhonov alpha for regularisation.</description>
+          </Parameter>
+        </Parameters>
+      </ParameterList>
+    </Constructor>
+
+    <Constructor name='qlVanillaLocalVolModelSmileSection3'>
+      <libraryFunction>VanillaLocalVolModelSmileSection</libraryFunction>
+      <SupportedPlatforms>
+        <!--SupportedPlatform name='Excel' calcInWizard='false'/-->
+        <SupportedPlatform name='Excel'/>
+        <SupportedPlatform name='Cpp'/>
+      </SupportedPlatforms>
+      <ParameterList>
+        <Parameters>
+          <Parameter name='ExpiryDate' exampleValue ='3m'>
+            <type>QuantLib::Date</type>
+            <tensorRank>scalar</tensorRank>
+            <description>smile's expiry as date.</description>
+          </Parameter>
+          <Parameter name='Forward' default='0.0'>
+            <type>QuantLib::Rate</type>
+            <tensorRank>scalar</tensorRank>
+            <description>Underlying forward rate.</description>
+          </Parameter>
+          <Parameter name='ATMVolatility' default='0.0'>
+            <type>QuantLib::Volatility</type>
+            <tensorRank>scalar</tensorRank>
+            <description>Underlying ATM volatility.</description>
+          </Parameter>
+          <Parameter name='Smile1' >
+            <type>QuantLib::VanillaLocalVolModelSmileSection</type>
+            <tensorRank>scalar</tensorRank>
+            <description>Reference to SmileSection (rho=0).</description>
+          </Parameter>
+          <Parameter name='Smile2' >
+            <type>QuantLib::VanillaLocalVolModelSmileSection</type>
+            <tensorRank>scalar</tensorRank>
+            <description>Reference to SmileSection (rho=1).</description>
+          </Parameter>
+          <Parameter name='Rho' default='0.5'>
+            <type>QuantLib::Real</type>
+            <tensorRank>scalar</tensorRank>
+            <description>Convex combination, rho in [0,1].</description>
+          </Parameter>
+          <Parameter name='CalculateSimpleX' default='true'>
+            <type>bool</type>
+            <tensorRank>scalar</tensorRank>
+            <description>calculate x-grid only based on ATM vol, otherwise use internal x-grid.</description>
+          </Parameter>
+          <Parameter name='DayCounter' default='"Actual/365 (Fixed)"'>
+            <type>QuantLib::DayCounter</type>
+            <tensorRank>scalar</tensorRank>
+            <description>DayCounter ID.</description>
+          </Parameter>
+          <Parameter name='ReferenceDate' exampleValue ='3m'>
+            <type>QuantLib::Date</type>
+            <tensorRank>scalar</tensorRank>
+            <description>reference date for time to expiry calculation.</description>
+          </Parameter>
+          <Parameter name='VolalilityType' default='"Normal"'>
+            <type>QuantLib::VolatilityType</type>
+            <tensorRank>scalar</tensorRank>
+            <description>Normal or ShiftedLognormal volatility type.</description>
+          </Parameter>
+          <Parameter name='Shift' default='0.0'>
+            <type>QuantLib::Rate</type>
+            <tensorRank>scalar</tensorRank>
+            <description>Shift for ShiftedLognormal volatility type.</description>
+          </Parameter>
+        </Parameters>
+      </ParameterList>
+    </Constructor>
+
+    <Constructor name='qlVanillaLocalVolCMSTS'>
+      <libraryFunction>VanillaLocalVolCMSTS</libraryFunction>
+      <SupportedPlatforms>
+        <!--SupportedPlatform name='Excel' calcInWizard='false'/-->
+        <SupportedPlatform name='Excel'/>
+        <SupportedPlatform name='Cpp'/>
+      </SupportedPlatforms>
+      <ParameterList>
+        <Parameters>
+          <Parameter name='SwapTerm' >
+            <type>QuantLib::Period</type>
+            <tensorRank>scalar</tensorRank>
+            <description>swap term periods.</description>
+          </Parameter>
+          <Parameter name='Smiles' >
+            <type>QuantLib::VanillaLocalVolModelSmileSection</type>
+            <tensorRank>vector</tensorRank>
+            <description>List of reference smile sections.</description>
+          </Parameter>
+        </Parameters>
+      </ParameterList>
+    </Constructor>
+
+    <Constructor name='qlVanillaLocalVolSwaptionVTS'>
+      <libraryFunction>VanillaLocalVolSwaptionVTS</libraryFunction>
+      <SupportedPlatforms>
+        <!--SupportedPlatform name='Excel' calcInWizard='false'/-->
+        <SupportedPlatform name='Excel'/>
+        <SupportedPlatform name='Cpp'/>
+      </SupportedPlatforms>
+      <ParameterList>
+        <Parameters>
+          <Parameter name='AtmVolTS' >
+            <type>QuantLib::SwaptionVolatilityStructure</type>
+            <superType>libToHandle</superType>
+            <tensorRank>scalar</tensorRank>
+            <description>Base VolTS for ATM calculation.</description>
+          </Parameter>
+          <Parameter name='CmsTS' >
+            <type>QuantLibAddin::VanillaLocalVolCMSTS</type>
+            <tensorRank>vector</tensorRank>
+            <description>List of reference smile sections.</description>
+          </Parameter>
+          <Parameter name='Index' >
+            <type>QuantLib::SwapIndex</type>
+            <tensorRank>scalar</tensorRank>
+            <description>Reference to SwapIndex for forward calculation.</description>
+          </Parameter>
+        </Parameters>
+      </ParameterList>
+    </Constructor>
+
+
+    <!-- Dev model based on template -->
+
+    <Constructor name='qlVanillaLocalVolModelDev'>
+      <libraryFunction>VanillaLocalVolModelDev</libraryFunction>
+      <SupportedPlatforms>
+        <SupportedPlatform name='Excel'/>
+        <SupportedPlatform name='Cpp'/>
+      </SupportedPlatforms>
+      <ParameterList>
+        <Parameters>
+          <Parameter name='TimeToMaturity' default='1.0'>
+            <type>QuantLib::Time</type>
+            <tensorRank>scalar</tensorRank>
+            <description>Time to option maturity (in year fraction).</description>
+          </Parameter>
+          <Parameter name='S0' default='0.0'>
+            <type>QuantLib::Real</type>
+            <tensorRank>scalar</tensorRank>
+            <description>Forward of underlying.</description>
+          </Parameter>
+          <Parameter name='SigmaATM' default='1.0'>
+            <type>QuantLib::Real</type>
+            <tensorRank>scalar</tensorRank>
+            <description>Normal ATM volatility of underlying.</description>
+          </Parameter>
+          <Parameter name='SPlus' >
+            <type>QuantLib::Real</type>
+            <tensorRank>vector</tensorRank>
+            <description>Right wing S-grid.</description>
+          </Parameter>
+          <Parameter name='SMinus' >
+            <type>QuantLib::Real</type>
+            <tensorRank>vector</tensorRank>
+            <description>Left wing S-grid.</description>
+          </Parameter>
+          <Parameter name='MPlus' >
+            <type>QuantLib::Real</type>
+            <tensorRank>vector</tensorRank>
+            <description>Right wing volatility slopes.</description>
+          </Parameter>
+          <Parameter name='MMinus' >
+            <type>QuantLib::Real</type>
+            <tensorRank>vector</tensorRank>
+            <description>Left wing volatility slopes.</description>
+          </Parameter>
+          <Parameter name='MaxCalibrationIters' default='5'>
+            <type>QuantLib::Size</type>
+            <tensorRank>scalar</tensorRank>
+            <description>Max. number of iterations for ATM calibration.</description>
+          </Parameter>
+          <Parameter name='OnlyForwardCalibrationIters' default='0'>
+            <type>QuantLib::Size</type>
+            <tensorRank>scalar</tensorRank>
+            <description>Number of initial iterations for only forward calibration.</description>
+          </Parameter>
+          <Parameter name='EnableAdjustATM' default='true'>
+            <type>bool</type>
+            <tensorRank>scalar</tensorRank>
+            <description>Apply ATM adjuster post ATM calibration.</description>
+          </Parameter>
+          <Parameter name='EnableLogging' default='false'>
+            <type>bool</type>
+            <tensorRank>scalar</tensorRank>
+            <description>Log ATM calibration details.</description>
+          </Parameter>
+          <Parameter name='UseInitialMu' default='false'>
+            <type>bool</type>
+            <tensorRank>scalar</tensorRank>
+            <description>Use user input flag for starting point for mu calibration.</description>
+          </Parameter>
+          <Parameter name='InitialMu' default='0.0'>
+            <type>QuantLib::Real</type>
+            <tensorRank>scalar</tensorRank>
+            <description>Actual user input for starting point for mu calibration.</description>
+          </Parameter>
+        </Parameters>
+      </ParameterList>
+    </Constructor>
+
+    <Member name='qlVanillaLocalVolModelDevUnderlyingX' type='QuantLib::VanillaLocalVolModelDev' >
+      <description>Returns x-grid.</description>
+      <libraryFunction>underlyingX</libraryFunction>
+      <SupportedPlatforms>
+        <!--SupportedPlatform name='Excel' calcInWizard='false'/-->
+        <SupportedPlatform name='Excel'/>
+        <!--SupportedPlatform name='Calc'/-->
+        <!--SupportedPlatform name='Cpp'/-->
+      </SupportedPlatforms>
+      <ParameterList>
+        <Parameters/>
+      </ParameterList>
+      <ReturnValue>
+        <type>QuantLib::Real</type>
+        <tensorRank>vector</tensorRank>
+      </ReturnValue>
+    </Member>
+
+    <Member name='qlVanillaLocalVolModelDevUnderlyingS' type='QuantLib::VanillaLocalVolModelDev' >
+      <description>Returns S-grid.</description>
+      <libraryFunction>underlyingS</libraryFunction>
+      <SupportedPlatforms>
+        <!--SupportedPlatform name='Excel' calcInWizard='false'/-->
+        <SupportedPlatform name='Excel'/>
+        <!--SupportedPlatform name='Calc'/-->
+        <!--SupportedPlatform name='Cpp'/-->
+      </SupportedPlatforms>
+      <ParameterList>
+        <Parameters/>
+      </ParameterList>
+      <ReturnValue>
+        <type>QuantLib::Real</type>
+        <tensorRank>vector</tensorRank>
+      </ReturnValue>
+    </Member>
+
+    <Member name='qlVanillaLocalVolModelDevLocalVol' type='QuantLib::VanillaLocalVolModelDev' >
+      <description>Returns sigma-grid.</description>
+      <libraryFunction>localVol</libraryFunction>
+      <SupportedPlatforms>
+        <!--SupportedPlatform name='Excel' calcInWizard='false'/-->
+        <SupportedPlatform name='Excel'/>
+        <!--SupportedPlatform name='Calc'/-->
+        <!--SupportedPlatform name='Cpp'/-->
+      </SupportedPlatforms>
+      <ParameterList>
+        <Parameters/>
+      </ParameterList>
+      <ReturnValue>
+        <type>QuantLib::Real</type>
+        <tensorRank>vector</tensorRank>
+      </ReturnValue>
+    </Member>
+
+    <Member name='qlVanillaLocalVolModelDevLocalVolSlope' type='QuantLib::VanillaLocalVolModelDev' >
+      <description>Returns m-grid.</description>
+      <libraryFunction>localVolSlope</libraryFunction>
+      <SupportedPlatforms>
+        <!--SupportedPlatform name='Excel' calcInWizard='false'/-->
+        <SupportedPlatform name='Excel'/>
+        <!--SupportedPlatform name='Calc'/-->
+        <!--SupportedPlatform name='Cpp'/-->
+      </SupportedPlatforms>
+      <ParameterList>
+        <Parameters/>
+      </ParameterList>
+      <ReturnValue>
+        <type>QuantLib::Real</type>
+        <tensorRank>vector</tensorRank>
+      </ReturnValue>
+    </Member>
+
+    <Member name='qlVanillaLocalVolModelDevLocalVol2' type='QuantLib::VanillaLocalVolModelDev' >
+      <description>Returns sigma(S).</description>
+      <libraryFunction>localVol</libraryFunction>
+      <SupportedPlatforms>
+        <!--SupportedPlatform name='Excel' calcInWizard='false'/-->
+        <SupportedPlatform name='Excel'/>
+        <!--SupportedPlatform name='Calc'/-->
+        <!--SupportedPlatform name='Cpp'/-->
+      </SupportedPlatforms>
+      <ParameterList>
+        <Parameters>
+          <Parameter name='S' default='0.0'>
+            <type>QuantLib::Real</type>
+            <tensorRank>scalar</tensorRank>
+            <description>underlying.</description>
+          </Parameter>
+        </Parameters>
+      </ParameterList>
+      <ReturnValue>
+        <type>QuantLib::Real</type>
+        <tensorRank>scalar</tensorRank>
+      </ReturnValue>
+    </Member>
+
+    <Member name='qlVanillaLocalVolModelDevUnderlyingS2' type='QuantLib::VanillaLocalVolModelDev' >
+      <description>Returns S(x).</description>
+      <libraryFunction>underlyingS</libraryFunction>
+      <SupportedPlatforms>
+        <!--SupportedPlatform name='Excel' calcInWizard='false'/-->
+        <SupportedPlatform name='Excel'/>
+        <!--SupportedPlatform name='Calc'/-->
+        <!--SupportedPlatform name='Cpp'/-->
+      </SupportedPlatforms>
+      <ParameterList>
+        <Parameters>
+          <Parameter name='X' default='0.0'>
+            <type>QuantLib::Real</type>
+            <tensorRank>scalar</tensorRank>
+            <description>underlying.</description>
+          </Parameter>
+        </Parameters>
+      </ParameterList>
+      <ReturnValue>
+        <type>QuantLib::Real</type>
+        <tensorRank>scalar</tensorRank>
+      </ReturnValue>
+    </Member>
+
+    <Member name='qlVanillaLocalVolModelDevExpectation' type='QuantLib::VanillaLocalVolModelDev' >
+      <description>Returns E[ [S(x)-K]^+ ].</description>
+      <libraryFunction>expectation</libraryFunction>
+      <SupportedPlatforms>
+        <!--SupportedPlatform name='Excel' calcInWizard='false'/-->
+        <SupportedPlatform name='Excel'/>
+        <!--SupportedPlatform name='Calc'/-->
+        <!--SupportedPlatform name='Cpp'/-->
+      </SupportedPlatforms>
+      <ParameterList>
+        <Parameters>
+          <Parameter name='IsRightWing' default='0.0'>
+            <type>bool</type>
+            <tensorRank>scalar</tensorRank>
+            <description>right (call) or left (put) wing integration.</description>
+          </Parameter>
+          <Parameter name='Strike' default='0.0'>
+            <type>QuantLib::Real</type>
+            <tensorRank>scalar</tensorRank>
+            <description>Strike K.</description>
+          </Parameter>
+        </Parameters>
+      </ParameterList>
+      <ReturnValue>
+        <type>QuantLib::Real</type>
+        <tensorRank>scalar</tensorRank>
+      </ReturnValue>
+    </Member>
+
+    <Member name='qlVanillaLocalVolModelDevVariance' type='QuantLib::VanillaLocalVolModelDev' >
+      <description>Returns E[ (S(x)>K)*[S(x)-K]^2 ].</description>
+      <libraryFunction>variance</libraryFunction>
+      <SupportedPlatforms>
+        <!--SupportedPlatform name='Excel' calcInWizard='false'/-->
+        <SupportedPlatform name='Excel'/>
+        <!--SupportedPlatform name='Calc'/-->
+        <!--SupportedPlatform name='Cpp'/-->
+      </SupportedPlatforms>
+      <ParameterList>
+        <Parameters>
+          <Parameter name='IsRightWing' default='0.0'>
+            <type>bool</type>
+            <tensorRank>scalar</tensorRank>
+            <description>right (call) or left (put) wing integration.</description>
+          </Parameter>
+          <Parameter name='Strike' default='0.0'>
+            <type>QuantLib::Real</type>
+            <tensorRank>scalar</tensorRank>
+            <description>Strike K.</description>
+          </Parameter>
+        </Parameters>
+      </ParameterList>
+      <ReturnValue>
+        <type>QuantLib::Real</type>
+        <tensorRank>scalar</tensorRank>
+      </ReturnValue>
+    </Member>
+
+    <Member name='qlVanillaLocalVolModelDevLogging' type='QuantLib::VanillaLocalVolModelDev' >
+      <description>inspect calibration debug details.</description>
+      <libraryFunction>logging</libraryFunction>
+      <SupportedPlatforms>
+        <!--SupportedPlatform name='Excel' calcInWizard='false'/-->
+        <SupportedPlatform name='Excel'/>
+        <!--SupportedPlatform name='Calc'/-->
+        <!--SupportedPlatform name='Cpp'/-->
+      </SupportedPlatforms>
+      <ParameterList>
+        <Parameters>
+        </Parameters>
+      </ParameterList>
+      <ReturnValue>
+        <type>string</type>
+        <tensorRank>vector</tensorRank>
+      </ReturnValue>
+    </Member>
+
+
+  </Functions>
+</Category>

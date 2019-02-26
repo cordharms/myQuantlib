@@ -120,6 +120,7 @@
     <DataType defaultSuperType='libraryClass'>QuantLib::NthToDefault</DataType>
     <DataType defaultSuperType='libraryClass'>QuantLib::OneAssetOption</DataType>
     <DataType defaultSuperType='libraryClass'>QuantLib::OptimizationMethod</DataType>
+    <DataType defaultSuperType='libraryClass'>QuantLib::LevenbergMarquardt</DataType>
     <DataType defaultSuperType='libraryClass'>QuantLib::OptionletStripper1</DataType>
     <DataType defaultSuperType='libraryClass'>QuantLib::OptionletStripper2</DataType>
     <DataType defaultSuperType='libraryClass'>QuantLib::OptionletStripper</DataType>
@@ -292,6 +293,13 @@
     <DataType defaultSuperType='libraryClass'>QuantLib::RealQuasiGaussianModel</DataType>
     <DataType defaultSuperType='libraryClass'>QuantLib::RealQGSwaptionModel</DataType>
 
+    <DataType defaultSuperType='libraryClass'>QuantLib::QuasiGaussianModel</DataType>
+    <DataType defaultSuperType='libraryClass'>QuantLib::QGSwaprateModel</DataType>
+    <DataType defaultSuperType='libraryClass'>QuantLib::QGAverageSwaprateModel</DataType>
+    <DataType defaultSuperType='libraryClass'>QuantLib::QGCalibrator</DataType>
+    <DataType defaultSuperType='libraryClass'>QuantLib::QGMonteCarloCalibrator</DataType>
+    <DataType defaultSuperType='libraryClass'>QuantLib::QGLocalvolModel</DataType>
+
     <DataType defaultSuperType='libraryClass'>QuantLib::RealMCSimulation</DataType>
     <DataType defaultSuperType='libraryClass'>QuantLib::RealMCPayoff</DataType>
     <DataType defaultSuperType='libraryClass'>QuantLib::RealMCPayoffPricer</DataType>
@@ -315,6 +323,10 @@
     <DataType defaultSuperType='libraryClass'>QuantLib::RealShiftedSABRModel</DataType>
     <DataType defaultSuperType='libraryClass'>QuantLib::StochVolModelCalibrator</DataType>
     <DataType defaultSuperType='libraryClass'>QuantLib::QuasiGaussianModelCalibrator</DataType>
+    <DataType defaultSuperType='libraryClass'>QuantLib::VanillaLocalVolModelDev</DataType>
+    <DataType defaultSuperType='libraryClass'>QuantLib::VanillaLocalVolModel</DataType>
+    <DataType defaultSuperType='libraryClass'>QuantLib::VanillaLocalVolModelSmileSection</DataType>
+    <DataType defaultSuperType='objectClass'>QuantLibAddin::VanillaLocalVolCMSTS</DataType>
 
     <DataType defaultSuperType='libraryClass'>QuantLib::IndexTermStructure</DataType>
     <DataType defaultSuperType='libraryClass'>QuantLib::Real2FMeanReversionModel</DataType>
@@ -363,6 +375,9 @@
     <DataType defaultSuperType='libraryClass'>QuantLib::VanillaOption</DataType>
     <DataType defaultSuperType='libraryClass'>QuantLib::HestonSLVMCModel</DataType>
     <DataType defaultSuperType='libraryClass'>QuantLib::HestonSLVProcess</DataType>
+
+    <DataType defaultSuperType='enumeration'>QuantLib::MixedInterpolation::Behavior</DataType>
+
 
   </DataTypes>
 

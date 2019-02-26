@@ -43,6 +43,9 @@ namespace QuantLibAddin {
 						  bool                                            timeInterpolation,
 						  bool                                            storeBrownians,
 						  bool permanent);
+		// do nothing
+		RealMCSimulation(const boost::shared_ptr<ObjectHandler::ValueObject>& properties,
+			bool permanent);
 	};
 
 	OH_LIB_CLASS(RealMCPayoffPricerBase, QuantLib::RealMCPayoffPricer);
@@ -146,8 +149,8 @@ namespace QuantLibAddin {
 	class RealMCVanillaOption : public RealMCPayoff {
 	public:
 		RealMCVanillaOption( const boost::shared_ptr<ObjectHandler::ValueObject>& properties,
-			          const QuantLib::Time  t,
-					  const QuantLib::Time  T,
+			          const QuantLib::Time  expiry,
+			          const std::string&    alias,
 					  const QuantLib::Real  strike,
 					  const QuantLib::Real  callOrPut,
 			          bool permanent);

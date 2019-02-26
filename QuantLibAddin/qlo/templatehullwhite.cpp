@@ -9,6 +9,9 @@
 
 #include <qlo/templatehullwhite.hpp>
 
+#include <ql/models/shortrate/twofactormodels/g2.hpp>
+
+
 namespace QuantLibAddin {
 
 	RealHullWhiteModel::RealHullWhiteModel(
@@ -55,9 +58,6 @@ namespace QuantLibAddin {
 			new QuantLib::FixedRateBondOption(swaption, discountCurve, contTenorSpread));
 	}
 
-
-
-
 	// constructor with given model and no calibration
 	BondOptionEngine::BondOptionEngine(
 							const boost::shared_ptr<ObjectHandler::ValueObject> &properties,
@@ -69,5 +69,28 @@ namespace QuantLibAddin {
 		libraryObject_ = boost::shared_ptr<QuantLib::BondOptionEngine>(
 			new QuantLib::BondOptionEngine(model,dimension,gridRadius,bermudanTolerance));
 	}
+
+
+	RealG2ppModel::RealG2ppModel(
+		const boost::shared_ptr<ObjectHandler::ValueObject>&    properties,
+		const QuantLib::Handle<QuantLib::YieldTermStructure>&   hYTS,
+		const QuantLib::Real                                    sigma,
+		const QuantLib::Real                                    eta,
+		const QuantLib::Real                                    a,
+		const QuantLib::Real                                    b,
+		const QuantLib::Real                                    rho,
+		bool                                                    permanent) : RealStochasticProcess(properties, permanent) {
+		libraryObject_ = boost::shared_ptr<QuantLib::RealG2ppModel>(
+			new QuantLib::RealG2ppModel(hYTS, sigma, eta, a, b, rho));
+	}
+
+	RealG2ppModel::RealG2ppModel(
+		const boost::shared_ptr<ObjectHandler::ValueObject>&    properties,
+		const boost::shared_ptr<QuantLib::G2>&                  model,
+		bool                                                    permanent) : RealStochasticProcess(properties, permanent) {
+		libraryObject_ = boost::shared_ptr<QuantLib::RealG2ppModel>(
+			new QuantLib::RealG2ppModel(model->termStructure(), model->sigma(), model->eta(), model->a(), model->b(), model->rho()));
+	}
+
 
 }

@@ -1141,8 +1141,55 @@
         </Parameters>
       </ParameterList>
     </Constructor>
-    
-    
+
+    <Constructor name='qlRealQuadraticLVSVModel'>
+      <libraryFunction>RealQuadraticLVSVModel</libraryFunction>
+      <SupportedPlatforms>
+        <SupportedPlatform name='Excel'/>
+        <SupportedPlatform name='Cpp'/>
+      </SupportedPlatforms>
+      <ParameterList>
+        <Parameters>
+          <Parameter name='S0' exampleValue ='1.0' default='1.0' >
+            <type>QuantLib::Real</type>
+            <tensorRank>scalar</tensorRank>
+            <description>initial asset value.</description>
+          </Parameter>
+          <Parameter name='Curv' exampleValue ='0.0' default='0.0' >
+            <type>QuantLib::Real</type>
+            <tensorRank>scalar</tensorRank>
+            <description>Curvature 0.5*curv*(S-S0)^2.</description>
+          </Parameter>
+          <Parameter name='Skew' exampleValue ='0.0' default='0.0' >
+            <type>QuantLib::Real</type>
+            <tensorRank>scalar</tensorRank>
+            <description>Skew skew*(S-S0).</description>
+          </Parameter>
+          <Parameter name='Sigma0' exampleValue ='0.005' default='0.005' >
+            <type>QuantLib::Real</type>
+            <tensorRank>scalar</tensorRank>
+            <description>Initial local volatility sigma(S0).</description>
+          </Parameter>
+          <Parameter name='Theta' exampleValue ='0.3' default='0.3' >
+            <type>QuantLib::Real</type>
+            <tensorRank>scalar</tensorRank>
+            <description>Stoch-vol mean reversion.</description>
+          </Parameter>
+          <Parameter name='Nu' exampleValue ='0.5' default='0.5' >
+            <type>QuantLib::Real</type>
+            <tensorRank>scalar</tensorRank>
+            <description>volatilty of volatility.</description>
+          </Parameter>
+          <Parameter name='Rho' exampleValue ='0.5' default='0.5' >
+            <type>QuantLib::Real</type>
+            <tensorRank>scalar</tensorRank>
+            <description>asset vs volatility correlation.</description>
+          </Parameter>
+        </Parameters>
+      </ParameterList>
+    </Constructor>
+
+
     <!-- Stochastic model calibrator -->
 
     <Constructor name='qlStochVolModelCalibrator'>

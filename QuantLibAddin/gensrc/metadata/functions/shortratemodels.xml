@@ -281,6 +281,11 @@
             <tensorRank>scalar</tensorRank>
             <description>Notional value.</description>
           </Parameter>
+          <Parameter name='VolatilityType' default='"Normal"'>
+            <type>QuantLib::VolatilityType</type>
+            <tensorRank>scalar</tensorRank>
+            <description>displacement in a displaced diffusion model.</description>
+          </Parameter>
           <Parameter name='Shift' default='0'>
             <type>QuantLib::Real</type>
             <tensorRank>scalar</tensorRank>

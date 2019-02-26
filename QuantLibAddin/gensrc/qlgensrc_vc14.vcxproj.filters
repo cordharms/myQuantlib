@@ -354,6 +354,12 @@
     <Xml Include="metadata\functions\inflation.xml">
       <Filter>functions\experimental</Filter>
     </Xml>
+    <Xml Include="metadata\functions\vanillalocalvolmodel.xml">
+      <Filter>functions\experimental</Filter>
+    </Xml>
+    <Xml Include="metadata\functions\templatequasigaussian2.xml">
+      <Filter>functions\experimental</Filter>
+    </Xml>
     <Xml Include="metadata\functions\templatelocalcorrelation.xml">
       <Filter>functions\experimental</Filter>
     </Xml>

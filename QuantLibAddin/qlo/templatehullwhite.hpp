@@ -20,6 +20,8 @@
 #include <qlo/termstructures.hpp>
 #include <qlo/pricingengines.hpp>
 
+#include <qlo/templatestochasticprocess.hpp>
+
 /*
 #include <ql/experimental/templatehullwhite/adtageohullwhitemodel.hpp>
 #include <ql/experimental/templatehullwhite/swaptionproperties.hpp>
@@ -33,7 +35,7 @@
 namespace QuantLib {
     template <class T>
     class Handle;
-
+	class G2;
 	class TemplateModel;
 }
 
@@ -87,6 +89,22 @@ namespace QuantLibAddin {
 						  const QuantLib::Real                                    gridRadius,
 						  const QuantLib::Real                                    bermudanTolerance,
 						  bool                                                    permanent);
+	};
+
+	class RealG2ppModel : public RealStochasticProcess {
+	public:
+		RealG2ppModel(const boost::shared_ptr<ObjectHandler::ValueObject>&    properties,
+			          const QuantLib::Handle<QuantLib::YieldTermStructure>&   hYTS,
+			          const QuantLib::Real                                    sigma,
+			          const QuantLib::Real                                    eta,
+			          const QuantLib::Real                                    a,
+			          const QuantLib::Real                                    b,
+			          const QuantLib::Real                                    rho,
+			          bool                                                    permanent);
+
+		RealG2ppModel(const boost::shared_ptr<ObjectHandler::ValueObject>&    properties,
+			          const boost::shared_ptr<QuantLib::G2>&                  model,
+			          bool                                                    permanent);
 	};
 
 }

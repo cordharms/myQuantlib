@@ -108,11 +108,12 @@ namespace QuantLibAddin {
                        const QuantLib::CalibrationHelper::CalibrationErrorType errorType,
                        const QuantLib::Real                                    strike,
                        const QuantLib::Real                                    nominal,
+                       const QuantLib::VolatilityType                          type,
                        const QuantLib::Real                                    shift,
 		               bool                                                    permanent)
 					   : CalibrationHelper(properties,permanent) {
         libraryObject_ = boost::shared_ptr<QuantLib::CalibrationHelper>(new
-            QuantLib::SwaptionHelper(maturity,length,volatility,index,fixedLegTenor,fixedLegDayCounter,floatingLegDayCounter,termStructure,errorType,strike,nominal,shift));
+            QuantLib::SwaptionHelper(maturity,length,volatility,index,fixedLegTenor,fixedLegDayCounter,floatingLegDayCounter,termStructure,errorType,strike,nominal,type,shift));
 	}
 
 

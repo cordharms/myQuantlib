@@ -231,6 +231,8 @@
       <SubType>Designer</SubType>
     </Xml>
     <Xml Include="metadata\functions\templatequasigaussian.xml" />
+    <Xml Include="metadata\functions\templatequasigaussian2.xml" />
+    <Xml Include="metadata\functions\vanillalocalvolmodel.xml" />
   </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
   <ImportGroup Label="ExtensionTargets">

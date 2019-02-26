@@ -229,7 +229,76 @@
         <tensorRank>matrix</tensorRank>
       </ReturnValue>
     </Member>
-    
+
+    <!-- Numeraire adjuster calculation and inspectors -->
+
+    <Member name='qlRealMCSimulationCalcNumeraireAdjuster' type='QuantLib::RealMCSimulation' >
+      <description>calculate the Numeraire adjuster vector for given simulation.</description>
+      <libraryFunction>calculateNumeraireAdjuster</libraryFunction>
+      <SupportedPlatforms>
+        <!--SupportedPlatform name='Excel' calcInWizard='false'/-->
+        <SupportedPlatform name='Excel'/>
+        <!--SupportedPlatform name='Calc'/-->
+        <!--SupportedPlatform name='Cpp'/-->
+      </SupportedPlatforms>
+      <ParameterList>
+        <Parameters>
+          <Parameter name='NumeraireObservTimes' exampleValue='5, 10, ...'>
+            <type>QuantLib::Time</type>
+            <tensorRank>vector</tensorRank>
+            <description>vector of time-grid for zcb adjuster (in year fractions)</description>
+          </Parameter>
+        </Parameters>
+      </ParameterList>
+      <ReturnValue>
+        <type>void</type>
+        <tensorRank>scalar</tensorRank>
+      </ReturnValue>
+    </Member>
+
+    <Member name='qlRealMCSimulationNumeraireAdjuster' type='QuantLib::RealMCSimulation' >
+      <description>Returns the Numeraire adjuster vector.</description>
+      <libraryFunction>numeraireAdjuster</libraryFunction>
+      <SupportedPlatforms>
+        <!--SupportedPlatform name='Excel' calcInWizard='false'/-->
+        <SupportedPlatform name='Excel'/>
+        <!--SupportedPlatform name='Calc'/-->
+        <!--SupportedPlatform name='Cpp'/-->
+      </SupportedPlatforms>
+      <ParameterList>
+        <Parameters/>
+      </ParameterList>
+      <ReturnValue>
+        <type>QuantLib::Real</type>
+        <tensorRank>vector</tensorRank>
+      </ReturnValue>
+    </Member>
+
+    <Member name='qlRealMCSimulationNumeraireAdjustertT' type='QuantLib::RealMCSimulation' >
+      <description>Returns the Numeraire adjuster .</description>
+      <libraryFunction>numeraireAdjuster</libraryFunction>
+      <SupportedPlatforms>
+        <!--SupportedPlatform name='Excel' calcInWizard='false'/-->
+        <SupportedPlatform name='Excel'/>
+        <!--SupportedPlatform name='Calc'/-->
+        <!--SupportedPlatform name='Cpp'/-->
+      </SupportedPlatforms>
+      <ParameterList>
+        <Parameters>
+          <Parameter name='ObsTime' exampleValue ='1' default='1' >
+            <type>QuantLib::Time</type>
+            <tensorRank>scalar</tensorRank>
+            <description>zcb observation time.</description>
+          </Parameter>
+        </Parameters>
+      </ParameterList>
+      <ReturnValue>
+        <type>QuantLib::Real</type>
+        <tensorRank>scalar</tensorRank>
+      </ReturnValue>
+    </Member>
+
+
     <!-- ZCB adjuster calculation and inspectors -->
     
     <Member name='qlRealMCSimulationCalcZCBAdjuster' type='QuantLib::RealMCSimulation' >
@@ -635,10 +704,10 @@
             <tensorRank>scalar</tensorRank>
             <description>observation time (t).</description>
           </Parameter>
-          <Parameter name='PayTime' exampleValue ='2' default='2' >
-            <type>QuantLib::Time</type>
+          <Parameter name='Alias' >
+            <type>string</type>
             <tensorRank>scalar</tensorRank>
-            <description>payment time (T).</description>
+            <description>alias of underlying asset.</description>
           </Parameter>
           <Parameter name='Strike' exampleValue ='2' default='2' >
             <type>QuantLib::Real</type>

@@ -464,6 +464,18 @@
     <ClCompile Include="register\register_inflation.cpp">
       <Filter>register</Filter>
     </ClCompile>
+    <ClCompile Include="functions\vanillalocalvolmodel.cpp">
+      <Filter>functions</Filter>
+    </ClCompile>
+    <ClCompile Include="register\register_vanillalocalvolmodel.cpp">
+      <Filter>register</Filter>
+    </ClCompile>
+    <ClCompile Include="functions\templatequasigaussian2.cpp">
+      <Filter>functions</Filter>
+    </ClCompile>
+    <ClCompile Include="register\register_templatequasigaussian2.cpp">
+      <Filter>register</Filter>
+    </ClCompile>
     <ClCompile Include="functions\templatelocalcorrelation.cpp">
       <Filter>functions</Filter>
     </ClCompile>

@@ -28,6 +28,10 @@ namespace QuantLibAddin {
 			new QuantLib::RealMCSimulation( process, simTimes, obsTimes, nPaths, seed, richardsonExtrapolation, timeInterpolation, storeBrownians ));
 	}
 
+	RealMCSimulation::RealMCSimulation(
+		const boost::shared_ptr<ObjectHandler::ValueObject>& properties, bool permanent)
+		: TemplateSimulation(properties, permanent) {}
+
 	RealMCPayoffPricer::RealMCPayoffPricer(
 		                      const boost::shared_ptr<ObjectHandler::ValueObject>&              properties,
 			                  const std::vector< boost::shared_ptr<QuantLib::RealMCPayoff> >& payoffs,
@@ -122,13 +126,13 @@ namespace QuantLibAddin {
 	}
 
 	RealMCVanillaOption::RealMCVanillaOption( const boost::shared_ptr<ObjectHandler::ValueObject>& properties,
-			          const QuantLib::Time  t,
-					  const QuantLib::Time  T,
-					  const QuantLib::Real  strike,
+		              const QuantLib::Time  expiry,
+		              const std::string&    alias,
+		              const QuantLib::Real  strike,
 					  const QuantLib::Real  callOrPut,
 			          bool permanent) : RealMCPayoff(properties,permanent) {
         libraryObject_ = boost::shared_ptr<QuantLib::RealMCPayoff>(
-			new QuantLib::RealMCPayoff::VanillaOption( t, T, strike, callOrPut ));
+			new QuantLib::RealMCPayoff::VanillaOption(expiry, alias, strike, callOrPut ));
 	}
 
 	RealMCCache::RealMCCache(

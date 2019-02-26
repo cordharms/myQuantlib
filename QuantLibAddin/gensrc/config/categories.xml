@@ -71,9 +71,11 @@
     <categoryName>templatehullwhite</categoryName>
     <categoryName>templateauxilliaries</categoryName>
     <categoryName>templatequasigaussian</categoryName>
+    <categoryName>templatequasigaussian2</categoryName>
     <categoryName>templatehestonmodel</categoryName>
     <categoryName>templatemontecarlo</categoryName>
     <categoryName>templatecommodity</categoryName>
+    <categoryName>vanillalocalvolmodel</categoryName>
     <categoryName>templatelocalcorrelation</categoryName>
   </addinCategoryNames>
   
