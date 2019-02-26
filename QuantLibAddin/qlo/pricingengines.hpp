@@ -257,6 +257,20 @@ namespace QuantLibAddin {
 			bool permanent);
 	};
 
+	class FdBlackScholesVanillaEngine : public PricingEngine {
+		public:
+			FdBlackScholesVanillaEngine(
+				const boost::shared_ptr<ObjectHandler::ValueObject>&                properties,
+				const boost::shared_ptr<QuantLib::GeneralizedBlackScholesProcess>&  process,
+				const QuantLib::Size                                                tGrid,
+				const QuantLib::Size                                                xGrid,
+				const QuantLib::Size                                                dampingSteps,
+				const std::string&                                                  schemeString,
+				const bool                                                          localVol,
+				const QuantLib::Real                                                illegalLocalVolOverwrite,
+				bool permanent);
+			
+	};
 
 class FdHestonBarrierEngine : public PricingEngine {
 public:
@@ -270,6 +284,35 @@ public:
 		const std::string&                                                  schemeString,
 		const boost::shared_ptr<QuantLib::LocalVolTermStructure>&           leverageFct,
 		bool permanent);
+};
+
+class FdHestonVanillaEngine : public PricingEngine {
+	public:
+		FdHestonVanillaEngine(
+			const boost::shared_ptr<ObjectHandler::ValueObject>&                properties,
+			const boost::shared_ptr<QuantLib::HestonModel>&                     model,
+			const QuantLib::Size                                                tGrid,
+			const QuantLib::Size                                                xGrid,
+			const QuantLib::Size                                                vGrid,
+			const QuantLib::Size                                                dampingSteps,
+			const std::string&                                                  schemeString,
+			const boost::shared_ptr<QuantLib::LocalVolTermStructure>&           leverageFct,
+			bool permanent);
+		
+};
+
+class FdHestonVanillaEngineNoLev : public PricingEngine {
+	public:
+		FdHestonVanillaEngineNoLev(
+			const boost::shared_ptr<ObjectHandler::ValueObject>&                properties,
+			const boost::shared_ptr<QuantLib::HestonModel>&                     model,
+			const QuantLib::Size                                                tGrid,
+			const QuantLib::Size                                                xGrid,
+			const QuantLib::Size                                                vGrid,
+			const QuantLib::Size                                                dampingSteps,
+			const std::string&                                                  schemeString,
+			bool permanent);
+		
 };
 
 }

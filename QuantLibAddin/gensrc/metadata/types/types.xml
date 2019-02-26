@@ -188,6 +188,9 @@
     <DataType defaultSuperType='libraryTermStructure'>QuantLib::SwaptionVolatilityDiscrete</DataType>
     <DataType defaultSuperType='libraryTermStructure'>QuantLib::SwaptionVolatilityCube</DataType>
 
+    <DataType defaultSuperType='libraryTermStructure'>QuantLib::LocalCorrTermStructure</DataType>
+    <DataType defaultSuperType='libraryClass'>QuantLib::LocalCorrSurfaceABFFX</DataType>
+
     <DataType defaultSuperType='libraryTermStructure'>QuantLibAddin::BaseCorrelationTermStructure</DataType>
 
     <DataType defaultSuperType='libraryType' nativeType='double'>QuantLib::Array</DataType>
@@ -351,10 +354,13 @@
     <DataType defaultSuperType='libraryClass'>QuantLib::Seasonality</DataType>
 
     <DataType defaultSuperType='libraryClass'>QuantLib::LocalVolTermStructure</DataType>
+    <DataType defaultSuperType='libraryClass'>QuantLib::LocalVolSurface</DataType>
+    <DataType defaultSuperType='libraryClass'>QuantLib::InterpolatedLocalVolSurface</DataType>
     <DataType defaultSuperType='libraryClass'>QuantLib::HestonSLVFokkerPlanckFdmParams</DataType>
     <DataType defaultSuperType='libraryClass'>QuantLib::HestonSLVFDMModel</DataType>
     <DataType defaultSuperType='libraryClass'>QuantLib::HestonModelHelper</DataType>
     <DataType defaultSuperType='libraryClass'>QuantLib::HestonBlackVolSurface</DataType>
+    <DataType defaultSuperType='libraryClass'>QuantLib::VanillaOption</DataType>
     <DataType defaultSuperType='libraryClass'>QuantLib::HestonSLVMCModel</DataType>
     <DataType defaultSuperType='libraryClass'>QuantLib::HestonSLVProcess</DataType>
 

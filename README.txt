@@ -57,6 +57,7 @@ Develop a feature
      valueobjects: vo_myfeature.hpp/.cpp
 	 serialization / create: create_myfeature.hpp/.cpp
 	 serialization / register: serialization_myfeature.hpp/.cpp
+     qlo-folder: cpp file has to be created manually
    - check that QuantLibObjects builds properly
    - Add new created files to QuantLibXLStatic
      functions: functions / sabrswaptioncube.cpp

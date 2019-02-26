@@ -12,6 +12,7 @@
     <include>qlo/payoffs.hpp</include>
     <include>qlo/exercise.hpp</include>
     <include>ql/instruments/oneassetoption.hpp</include>
+    <include>ql/instruments/vanillaOption.hpp</include>
   </addinIncludes>
   <copyright>
     Copyright (C) 2007 Ferdinando Ametrano
@@ -520,7 +521,51 @@
       </ParameterList>
     </Constructor>
 
-
+    <Member name='qlimpliedVolatilityBS' type='QuantLib::VanillaOption'>
+      <description>implied volatility of an option price.</description>
+      <libraryFunction>impliedVolatility</libraryFunction>
+      <SupportedPlatforms>
+        <SupportedPlatform name='Excel'/>
+      </SupportedPlatforms>
+      <ParameterList>
+        <Parameters>
+          <Parameter name='TargetValue'>
+            <type>QuantLib::Real</type>
+            <tensorRank>scalar</tensorRank>
+            <description>option price</description>
+          </Parameter>
+          <Parameter name='BSProcess'>
+            <type>QuantLib::GeneralizedBlackScholesProcess</type>
+            <tensorRank>scalar</tensorRank>
+            <description>option price</description>
+          </Parameter>
+          <Parameter name='Accuracy'>
+            <type>QuantLib::Real</type>
+            <tensorRank>scalar</tensorRank>
+            <description>option price</description>
+          </Parameter>
+          <Parameter name='MaxEvaluations'>
+            <type>QuantLib::Size</type>
+            <tensorRank>scalar</tensorRank>
+            <description>option price</description>
+          </Parameter>
+          <Parameter name='MinVol'>
+            <type>QuantLib::Real</type>
+            <tensorRank>scalar</tensorRank>
+            <description>option price</description>
+          </Parameter>
+          <Parameter name='MaxVol'>
+            <type>QuantLib::Real</type>
+            <tensorRank>scalar</tensorRank>
+            <description>option price</description>
+          </Parameter>
+        </Parameters>
+      </ParameterList>
+      <ReturnValue>
+        <type>QuantLib::Real</type>
+        <tensorRank>scalar</tensorRank>
+      </ReturnValue>
+    </Member>
 
   </Functions>
 </Category>

@@ -548,6 +548,7 @@
     <ClCompile Include="qlo\enumerations\constructors\enumeratedpairs.cpp" />
     <ClCompile Include="qlo\enumerations\factories\calendarfactory.cpp" />
     <ClCompile Include="qlo\inflation.cpp" />
+    <ClCompile Include="qlo\templatelocalcorrelation.cpp" />
     <ClCompile Include="qlo\sabrswaptioncube.cpp" />
     <ClCompile Include="qlo\serialization\create\create_basisswap.cpp" />
     <ClCompile Include="qlo\serialization\create\create_inflation.cpp" />
@@ -555,6 +556,7 @@
     <ClCompile Include="qlo\serialization\create\create_templatecommodity.cpp" />
     <ClCompile Include="qlo\serialization\create\create_templatehestonmodel.cpp" />
     <ClCompile Include="qlo\serialization\create\create_templatehullwhite.cpp" />
+    <ClCompile Include="qlo\serialization\create\create_templatelocalcorrelation.cpp" />
     <ClCompile Include="qlo\serialization\create\create_templatemontecarlo.cpp" />
     <ClCompile Include="qlo\serialization\create\create_templatequasigaussian.cpp" />
     <ClCompile Include="qlo\serialization\register\serialization_basisswap.cpp" />
@@ -563,6 +565,7 @@
     <ClCompile Include="qlo\serialization\register\serialization_templatecommodity.cpp" />
     <ClCompile Include="qlo\serialization\register\serialization_templatehestonmodel.cpp" />
     <ClCompile Include="qlo\serialization\register\serialization_templatehullwhite.cpp" />
+    <ClCompile Include="qlo\serialization\register\serialization_templatelocalcorrelation.cpp" />
     <ClCompile Include="qlo\serialization\register\serialization_templatemontecarlo.cpp" />
     <ClCompile Include="qlo\serialization\register\serialization_templatequasigaussian.cpp" />
     <ClCompile Include="qlo\templatecommodity.cpp" />
@@ -626,6 +629,7 @@
     <ClCompile Include="qlo\valueobjects\vo_templatecommodity.cpp" />
     <ClCompile Include="qlo\valueobjects\vo_templatehestonmodel.cpp" />
     <ClCompile Include="qlo\valueobjects\vo_templatehullwhite.cpp" />
+    <ClCompile Include="qlo\valueobjects\vo_templatelocalcorrelation.cpp" />
     <ClCompile Include="qlo\valueobjects\vo_templatemontecarlo.cpp" />
     <ClCompile Include="qlo\valueobjects\vo_templatequasigaussian.cpp" />
     <ClCompile Include="qlo\valueobjects\vo_termstructures.cpp" />
@@ -847,6 +851,7 @@
     <ClInclude Include="qlo\enumerations\factories\pricingenginesfactory.hpp" />
     <ClInclude Include="qlo\enumerations\factories\termstructuresfactory.hpp" />
     <ClInclude Include="qlo\inflation.hpp" />
+    <ClInclude Include="qlo\templatelocalcorrelation.hpp" />
     <ClInclude Include="qlo\sabrswaptioncube.hpp" />
     <ClInclude Include="qlo\serialization\create\create_basisswap.hpp" />
     <ClInclude Include="qlo\serialization\create\create_inflation.hpp" />
@@ -854,6 +859,7 @@
     <ClInclude Include="qlo\serialization\create\create_templatecommodity.hpp" />
     <ClInclude Include="qlo\serialization\create\create_templatehestonmodel.hpp" />
     <ClInclude Include="qlo\serialization\create\create_templatehullwhite.hpp" />
+    <ClInclude Include="qlo\serialization\create\create_templatelocalcorrelation.hpp" />
     <ClInclude Include="qlo\serialization\create\create_templatemontecarlo.hpp" />
     <ClInclude Include="qlo\serialization\create\create_templatequasigaussian.hpp" />
     <ClInclude Include="qlo\serialization\register\serialization_basisswap.hpp" />
@@ -862,6 +868,7 @@
     <ClInclude Include="qlo\serialization\register\serialization_templatecommodity.hpp" />
     <ClInclude Include="qlo\serialization\register\serialization_templatehestonmodel.hpp" />
     <ClInclude Include="qlo\serialization\register\serialization_templatehullwhite.hpp" />
+    <ClInclude Include="qlo\serialization\register\serialization_templatelocalcorrelation.hpp" />
     <ClInclude Include="qlo\serialization\register\serialization_templatemontecarlo.hpp" />
     <ClInclude Include="qlo\serialization\register\serialization_templatequasigaussian.hpp" />
     <ClInclude Include="qlo\templatecommodity.hpp" />
@@ -928,6 +935,7 @@
     <ClInclude Include="qlo\valueobjects\vo_templatecommodity.hpp" />
     <ClInclude Include="qlo\valueobjects\vo_templatehestonmodel.hpp" />
     <ClInclude Include="qlo\valueobjects\vo_templatehullwhite.hpp" />
+    <ClInclude Include="qlo\valueobjects\vo_templatelocalcorrelation.hpp" />
     <ClInclude Include="qlo\valueobjects\vo_templatemontecarlo.hpp" />
     <ClInclude Include="qlo\valueobjects\vo_templatequasigaussian.hpp" />
     <ClInclude Include="qlo\valueobjects\vo_termstructures.hpp" />

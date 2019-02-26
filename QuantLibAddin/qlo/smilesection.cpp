@@ -30,6 +30,7 @@
 #include <ql/math/interpolations/sabrinterpolation.hpp>
 #include <ql/termstructures/volatility/flatsmilesection.hpp>
 #include <ql/quotes/simplequote.hpp>
+#include <ql/math/interpolations/cubicinterpolation.hpp>
 
 namespace QuantLibAddin {
 
@@ -59,7 +60,7 @@ namespace QuantLibAddin {
         for(QuantLib::Size i = 0; i<temp.size(); ++i)
             temp[i] = stdDevs[i];
         libraryObject_ = boost::shared_ptr<QuantLib::SmileSection>(new
-            QuantLib::InterpolatedSmileSection<QuantLib::Linear>(
+            QuantLib::InterpolatedSmileSection<QuantLib::Cubic>(
                                     optionDate, s, temp, atmLevel, dc));
     }
 

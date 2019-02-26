@@ -27,10 +27,12 @@
 #include <ql/processes/blackscholesprocess.hpp>
 #include <ql/termstructures/volatility/equityfx/blackconstantvol.hpp>
 #include <ql/termstructures/volatility/equityfx/blackvariancesurface.hpp>
+#include <ql/termstructures/volatility/equityfx/localvolsurface.hpp>
 
 namespace QuantLib {
     class GeneralizedBlackScholesProcess;
     class BlackVolTermStructure;
+	class InterpolatedLocalVolSurface;
     class DayCounter;
     class Date;
 }
@@ -58,6 +60,16 @@ namespace QuantLibAddin {
 			const QuantLib::Handle<QuantLib::YieldTermStructure>&      riskfreeYTS,
 			const QuantLib::Handle<QuantLib::YieldTermStructure>&      dividendYTS,
             bool                                                       permanent);
+
+		GeneralizedBlackScholesProcess(
+			const boost::shared_ptr<ObjectHandler::ValueObject>&       properties,
+			const boost::shared_ptr<QuantLib::InterpolatedLocalVolSurface>&  interpolatedLocalVolSurface,
+			QuantLib::Real                                             underlying,
+			const QuantLib::DayCounter&                                dayCounter,
+			const QuantLib::Date&                                      settlementDate,
+			const QuantLib::Handle<QuantLib::YieldTermStructure>&      riskfreeYTS,
+			const QuantLib::Handle<QuantLib::YieldTermStructure>&      dividendYTS,
+			bool                                                       permanent);
     };
 
 }
