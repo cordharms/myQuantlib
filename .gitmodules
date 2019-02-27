@@ -1,3 +1,3 @@
 [submodule "QuantLib"]
 	path = QuantLib
-	url = https://github.com/sschlenkrich/QuantLib.git
+	url = https://github.com/cordharms/QuantLib.git

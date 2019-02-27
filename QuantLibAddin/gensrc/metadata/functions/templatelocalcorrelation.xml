@@ -1,0 +1,392 @@
+<Category name='templatelocalcorrelation'>
+  <description>functions and methods for template based local correlation model.</description>
+  <displayName>Template Local Correlation Model</displayName>
+  <xlFunctionWizardCategory>QuantLib - Financial</xlFunctionWizardCategory>
+  <serializationIncludes>
+    <include>qlo/conversions/coercetermstructure.hpp</include>
+    <include>qlo/volatilities.hpp</include>
+    <include>ql/termstructures/volatility/equityfx/localvoltermstructure.hpp</include>
+    <include>ql/experimental/templatemodels/multiasset/localcorrelationbsmodel.hpp</include>
+    <include>ql/experimental/termstructures/localcorrtermstructure.hpp</include>
+    <include>ql/experimental/termstructures/Helper/ParticleMethodUtils.hpp</include>
+    <include>qlo/pricingengines.hpp</include>
+    <include>qlo/processes.hpp</include>
+    <include>qlo/termstructures.hpp</include>
+    <include>qlo/pricingengines.hpp</include>
+    <include>qlo/templatelocalcorrelation.hpp</include>
+  </serializationIncludes>
+  <addinIncludes>
+    <include>qlo/handleimpl.hpp</include>
+    <include>qlo/conversions/coercetermstructure.hpp</include>
+    <include>qlo/pricingengines.hpp</include>
+    <include>ql/experimental/templatemodels/multiasset/localcorrelationbsmodel.hpp</include>
+    <include>ql/experimental/termstructures/localcorrtermstructure.hpp</include>
+    <include>qlo/volatilities.hpp</include>
+    <include>qlo/processes.hpp</include>
+    <include>ql/termstructures/volatility/equityfx/localvoltermstructure.hpp</include>
+    <include>ql/experimental/termstructures/Helper/ParticleMethodUtils.hpp</include>
+    <include>qlo/templatelocalcorrelation.hpp</include>
+  </addinIncludes>
+  <copyright>
+    Copyright (C) 2017, Cord Harms
+  </copyright>
+  <Functions>
+
+    <!-- Constructor(s) for LocalCorrelationBSModel -->
+    
+    <Constructor name='qlRealLocalCorrelationBSModel'>
+      <libraryFunction>LocalCorrelationBSModel</libraryFunction>
+      <SupportedPlatforms>
+        <SupportedPlatform name='Excel'/>
+        <SupportedPlatform name='Cpp'/>
+      </SupportedPlatforms>
+      <ParameterList>
+        <Parameters>
+          <Parameter name='DiscountCurve'>
+            <type>QuantLib::YieldTermStructure</type>
+            <superType>libToHandle</superType>
+            <tensorRank>scalar</tensorRank>
+            <description>YieldTermStructure for discounting.</description>
+          </Parameter>
+          <Parameter name='Aliases'>
+            <type>string</type>
+            <tensorRank>vector</tensorRank>
+            <description>Aliases</description>
+          </Parameter>
+          <Parameter name='BSProcesses'>
+            <type>QuantLib::GeneralizedBlackScholesProcess</type>
+            <tensorRank>vector</tensorRank>
+            <description>Array of Black Scholes processes</description>
+          </Parameter>
+          <Parameter name='LocalCorrelationTermStructure'>
+            <type>QuantLib::LocalCorrTermStructure</type>
+            <superType>libToHandle</superType>
+            <tensorRank>scalar</tensorRank>
+            <description>term structure for local correlation</description>
+          </Parameter>
+        </Parameters>
+      </ParameterList>
+    </Constructor>
+    
+    <Constructor name='qlRealLocalCorrelationBSModel2'>
+      <libraryFunction>LocalCorrelationBSModel</libraryFunction>
+      <SupportedPlatforms>
+        <SupportedPlatform name='Excel'/>
+        <SupportedPlatform name='Cpp'/>
+      </SupportedPlatforms>
+      <ParameterList>
+        <Parameters>
+          <Parameter name='DiscountCurve'>
+            <type>QuantLib::YieldTermStructure</type>
+            <superType>libToHandle</superType>
+            <tensorRank>scalar</tensorRank>
+            <description>YieldTermStructure for discounting.</description>
+          </Parameter>
+          <Parameter name='Aliases'>
+            <type>string</type>
+            <tensorRank>vector</tensorRank>
+            <description>Aliases</description>
+          </Parameter>
+          <Parameter name='LocalVolSurfaces'>
+            <type>QuantLib::LocalVolSurface</type>
+            <tensorRank>vector</tensorRank>
+            <description>Array of localVolSurfaces</description>
+          </Parameter>
+          <Parameter name='LocalCorrelationTermStructure'>
+            <type>QuantLib::LocalCorrTermStructure</type>
+            <superType>libToHandle</superType>
+            <tensorRank>scalar</tensorRank>
+            <description>term structure for local correlation</description>
+          </Parameter>
+        </Parameters>
+      </ParameterList>
+    </Constructor>
+
+
+    <Constructor name='qlRealLocalCorrelationSLVModel'>
+      <libraryFunction>LocalCorrelationSLVModel</libraryFunction>
+      <SupportedPlatforms>
+        <SupportedPlatform name='Excel'/>
+        <SupportedPlatform name='Cpp'/>
+      </SupportedPlatforms>
+      <ParameterList>
+        <Parameters>
+          <Parameter name='DiscountCurve'>
+            <type>QuantLib::YieldTermStructure</type>
+            <superType>libToHandle</superType>
+            <tensorRank>scalar</tensorRank>
+            <description>YieldTermStructure for discounting.</description>
+          </Parameter>
+          <Parameter name='Aliases'>
+            <type>string</type>
+            <tensorRank>vector</tensorRank>
+            <description>Aliases</description>
+          </Parameter>
+          <Parameter name='SLVProcesses'>
+            <type>QuantLib::HestonSLVProcess</type>
+            <tensorRank>vector</tensorRank>
+            <description>Array of local stochastic vol models</description>
+          </Parameter>
+          <Parameter name='LocalCorrelationTermStructure'>
+            <type>QuantLib::LocalCorrTermStructure</type>
+            <superType>libToHandle</superType>
+            <tensorRank>scalar</tensorRank>
+            <description>term structure for local correlation</description>
+          </Parameter>
+        </Parameters>
+      </ParameterList>
+    </Constructor>
+
+    <Constructor name='qlCTSlocalInCrossCorrFX'>
+      <libraryFunction>CTSlocalInCrossCorrelationFX</libraryFunction>
+      <SupportedPlatforms>
+        <SupportedPlatform name='Excel'/>
+        <SupportedPlatform name='Cpp'/>
+      </SupportedPlatforms>
+      <ParameterList>
+        <Parameters>
+          <Parameter name='BSProcesses'>
+            <type>QuantLib::GeneralizedBlackScholesProcess</type>
+            <tensorRank>vector</tensorRank>
+            <description>Array of Black Scholes processes</description>
+          </Parameter>
+          <Parameter name='SLVProcesses'>
+            <type>QuantLib::HestonSLVProcess</type>
+            <tensorRank>vector</tensorRank>
+            <description>Array of heston slv processes</description>
+          </Parameter>
+          <Parameter name='BSProcessLocalCorr'>
+            <type>QuantLib::GeneralizedBlackScholesProcess</type>
+            <tensorRank>scalar</tensorRank>
+            <description>Black Scholes process to determine local correlation</description>
+          </Parameter>
+          <Parameter name='Correlation' default='0.0'>
+            <type>QuantLib::Time</type>
+            <tensorRank>matrix</tensorRank>
+            <description>Asset and volvol correlation matrix.</description>
+          </Parameter>
+        </Parameters>
+      </ParameterList>
+    </Constructor>
+
+    <Constructor name='qlCTSlocalInCrossCovFX'>
+      <libraryFunction>CTSlocalInCrossCovarianceFX</libraryFunction>
+      <SupportedPlatforms>
+        <SupportedPlatform name='Excel'/>
+        <SupportedPlatform name='Cpp'/>
+      </SupportedPlatforms>
+      <ParameterList>
+        <Parameters>
+          <Parameter name='BSProcesses'>
+            <type>QuantLib::GeneralizedBlackScholesProcess</type>
+            <tensorRank>vector</tensorRank>
+            <description>Array of Black Scholes processes</description>
+          </Parameter>
+          <Parameter name='SLVProcesses'>
+            <type>QuantLib::HestonSLVProcess</type>
+            <tensorRank>vector</tensorRank>
+            <description>Array of heston slv processes</description>
+          </Parameter>
+          <Parameter name='BSProcessLocalCorr'>
+            <type>QuantLib::GeneralizedBlackScholesProcess</type>
+            <tensorRank>scalar</tensorRank>
+            <description>Black Scholes process to determine local correlation</description>
+          </Parameter>
+          <Parameter name='Correlation' default='0.0'>
+            <type>QuantLib::Time</type>
+            <tensorRank>matrix</tensorRank>
+            <description>Asset and volvol correlation matrix.</description>
+          </Parameter>
+        </Parameters>
+      </ParameterList>
+    </Constructor>
+
+    <Constructor name='qlCTSlocalInCrossVolaFX'>
+      <libraryFunction>CTSlocalInCrossVolatilityFX</libraryFunction>
+      <SupportedPlatforms>
+        <SupportedPlatform name='Excel'/>
+        <SupportedPlatform name='Cpp'/>
+      </SupportedPlatforms>
+      <ParameterList>
+        <Parameters>
+          <Parameter name='BSProcesses'>
+            <type>QuantLib::GeneralizedBlackScholesProcess</type>
+            <tensorRank>vector</tensorRank>
+            <description>Array of Black Scholes processes</description>
+          </Parameter>
+          <Parameter name='SLVProcesses'>
+            <type>QuantLib::HestonSLVProcess</type>
+            <tensorRank>vector</tensorRank>
+            <description>Array of heston slv processes</description>
+          </Parameter>
+          <Parameter name='BSProcessLocalCorr'>
+            <type>QuantLib::GeneralizedBlackScholesProcess</type>
+            <tensorRank>scalar</tensorRank>
+            <description>Black Scholes process to determine local correlation</description>
+          </Parameter>
+          <Parameter name='Correlation' default='0.0'>
+            <type>QuantLib::Time</type>
+            <tensorRank>matrix</tensorRank>
+            <description>Asset and volvol correlation matrix.</description>
+          </Parameter>
+        </Parameters>
+      </ParameterList>
+    </Constructor>
+
+    <Constructor name='qlCTSlocalInCrossNegSkewFX'>
+      <libraryFunction>CTSlocalInCrossNegSkewFX</libraryFunction>
+      <SupportedPlatforms>
+        <SupportedPlatform name='Excel'/>
+        <SupportedPlatform name='Cpp'/>
+      </SupportedPlatforms>
+      <ParameterList>
+        <Parameters>
+          <Parameter name='BSProcesses'>
+            <type>QuantLib::GeneralizedBlackScholesProcess</type>
+            <tensorRank>vector</tensorRank>
+            <description>Array of Black Scholes processes</description>
+          </Parameter>
+          <Parameter name='SLVProcesses'>
+            <type>QuantLib::HestonSLVProcess</type>
+            <tensorRank>vector</tensorRank>
+            <description>Array of heston slv processes</description>
+          </Parameter>
+          <Parameter name='BSProcessLocalCorr'>
+            <type>QuantLib::GeneralizedBlackScholesProcess</type>
+            <tensorRank>scalar</tensorRank>
+            <description>Black Scholes process to determine local correlation</description>
+          </Parameter>
+          <Parameter name='Beta' default='1'>
+            <type>QuantLib::Real</type>
+            <tensorRank>scalar</tensorRank>
+            <description>beta (positive for negative skew, negative for positive skew)</description>
+          </Parameter>
+          <Parameter name='Correlation' default='0.0'>
+            <type>QuantLib::Time</type>
+            <tensorRank>matrix</tensorRank>
+            <description>Asset and volvol correlation matrix.</description>
+          </Parameter>
+        </Parameters>
+      </ParameterList>
+    </Constructor>
+    
+    <Member name='qlCTSgetCalibratedFXCorrFromGrid' type='QuantLib::LocalCorrSurfaceABFFX' >
+      <description>Return local correlation for a specified time and asset grid.</description>
+      <libraryFunction>getLocalCorrelationSurface</libraryFunction>
+      <SupportedPlatforms>
+        <!--SupportedPlatform name='Excel' calcInWizard='false'/-->
+        <SupportedPlatform name='Excel'/>
+        <!--SupportedPlatform name='Calc'/-->
+        <!--SupportedPlatform name='Cpp'/-->
+      </SupportedPlatforms>
+      <ParameterList>
+        <Parameters>
+          <Parameter name='Time' default='1'>
+            <type>QuantLib::Real</type>
+            <tensorRank>scalar</tensorRank>
+            <description>Maturity</description>
+          </Parameter>
+          <Parameter name='FX1Grid'>
+            <type>QuantLib::Real</type>
+            <tensorRank>vector</tensorRank>
+            <description>grid of FX rate 1</description>
+          </Parameter>
+          <Parameter name='FX2Grid'>
+            <type>QuantLib::Real</type>
+            <tensorRank>vector</tensorRank>
+            <description>grid of FX rate 2</description>
+          </Parameter>
+        </Parameters>
+      </ParameterList>
+      <ReturnValue>
+        <type>QuantLib::Matrix</type>
+        <tensorRank>matrix</tensorRank>
+      </ReturnValue>
+    </Member>
+
+    <Procedure name='qlCalibrateFXCTSWithParticleMethod'>
+      <description>Calibrator for FX local correlation model</description>
+      <alias>QuantLib::ParticleMethodUtils::calibrateFX</alias>
+      <SupportedPlatforms>
+        <SupportedPlatform name='Excel'/>
+        <SupportedPlatform name='Cpp'/>
+      </SupportedPlatforms>
+      <ParameterList>
+        <Parameters>
+          <Parameter name='LocalCorrSurfaceABFFX'>
+            <type>QuantLib::LocalCorrSurfaceABFFX</type>
+            <superType>libToHandle</superType>
+            <tensorRank>scalar</tensorRank>
+            <description>Local Correlation Term Structure to calibrate</description>
+          </Parameter>
+          <Parameter name='KernelString' default='"QuarticKernel"'>
+            <type>string</type>
+            <tensorRank>scalar</tensorRank>
+            <description>Kernel specification</description>
+          </Parameter>
+          <Parameter name='NumberOfPaths' default='1024'>
+            <type>long</type>
+            <tensorRank>scalar</tensorRank>
+            <description>number of paths for particle method</description>
+          </Parameter>
+          <Parameter name='MaxTime'>
+            <type>QuantLib::Time</type>
+            <tensorRank>scalar</tensorRank>
+            <description>maxTime for particle method grid</description>
+          </Parameter>
+          <Parameter name='DeltaT'>
+            <type>QuantLib::Time</type>
+            <tensorRank>scalar</tensorRank>
+            <description>time step in the grid</description>
+          </Parameter>
+          <Parameter name='MinT' default='0.25'>
+            <type>QuantLib::Time</type>
+            <tensorRank>scalar</tensorRank>
+            <description>minTime for particle method grid</description>
+          </Parameter>
+          <Parameter name='Kappa' default='3'>
+            <type>QuantLib::Real</type>
+            <tensorRank>scalar</tensorRank>
+            <description>kappa for bandwidth</description>
+          </Parameter>
+          <Parameter name='SigmaAVR'>
+            <type>QuantLib::Real</type>
+            <tensorRank>scalar</tensorRank>
+            <description>average volatility for bandwidth</description>
+          </Parameter>
+          <Parameter name='ExponentN' default='-0.25'>
+            <type>QuantLib::Real</type>
+            <tensorRank>scalar</tensorRank>
+            <description>exponent of N to determine bandwidth</description>
+          </Parameter>
+          <Parameter name='GridMinQuantile' default='0.1'>
+            <type>QuantLib::Real</type>
+            <tensorRank>scalar</tensorRank>
+            <description>minQuantile for strike grid</description>
+          </Parameter>
+          <Parameter name='GridMaxQuantile' default='0.9'>
+            <type>QuantLib::Real</type>
+            <tensorRank>scalar</tensorRank>
+            <description>minQuantile for strike grid</description>
+          </Parameter>
+          <Parameter name='Ns1' default='30'>
+            <type>long</type>
+            <tensorRank>scalar</tensorRank>
+            <description>strike grid amount indicator 1 (paper: nS)</description>
+          </Parameter>
+          <Parameter name='Ns2' default='15'>
+            <type>long</type>
+            <tensorRank>scalar</tensorRank>
+            <description>strike grid amount indicator 2 (paper: nS')</description>
+          </Parameter>
+        </Parameters>
+      </ParameterList>
+      <ReturnValue>
+        <type>void</type>
+        <tensorRank>scalar</tensorRank>
+      </ReturnValue>
+    </Procedure>
+
+    
+  </Functions>
+</Category>
