@@ -198,6 +198,7 @@
 %include distributions.i
 %include dividends.i
 %include exchangerates.i
+%include experimental.i
 %include exercise.i
 %include fittedbondcurve.i
 %include forwardcurve.i
