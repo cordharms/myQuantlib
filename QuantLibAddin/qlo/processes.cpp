@@ -82,6 +82,25 @@ namespace QuantLibAddin {
             new QuantLib::GeneralizedBlackScholesProcess( underlyingH, dividendYTS, riskfreeYTS, blackVolTermStructureH));
     }
 
+	GeneralizedBlackScholesProcess::GeneralizedBlackScholesProcess(
+		const boost::shared_ptr<ObjectHandler::ValueObject>&          properties,
+		const boost::shared_ptr < QuantLib::InterpolatedLocalVolSurface >&  interpolatedLocalVolSurface,
+		QuantLib::Real                                                underlying,
+		const QuantLib::DayCounter&                                   dayCounter,
+		const QuantLib::Date&                                         settlementDate,
+		const QuantLib::Handle<QuantLib::YieldTermStructure>&         riskfreeYTS,
+		const QuantLib::Handle<QuantLib::YieldTermStructure>&         dividendYTS,
+		bool                                                          permanent)
+		: ObjectHandler::LibraryObject<QuantLib::GeneralizedBlackScholesProcess>(properties, permanent) {
 
+		QuantLib::Handle<QuantLib::Quote> underlyingH(boost::shared_ptr<QuantLib::Quote>(
+			new QuantLib::SimpleQuote(underlying)));
+
+		QuantLib::Handle<QuantLib::LocalVolTermStructure> interpolatedLocalVolSurfaceH(
+			interpolatedLocalVolSurface);
+
+		libraryObject_ = boost::shared_ptr<QuantLib::GeneralizedBlackScholesProcess>(
+			new QuantLib::GeneralizedBlackScholesProcess(underlyingH, dividendYTS, riskfreeYTS, interpolatedLocalVolSurface->getBlackSurface(), interpolatedLocalVolSurfaceH));
+	}
 }
 

@@ -29,6 +29,7 @@
 #include <ql/math/optimization/simplex.hpp>
 #include <ql/math/optimization/steepestdescent.hpp>
 #include <ql/math/optimization/constraint.hpp>
+#include <ql/math/optimization/simulatedannealing.hpp>
 
 
 namespace QuantLibAddin {
@@ -84,6 +85,15 @@ namespace QuantLibAddin {
         libraryObject_ = boost::shared_ptr<QuantLib::OptimizationMethod>(new
             QuantLib::ConjugateGradient(lineSearch));
     }
+
+	SimulatedAnnealing::SimulatedAnnealing(
+		const boost::shared_ptr<ObjectHandler::ValueObject>& properties,
+		const QuantLib::Real lambda, const QuantLib::Real T0,
+		const QuantLib::Real epsilon, const QuantLib::Size m,
+		bool permanent) : OptimizationMethod(properties, permanent) {
+		libraryObject_ = boost::shared_ptr<QuantLib::OptimizationMethod>(new
+			QuantLib::SimulatedAnnealing<>(lambda, T0, epsilon,m));
+	}
 
     SteepestDescent::SteepestDescent(
             const boost::shared_ptr<ObjectHandler::ValueObject>& properties,

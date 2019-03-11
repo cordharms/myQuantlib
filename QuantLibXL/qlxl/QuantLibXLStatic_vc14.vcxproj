@@ -714,6 +714,7 @@
     </Bscmake>
   </ItemDefinitionGroup>
   <ItemGroup>
+    <ClCompile Include="functions\templatelocalcorrelation.cpp" />
     <ClCompile Include="functions\basisswap.cpp" />
     <ClCompile Include="functions\inflation.cpp" />
     <ClCompile Include="functions\sabrswaptioncube.cpp" />
@@ -791,6 +792,7 @@
     <ClCompile Include="register\register_templatecommodity.cpp" />
     <ClCompile Include="register\register_templatehestonmodel.cpp" />
     <ClCompile Include="register\register_templatehullwhite.cpp" />
+    <ClCompile Include="register\register_templatelocalcorrelation.cpp" />
     <ClCompile Include="register\register_templatemontecarlo.cpp" />
     <ClCompile Include="register\register_templatequasigaussian.cpp" />
     <ClCompile Include="register\register_templatequasigaussian2.cpp" />

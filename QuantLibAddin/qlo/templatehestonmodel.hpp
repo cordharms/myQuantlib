@@ -24,11 +24,17 @@
 #include <ql/experimental/templatemodels/stochvol/stochvolcalibrator.hpp>
 
 #include <ql/experimental/models/hestonslvfdmmodel.hpp>
+#include <ql/experimental/models/hestonslvmcmodel.hpp>
+#include <ql/experimental/processes/hestonslvprocess.hpp>
 
 #include <ql/models/equity/hestonmodelhelper.hpp>
 #include <ql/termstructures/volatility/equityfx/hestonblackvolsurface.hpp>
+#include <ql/models/marketmodels/browniangenerators/mtbrowniangenerator.hpp>
 
 #include <ql/experimental/templatemodels/multiasset/multiassetbsmodel.hpp>
+#include <ql/experimental/templatemodels/multiasset/multiassetSLVmodel.hpp>
+#include <ql/termstructures/volatility/equityfx/localvoltermstructure.hpp>
+#include <ql/termstructures/volatility/equityfx/localvolsurface.hpp>
 
 #include <qlo/templatestochasticprocess.hpp>
 
@@ -72,6 +78,14 @@ namespace QuantLibAddin {
 			const QuantLib::Real                                                hestonRelTolerance,
 			const QuantLib::Size                                                hestonMaxEvaluations );
     };
+
+	class HestonSLVProcess : public StochasticProcess {
+	public:
+		HestonSLVProcess(const boost::shared_ptr<ObjectHandler::ValueObject>& properties, 
+			const boost::shared_ptr<QuantLib::HestonProcess>& hestonProcess,
+			const boost::shared_ptr<QuantLib::LocalVolTermStructure>& leverageFct,
+			bool permanent);
+	};
 
     class AnalyticHestonEngine : public PricingEngine {
     public:
@@ -282,8 +296,46 @@ namespace QuantLibAddin {
 			const std::vector<boost::shared_ptr<QuantLib::GeneralizedBlackScholesProcess>>& processes,
 			const QuantLib::RealStochasticProcess::MatA&                                    correlations,
 			bool                                                                            permanent);
+		MultiAssetBSModel(
+			const boost::shared_ptr<ObjectHandler::ValueObject>&                            properties,
+			const QuantLib::Handle<QuantLib::YieldTermStructure>&                           termStructure,
+			const std::vector<std::string>&                                                 aliases,
+			const std::vector<boost::shared_ptr<QuantLib::LocalVolSurface>>&				localVolSurfaces,
+			const QuantLib::RealStochasticProcess::MatA&                                    correlations,
+			bool                                                                            permanent);
+		MultiAssetBSModel(
+			const boost::shared_ptr<ObjectHandler::ValueObject>&                            properties,
+			bool                                                                            permanent);
 	};
 
+	class MultiAssetSLVModel : public RealStochasticProcess {
+	public:
+		MultiAssetSLVModel(
+			const boost::shared_ptr<ObjectHandler::ValueObject>&                            properties,
+			const QuantLib::Handle<QuantLib::YieldTermStructure>&                           termStructure,
+			const std::vector<std::string>&                                                 aliases,
+			const std::vector<boost::shared_ptr<QuantLib::HestonSLVProcess>>& processes,
+			const QuantLib::RealStochasticProcess::MatA&                                    correlations,
+			bool                                                                            permanent);
+		MultiAssetSLVModel(
+			const boost::shared_ptr<ObjectHandler::ValueObject>&                            properties,
+			bool                                                                            permanent);
+	};
+
+	class HestonSLVMCModel : public ObjectHandler::LibraryObject<QuantLib::HestonSLVMCModel> {
+		public:
+			HestonSLVMCModel(
+				const boost::shared_ptr<ObjectHandler::ValueObject>&                properties,
+				const QuantLib::Handle<QuantLib::LocalVolTermStructure>&			localVol,
+				const QuantLib::Handle<QuantLib::HestonModel>&						hestonModel,
+				const QuantLib::Date&												endDate,
+				QuantLib::Size														timeStepsPerYear,
+				QuantLib::Size														nBins,
+				QuantLib::Size														calibrationPaths,
+				const std::vector<QuantLib::Date>&									mandatoryDates,
+				bool                                                                permanent);
+			
+	};
 }
 
 #endif

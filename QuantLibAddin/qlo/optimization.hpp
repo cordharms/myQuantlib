@@ -96,6 +96,15 @@ namespace QuantLibAddin {
             bool permanent);
     };
 
+	class SimulatedAnnealing : public OptimizationMethod {
+	public:
+		SimulatedAnnealing(
+			const boost::shared_ptr<ObjectHandler::ValueObject>& properties,
+			const QuantLib::Real lambda, const QuantLib::Real T0,
+			const QuantLib::Real epsilon, const QuantLib::Size m,
+			bool permanent);
+	};
+
     class SteepestDescent : public LineSearchBasedMethod {
       public:
         SteepestDescent(
