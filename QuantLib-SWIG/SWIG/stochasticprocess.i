@@ -99,6 +99,16 @@ class GeneralizedBlackScholesProcessPtr : public StochasticProcess1DPtr {
                        new GeneralizedBlackScholesProcess(s0, dividendTS,
                                                           riskFreeTS, volTS));
       }
+      GeneralizedBlackScholesProcessPtr(
+                             const Handle<Quote>& s0,
+                             const Handle<YieldTermStructure>& dividendTS,
+                             const Handle<YieldTermStructure>& riskFreeTS,
+                             const Handle<BlackVolTermStructure>& volTS,
+                             const Handle<LocalVolTermStructure>& localVolTS) {
+          return new GeneralizedBlackScholesProcessPtr(
+                       new GeneralizedBlackScholesProcess(s0, dividendTS,
+                                                          riskFreeTS, volTS, localVolTS));
+      }
       Handle<Quote> stateVariable() {
           return boost::dynamic_pointer_cast<
                       GeneralizedBlackScholesProcess>(*self)->stateVariable();
@@ -117,6 +127,7 @@ class GeneralizedBlackScholesProcessPtr : public StochasticProcess1DPtr {
       }
     }
 };
+
 
 %{
 using QuantLib::BlackScholesProcess;
