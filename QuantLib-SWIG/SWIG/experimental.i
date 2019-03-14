@@ -152,7 +152,6 @@ class MultiAssetBSModelPtr : public boost::shared_ptr<RealStochasticProcess> {
 using QuantLib::MCSimulationT;
 %}
 
-
 template <class DateType, class PassiveType, class ActiveType> class MCSimulationT  {
     public:
         MCSimulationT( const boost::shared_ptr<RealStochasticProcess> process,
@@ -168,12 +167,36 @@ template <class DateType, class PassiveType, class ActiveType> class MCSimulatio
         std::vector<std::vector<ActiveType>> observedPath(const size_t idx){ return self->simulate(observedPath(idx))};
 };
 typedef MCSimulationT<Time,Real,Real> RealMCSimulation;
-%template(RealMCSimulation) MCSimulationT<Time,Real,Real>;
+%template(RealMCSimulation) boost::shared_ptr<MCSimulationT<Time,Real,Real>>;
 
 %{
 using QuantLib::MCPayoffT;
 using QuantLib::RealMCPayoffPricer;
+typedef MCSimulationT<Time,Real,Real> RealMCSimulation;
+typedef boost::shared_ptr<RealMCSimulation> RealMCSimulationPtr;
 %}
+
+class RealMCSimulationPtr : public boost::shared_ptr<RealMCSimulation> {
+  public:
+    %extend {
+        RealMCSimulationPtr( const boost::shared_ptr<RealStochasticProcess> process,
+                       const std::vector<Real>&                       simTimes,
+                       const std::vector<Real>&                       obsTimes,
+                       size_t                               nPaths,
+                       BigNatural                           seed = 1234,
+                       bool                                 richardsonExtrapolation = true,
+                       bool                                 timeInterpolation = false,
+                       bool                                 storeBrownians = false ) {
+            return new RealMCSimulationPtr(new RealMCSimulation(process,simTimes,obsTimes,nPaths,seed,richardsonExtrapolation,timeInterpolation,storeBrownians));
+        };
+        void simulate() {boost::dynamic_pointer_cast<RealMCSimulation>(*self)->simulate();};
+        void calculateAssetAdjuster( const std::vector<Real>&  assetObservTimes, const std::vector<std::string>& aliases ) {
+            boost::dynamic_pointer_cast<RealMCSimulation>(*self)->calculateAssetAdjuster(assetObservTimes,aliases);
+        };
+        std::vector<std::vector<Real>> observedPath(const size_t idx){ return boost::dynamic_pointer_cast<RealMCSimulation>(*self)->observedPath(idx);};
+    }
+};
+
 
 template <class DateType, class PassiveType, class ActiveType> class MCPayoffT  {
     public:
@@ -185,16 +208,9 @@ typedef MCPayoffT<Time,Real,Real> RealMCPayoff;
 
 %{
 typedef MCPayoffT<Time,Real,Real> RealMCPayoff;
-typedef MCSimulationT<Time,Real,Real> RealMCSimulation;
 typedef boost::shared_ptr<RealMCPayoff> RealMCAssetPtr;
 typedef boost::shared_ptr<RealMCPayoff> RealMCVanillaOptionPtr;
 typedef boost::shared_ptr<RealMCPayoff> RealMCPayoffPricerPtr;
-%}
-
-%inline %{
-    boost::shared_ptr<RealMCSimulation>  make_RealMCSimulationPtr(RealMCSimulation& simulation) {
-        return boost::shared_ptr<RealMCSimulation>(new RealMCSimulation(simulation));
-    }
 %}
 
 %rename(RealMCAsset) RealMCAssetPtr;
@@ -240,6 +256,21 @@ class RealMCPayoffPricer {
     };
 };
 
+%{
+using QuantLib::blackFormulaImpliedStdDev;
+%}
 
+    
+%inline %{
+    Real  get_blackFormulaImpliedStdDev(Option::Type optionType,
+                                                Real strike,
+                                                Real forward,
+                                                Real blackPrice,
+                                                Real discount,
+                                                Real displacement=0,
+                                                Real guess=0.1, Real accuracy=1.0e-6, Real maxIter=100) {
+        return blackFormulaImpliedStdDev(optionType,strike,forward,blackPrice,discount,displacement,guess,accuracy,maxIter);
+    }
+%}
 
 #endif

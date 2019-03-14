@@ -133,9 +133,7 @@ RelinkableHandle<LocalVolTermStructure>;
 
 %{
 using QuantLib::LocalVolSurface;
-using QuantLib::InterpolatedLocalVolSurface;
 typedef boost::shared_ptr<LocalVolTermStructure> LocalVolSurfacePtr;
-typedef boost::shared_ptr<LocalVolTermStructure> InterpolatedLocalVolSurfacePtr;
 %}
 
 %rename(LocalVolSurface) LocalVolSurfacePtr;
@@ -152,10 +150,57 @@ class LocalVolSurfacePtr : public boost::shared_ptr<LocalVolTermStructure> {
     }
 };
 
+//FixedLocalVolSurface
+
+%{
+using QuantLib::FixedLocalVolSurface;
+typedef boost::shared_ptr<LocalVolTermStructure> FixedLocalVolSurfacePtr;
+%}
+
+#if defined(SWIGJAVA) || defined(SWIGCSHARP)
+%rename(_FixedLocalVolSurface) FixedLocalVolSurface;
+#else
+%ignore FixedLocalVolSurface;
+#endif
+class FixedLocalVolSurface {
+  public:
+    enum Extrapolation { ConstantExtrapolation,
+                         InterpolatorDefaultExtrapolation };
+#if defined(SWIGJAVA) || defined(SWIGCSHARP)
+  private:
+    FixedLocalVolSurface();
+#endif
+};
+
+
+%rename(FixedLocalVolSurface) FixedLocalVolSurfacePtr;
+class FixedLocalVolSurfacePtr : public boost::shared_ptr<LocalVolTermStructure> {
+  public:
+    %extend {
+        FixedLocalVolSurfacePtr(const Date& referenceDate,
+                             const std::vector<Date>& dates,
+                             const std::vector<Real>& strikes,
+                             const Matrix& localVolMatrix,
+                             const DayCounter& dayCounter,
+                             FixedLocalVolSurface::Extrapolation lowerExtrapolation,
+                             FixedLocalVolSurface::Extrapolation upperExtrapolation) {            
+            return new FixedLocalVolSurfacePtr(
+                new FixedLocalVolSurface(referenceDate,dates,strikes,localVolMatrix,dayCounter,lowerExtrapolation, upperExtrapolation));
+        };
+        static const FixedLocalVolSurface::Extrapolation ConstantExtrapolation = FixedLocalVolSurface::ConstantExtrapolation;
+        static const FixedLocalVolSurface::Extrapolation InterpolatorDefaultExtrapolation = FixedLocalVolSurface::InterpolatorDefaultExtrapolation;
+    }
+};
+
+%{
+using QuantLib::InterpolatedLocalVolSurface;
+typedef boost::shared_ptr<LocalVolTermStructure> InterpolatedLocalVolSurfacePtr;
+%}
+
 //Interpolated local vol surface
 
 %rename(InterpolatedLocalVolSurface) InterpolatedLocalVolSurfacePtr;
-class InterpolatedLocalVolSurfacePtr : public LocalVolSurfacePtr {
+class InterpolatedLocalVolSurfacePtr : public boost::shared_ptr<LocalVolTermStructure> {
   public:
     %extend {
         InterpolatedLocalVolSurfacePtr(const Handle<BlackVolTermStructure>& blackTS,
@@ -164,7 +209,7 @@ class InterpolatedLocalVolSurfacePtr : public LocalVolSurfacePtr {
             const Handle<Quote>& underlying, Size strikeGridAmt,
             Size timeStepsPerYear) {            
             return new InterpolatedLocalVolSurfacePtr(
-                new InterpolatedLocalVolSurface(blackTS,riskFreeTS,dividendTS,underlying,strikeGridAmt,timeStepsPerYear));
+                new InterpolatedLocalVolSurface(blackTS,riskFreeTS,dividendTS,underlying));
         }
     }
 };
