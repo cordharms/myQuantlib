@@ -96,11 +96,11 @@ namespace QuantLibAddin {
 		QuantLib::Handle<QuantLib::Quote> underlyingH(boost::shared_ptr<QuantLib::Quote>(
 			new QuantLib::SimpleQuote(underlying)));
 
-		QuantLib::Handle<QuantLib::InterpolatedLocalVolSurface> interpolatedLocalVolSurfaceH(
+		QuantLib::Handle<QuantLib::LocalVolTermStructure> interpolatedLocalVolSurfaceH(
 			interpolatedLocalVolSurface);
 
 		libraryObject_ = boost::shared_ptr<QuantLib::GeneralizedBlackScholesProcess>(
-			new QuantLib::GeneralizedBlackScholesProcess(underlyingH, dividendYTS, riskfreeYTS, interpolatedLocalVolSurfaceH));
+			new QuantLib::GeneralizedBlackScholesProcess(underlyingH, dividendYTS, riskfreeYTS, interpolatedLocalVolSurface->getBlackSurface(), interpolatedLocalVolSurfaceH));
 	}
 }
 
