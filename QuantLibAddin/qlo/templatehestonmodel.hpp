@@ -34,7 +34,7 @@
 #include <ql/experimental/templatemodels/multiasset/multiassetbsmodel.hpp>
 #include <ql/experimental/templatemodels/multiasset/multiassetSLVmodel.hpp>
 #include <ql/termstructures/volatility/equityfx/localvoltermstructure.hpp>
-#include <ql\termstructures\volatility\equityfx\localvolsurface.hpp>
+#include <ql/termstructures/volatility/equityfx/localvolsurface.hpp>
 
 #include <qlo/templatestochasticprocess.hpp>
 
