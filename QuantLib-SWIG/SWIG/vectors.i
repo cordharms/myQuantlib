@@ -34,6 +34,8 @@ namespace std {
     %template(DoubleVector) vector<double>;
     %template(StrVector) vector<std::string>;
     %template(BoolVector) vector<bool>;
+    
+    %template(VecVecReal) std::vector< std::vector<Real> >;
 
 #if !defined(SWIGR) && !defined(SWIGGUILE) && !defined(SWIGMZSCHEME)
     %template(NodePair) pair<Date,double>;

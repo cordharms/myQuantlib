@@ -118,6 +118,7 @@ class GeneralizedBlackScholesProcessPtr : public StochasticProcess1DPtr {
     }
 };
 
+
 %{
 using QuantLib::BlackScholesProcess;
 typedef boost::shared_ptr<StochasticProcess> BlackScholesProcessPtr;

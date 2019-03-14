@@ -129,6 +129,45 @@ IsObservable(Handle<LocalVolTermStructure>);
 %template(RelinkableLocalVolTermStructureHandle)
 RelinkableHandle<LocalVolTermStructure>;
 
+//local vol surface
+
+%{
+using QuantLib::LocalVolSurface;
+using QuantLib::InterpolatedLocalVolSurface;
+typedef boost::shared_ptr<LocalVolTermStructure> LocalVolSurfacePtr;
+typedef boost::shared_ptr<LocalVolTermStructure> InterpolatedLocalVolSurfacePtr;
+%}
+
+%rename(LocalVolSurface) LocalVolSurfacePtr;
+class LocalVolSurfacePtr : public boost::shared_ptr<LocalVolTermStructure> {
+  public:
+    %extend {
+        LocalVolSurfacePtr(const Handle<BlackVolTermStructure>& blackTS,
+                        const Handle<YieldTermStructure>& riskFreeTS,
+                        const Handle<YieldTermStructure>& dividendTS,
+                        const Handle<Quote>& underlying) {            
+            return new LocalVolSurfacePtr(
+                new LocalVolSurface(blackTS,riskFreeTS,dividendTS,underlying));
+        }
+    }
+};
+
+//Interpolated local vol surface
+
+%rename(InterpolatedLocalVolSurface) InterpolatedLocalVolSurfacePtr;
+class InterpolatedLocalVolSurfacePtr : public LocalVolSurfacePtr {
+  public:
+    %extend {
+        InterpolatedLocalVolSurfacePtr(const Handle<BlackVolTermStructure>& blackTS,
+            const Handle<YieldTermStructure>& riskFreeTS,
+            const Handle<YieldTermStructure>& dividendTS,
+            const Handle<Quote>& underlying, Size strikeGridAmt,
+            Size timeStepsPerYear) {            
+            return new InterpolatedLocalVolSurfacePtr(
+                new InterpolatedLocalVolSurface(blackTS,riskFreeTS,dividendTS,underlying,strikeGridAmt,timeStepsPerYear));
+        }
+    }
+};
 
 %ignore OptionletVolatilityStructure;
 class OptionletVolatilityStructure : public Extrapolator {
@@ -399,6 +438,11 @@ class SabrInterpolatedSmileSectionPtr : public boost::shared_ptr<SmileSection> {
                 new SabrInterpolatedSmileSection(optionDate, forward,strikes, hasFloatingStrikes,atmVolatility,vols,alpha,beta,nu,rho,
                                                 isAlphaFixed,isBetaFixed,isNuFixed, isRhoFixed, vegaWeighted,endCriteria,method,dc,shift,useNormalVols));
         }
+        Volatility volatilityImpl(Rate strike) const {return boost::dynamic_pointer_cast<SabrInterpolatedSmileSection>(*self)->volatilityImpl(strike);};
+        Real alpha() const {return boost::dynamic_pointer_cast<SabrInterpolatedSmileSection>(*self)->alpha();};
+        Real beta() const {return boost::dynamic_pointer_cast<SabrInterpolatedSmileSection>(*self)->beta();};
+        Real nu() const {return boost::dynamic_pointer_cast<SabrInterpolatedSmileSection>(*self)->nu();};
+        Real rho() const {return boost::dynamic_pointer_cast<SabrInterpolatedSmileSection>(*self)->rho();};
     }
 };
 
@@ -430,6 +474,8 @@ class SmiledSurfacePtr : public boost::shared_ptr<BlackVolTermStructure> {
         }
     }
 };
+
+
 
 
 // constant local vol term structure

@@ -71,12 +71,13 @@ class VolSurface:
         for i in range(0,len(self.matAsDates)):
             sabr = SabrInterpolatedSmileSection(
                            self.matAsDates[i], self.spot.value(),self.strikes[i,:].tolist(),
-                           False, self.quotes[i][self.atmIndex]*0.01, self.quotes[i,:].tolist(),
+                           False, self.quotes[i][self.atmIndex]*0.01, (self.quotes[i,:]*0.01).tolist(),
                            0.08, 0.7, 1.0, 
                            0.1)
             self.sabrSections.append(sabr)
         self.smiledSurface = SmiledSurface(self.sabrSections,self.todaysDate)
-        print(self.smiledSurface)
+        #self.interpolatedSurface = InterpolatedLocalVolSurface(BlackVolTermStructureHandle(self.smiledSurface),
+        #    YieldTermStructureHandle(self.yieldCurve), YieldTermStructureHandle(self.divCurve), QuoteHandle(self.spot),100,100)
 
 ########################################################
 # global data
@@ -123,9 +124,43 @@ except AssertionError as e:
     quit()
 
 ########################################################
-# derive blackVolSurface
+# derive blackVolSurface and stochastic processes
 ########################################################
 
 vol1.calcSABRSmiledSurface()
 vol2.calcSABRSmiledSurface()
 volCross.calcSABRSmiledSurface()
+
+gbsprocess1 = GeneralizedBlackScholesProcess(QuoteHandle(underlying1),YieldTermStructureHandle(yield1), YieldTermStructureHandle(yieldDom),BlackVolTermStructureHandle(vol1.smiledSurface))
+gbsprocess2 = GeneralizedBlackScholesProcess(QuoteHandle(underlying2),YieldTermStructureHandle(yield2), YieldTermStructureHandle(yieldDom),BlackVolTermStructureHandle(vol2.smiledSurface))
+gbsprocessCross = GeneralizedBlackScholesProcess(QuoteHandle(underlyingCross),YieldTermStructureHandle(yield2), YieldTermStructureHandle(yield1), BlackVolTermStructureHandle(volCross.smiledSurface))
+
+gbslist = StochasticProcessVector()
+gbslist.append(gbsprocess1)
+gbslist.append(gbsprocess2)
+
+corr = VecVecReal([[1,0.54],[0.54,1]])
+aliases = ["EURUSD","GBPUSD"]
+maprocess = MultiAssetBSModel(YieldTermStructureHandle(yieldDom),aliases, gbslist,corr)
+schedule = Schedule(todaysDate,calendar.advance(todaysDate,Period("1y1m")),Period("4d"),calendar,Following,Following,DateGeneration.Backward,False)
+times = DoubleVector([(schedule.dates()[i]-todaysDate)/365 for i in range(0,len(schedule.dates()))])
+simulation = RealMCSimulation(maprocess,times,times,100,1,True,True,False)
+simulation.simulate();
+simulation.calculateAssetAdjuster(times,aliases);
+
+########################################################
+# calculate the cross smile
+########################################################
+
+asset = VectorOfRealMCPayoff()
+asset.append = RealMCAsset(1,aliases[0])
+asset.append = RealMCAsset(1,aliases[1])
+
+option = RealMCVanillaOption(1,aliases[0],1,0)
+optionList = VectorOfRealMCPayoff()
+optionList.append(option)
+
+simPtr = make_RealMCSimulationPtr(simulation)
+print(RealMCPayoffPricer.NPVs(optionList,simPtr)[0])
+
+
