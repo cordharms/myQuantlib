@@ -209,7 +209,7 @@ class InterpolatedLocalVolSurfacePtr : public boost::shared_ptr<LocalVolTermStru
             const Handle<Quote>& underlying, Size strikeGridAmt,
             Size timeStepsPerYear) {            
             return new InterpolatedLocalVolSurfacePtr(
-                new InterpolatedLocalVolSurface(blackTS,riskFreeTS,dividendTS,underlying));
+                new InterpolatedLocalVolSurface(blackTS,riskFreeTS,dividendTS,underlying,strikeGridAmt,timeStepsPerYear));
         }
     }
 };
