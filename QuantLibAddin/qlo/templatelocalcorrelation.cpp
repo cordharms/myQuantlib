@@ -22,17 +22,7 @@ namespace QuantLibAddin {
 		libraryObject_ = boost::shared_ptr<QuantLib::RealStochasticProcess>(
 			new QuantLib::LocalCorrelationBSModel(termStructure, aliases, processes, localCorrTermStructure));
 	}
-	LocalCorrelationBSModel::LocalCorrelationBSModel(
-		const boost::shared_ptr<ObjectHandler::ValueObject>&                            properties,
-		const QuantLib::Handle<QuantLib::YieldTermStructure>&							termStructure,
-		const std::vector<std::string>&                                                 aliases,
-		const std::vector<boost::shared_ptr<QuantLib::LocalVolSurface>>&				localVolSurfaces,
-		const QuantLib::Handle<QuantLib::LocalCorrTermStructure>&						localCorrTermStructure,
-		bool                                                                            permanent)
-		: MultiAssetBSModel(properties, permanent) {
-		libraryObject_ = boost::shared_ptr<QuantLib::RealStochasticProcess>(
-			new QuantLib::LocalCorrelationBSModel(termStructure, aliases, localVolSurfaces, localCorrTermStructure));
-	}
+	
 
 	LocalCorrelationSLVModel::LocalCorrelationSLVModel(
 		const boost::shared_ptr<ObjectHandler::ValueObject>&                            properties,
