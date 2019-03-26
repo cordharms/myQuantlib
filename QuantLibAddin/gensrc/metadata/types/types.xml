@@ -191,6 +191,7 @@
 
     <DataType defaultSuperType='libraryTermStructure'>QuantLib::LocalCorrTermStructure</DataType>
     <DataType defaultSuperType='libraryClass'>QuantLib::LocalCorrSurfaceABFFX</DataType>
+    <DataType defaultSuperType='libraryClass'>QuantLib::LocalCorrSurfaceABFIndex</DataType>
 
     <DataType defaultSuperType='libraryTermStructure'>QuantLibAddin::BaseCorrelationTermStructure</DataType>
 

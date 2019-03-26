@@ -23,6 +23,8 @@
 #include <ql/experimental/termstructures/localCorrFX/CTSlocalInCrossVolatilityFX.hpp>
 #include <ql/experimental/termstructures/localCorrFX/CTSlocalInCrossNegSkewFX.hpp>
 #include <ql/experimental/termstructures/localCorrFX/localcorrsurfaceabfFX.hpp>
+#include <ql/experimental/termstructures/localCorrIndex/localcorrsurfaceabfIndex.hpp>
+#include <ql/experimental/termstructures/localCorrIndex/CTSlocalInLambdaIndex.hpp>
 #include <qlo\templatehestonmodel.hpp>
 
 
@@ -60,6 +62,7 @@ namespace QuantLibAddin {
 	OH_OBJ_CLASS(LocalCorrTermStructure, CorrelationTermStructureStrike);
 	OH_OBJ_CLASS(LocalCorrSurfaceABF, LocalCorrTermStructure);
 	OH_OBJ_CLASS(LocalCorrSurfaceABFFX, LocalCorrSurfaceABF);
+	OH_OBJ_CLASS(LocalCorrSurfaceABFIndex, LocalCorrSurfaceABF);
 
 	/*class LocalCorrTermStructure : CorrelationTermStructureStrike {
 	public:
@@ -127,6 +130,19 @@ namespace QuantLibAddin {
 			const boost::shared_ptr<QuantLib::GeneralizedBlackScholesProcess>&				processToCal,
 			double																			beta,
 			const QuantLib::RealStochasticProcess::MatA										correlations,
+			bool                                                                            permanent);
+	};
+
+	class CTSlocalInLambdaIndex : public LocalCorrSurfaceABFIndex {
+	public:
+		CTSlocalInLambdaIndex(
+			const boost::shared_ptr<ObjectHandler::ValueObject>&                            properties,
+			const std::vector<boost::shared_ptr<QuantLib::GeneralizedBlackScholesProcess>>& BSprocesses,
+			const std::vector<boost::shared_ptr<QuantLib::HestonSLVProcess>>&				SLVprocesses,
+			const boost::shared_ptr<QuantLib::GeneralizedBlackScholesProcess>&				processToCal,
+			const QuantLib::RealStochasticProcess::MatA&									corr0,
+			const QuantLib::RealStochasticProcess::MatA&									corr1,
+			const QuantLib::RealStochasticProcess::VecA&									weightsIndex,
 			bool                                                                            permanent);
 	};
 }

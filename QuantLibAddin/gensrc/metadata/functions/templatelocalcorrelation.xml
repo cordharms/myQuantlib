@@ -270,6 +270,40 @@
       </ReturnValue>
     </Member>
 
+    <Member name='qlCTSgetCalibratedIndexCorrFromGrid2dim' type='QuantLib::LocalCorrSurfaceABFIndex' >
+      <description>Return local correlation for a specified time and asset grid.</description>
+      <libraryFunction>getLocalCorrelationSurface2dim</libraryFunction>
+      <SupportedPlatforms>
+        <!--SupportedPlatform name='Excel' calcInWizard='false'/-->
+        <SupportedPlatform name='Excel'/>
+        <!--SupportedPlatform name='Calc'/-->
+        <!--SupportedPlatform name='Cpp'/-->
+      </SupportedPlatforms>
+      <ParameterList>
+        <Parameters>
+          <Parameter name='Time' default='1'>
+            <type>QuantLib::Real</type>
+            <tensorRank>scalar</tensorRank>
+            <description>Maturity</description>
+          </Parameter>
+          <Parameter name='Asset1Grid'>
+            <type>QuantLib::Real</type>
+            <tensorRank>vector</tensorRank>
+            <description>grid of asset 1</description>
+          </Parameter>
+          <Parameter name='Asset2Grid'>
+            <type>QuantLib::Real</type>
+            <tensorRank>vector</tensorRank>
+            <description>grid of asset 2</description>
+          </Parameter>
+        </Parameters>
+      </ParameterList>
+      <ReturnValue>
+        <type>QuantLib::Matrix</type>
+        <tensorRank>matrix</tensorRank>
+      </ReturnValue>
+    </Member>
+
     <Procedure name='qlCalibrateFXCTSWithParticleMethod'>
       <description>Calibrator for FX local correlation model</description>
       <alias>QuantLib::ParticleMethodUtils::calibrateFX</alias>
@@ -353,6 +387,130 @@
       </ReturnValue>
     </Procedure>
 
+    <Constructor name='qlCTSlocalInLambdaIndex'>
+      <libraryFunction>CTSlocalInLambdaIndex</libraryFunction>
+      <SupportedPlatforms>
+        <SupportedPlatform name='Excel'/>
+        <SupportedPlatform name='Cpp'/>
+      </SupportedPlatforms>
+      <ParameterList>
+        <Parameters>
+          <Parameter name='BSProcesses'>
+            <type>QuantLib::GeneralizedBlackScholesProcess</type>
+            <tensorRank>vector</tensorRank>
+            <description>Array of Black Scholes processes</description>
+          </Parameter>
+          <Parameter name='SLVProcesses'>
+            <type>QuantLib::HestonSLVProcess</type>
+            <tensorRank>vector</tensorRank>
+            <description>Array of heston slv processes</description>
+          </Parameter>
+          <Parameter name='BSProcessLocalCorr'>
+            <type>QuantLib::GeneralizedBlackScholesProcess</type>
+            <tensorRank>scalar</tensorRank>
+            <description>Black Scholes process to determine local correlation</description>
+          </Parameter>
+          <Parameter name='Corr0' default='0.0'>
+            <type>QuantLib::Time</type>
+            <tensorRank>matrix</tensorRank>
+            <description>Asset and volvol correlation matrix.</description>
+          </Parameter>
+          <Parameter name='Corr1' default='0.0'>
+            <type>QuantLib::Time</type>
+            <tensorRank>matrix</tensorRank>
+            <description>Asset and volvol correlation matrix.</description>
+          </Parameter>
+          <Parameter name='WeightsIndex'>
+            <type>QuantLib::Time</type>
+            <tensorRank>vector</tensorRank>
+            <description>asset weights to build index</description>
+          </Parameter>
+        </Parameters>
+      </ParameterList>
+    </Constructor>
     
+    
+    <Procedure name='qlCalibrateIndexCTSWithParticleMethod'>
+      <description>Calibrator for Index local correlation model</description>
+      <alias>QuantLib::ParticleMethodUtils::calibrateIndex</alias>
+      <SupportedPlatforms>
+        <SupportedPlatform name='Excel'/>
+        <SupportedPlatform name='Cpp'/>
+      </SupportedPlatforms>
+      <ParameterList>
+        <Parameters>
+          <Parameter name='LocalCorrSurfaceABFIndex'>
+            <type>QuantLib::LocalCorrSurfaceABFIndex</type>
+            <superType>libToHandle</superType>
+            <tensorRank>scalar</tensorRank>
+            <description>Local Correlation Term Structure to calibrate</description>
+          </Parameter>
+          <Parameter name='KernelString' default='"QuarticKernel"'>
+            <type>string</type>
+            <tensorRank>scalar</tensorRank>
+            <description>Kernel specification</description>
+          </Parameter>
+          <Parameter name='NumberOfPaths' default='1024'>
+            <type>long</type>
+            <tensorRank>scalar</tensorRank>
+            <description>number of paths for particle method</description>
+          </Parameter>
+          <Parameter name='MaxTime'>
+            <type>QuantLib::Time</type>
+            <tensorRank>scalar</tensorRank>
+            <description>maxTime for particle method grid</description>
+          </Parameter>
+          <Parameter name='DeltaT'>
+            <type>QuantLib::Time</type>
+            <tensorRank>scalar</tensorRank>
+            <description>time step in the grid</description>
+          </Parameter>
+          <Parameter name='MinT' default='0.25'>
+            <type>QuantLib::Time</type>
+            <tensorRank>scalar</tensorRank>
+            <description>minTime for particle method grid</description>
+          </Parameter>
+          <Parameter name='Kappa' default='3'>
+            <type>QuantLib::Real</type>
+            <tensorRank>scalar</tensorRank>
+            <description>kappa for bandwidth</description>
+          </Parameter>
+          <Parameter name='SigmaAVR'>
+            <type>QuantLib::Real</type>
+            <tensorRank>scalar</tensorRank>
+            <description>average volatility for bandwidth</description>
+          </Parameter>
+          <Parameter name='ExponentN' default='-0.25'>
+            <type>QuantLib::Real</type>
+            <tensorRank>scalar</tensorRank>
+            <description>exponent of N to determine bandwidth</description>
+          </Parameter>
+          <Parameter name='GridMinQuantile' default='0.1'>
+            <type>QuantLib::Real</type>
+            <tensorRank>scalar</tensorRank>
+            <description>minQuantile for strike grid</description>
+          </Parameter>
+          <Parameter name='GridMaxQuantile' default='0.9'>
+            <type>QuantLib::Real</type>
+            <tensorRank>scalar</tensorRank>
+            <description>minQuantile for strike grid</description>
+          </Parameter>
+          <Parameter name='Ns1' default='30'>
+            <type>long</type>
+            <tensorRank>scalar</tensorRank>
+            <description>strike grid amount indicator 1 (paper: nS)</description>
+          </Parameter>
+          <Parameter name='Ns2' default='15'>
+            <type>long</type>
+            <tensorRank>scalar</tensorRank>
+            <description>strike grid amount indicator 2 (paper: nS')</description>
+          </Parameter>
+        </Parameters>
+      </ParameterList>
+      <ReturnValue>
+        <type>void</type>
+        <tensorRank>scalar</tensorRank>
+      </ReturnValue>
+    </Procedure>   
   </Functions>
 </Category>

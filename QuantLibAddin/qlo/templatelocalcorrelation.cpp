@@ -129,6 +129,29 @@ namespace QuantLibAddin {
 			QL_FAIL("Either BSprocesses or SLVprocesses should be provided.");
 		}
 	}
+
+	CTSlocalInLambdaIndex::CTSlocalInLambdaIndex(
+		const boost::shared_ptr<ObjectHandler::ValueObject>&                            properties,
+		const std::vector<boost::shared_ptr<QuantLib::GeneralizedBlackScholesProcess>>& BSprocesses,
+		const std::vector<boost::shared_ptr<QuantLib::HestonSLVProcess>>&				SLVprocesses,
+		const boost::shared_ptr<QuantLib::GeneralizedBlackScholesProcess>&				processToCal,
+		const QuantLib::RealStochasticProcess::MatA&									corr0,
+		const QuantLib::RealStochasticProcess::MatA&									corr1,
+		const QuantLib::RealStochasticProcess::VecA&									weightsIndex,
+		bool                                                                            permanent)
+		: LocalCorrSurfaceABFIndex(properties, permanent) {
+		if (BSprocesses.size() > 0 && SLVprocesses.size() == 0) {
+			libraryObject_ = boost::shared_ptr<QuantLib::LocalCorrTermStructure>(
+				new QuantLib::CTSlocalInLambdaIndex(BSprocesses, processToCal, corr0, corr1, weightsIndex));
+		}
+		else if (BSprocesses.size() == 0 && SLVprocesses.size() > 0) {
+			libraryObject_ = boost::shared_ptr<QuantLib::LocalCorrTermStructure>(
+				new QuantLib::CTSlocalInLambdaIndex(SLVprocesses, processToCal, corr0,corr1,weightsIndex));
+		}
+		else {
+			QL_FAIL("Either BSprocesses or SLVprocesses should be provided.");
+		}
+	}
 }
 
 
