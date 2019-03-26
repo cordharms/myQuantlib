@@ -75,8 +75,8 @@
     <categoryName>templatehestonmodel</categoryName>
     <categoryName>templatemontecarlo</categoryName>
     <categoryName>templatecommodity</categoryName>
-    <categoryName>templatelocalcorrelation</categoryName>
     <categoryName>vanillalocalvolmodel</categoryName>
+    <categoryName>templatelocalcorrelation</categoryName>
   </addinCategoryNames>
   
 </root>

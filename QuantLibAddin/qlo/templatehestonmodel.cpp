@@ -346,7 +346,6 @@ namespace QuantLibAddin {
 			new QuantLib::MultiAssetBSModel(termStructure, aliases, processes, correlations));
 	}
 
-
 	MultiAssetBSModel::MultiAssetBSModel(
 		const boost::shared_ptr<ObjectHandler::ValueObject>&                            properties,
 		bool                                                                            permanent)
@@ -387,6 +386,7 @@ namespace QuantLibAddin {
 				new QuantLib::MTBrownianGeneratorFactory()), endDate, timeStepsPerYear, nBins, calibrationPaths, mandatoryDates));
 		
 	}
+
 }
 
 

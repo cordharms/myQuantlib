@@ -94,6 +94,9 @@
     <Filter Include="Experimental\Inflation">
       <UniqueIdentifier>{ec087a92-ce96-4940-b2d9-3bac408be003}</UniqueIdentifier>
     </Filter>
+    <Filter Include="Experimental\Template\VanillaLocalVolModel">
+      <UniqueIdentifier>{9f6a5ad3-321b-4f11-9031-bd576fa777c9}</UniqueIdentifier>
+    </Filter>
     <Filter Include="Experimental\Template\LocalCorrelation">
       <UniqueIdentifier>{02291f24-54dd-45f6-913e-8d2a3c6dfeb4}</UniqueIdentifier>
     </Filter>
@@ -1006,6 +1009,18 @@
       <Filter>serialization\create</Filter>
     </ClCompile>
     <ClCompile Include="qlo\serialization\register\serialization_templatequasigaussian2.cpp">
+      <Filter>serialization\register</Filter>
+    </ClCompile>
+    <ClCompile Include="qlo\templatelocalcorrelation.cpp">
+      <Filter>Experimental\Template\LocalCorrelation</Filter>
+    </ClCompile>
+    <ClCompile Include="qlo\valueobjects\vo_templatelocalcorrelation.cpp">
+      <Filter>valueobjects</Filter>
+    </ClCompile>
+    <ClCompile Include="qlo\serialization\create\create_templatelocalcorrelation.cpp">
+      <Filter>serialization\create</Filter>
+    </ClCompile>
+    <ClCompile Include="qlo\serialization\register\serialization_templatelocalcorrelation.cpp">
       <Filter>serialization\register</Filter>
     </ClCompile>
   </ItemGroup>
@@ -2030,6 +2045,18 @@
       <Filter>serialization\create</Filter>
     </ClInclude>
     <ClInclude Include="qlo\serialization\register\serialization_templatequasigaussian2.hpp">
+      <Filter>serialization\register</Filter>
+    </ClInclude>
+    <ClInclude Include="qlo\templatelocalcorrelation.hpp">
+      <Filter>Experimental\Template\LocalCorrelation</Filter>
+    </ClInclude>
+    <ClInclude Include="qlo\valueobjects\vo_templatelocalcorrelation.hpp">
+      <Filter>valueobjects</Filter>
+    </ClInclude>
+    <ClInclude Include="qlo\serialization\create\create_templatelocalcorrelation.hpp">
+      <Filter>serialization\create</Filter>
+    </ClInclude>
+    <ClInclude Include="qlo\serialization\register\serialization_templatelocalcorrelation.hpp">
       <Filter>serialization\register</Filter>
     </ClInclude>
   </ItemGroup>

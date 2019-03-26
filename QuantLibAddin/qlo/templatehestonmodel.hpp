@@ -37,6 +37,8 @@
 #include <ql/termstructures/volatility/equityfx/localvolsurface.hpp>
 
 #include <qlo/templatestochasticprocess.hpp>
+#include <ql/models/marketmodels/browniangenerators/mtbrowniangenerator.hpp>
+#include <ql/termstructures/volatility/equityfx/localvoltermstructure.hpp>
 
 namespace QuantLib {
     template <class T>
