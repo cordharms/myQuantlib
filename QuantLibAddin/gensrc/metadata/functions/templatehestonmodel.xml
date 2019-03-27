@@ -1739,27 +1739,5 @@
         </Parameters>
       </ParameterList>
     </Constructor>  
-    
-  <Constructor name='qlHestonSLVProcess'>
-      <libraryFunction>HestonSLVProcess</libraryFunction>
-      <SupportedPlatforms>
-        <SupportedPlatform name='Excel'/>
-      </SupportedPlatforms>
-      <ParameterList>
-        <Parameters>
-          <Parameter name='HestonProcess'>
-            <type>QuantLib::HestonProcess</type>
-            <tensorRank>scalar</tensorRank>
-            <description>Reference to HestonProcess.</description>
-          </Parameter>
-          <Parameter name='LeverageFunction'>
-            <type>QuantLib::LocalVolTermStructure</type>
-            <tensorRank>scalar</tensorRank>
-            <description>Reference to leverage surface.</description>
-          </Parameter>          
-        </Parameters>
-      </ParameterList>
-    </Constructor> 
-
   </Functions>
 </Category>
