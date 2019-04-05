@@ -138,11 +138,13 @@ namespace QuantLibAddin {
 		const QuantLib::RealStochasticProcess::MatA&									corr0,
 		const QuantLib::RealStochasticProcess::MatA&									corr1,
 		const QuantLib::RealStochasticProcess::VecA&									weightsIndex,
+		bool																			possibleNegativeIndex,
+		double																			processToCalBlackVolShift,
 		bool                                                                            permanent)
 		: LocalCorrSurfaceABFIndex(properties, permanent) {
 		if (BSprocesses.size() > 0 && SLVprocesses.size() == 0) {
 			libraryObject_ = boost::shared_ptr<QuantLib::LocalCorrTermStructure>(
-				new QuantLib::CTSlocalInLambdaIndex(BSprocesses, processToCal, corr0, corr1, weightsIndex));
+				new QuantLib::CTSlocalInLambdaIndex(BSprocesses, processToCal, corr0, corr1, weightsIndex,possibleNegativeIndex,processToCalBlackVolShift));
 		}
 		else if (BSprocesses.size() == 0 && SLVprocesses.size() > 0) {
 			libraryObject_ = boost::shared_ptr<QuantLib::LocalCorrTermStructure>(

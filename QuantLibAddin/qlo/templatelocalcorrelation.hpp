@@ -143,6 +143,8 @@ namespace QuantLibAddin {
 			const QuantLib::RealStochasticProcess::MatA&									corr0,
 			const QuantLib::RealStochasticProcess::MatA&									corr1,
 			const QuantLib::RealStochasticProcess::VecA&									weightsIndex,
+			bool																			possibleNegativeIndex,
+			double																			processToCalBlackVolShift,
 			bool                                                                            permanent);
 	};
 }

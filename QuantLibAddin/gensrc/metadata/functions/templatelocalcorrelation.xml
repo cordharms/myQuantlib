@@ -425,6 +425,16 @@
             <tensorRank>vector</tensorRank>
             <description>asset weights to build index</description>
           </Parameter>
+          <Parameter name='PossibleNegativeIndex'>
+            <type>bool</type>
+            <tensorRank>scalar</tensorRank>
+            <description>true if index could become negative</description>
+          </Parameter>
+          <Parameter name='ProcessToCalBlackVolShift'>
+            <type>QuantLib::Real</type>
+            <tensorRank>scalar</tensorRank>
+            <description>shift if black vol surface of processToCal is quoted in shifted-lognormal</description>
+          </Parameter>
         </Parameters>
       </ParameterList>
     </Constructor>
