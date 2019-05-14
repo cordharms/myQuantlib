@@ -148,7 +148,7 @@ namespace QuantLibAddin {
 		}
 		else if (BSprocesses.size() == 0 && SLVprocesses.size() > 0) {
 			libraryObject_ = boost::shared_ptr<QuantLib::LocalCorrTermStructure>(
-				new QuantLib::CTSlocalInLambdaIndex(SLVprocesses, processToCal, corr0,corr1,weightsIndex));
+				new QuantLib::CTSlocalInLambdaIndex(SLVprocesses, processToCal, corr0,corr1,weightsIndex, possibleNegativeIndex, processToCalBlackVolShift));
 		}
 		else {
 			QL_FAIL("Either BSprocesses or SLVprocesses should be provided.");
