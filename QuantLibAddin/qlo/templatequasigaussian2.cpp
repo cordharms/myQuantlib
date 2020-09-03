@@ -138,7 +138,7 @@ namespace QuantLibAddin {
 		: ObjectHandler::LibraryObject<QuantLib::QGCalibrator>(properties, permanent) {
 		libraryObject_ = boost::shared_ptr<QuantLib::QGCalibrator>(
 			new QuantLib::QGCalibrator(model, volTS, swapIndices, modelTimesStepSize, useExpectedXY, 
-				sigmaMax, slopeMax, etaMax, sigmaWeight, slopeWeight, etaWeight, penaltySigma, penaltySlope, endCriteria));
+				sigmaMax, slopeMax, etaMax, sigmaWeight, slopeWeight, etaWeight, penaltySigma, penaltySlope, *endCriteria));
 	}
 
 	// calibrated model from calibrator
@@ -172,7 +172,7 @@ namespace QuantLibAddin {
 		: ObjectHandler::LibraryObject<QuantLib::QGMonteCarloCalibrator>(properties, permanent) {
 		libraryObject_ = boost::shared_ptr<QuantLib::QGMonteCarloCalibrator>(
 			new QuantLib::QGMonteCarloCalibrator(model, volTS, swapIndices, monteCarloStepSize, monteCarloPaths,
-				sigmaMax, slopeMax, curveMax, sigmaWeight, slopeWeight, curveWeight, penaltySigma, penaltySlope, penaltyCurve, endCriteria));
+				sigmaMax, slopeMax, curveMax, sigmaWeight, slopeWeight, curveWeight, penaltySigma, penaltySlope, penaltyCurve, *endCriteria));
 	}
 
 	// calibrated model from calibrator

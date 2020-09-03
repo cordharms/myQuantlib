@@ -147,7 +147,9 @@
     <None Include="metadata\functions\payoffs.xml" />
     <None Include="metadata\functions\piecewiseyieldcurve.xml" />
     <None Include="metadata\functions\prices.xml" />
-    <None Include="metadata\functions\pricingengines.xml" />
+    <None Include="metadata\functions\pricingengines.xml">
+      <SubType>Designer</SubType>
+    </None>
     <None Include="metadata\functions\processes.xml" />
     <None Include="metadata\functions\quotes.xml" />
     <None Include="metadata\functions\randomsequencegenerator.xml" />
@@ -211,6 +213,9 @@
     <None Include="Makefile.vc" />
   </ItemGroup>
   <ItemGroup>
+    <Xml Include="metadata\functions\convertiblebonds.xml">
+      <SubType>Designer</SubType>
+    </Xml>
     <Xml Include="metadata\functions\basisswap.xml" />
     <Xml Include="metadata\functions\inflation.xml">
       <SubType>Designer</SubType>

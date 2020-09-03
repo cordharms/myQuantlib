@@ -738,23 +738,7 @@
           <value>QuantLib::Thirty360(QuantLib::Thirty360::Italian)</value>
         </EnumeratedType>
 
-        <!-- NON-ISDA -->
-        <EnumeratedType>
-          <string>Actual/365 (No Leap)</string>
-          <value>QuantLib::Actual365NoLeap()</value>
-        </EnumeratedType>
-        <EnumeratedType>
-          <string>Actual/365 (JGB)</string>
-          <value>QuantLib::Actual365NoLeap()</value>
-        </EnumeratedType>
-        <EnumeratedType>
-          <string>Act/365 (NL)</string>
-          <value>QuantLib::Actual365NoLeap()</value>
-        </EnumeratedType>
-        <EnumeratedType>
-          <string>NL/365</string>
-          <value>QuantLib::Actual365NoLeap()</value>
-        </EnumeratedType>
+        
 
         <!-- NON-ISDA QuantLib specific -->
         <EnumeratedType>
@@ -2127,21 +2111,21 @@
       </EnumeratedTypes>
     </EnumeratedTypeGroup>
 
-    <EnumeratedTypeGroup type='QuantLib::CalibrationHelper::CalibrationErrorType'>
+    <EnumeratedTypeGroup type='QuantLib::BlackCalibrationHelper::CalibrationErrorType'>
       <includeFile>oh/enumerations/typefactory.hpp</includeFile>
       <constructor>false</constructor>
       <EnumeratedTypes>
         <EnumeratedType>
           <string>RelativePriceError</string>
-          <value>QuantLib::CalibrationHelper::CalibrationErrorType(QuantLib::CalibrationHelper::RelativePriceError)</value>
+          <value>QuantLib::BlackCalibrationHelper::CalibrationErrorType(QuantLib::BlackCalibrationHelper::RelativePriceError)</value>
         </EnumeratedType>
         <EnumeratedType>
           <string>PriceError</string>
-          <value>QuantLib::CalibrationHelper::CalibrationErrorType(QuantLib::CalibrationHelper::PriceError)</value>
+          <value>QuantLib::BlackCalibrationHelper::CalibrationErrorType(QuantLib::BlackCalibrationHelper::PriceError)</value>
         </EnumeratedType>
         <EnumeratedType>
           <string>ImpliedVolError</string>
-          <value>QuantLib::CalibrationHelper::CalibrationErrorType(QuantLib::CalibrationHelper::ImpliedVolError)</value>
+          <value>QuantLib::BlackCalibrationHelper::CalibrationErrorType(QuantLib::BlackCalibrationHelper::ImpliedVolError)</value>
         </EnumeratedType>
       </EnumeratedTypes>
     </EnumeratedTypeGroup>
@@ -2161,7 +2145,35 @@
       </EnumeratedTypes>
     </EnumeratedTypeGroup>
 
-
+        <EnumeratedTypeGroup type='QuantLib::Bond::Price::Type'>
+            <includeFile>oh/enumerations/typefactory.hpp</includeFile>
+            <constructor>true</constructor>
+            <EnumeratedTypes>
+                <EnumeratedType>
+                    <string>Clean</string>
+                    <value>QuantLib::Bond::Price::Type::Clean</value>          
+        </EnumeratedType>
+                <EnumeratedType>
+                    <string>Dirty</string>
+                    <value>QuantLib::Bond::Price::Type::Dirty</value>          
+        </EnumeratedType>        
+      </EnumeratedTypes>      
+    </EnumeratedTypeGroup>    
+        <EnumeratedTypeGroup type='QuantLib::Callability::Type'>
+            <includeFile>oh/enumerations/typefactory.hpp</includeFile>
+            <constructor>true</constructor>
+            <EnumeratedTypes>
+                <EnumeratedType>
+                    <string>Call</string>
+                    <value>QuantLib::Callability::Type::Call</value>  
+        </EnumeratedType>
+                <EnumeratedType>
+                    <string>Put</string>
+                    <value>QuantLib::Callability::Type::Put</value>
+        </EnumeratedType>
+      </EnumeratedTypes> 
+    </EnumeratedTypeGroup>
+    
 
   </EnumeratedTypeGroups>
 

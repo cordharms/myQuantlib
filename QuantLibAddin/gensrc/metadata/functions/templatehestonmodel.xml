@@ -124,7 +124,7 @@
       </ParameterList>
     </Constructor>
 
-    <Member name='qlCalibrationHelperModelValue' type='QuantLib::CalibrationHelper' >
+    <Member name='qlCalibrationHelperModelValue' type='QuantLib::BlackCalibrationHelper' >
       <description>return model value.</description>
       <libraryFunction>modelValue</libraryFunction>
       <SupportedPlatforms>
@@ -143,7 +143,7 @@
       </ReturnValue>
     </Member>
 
-    <Member name='qlCalibrationHelperMarketValue' type='QuantLib::CalibrationHelper' >
+    <Member name='qlCalibrationHelperMarketValue' type='QuantLib::BlackCalibrationHelper' >
       <description>return model value.</description>
       <libraryFunction>marketValue</libraryFunction>
       <SupportedPlatforms>
@@ -270,8 +270,8 @@
       </SupportedPlatforms>
       <ParameterList>
         <Parameters>
-          <Parameter name='CalibrationHelpers' >
-            <type>QuantLib::CalibrationHelper</type>
+          <Parameter name='BlackCalibrationHelper' >
+            <type>QuantLib::BlackCalibrationHelper</type>
             <tensorRank>vector</tensorRank>
             <description>vector of Helper IDs.</description>
           </Parameter>
@@ -388,7 +388,7 @@
             <description>dividend YieldTermStructure object ID.</description>
           </Parameter>
           <Parameter name='CalibrationErrorType'   exampleValue ='RelativePriceError'>
-            <type>QuantLib::CalibrationHelper::CalibrationErrorType</type>
+            <type>QuantLib::BlackCalibrationHelper::CalibrationErrorType</type>
             <tensorRank>scalar</tensorRank>
             <description>Calibration error type.</description>
           </Parameter>

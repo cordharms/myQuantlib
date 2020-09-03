@@ -71,7 +71,7 @@ namespace QuantLibAddin {
             QuantLib::G2(termStructure, a, sigma,b,eta,rho));
 	}
 
-    void G2::calibrate(const std::vector<boost::shared_ptr<QuantLib::CalibrationHelper> >& instruments,
+    void G2::calibrate(const std::vector<boost::shared_ptr<QuantLib::BlackCalibrationHelper> >& instruments,
 					   const boost::shared_ptr<QuantLib::OptimizationMethod>&              method,		               
 					   const boost::shared_ptr<QuantLib::EndCriteria>&                     endCriteria,
                        const std::vector<QuantLib::Real>&                                  weights,
@@ -105,14 +105,14 @@ namespace QuantLibAddin {
                        const QuantLib::DayCounter&                           fixedLegDayCounter,
                        const QuantLib::DayCounter&                           floatingLegDayCounter,
                        const QuantLib::Handle<QuantLib::YieldTermStructure>&   termStructure,
-                       const QuantLib::CalibrationHelper::CalibrationErrorType errorType,
+                       const QuantLib::BlackCalibrationHelper::CalibrationErrorType errorType,
                        const QuantLib::Real                                    strike,
                        const QuantLib::Real                                    nominal,
                        const QuantLib::VolatilityType                          type,
                        const QuantLib::Real                                    shift,
 		               bool                                                    permanent)
-					   : CalibrationHelper(properties,permanent) {
-        libraryObject_ = boost::shared_ptr<QuantLib::CalibrationHelper>(new
+					   : BlackCalibrationHelper(properties,permanent) {
+        libraryObject_ = boost::shared_ptr<QuantLib::BlackCalibrationHelper>(new
             QuantLib::SwaptionHelper(maturity,length,volatility,index,fixedLegTenor,fixedLegDayCounter,floatingLegDayCounter,termStructure,errorType,strike,nominal,type,shift));
 	}
 

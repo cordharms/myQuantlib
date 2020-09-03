@@ -73,7 +73,7 @@ namespace QuantLibAddin {
            QuantLib::Real                                        eta,
            QuantLib::Real                                        rho,
 		   bool                                                  permanent);
-		void calibrate(const std::vector<boost::shared_ptr<QuantLib::CalibrationHelper> >& instruments,
+		void calibrate(const std::vector<boost::shared_ptr<QuantLib::BlackCalibrationHelper> >& instruments,
 					   const boost::shared_ptr<QuantLib::OptimizationMethod>&              method,
 					   const boost::shared_ptr<QuantLib::EndCriteria>&                     endCriteria,
                        const std::vector<QuantLib::Real>&                                  weights,
@@ -89,7 +89,7 @@ namespace QuantLibAddin {
 		                 bool                                                  permanent);
 	};
 
-    class SwaptionHelper : public CalibrationHelper {
+    class SwaptionHelper : public BlackCalibrationHelper {
     public:
         SwaptionHelper(const boost::shared_ptr<ObjectHandler::ValueObject>&  properties,
 			           const QuantLib::Period&                               maturity,
@@ -100,7 +100,7 @@ namespace QuantLibAddin {
                        const QuantLib::DayCounter&                           fixedLegDayCounter,
                        const QuantLib::DayCounter&                           floatingLegDayCounter,
                        const QuantLib::Handle<QuantLib::YieldTermStructure>&   termStructure,
-                       const QuantLib::CalibrationHelper::CalibrationErrorType errorType,
+                       const QuantLib::BlackCalibrationHelper::CalibrationErrorType errorType,
                        const QuantLib::Real                                    strike,
                        const QuantLib::Real                                    nominal,
 			           const QuantLib::VolatilityType                          type,

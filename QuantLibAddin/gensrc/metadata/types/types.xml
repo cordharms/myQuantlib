@@ -19,6 +19,8 @@
     <DataType defaultSuperType='enumeration'>QuantLib::Frequency</DataType>
     <DataType defaultSuperType='enumeration'>QuantLib::GFunctionFactory::YieldCurveModel</DataType>
     <DataType defaultSuperType='enumeration'>QuantLib::Month</DataType>
+    <DataType defaultSuperType='enumeration'>QuantLib::Bond::Price::Type</DataType>
+    <DataType defaultSuperType='enumeration'>QuantLib::Callability::Type</DataType>
     <DataType defaultSuperType='enumeration'>QuantLib::Option::Type</DataType>
     <DataType defaultSuperType='enumeration'>QuantLib::Pillar::Choice</DataType>
     <DataType defaultSuperType='enumeration'>QuantLib::Position::Type</DataType>
@@ -134,6 +136,8 @@
     <DataType defaultSuperType='libraryClass'>QuantLib::RangeAccrualFloatersCoupon</DataType>
     <DataType defaultSuperType='libraryClass'>QuantLib::RangeAccrualPricer</DataType>
     <DataType defaultSuperType='libraryClass'>QuantLib::RateHelper</DataType>
+    <DataType defaultSuperType='libraryClass'>QuantLib::FixedDividend</DataType>
+    <DataType defaultSuperType='libraryClass'>QuantLib::Callability</DataType>
     <DataType defaultSuperType='libraryClass'>QuantLib::SABRInterpolation</DataType>
     <DataType defaultSuperType='libraryClass'>QuantLib::SabrInterpolatedSmileSection</DataType>
     <DataType defaultSuperType='libraryClass'>QuantLib::SabrVolSurface</DataType>
@@ -352,9 +356,9 @@
 
     <DataType defaultSuperType='objectClass'>QuantLibAddin::G2</DataType>
     <DataType defaultSuperType='libraryClass'>QuantLib::G2</DataType>
-    <DataType defaultSuperType='libraryClass'>QuantLib::CalibrationHelper</DataType>
+    <DataType defaultSuperType='libraryClass'>QuantLib::BlackCalibrationHelper</DataType>
     <DataType defaultSuperType='libraryClass'>QuantLib::Swaptionhelper</DataType>
-    <DataType defaultSuperType='enumeration'>QuantLib::CalibrationHelper::CalibrationErrorType</DataType>
+    <DataType defaultSuperType='enumeration'>QuantLib::BlackCalibrationHelper::CalibrationErrorType</DataType>
     <DataType defaultSuperType='libraryClass'>QuantLib::Constraint</DataType>
     <DataType defaultSuperType='libraryClass'>QuantLib::NoConstraint</DataType>
 

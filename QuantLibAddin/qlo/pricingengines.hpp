@@ -56,7 +56,7 @@ namespace QuantLib {
 namespace QuantLibAddin {
 
 	// we need CalibrationHelpers at various places
-	OH_LIB_CLASS(CalibrationHelper, QuantLib::BlackCalibrationHelper);
+	OH_LIB_CLASS(BlackCalibrationHelper, QuantLib::BlackCalibrationHelper);
 
     class PricingEngine : public ObjectHandler::LibraryObject<QuantLib::PricingEngine> {
       public:
@@ -310,6 +310,18 @@ class FdHestonVanillaEngineNoLev : public PricingEngine {
 			const QuantLib::Size                                                vGrid,
 			const QuantLib::Size                                                dampingSteps,
 			const std::string&                                                  schemeString,
+			bool permanent);
+		
+};
+
+
+class BinomialConvertibleEngine : public PricingEngine {
+	public:
+		BinomialConvertibleEngine(
+			const boost::shared_ptr<ObjectHandler::ValueObject>& properties,
+			const boost::shared_ptr<QuantLib::GeneralizedBlackScholesProcess>& process,
+			const std::string& treeType,
+			const long& timeSteps,
 			bool permanent);
 		
 };

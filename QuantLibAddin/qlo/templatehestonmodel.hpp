@@ -72,7 +72,7 @@ namespace QuantLibAddin {
             const boost::shared_ptr<ObjectHandler::ValueObject>& properties,
             const boost::shared_ptr<QuantLib::HestonProcess>& process,
             bool permanent);
-		void calibrate(const std::vector<boost::shared_ptr<QuantLib::CalibrationHelper> >& instruments,
+		void calibrate(const std::vector<boost::shared_ptr<QuantLib::BlackCalibrationHelper> >& instruments,
 			const boost::shared_ptr<QuantLib::OptimizationMethod>&              method,
 			const boost::shared_ptr<QuantLib::EndCriteria>&                     endCriteria,
 			const std::vector<QuantLib::Real>&                                  weights,
@@ -99,7 +99,7 @@ namespace QuantLibAddin {
                 bool permanent);
     };
 
-	class HestonModelHelper : public CalibrationHelper {
+	class HestonModelHelper : public BlackCalibrationHelper {
 	public:
 		HestonModelHelper(
 			const boost::shared_ptr<ObjectHandler::ValueObject>&    properties,
@@ -110,7 +110,7 @@ namespace QuantLibAddin {
 			const QuantLib::Handle<QuantLib::Quote>&                volatility,
 			const QuantLib::Handle<QuantLib::YieldTermStructure>&   riskFreeRate,
 			const QuantLib::Handle<QuantLib::YieldTermStructure>&   dividendYield,
-			const QuantLib::CalibrationHelper::CalibrationErrorType& errorType,
+			const QuantLib::BlackCalibrationHelper::CalibrationErrorType& errorType,
 			bool                                                    permanent);
 	};
 

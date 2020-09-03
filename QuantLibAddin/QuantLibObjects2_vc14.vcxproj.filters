@@ -1023,6 +1023,10 @@
     <ClCompile Include="qlo\serialization\register\serialization_templatelocalcorrelation.cpp">
       <Filter>serialization\register</Filter>
     </ClCompile>
+    <ClCompile Include="qlo\convertiblebonds.cpp" />
+    <ClCompile Include="qlo\valueobjects\vo_convertiblebonds.cpp" />
+    <ClCompile Include="qlo\serialization\create\create_convertiblebonds.cpp" />
+    <ClCompile Include="qlo\serialization\register\serialization_convertiblebonds.cpp" />
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="qlo\enumerations\register\register_all.hpp">
@@ -2059,5 +2063,9 @@
     <ClInclude Include="qlo\serialization\register\serialization_templatelocalcorrelation.hpp">
       <Filter>serialization\register</Filter>
     </ClInclude>
+    <ClInclude Include="qlo\convertiblebonds.hpp" />
+    <ClInclude Include="qlo\valueobjects\vo_convertiblebonds.hpp" />
+    <ClInclude Include="qlo\serialization\create\create_convertiblebonds.hpp" />
+    <ClInclude Include="qlo\serialization\register\serialization_convertiblebonds.hpp" />
   </ItemGroup>
 </Project>

@@ -78,11 +78,12 @@ namespace QuantLibAddin {
 		const QuantLib::Calendar&                               calendar,   // index may have null calendar as valid on every day
 		const QuantLib::BusinessDayConvention                   paymentConvention,
 		const QuantLib::DayCounter&                             dayCounter,
-		const boost::shared_ptr<QuantLib::ZeroInflationIndex>&  zii,
+		const boost::shared_ptr<QuantLib::ZeroInflationIndex>&  zii, 
+		const QuantLib::Handle<QuantLib::YieldTermStructure>& nominalTermStructure,
 		bool                                                    permanent) 
 	    : ObjectHandler::LibraryObject<QuantLib::ZeroCouponInflationSwapHelper>(properties, permanent) {
 		libraryObject_ = boost::shared_ptr<QuantLib::ZeroCouponInflationSwapHelper>(
-			new QuantLib::ZeroCouponInflationSwapHelper(quote, swapObsLag, maturity, calendar, paymentConvention, dayCounter, zii));
+			new QuantLib::ZeroCouponInflationSwapHelper(quote, swapObsLag, maturity, calendar, paymentConvention, dayCounter, zii, nominalTermStructure));
 	}
 
 	InterpolatedZeroInflationCurve::InterpolatedZeroInflationCurve(
