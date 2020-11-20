@@ -403,6 +403,16 @@ namespace QuantLibAddin {
 				 QuantLib::BinomialConvertibleEngine<QuantLib::CoxRossRubinstein>(process, timeSteps));
 			}
 		
-
+		BinomialCoCoEngine::BinomialCoCoEngine(
+			const boost::shared_ptr<ObjectHandler::ValueObject>& properties,
+			const boost::shared_ptr<QuantLib::GeneralizedBlackScholesProcess>& process,
+			const std::string& treeType,
+			const long& timeSteps,
+			bool applyWriteDownDiscounting,
+			bool permanent) : PricingEngine(properties, permanent)
+		{
+			libraryObject_ = boost::shared_ptr<QuantLib::BinomialCoCoEngine<QuantLib::CoxRossRubinstein>>(new
+				QuantLib::BinomialCoCoEngine<QuantLib::CoxRossRubinstein>(process, timeSteps, applyWriteDownDiscounting));
+		}
 }
 

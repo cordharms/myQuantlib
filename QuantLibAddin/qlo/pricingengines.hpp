@@ -326,6 +326,18 @@ class BinomialConvertibleEngine : public PricingEngine {
 		
 };
 
+class BinomialCoCoEngine : public PricingEngine {
+public:
+	BinomialCoCoEngine(
+		const boost::shared_ptr<ObjectHandler::ValueObject>& properties,
+		const boost::shared_ptr<QuantLib::GeneralizedBlackScholesProcess>& process,
+		const std::string& treeType,
+		const long& timeSteps,
+		bool applyWriteDownDiscounting,
+		bool permanent);
+
+};
+
 }
 
 

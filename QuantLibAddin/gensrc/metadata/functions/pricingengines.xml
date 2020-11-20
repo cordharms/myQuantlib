@@ -2104,6 +2104,39 @@
         </Parameters>
       </ParameterList>
     </Constructor>
-
+    
+    <Constructor name='qlBinomialCoCoEngine'>
+      <libraryFunction>BinomialCoCoEngine</libraryFunction>
+      <SupportedPlatforms>
+        <!--SupportedPlatform name='Excel' calcInWizard='false'/-->
+        <SupportedPlatform name='Excel'/>
+        <SupportedPlatform name='Calc'/>
+        <SupportedPlatform name='Cpp'/>
+      </SupportedPlatforms>
+      <ParameterList>
+        <Parameters>
+          <Parameter name='Process' >
+            <type>QuantLib::GeneralizedBlackScholesProcess</type>
+            <tensorRank>scalar</tensorRank>
+            <description>Process object ID.</description>
+          </Parameter>
+          <Parameter name='TreeType' >
+            <type>string</type>
+            <tensorRank>scalar</tensorRank>
+            <description>Type of tree implementation.</description>
+          </Parameter>
+          <Parameter name='Nsteps' >
+            <type>QuantLib::Size</type>
+            <tensorRank>scalar</tensorRank>
+            <description>Number of time steps.</description>
+          </Parameter>
+          <Parameter name='ApplyWriteDownDiscounting' >
+            <type>bool</type>
+            <tensorRank>scalar</tensorRank>
+            <description>Write Down applies risky discounting.</description>
+          </Parameter>
+        </Parameters>
+      </ParameterList>
+    </Constructor>
   </Functions>
 </Category>
