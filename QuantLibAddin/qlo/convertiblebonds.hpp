@@ -165,7 +165,6 @@ namespace QuantLibAddin {
 				const std::string& des,
 				const QuantLib::Currency& cur,
 				QuantLib::Real conversionRatio,
-				const QuantLib::Callability::Type conversionType,
 				const std::vector<boost::shared_ptr<QuantLib::FixedDividend> > dividends,
 				const std::vector<boost::shared_ptr<QuantLib::Callability> > callability,
 				const QuantLib::Handle<QuantLib::Quote>& creditSpread,

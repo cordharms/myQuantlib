@@ -220,7 +220,6 @@ namespace QuantLibAddin {
 			const string& des,
 			const QuantLib::Currency& cur,
 			QuantLib::Real conversionRatio,
-			const QuantLib::Callability::Type conversionType,
 			const std::vector<boost::shared_ptr<QuantLib::FixedDividend> > dividends,
 			const std::vector<boost::shared_ptr<QuantLib::Callability> > callability,
 			const QuantLib::Handle<QuantLib::Quote>& creditSpread,
@@ -239,8 +238,7 @@ namespace QuantLibAddin {
 		{
 			qlBondObject_ = shared_ptr<QuantLib::CoCoFixedCouponBond>(new
 				QuantLib::CoCoFixedCouponBond(
-					conversionRatio,
-					conversionType,
+					conversionRatio, QuantLib::Callability::Type::Call,
 					std::vector<boost::shared_ptr<QuantLib::Dividend> >(dividends.begin(), dividends.end()),
 					std::vector<boost::shared_ptr<QuantLib::Callability> >(callability.begin(), callability.end()),
 					creditSpread,

@@ -456,13 +456,6 @@
               <type>QuantLib::Real</type>
               <tensorRank>scalar</tensorRank>
               <description>Conversion ratio.</description>
-
-            </Parameter>
-            <Parameter name='ConvType'>
-              <type>QuantLib::Callability::Type</type>
-              <tensorRank>scalar</tensorRank>
-              <description>Conversion type.</description>
-
             </Parameter>
             <Parameter name='DivSchedule'>
               <type>QuantLib::FixedDividend</type>
