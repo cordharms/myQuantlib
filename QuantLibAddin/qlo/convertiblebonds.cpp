@@ -247,7 +247,7 @@ namespace QuantLibAddin {
 					coupons,
 					dayCounter,
 					*schedule,
-					cocoTrigger, isWriteDown,cocoWriteDownRR,isRiskyDiscountingWD,
+					cocoTrigger,true, isWriteDown,cocoWriteDownRR,isRiskyDiscountingWD,
 					redemption));
 			libraryObject_ = qlBondObject_;
 			if (description_.empty()) {
