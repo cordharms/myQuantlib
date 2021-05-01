@@ -267,7 +267,7 @@
             <description>YieldTermStructure object ID.</description>
           </Parameter>
           <Parameter name='CalibrationErrorType'   exampleValue ='RelativePriceError'>
-            <type>QuantLib::CalibrationHelper::CalibrationErrorType</type>
+            <type>QuantLib::BlackCalibrationHelper::CalibrationErrorType</type>
             <tensorRank>scalar</tensorRank>
             <description>Calibration error type.</description>
           </Parameter>
@@ -436,7 +436,7 @@
       <ParameterList>
         <Parameters>
           <Parameter name='CalibHelpers' >
-            <type>QuantLib::CalibrationHelper</type>
+            <type>QuantLib::BlackCalibrationHelper</type>
             <tensorRank>vector</tensorRank>
             <description>reference to calibration helpers.</description>
           </Parameter>

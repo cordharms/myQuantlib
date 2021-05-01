@@ -87,6 +87,7 @@ namespace QuantLibAddin {
 			const QuantLib::BusinessDayConvention                   paymentConvention,
 			const QuantLib::DayCounter&                             dayCounter,
 			const boost::shared_ptr<QuantLib::ZeroInflationIndex>&  zii,
+			const QuantLib::Handle<QuantLib::YieldTermStructure>& nominalTermStructure,
 			bool                                                    permanent);
 	};
 
