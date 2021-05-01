@@ -70,7 +70,6 @@ namespace QuantLibAddin {
 		qlBondObject_ = shared_ptr<QuantLib::ConvertibleZeroCouponBond>(new
 			 QuantLib::ConvertibleZeroCouponBond(exercise,
 				conversionRatio,
-				conversionType,
 				std::vector<boost::shared_ptr<QuantLib::Dividend> >(dividends.begin(), dividends.end()),
 				std::vector<boost::shared_ptr<QuantLib::Callability> >(callability.begin(), callability.end()),
 				creditSpread,
@@ -111,7 +110,6 @@ namespace QuantLibAddin {
 		qlBondObject_ = shared_ptr<QuantLib::ConvertibleFixedCouponBond>(new
 			 QuantLib::ConvertibleFixedCouponBond(exercise,
 				conversionRatio,
-				conversionType,
 				std::vector<boost::shared_ptr<QuantLib::Dividend> >(dividends.begin(), dividends.end()),
 				std::vector<boost::shared_ptr<QuantLib::Callability> >(callability.begin(), callability.end()),
 				creditSpread,
@@ -166,97 +164,6 @@ namespace QuantLibAddin {
 		libraryObject_ = qlDivObject_;
 		}
 	
-		CoCoFloatingRateBond::CoCoFloatingRateBond(
-			const boost::shared_ptr<ObjectHandler::ValueObject>& properties,
-			const std::string& des,
-			const QuantLib::Currency& cur,
-			QuantLib::Real conversionRatio,
-			const std::vector<boost::shared_ptr<QuantLib::FixedDividend> > dividends,
-			const std::vector<boost::shared_ptr<QuantLib::Callability> > callability,
-			const QuantLib::Handle<QuantLib::Quote>& creditSpread,
-			const QuantLib::Date& issueDate,
-			QuantLib::Natural settlementDays,
-			const boost::shared_ptr<QuantLib::IborIndex>& index,
-			QuantLib::Natural fixingDays,
-			const std::vector<QuantLib::Real>& gearings,
-			const std::vector<QuantLib::Spread>& spreads,
-			const QuantLib::DayCounter& dayCounter,
-			const boost::shared_ptr<QuantLib::Schedule>& schedule,
-			QuantLib::Real cocoTrigger,
-			bool isWriteDown,
-			QuantLib::Real cocoWriteDownRR, 
-			bool isRiskyDiscountingWD,
-			QuantLib::Real redemption,
-			bool permanent)
-			: Bond(properties, des, cur, permanent)
-		{
 		
-			qlBondObject_ = shared_ptr<QuantLib::CoCoFloatingRateBond>(new
-				QuantLib::CoCoFloatingRateBond(conversionRatio,
-					QuantLib::Callability::Type::Call,
-					std::vector<boost::shared_ptr<QuantLib::Dividend> >(dividends.begin(), dividends.end()),
-					std::vector<boost::shared_ptr<QuantLib::Callability> >(callability.begin(), callability.end()),
-					creditSpread,
-					issueDate,
-					settlementDays,
-					index, fixingDays,
-					gearings, spreads,
-					dayCounter,
-					*schedule,
-					cocoTrigger, true,isWriteDown,cocoWriteDownRR, isRiskyDiscountingWD,
-					redemption));
-			libraryObject_ = qlBondObject_;
-			if (description_.empty()) {
-				std::ostringstream temp;
-				temp << "CoCoFloatingRateBond ";
-				temp << QuantLib::io::iso_date(qlBondObject_->maturityDate());
-				description_ = temp.str();
-
-			}
-		}
-
-		CoCoGenericCouponBond::CoCoGenericCouponBond(
-			const boost::shared_ptr<ObjectHandler::ValueObject>& properties,
-			const string& des,
-			const QuantLib::Currency& cur,
-			QuantLib::Real conversionRatio,
-			const std::vector<boost::shared_ptr<QuantLib::FixedDividend> > dividends,
-			const std::vector<boost::shared_ptr<QuantLib::Callability> > callability,
-			const QuantLib::Handle<QuantLib::Quote>& creditSpread,
-			const QuantLib::Date& issueDate,
-			QuantLib::Natural settlementDays,
-			const std::vector<QuantLib::Rate>& coupons,
-			const QuantLib::DayCounter& dayCounter,
-			const boost::shared_ptr<QuantLib::Schedule>& schedule,
-			QuantLib::Real cocoTrigger,
-			bool isWriteDown,
-			QuantLib::Real cocoWriteDownRR,
-			bool isRiskyDiscountingWD,
-			QuantLib::Real redemption,
-			bool permanent)
-			: Bond(properties, des, cur, permanent)
-		{
-			qlBondObject_ = shared_ptr<QuantLib::CoCoFixedCouponBond>(new
-				QuantLib::CoCoFixedCouponBond(
-					conversionRatio, QuantLib::Callability::Type::Call,
-					std::vector<boost::shared_ptr<QuantLib::Dividend> >(dividends.begin(), dividends.end()),
-					std::vector<boost::shared_ptr<QuantLib::Callability> >(callability.begin(), callability.end()),
-					creditSpread,
-					issueDate,
-					settlementDays,
-					coupons,
-					dayCounter,
-					*schedule,
-					cocoTrigger,true, isWriteDown,cocoWriteDownRR,isRiskyDiscountingWD,
-					redemption));
-			libraryObject_ = qlBondObject_;
-			if (description_.empty()) {
-				std::ostringstream temp;
-				temp << "ConvertibleFixedCouponBond ";
-				temp << QuantLib::io::iso_date(qlBondObject_->maturityDate());
-				description_ = temp.str();
-
-			}
-		}
 		
 }
