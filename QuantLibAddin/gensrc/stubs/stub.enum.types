@@ -9,6 +9,8 @@
 #include <qlo/piecewiseyieldcurve.hpp>
 #include <qlo/indexes/swapindex.hpp>
 
+#include <ql/instruments/callabilityschedule.hpp>
+#include <ql/instruments/bond.hpp>
 #include <ql/cashflows/cashflows.hpp>
 #include <ql/cashflows/conundrumpricer.hpp>
 #include <ql/cashflows/digitalcoupon.hpp>
