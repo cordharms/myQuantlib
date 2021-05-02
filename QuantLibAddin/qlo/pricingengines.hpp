@@ -314,18 +314,7 @@ class FdHestonVanillaEngineNoLev : public PricingEngine {
 		
 };
 
-
-class BinomialConvertibleEngine : public PricingEngine {
-	public:
-		BinomialConvertibleEngine(
-			const boost::shared_ptr<ObjectHandler::ValueObject>& properties,
-			const boost::shared_ptr<QuantLib::GeneralizedBlackScholesProcess>& process,
-			const std::string& treeType,
-			const long& timeSteps,
-			bool permanent);
-		
-};
-
+	
 }
 
 

@@ -488,8 +488,6 @@
     <ClCompile Include="register\register_templatelocalcorrelation.cpp">
       <Filter>register</Filter>
     </ClCompile>
-    <ClCompile Include="functions\convertiblebonds.cpp" />
-    <ClCompile Include="register\register_convertiblebonds.cpp" />
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="register\register_all.hpp">

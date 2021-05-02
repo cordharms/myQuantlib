@@ -363,6 +363,5 @@
     <Xml Include="metadata\functions\templatelocalcorrelation.xml">
       <Filter>functions\experimental</Filter>
     </Xml>
-    <Xml Include="metadata\functions\convertiblebonds.xml" />
   </ItemGroup>
 </Project>

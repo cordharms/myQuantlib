@@ -392,17 +392,6 @@ namespace QuantLibAddin {
 			 QuantLib::FdHestonVanillaEngine(model, tGrid, xGrid, vGrid, dampingSteps, *schemeDesc));
 		
 	}
-		BinomialConvertibleEngine::BinomialConvertibleEngine(
-			const boost::shared_ptr<ObjectHandler::ValueObject>& properties,
-			const boost::shared_ptr<QuantLib::GeneralizedBlackScholesProcess>& process,
-			const std::string& treeType,
-			const long& timeSteps,
-			bool permanent) : PricingEngine(properties, permanent)
-			 {
-			libraryObject_ = boost::shared_ptr<QuantLib::BinomialConvertibleEngine<QuantLib::CoxRossRubinstein>>(new
-				 QuantLib::BinomialConvertibleEngine<QuantLib::CoxRossRubinstein>(process, timeSteps));
-			}
-		
 
 }
 

@@ -714,7 +714,6 @@
     </Bscmake>
   </ItemDefinitionGroup>
   <ItemGroup>
-    <ClCompile Include="functions\convertiblebonds.cpp" />
     <ClCompile Include="functions\templatelocalcorrelation.cpp" />
     <ClCompile Include="functions\basisswap.cpp" />
     <ClCompile Include="functions\inflation.cpp" />
@@ -743,7 +742,6 @@
     <ClCompile Include="register\register_capletvolstructure.cpp" />
     <ClCompile Include="register\register_cmsmarket.cpp" />
     <ClCompile Include="register\register_cmsmarketcalibration.cpp" />
-    <ClCompile Include="register\register_convertiblebonds.cpp" />
     <ClCompile Include="register\register_correlation.cpp" />
     <ClCompile Include="register\register_couponvectors.cpp" />
     <ClCompile Include="register\register_credit.cpp" />

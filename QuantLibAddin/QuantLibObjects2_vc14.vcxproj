@@ -539,7 +539,6 @@
   </ItemDefinitionGroup>
   <ItemGroup>
     <ClCompile Include="qlo\basisswap.cpp" />
-    <ClCompile Include="qlo\convertiblebonds.cpp" />
     <ClCompile Include="qlo\coupons.cpp" />
     <ClCompile Include="qlo\enumerations\register\register_all.cpp" />
     <ClCompile Include="qlo\enumerations\register\register_classes.cpp" />
@@ -549,8 +548,6 @@
     <ClCompile Include="qlo\enumerations\constructors\enumeratedpairs.cpp" />
     <ClCompile Include="qlo\enumerations\factories\calendarfactory.cpp" />
     <ClCompile Include="qlo\inflation.cpp" />
-    <ClCompile Include="qlo\serialization\create\create_convertiblebonds.cpp" />
-    <ClCompile Include="qlo\serialization\register\serialization_convertiblebonds.cpp" />
     <ClCompile Include="qlo\templatelocalcorrelation.cpp" />
     <ClCompile Include="qlo\sabrswaptioncube.cpp" />
     <ClCompile Include="qlo\serialization\create\create_basisswap.cpp" />
@@ -594,7 +591,6 @@
     <ClCompile Include="qlo\valueobjects\vo_capletvolstructure.cpp" />
     <ClCompile Include="qlo\valueobjects\vo_cmsmarket.cpp" />
     <ClCompile Include="qlo\valueobjects\vo_cmsmarketcalibration.cpp" />
-    <ClCompile Include="qlo\valueobjects\vo_convertiblebonds.cpp" />
     <ClCompile Include="qlo\valueobjects\vo_correlation.cpp" />
     <ClCompile Include="qlo\valueobjects\vo_couponvectors.cpp" />
     <ClCompile Include="qlo\valueobjects\vo_credit.cpp" />
@@ -850,7 +846,6 @@
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="qlo\basisswap.hpp" />
-    <ClInclude Include="qlo\convertiblebonds.hpp" />
     <ClInclude Include="qlo\coupons.hpp" />
     <ClInclude Include="qlo\enumerations\register\register_all.hpp" />
     <ClInclude Include="qlo\enumerations\constructors\enumeratedclasses.hpp" />
@@ -864,8 +859,6 @@
     <ClInclude Include="qlo\enumerations\factories\pricingenginesfactory.hpp" />
     <ClInclude Include="qlo\enumerations\factories\termstructuresfactory.hpp" />
     <ClInclude Include="qlo\inflation.hpp" />
-    <ClInclude Include="qlo\serialization\create\create_convertiblebonds.hpp" />
-    <ClInclude Include="qlo\serialization\register\serialization_convertiblebonds.hpp" />
     <ClInclude Include="qlo\templatelocalcorrelation.hpp" />
     <ClInclude Include="qlo\sabrswaptioncube.hpp" />
     <ClInclude Include="qlo\serialization\create\create_basisswap.hpp" />
@@ -911,7 +904,6 @@
     <ClInclude Include="qlo\valueobjects\vo_capletvolstructure.hpp" />
     <ClInclude Include="qlo\valueobjects\vo_cmsmarket.hpp" />
     <ClInclude Include="qlo\valueobjects\vo_cmsmarketcalibration.hpp" />
-    <ClInclude Include="qlo\valueobjects\vo_convertiblebonds.hpp" />
     <ClInclude Include="qlo\valueobjects\vo_correlation.hpp" />
     <ClInclude Include="qlo\valueobjects\vo_couponvectors.hpp" />
     <ClInclude Include="qlo\valueobjects\vo_credit.hpp" />
