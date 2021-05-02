@@ -539,6 +539,7 @@
   </ItemDefinitionGroup>
   <ItemGroup>
     <ClCompile Include="qlo\basisswap.cpp" />
+    <ClCompile Include="qlo\convertiblebonds.cpp" />
     <ClCompile Include="qlo\coupons.cpp" />
     <ClCompile Include="qlo\enumerations\register\register_all.cpp" />
     <ClCompile Include="qlo\enumerations\register\register_classes.cpp" />
@@ -846,6 +847,7 @@
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="qlo\basisswap.hpp" />
+    <ClInclude Include="qlo\convertiblebonds.hpp" />
     <ClInclude Include="qlo\coupons.hpp" />
     <ClInclude Include="qlo\enumerations\register\register_all.hpp" />
     <ClInclude Include="qlo\enumerations\constructors\enumeratedclasses.hpp" />
